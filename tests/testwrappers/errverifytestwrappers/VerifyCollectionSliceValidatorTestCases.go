@@ -25,7 +25,7 @@ var VerifyCollectionSliceValidatorTestCases = []VerifyErrorCollectionTestWrapper
 				IsPrintError: true,
 			},
 			ExpectationLines: &corestr.SimpleSlice{
-					"[Error (InvalidOption - #470): Selected option is invalid!]",
+					"[Error (InvalidOption - #469): Selected option is invalid!]",
 					"[Error (NotSupportInWindows - #93): Current request is not supported in Windows Operating system.]",
 					"[Error (NotSupportedOption - #107): None of the option is supported.]",
 				},
@@ -46,7 +46,7 @@ var VerifyCollectionSliceValidatorTestCases = []VerifyErrorCollectionTestWrapper
 				IsPrintError: true,
 			},
 			ExpectationLines: &corestr.SimpleSlice{
-					"[Error (InvalidOption - #470): Selected option is invalid!]",
+					"[Error (InvalidOption - #469): Selected option is invalid!]",
 					"[Error (NotSupportInWindows - #93): Current request is not supported in Windows Operating system.]",
 					"[Error (NotSupportedOption - #107): None of the option is supported.]",
 				},

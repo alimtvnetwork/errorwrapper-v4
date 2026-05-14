@@ -1,6 +1,7 @@
 package linuxservicecmdtests
 
 import (
+	"runtime"
 	"testing"
 
 	. "github.com/smartystreets/goconvey/convey"
@@ -11,6 +12,9 @@ import (
 
 func Test_ServicesInstructionApply(t *testing.T) {
 	coretests.SkipOnWindows(t)
+	if runtime.GOOS == "darwin" {
+		t.Skip("requires linux systemctl/service")
+	}
 
 	for _, testCase := range linuxservicecmdtestwrappers.ServicesTestCases {
 		errCollection := errwrappers.NewCap4()
