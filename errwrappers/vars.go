@@ -1,8 +1,8 @@
 package errwrappers
 
 import (
-	"gitlab.com/evatix-go/core/coredata/corejson"
-	"gitlab.com/evatix-go/errorwrapper/errtype"
+	"github.com/alimtvnetwork/core-v9/coredata/corejson"
+	"github.com/alimtvnetwork/errorwrapper-v3/errtype"
 )
 
 var (

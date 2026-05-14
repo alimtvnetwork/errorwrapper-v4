@@ -1,6 +1,6 @@
 package linuxservicecmdtestwrappers
 
-import "gitlab.com/evatix-go/errorwrapper/linuxservicecmd"
+import "github.com/alimtvnetwork/errorwrapper-v3/linuxservicecmd"
 
 type ServicesTestCaseWrapper struct {
 	Header string

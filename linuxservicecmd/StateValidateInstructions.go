@@ -1,6 +1,6 @@
 package linuxservicecmd
 
-import "gitlab.com/evatix-go/errorwrapper/errwrappers"
+import "github.com/alimtvnetwork/errorwrapper-v3/errwrappers"
 
 type StateValidateInstructions struct {
 	IsContinueOnError bool

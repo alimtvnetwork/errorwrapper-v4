@@ -1,6 +1,6 @@
 package refs
 
-import "gitlab.com/evatix-go/core/coredata/stringslice"
+import "github.com/alimtvnetwork/core-v9/coredata/stringslice"
 
 func QuickCompileStrings(
 	quickReferences ...QuickReference,

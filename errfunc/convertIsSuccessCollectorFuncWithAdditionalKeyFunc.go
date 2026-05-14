@@ -1,8 +1,8 @@
 package errfunc
 
 import (
-	"gitlab.com/evatix-go/errorwrapper/errwrappers"
-	"gitlab.com/evatix-go/errorwrapper/ref"
+	"github.com/alimtvnetwork/errorwrapper-v3/errwrappers"
+	"github.com/alimtvnetwork/errorwrapper-v3/ref"
 )
 
 func convertIsSuccessCollectorFuncWithAdditionalKeyFunc(

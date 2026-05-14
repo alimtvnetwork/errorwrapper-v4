@@ -1,9 +1,9 @@
 package errjson
 
 import (
-	"gitlab.com/evatix-go/core/coredata/corejson"
+	"github.com/alimtvnetwork/core-v9/coredata/corejson"
 
-	"gitlab.com/evatix-go/errorwrapper/errwrappers"
+	"github.com/alimtvnetwork/errorwrapper-v3/errwrappers"
 )
 
 type ResultsCollection struct {

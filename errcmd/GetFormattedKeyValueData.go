@@ -1,6 +1,6 @@
 package errcmd
 
-import "gitlab.com/evatix-go/core/constants"
+import "github.com/alimtvnetwork/core-v9/constants"
 
 // GetFormattedKeyValueData "MY_VAR=some_value"
 func GetFormattedKeyValueData(

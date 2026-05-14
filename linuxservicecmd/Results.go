@@ -1,8 +1,8 @@
 package linuxservicecmd
 
 import (
-	"gitlab.com/evatix-go/enum/linuxservicestate"
-	"gitlab.com/evatix-go/enum/servicestate"
+	"github.com/alimtvnetwork/enum-v10/linuxservicestate"
+	"github.com/alimtvnetwork/enum-v10/servicestate"
 )
 
 type Results struct {

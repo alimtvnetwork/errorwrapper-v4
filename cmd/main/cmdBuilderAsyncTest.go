@@ -3,7 +3,7 @@ package main
 import (
 	"fmt"
 
-	"gitlab.com/evatix-go/errorwrapper/errcmd"
+	"github.com/alimtvnetwork/errorwrapper-v3/errcmd"
 )
 
 func cmdBuilderAsyncTest() {

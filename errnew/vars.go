@@ -1,7 +1,7 @@
 package errnew
 
 import (
-	"gitlab.com/evatix-go/errorwrapper/errtype"
+	"github.com/alimtvnetwork/errorwrapper-v3/errtype"
 )
 
 var (

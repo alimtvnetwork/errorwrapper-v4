@@ -4,8 +4,8 @@ import (
 	"testing"
 
 	. "github.com/smartystreets/goconvey/convey"
-	"gitlab.com/evatix-go/errorwrapper/errverify"
-	"gitlab.com/evatix-go/errorwrapper/tests/testwrappers/errverifytestwrappers"
+	"github.com/alimtvnetwork/errorwrapper-v3/errverify"
+	"github.com/alimtvnetwork/errorwrapper-v3/tests/testwrappers/errverifytestwrappers"
 )
 
 func Test_VerifierIsMatch(t *testing.T) {

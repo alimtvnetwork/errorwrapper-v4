@@ -1,7 +1,7 @@
 package errcmd
 
 import (
-	"gitlab.com/evatix-go/errorwrapper/internal/consts"
+	"github.com/alimtvnetwork/errorwrapper-v3/internal/consts"
 )
 
 const (

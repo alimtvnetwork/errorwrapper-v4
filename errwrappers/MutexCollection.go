@@ -3,7 +3,7 @@ package errwrappers
 import (
 	"sync"
 
-	"gitlab.com/evatix-go/errorwrapper"
+	"github.com/alimtvnetwork/errorwrapper-v3"
 )
 
 type MutexCollection struct {

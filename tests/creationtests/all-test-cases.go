@@ -3,19 +3,19 @@ package creationtests
 import (
 	"errors"
 
-	"gitlab.com/evatix-go/core/coreinterface/errcoreinf"
-	"gitlab.com/evatix-go/core/coretests"
-	"gitlab.com/evatix-go/errorwrapper/errdata/errany"
-	"gitlab.com/evatix-go/errorwrapper/errdata/errbool"
-	"gitlab.com/evatix-go/errorwrapper/errdata/errbyte"
-	"gitlab.com/evatix-go/errorwrapper/errdata/errfloat"
-	"gitlab.com/evatix-go/errorwrapper/errdata/errfloat64"
-	"gitlab.com/evatix-go/errorwrapper/errdata/errint"
-	"gitlab.com/evatix-go/errorwrapper/errdata/errjson"
-	"gitlab.com/evatix-go/errorwrapper/errdata/errstr"
-	"gitlab.com/evatix-go/errorwrapper/errnew"
-	"gitlab.com/evatix-go/errorwrapper/errtype"
-	"gitlab.com/evatix-go/errorwrapper/errwrappers"
+	"github.com/alimtvnetwork/core-v9/coreinterface/errcoreinf"
+	"github.com/alimtvnetwork/core-v9/coretests"
+	"github.com/alimtvnetwork/errorwrapper-v3/errdata/errany"
+	"github.com/alimtvnetwork/errorwrapper-v3/errdata/errbool"
+	"github.com/alimtvnetwork/errorwrapper-v3/errdata/errbyte"
+	"github.com/alimtvnetwork/errorwrapper-v3/errdata/errfloat"
+	"github.com/alimtvnetwork/errorwrapper-v3/errdata/errfloat64"
+	"github.com/alimtvnetwork/errorwrapper-v3/errdata/errint"
+	"github.com/alimtvnetwork/errorwrapper-v3/errdata/errjson"
+	"github.com/alimtvnetwork/errorwrapper-v3/errdata/errstr"
+	"github.com/alimtvnetwork/errorwrapper-v3/errnew"
+	"github.com/alimtvnetwork/errorwrapper-v3/errtype"
+	"github.com/alimtvnetwork/errorwrapper-v3/errwrappers"
 )
 
 var testCases = []TestCaseWrapper{

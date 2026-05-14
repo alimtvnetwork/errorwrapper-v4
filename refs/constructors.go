@@ -1,10 +1,10 @@
 package refs
 
 import (
-	"gitlab.com/evatix-go/core/constants"
-	"gitlab.com/evatix-go/core/coreinterface/errcoreinf"
+	"github.com/alimtvnetwork/core-v9/constants"
+	"github.com/alimtvnetwork/core-v9/coreinterface/errcoreinf"
 
-	"gitlab.com/evatix-go/errorwrapper/ref"
+	"github.com/alimtvnetwork/errorwrapper-v3/ref"
 )
 
 func New(capacity int) *Collection {

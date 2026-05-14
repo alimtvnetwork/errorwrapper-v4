@@ -4,9 +4,9 @@ import (
 	"testing"
 
 	. "github.com/smartystreets/goconvey/convey"
-	"gitlab.com/evatix-go/core/coretests"
-	"gitlab.com/evatix-go/errorwrapper/errwrappers"
-	"gitlab.com/evatix-go/errorwrapper/tests/testwrappers/linuxservicecmdtestwrappers"
+	"github.com/alimtvnetwork/core-v9/coretests"
+	"github.com/alimtvnetwork/errorwrapper-v3/errwrappers"
+	"github.com/alimtvnetwork/errorwrapper-v3/tests/testwrappers/linuxservicecmdtestwrappers"
 )
 
 func Test_ServicesInstructionApply(t *testing.T) {

@@ -1,6 +1,6 @@
 package errcmd
 
-import "gitlab.com/evatix-go/enum/osmixtype"
+import "github.com/alimtvnetwork/enum-v10/osmixtype"
 
 type (
 	ScriptBuilderWithTypeProcessorFunc func(variant osmixtype.Variant, builder ScriptOnceBuilder)

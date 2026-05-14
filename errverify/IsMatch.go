@@ -1,9 +1,9 @@
 package errverify
 
 import (
-	"gitlab.com/evatix-go/core/constants"
-	"gitlab.com/evatix-go/core/coretests"
-	"gitlab.com/evatix-go/core/errcore"
+	"github.com/alimtvnetwork/core-v9/constants"
+	"github.com/alimtvnetwork/core-v9/coretests"
+	"github.com/alimtvnetwork/core-v9/errcore"
 )
 
 func IsMatch(

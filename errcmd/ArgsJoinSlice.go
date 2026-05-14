@@ -3,7 +3,7 @@ package errcmd
 import (
 	"strings"
 
-	"gitlab.com/evatix-go/core/constants"
+	"github.com/alimtvnetwork/core-v9/constants"
 )
 
 func ArgsJoinSlice(args []string) string {

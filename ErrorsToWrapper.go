@@ -1,8 +1,8 @@
 package errorwrapper
 
 import (
-	"gitlab.com/evatix-go/errorwrapper/errtype"
-	"gitlab.com/evatix-go/errorwrapper/internal/consts"
+	"github.com/alimtvnetwork/errorwrapper-v3/errtype"
+	"github.com/alimtvnetwork/errorwrapper-v3/internal/consts"
 )
 
 // ErrorsToWrapper nil items will be ignored.

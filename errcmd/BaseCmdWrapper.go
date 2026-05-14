@@ -1,6 +1,6 @@
 package errcmd
 
-import "gitlab.com/evatix-go/errorwrapper"
+import "github.com/alimtvnetwork/errorwrapper-v3"
 
 type BaseCmdWrapper struct {
 	baseBufferStdOutError  *baseBufferStdOutError

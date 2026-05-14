@@ -3,10 +3,10 @@ package errorwrapper
 import (
 	"fmt"
 
-	"gitlab.com/evatix-go/core/constants"
-	"gitlab.com/evatix-go/core/corecsv"
-	"gitlab.com/evatix-go/errorwrapper/errconsts"
-	"gitlab.com/evatix-go/errorwrapper/errtype"
+	"github.com/alimtvnetwork/core-v9/constants"
+	"github.com/alimtvnetwork/core-v9/corecsv"
+	"github.com/alimtvnetwork/errorwrapper-v3/errconsts"
+	"github.com/alimtvnetwork/errorwrapper-v3/errtype"
 )
 
 // SimpleReferencesCompileOptimized

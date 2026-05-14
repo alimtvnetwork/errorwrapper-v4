@@ -1,7 +1,7 @@
 package errfunc
 
 import (
-	"gitlab.com/evatix-go/enum/linuxtype"
+	"github.com/alimtvnetwork/enum-v10/linuxtype"
 )
 
 type LinuxIsSuccessPlusErrorCollectAction struct {

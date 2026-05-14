@@ -3,7 +3,7 @@ package errcmd
 import (
 	"os/exec"
 
-	"gitlab.com/evatix-go/errorwrapper"
+	"github.com/alimtvnetwork/errorwrapper-v3"
 )
 
 type newCmdOnceNoOutputCreator struct{}

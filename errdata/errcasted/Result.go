@@ -3,11 +3,11 @@ package errcasted
 import (
 	"fmt"
 
-	"gitlab.com/evatix-go/core/constants"
+	"github.com/alimtvnetwork/core-v9/constants"
 
-	"gitlab.com/evatix-go/errorwrapper"
-	"gitlab.com/evatix-go/errorwrapper/errnew"
-	"gitlab.com/evatix-go/errorwrapper/errtype"
+	"github.com/alimtvnetwork/errorwrapper-v3"
+	"github.com/alimtvnetwork/errorwrapper-v3/errnew"
+	"github.com/alimtvnetwork/errorwrapper-v3/errtype"
 )
 
 type Result struct {

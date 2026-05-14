@@ -1,8 +1,8 @@
 package errfunc
 
 import (
-	"gitlab.com/evatix-go/core/coredata/stringslice"
-	"gitlab.com/evatix-go/core/coreinterface"
+	"github.com/alimtvnetwork/core-v9/coredata/stringslice"
+	"github.com/alimtvnetwork/core-v9/coreinterface"
 )
 
 func EnumToNameSlice(

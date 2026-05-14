@@ -3,10 +3,10 @@ package errcmd
 import (
 	"bytes"
 
-	"gitlab.com/evatix-go/core/constants"
-	"gitlab.com/evatix-go/core/coredata/corestr"
-	"gitlab.com/evatix-go/core/osconsts"
-	"gitlab.com/evatix-go/enum/scripttype"
+	"github.com/alimtvnetwork/core-v9/constants"
+	"github.com/alimtvnetwork/core-v9/coredata/corestr"
+	"github.com/alimtvnetwork/core-v9/osconsts"
+	"github.com/alimtvnetwork/enum-v10/scripttype"
 )
 
 type newCmdOnceScriptBuilder struct{}

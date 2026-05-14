@@ -1,12 +1,12 @@
 package linuxservicecmd
 
 import (
-	"gitlab.com/evatix-go/core/constants"
-	"gitlab.com/evatix-go/core/coredata/corestr"
-	"gitlab.com/evatix-go/enum/linuxservicestate"
-	"gitlab.com/evatix-go/enum/servicestate"
-	"gitlab.com/evatix-go/errorwrapper"
-	"gitlab.com/evatix-go/errorwrapper/errwrappers"
+	"github.com/alimtvnetwork/core-v9/constants"
+	"github.com/alimtvnetwork/core-v9/coredata/corestr"
+	"github.com/alimtvnetwork/enum-v10/linuxservicestate"
+	"github.com/alimtvnetwork/enum-v10/servicestate"
+	"github.com/alimtvnetwork/errorwrapper-v3"
+	"github.com/alimtvnetwork/errorwrapper-v3/errwrappers"
 )
 
 type SimpleInstruction struct {

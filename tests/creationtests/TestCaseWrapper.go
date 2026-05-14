@@ -1,8 +1,8 @@
 package creationtests
 
 import (
-	"gitlab.com/evatix-go/core/coreinterface/errcoreinf"
-	"gitlab.com/evatix-go/core/coretests"
+	"github.com/alimtvnetwork/core-v9/coreinterface/errcoreinf"
+	"github.com/alimtvnetwork/core-v9/coretests"
 )
 
 type TestCaseWrapper struct {

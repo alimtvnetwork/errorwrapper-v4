@@ -1,8 +1,8 @@
 package errverifytestwrappers
 
 import (
-	"gitlab.com/evatix-go/errorwrapper"
-	"gitlab.com/evatix-go/errorwrapper/errverify"
+	"github.com/alimtvnetwork/errorwrapper-v3"
+	"github.com/alimtvnetwork/errorwrapper-v3/errverify"
 )
 
 type VerifyErrorCollectionTestWrapper struct {

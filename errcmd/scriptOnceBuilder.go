@@ -5,13 +5,13 @@ import (
 	"fmt"
 	"os/exec"
 
-	"gitlab.com/evatix-go/core/codestack"
-	"gitlab.com/evatix-go/core/constants"
-	"gitlab.com/evatix-go/core/coredata/corestr"
-	"gitlab.com/evatix-go/enum/scripttype"
-	"gitlab.com/evatix-go/errorwrapper"
-	"gitlab.com/evatix-go/errorwrapper/errnew"
-	"gitlab.com/evatix-go/errorwrapper/errtype"
+	"github.com/alimtvnetwork/core-v9/codestack"
+	"github.com/alimtvnetwork/core-v9/constants"
+	"github.com/alimtvnetwork/core-v9/coredata/corestr"
+	"github.com/alimtvnetwork/enum-v10/scripttype"
+	"github.com/alimtvnetwork/errorwrapper-v3"
+	"github.com/alimtvnetwork/errorwrapper-v3/errnew"
+	"github.com/alimtvnetwork/errorwrapper-v3/errtype"
 )
 
 type scriptOnceBuilder struct {
@@ -778,7 +778,7 @@ func (it *scriptOnceBuilder) Dispose() {
 	it.isSecure = false
 	it.hasOutput = false
 	it.scriptType = scripttype.Invalid
-	it.envVars = nil // todo https://gitlab.com/evatix-go/core/-/issues/85
+	it.envVars = nil // todo https://github.com/alimtvnetwork/core-v9/-/issues/85
 	it.scriptLines.Dispose()
 	it.scriptLines = nil
 	it.stdIn = nil

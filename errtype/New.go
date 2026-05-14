@@ -1,6 +1,6 @@
 package errtype
 
-import "gitlab.com/evatix-go/core/coreinterface/errcoreinf"
+import "github.com/alimtvnetwork/core-v9/coreinterface/errcoreinf"
 
 func NewUsingTyper(basicErrTyper errcoreinf.BasicErrorTyper) Variation {
 	errTypeVal := basicErrTyper.Value()

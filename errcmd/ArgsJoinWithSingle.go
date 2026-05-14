@@ -3,8 +3,8 @@ package errcmd
 import (
 	"strings"
 
-	"gitlab.com/evatix-go/core/constants"
-	"gitlab.com/evatix-go/core/coredata/stringslice"
+	"github.com/alimtvnetwork/core-v9/constants"
+	"github.com/alimtvnetwork/core-v9/coredata/stringslice"
 )
 
 func ArgsJoinWithSingle(arg1 string, args ...string) string {

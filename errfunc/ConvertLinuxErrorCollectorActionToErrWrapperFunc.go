@@ -1,8 +1,8 @@
 package errfunc
 
 import (
-	"gitlab.com/evatix-go/errorwrapper"
-	"gitlab.com/evatix-go/errorwrapper/errwrappers"
+	"github.com/alimtvnetwork/errorwrapper-v3"
+	"github.com/alimtvnetwork/errorwrapper-v3/errwrappers"
 )
 
 func ConvertLinuxErrorCollectorActionToErrWrapperFunc(

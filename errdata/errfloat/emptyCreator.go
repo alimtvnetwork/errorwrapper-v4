@@ -1,6 +1,6 @@
 package errfloat
 
-import "gitlab.com/evatix-go/errorwrapper"
+import "github.com/alimtvnetwork/errorwrapper-v3"
 
 type emptyCreator struct{}
 

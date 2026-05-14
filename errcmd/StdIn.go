@@ -3,7 +3,7 @@ package errcmd
 import (
 	"bytes"
 
-	"gitlab.com/evatix-go/core/constants"
+	"github.com/alimtvnetwork/core-v9/constants"
 )
 
 type StdIn struct {

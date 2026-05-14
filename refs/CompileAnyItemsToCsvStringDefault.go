@@ -1,8 +1,8 @@
 package refs
 
 import (
-	"gitlab.com/evatix-go/core/constants"
-	"gitlab.com/evatix-go/core/corecsv"
+	"github.com/alimtvnetwork/core-v9/constants"
+	"github.com/alimtvnetwork/core-v9/corecsv"
 )
 
 // CompileAnyItemsToCsvStringDefault

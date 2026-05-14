@@ -1,6 +1,6 @@
 package linuxservicecmd
 
-import "gitlab.com/evatix-go/errorwrapper/errcmd"
+import "github.com/alimtvnetwork/errorwrapper-v3/errcmd"
 
 var (
 	hasService          = hasServiceCmdLookPath()

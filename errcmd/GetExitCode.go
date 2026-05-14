@@ -3,7 +3,7 @@ package errcmd
 import (
 	"os/exec"
 
-	"gitlab.com/evatix-go/core/coreinterface"
+	"github.com/alimtvnetwork/core-v9/coreinterface"
 )
 
 func GetExitCode(
