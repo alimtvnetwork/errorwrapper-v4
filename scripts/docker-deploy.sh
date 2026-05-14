@@ -4,9 +4,6 @@ WorkDir="$PWD/.."
 BinDir=$WorkDir/bin
 Platforms="darwin linux windows"
 Architectures="386 amd64"
-CliName=main
-CliPath=cmd/$CliName/*.go
-OutputName="cli"
 
 echo $Platforms
 echo $Architectures
@@ -20,6 +17,8 @@ echo "Binaries dir : $BinDir"
 docker run --rm -it -v "$WorkDir":/usr/src/myapp -v "$GOPATH":/go -w /usr/src/myapp golang:1.17.8 bash -c '
 rm -rf bin && \
 mkdir bin && \
+cp -R assets bin && \
+cp -R configs bin && \
 for CliName in main; do
   for GOOS in darwin linux windows; do
     for GOARCH in 386 amd64; do
