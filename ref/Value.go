@@ -228,7 +228,7 @@ func (it Value) StringWithoutType() string {
 
 	return it.
 		compiledWithoutType.
-		GetPlusSetOnUninitialized(msg)
+		GetSetOnce(msg)
 }
 
 func (it Value) FullString() string {
