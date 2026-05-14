@@ -2,7 +2,7 @@ package errcmd
 
 import (
 	"github.com/alimtvnetwork/core-v9/codestack"
-	"github.com/alimtvnetwork/enum-v10/osmixtype"
+	osmixtype "github.com/alimtvnetwork/enum-v10/osdetect"
 	"github.com/alimtvnetwork/errorwrapper-v3"
 	"github.com/alimtvnetwork/errorwrapper-v3/errtype"
 )

@@ -12,7 +12,7 @@ import (
 	"github.com/alimtvnetwork/core-v9/coredata/corejson"
 	"github.com/alimtvnetwork/core-v9/coredata/corestr"
 	"github.com/alimtvnetwork/core-v9/errcore"
-	"github.com/alimtvnetwork/enum-v10/osmixtype"
+	osmixtype "github.com/alimtvnetwork/enum-v10/osdetect"
 	"github.com/alimtvnetwork/enum-v10/scripttype"
 	"github.com/alimtvnetwork/errorwrapper-v3"
 	"github.com/alimtvnetwork/errorwrapper-v3/errtype"
@@ -978,11 +978,11 @@ func (it osTypeScriptBuilder) BuildersMapOnly(
 }
 
 func (it osTypeScriptBuilder) CurrentOsTypes() []osmixtype.Variant {
-	return osmixtype.CurrentOsMixTypes()
+	return osmixtype.CurrentOsTypes()
 }
 
 func (it osTypeScriptBuilder) CurrentOsTypesMap() map[osmixtype.Variant]bool {
-	return osmixtype.CurrentOsMixTypesMap()
+	return osmixtype.CurrentOsTypesMap()
 }
 
 func (it osTypeScriptBuilder) CurrentOsScriptBuilder() CurrentOsScriptBuilder {

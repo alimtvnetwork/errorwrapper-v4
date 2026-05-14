@@ -1,6 +1,6 @@
 package errcmd
 
-import "github.com/alimtvnetwork/enum-v10/osmixtype"
+import osmixtype "github.com/alimtvnetwork/enum-v10/osdetect"
 
 type (
 	ScriptBuilderWithTypeProcessorFunc func(variant osmixtype.Variant, builder ScriptOnceBuilder)

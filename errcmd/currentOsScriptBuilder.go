@@ -6,7 +6,7 @@ import (
 
 	"github.com/alimtvnetwork/core-v9/constants"
 	"github.com/alimtvnetwork/core-v9/coredata/corestr"
-	"github.com/alimtvnetwork/enum-v10/osmixtype"
+	osmixtype "github.com/alimtvnetwork/enum-v10/osdetect"
 )
 
 type currentOsScriptBuilder struct {
@@ -31,7 +31,7 @@ func (it currentOsScriptBuilder) AvailableLength() int {
 }
 
 func (it currentOsScriptBuilder) CurrentOsTypesMap() map[osmixtype.Variant]bool {
-	return osmixtype.CurrentOsMixTypesMap()
+	return osmixtype.CurrentOsTypesMap()
 }
 
 // IsEmpty
