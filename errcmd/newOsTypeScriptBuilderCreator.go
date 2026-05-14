@@ -2,7 +2,7 @@ package errcmd
 
 import (
 	"github.com/alimtvnetwork/core-v9/constants"
-	"github.com/alimtvnetwork/enum-v10/osmixtype"
+	osmixtype "github.com/alimtvnetwork/enum-v10/osdetect"
 	"github.com/alimtvnetwork/enum-v10/scripttype"
 )
 
