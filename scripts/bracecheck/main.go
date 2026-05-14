@@ -22,7 +22,7 @@
 
 // Package main provides a Go-based brace balance and syntax pre-checker for test files.
 // Usage: go run ./scripts/bracecheck/ [files or dirs...]
-// If no args, defaults to tests/integratedtests/corestrtests/
+// If no args, defaults to tests/integratedtests/corestrtests/ and skips cleanly if absent.
 package main
 
 import (
@@ -34,6 +34,8 @@ import (
 	"path/filepath"
 	"strings"
 )
+
+const defaultTarget = "tests/integratedtests/corestrtests/"
 
 // errorCategory classifies a parser error for the summary.
 type errorCategory struct {
@@ -87,7 +89,17 @@ func classifyError(msg string) *errorCategory {
 func main() {
 	args := os.Args[1:]
 	if len(args) == 0 {
-		args = []string{"tests/integratedtests/corestrtests/"}
+		if _, err := os.Stat(defaultTarget); err != nil {
+			if os.IsNotExist(err) {
+				fmt.Printf("✓ Default bracecheck target not found; skipping: %s\n", defaultTarget)
+				return
+			}
+
+			fmt.Fprintf(os.Stderr, "error: %s: %v\n", defaultTarget, err)
+			os.Exit(1)
+		}
+
+		args = []string{defaultTarget}
 	}
 
 	var files []string
