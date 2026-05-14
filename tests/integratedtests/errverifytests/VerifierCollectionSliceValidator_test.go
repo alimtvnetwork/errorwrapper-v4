@@ -24,7 +24,7 @@ func Test_VerifierCollectionSliceValidator(t *testing.T) {
 
 		validatorParamsBase := &corevalidator.Parameter{
 			CaseIndex:                         caseIndex,
-			IsIgnoreCompareOnActualInputEmpty: false,
+			IsSkipCompareOnActualEmpty: false,
 			IsAttachUserInputs:                true,
 			IsCaseSensitive:                   true,
 		}
@@ -34,11 +34,11 @@ func Test_VerifierCollectionSliceValidator(t *testing.T) {
 			params.IsWithRef(),
 			validatorParamsBase,
 			params.ErrorCollection,
-			testCase.Verifier.ExpectationLines.Items)
+			(*testCase.Verifier.ExpectationLines))
 
 		sliceValidator := testCase.Verifier.NewSliceValidator(
 			params.ErrorCollection.StringsWithoutHeader(),
-			testCase.Verifier.ExpectationLines.Items)
+			(*testCase.Verifier.ExpectationLines))
 
 		// Redundant but verifies the same thing words in the collection
 		verifySliceErr := params.ErrorCollection.ValidationErrUsingSliceValidator(

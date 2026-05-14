@@ -12,7 +12,7 @@ func Test_VerifierValidator(t *testing.T) {
 	for caseIndex, testCase := range errverifytestwrappers.VerifyValidatorTestCases {
 		params := &corevalidator.Parameter{
 			CaseIndex:                         caseIndex, // fixed
-			IsIgnoreCompareOnActualInputEmpty: false,
+			IsSkipCompareOnActualEmpty: false,
 			IsAttachUserInputs:                true,
 			IsCaseSensitive:                   true,
 		}

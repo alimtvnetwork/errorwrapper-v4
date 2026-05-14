@@ -15,7 +15,7 @@ import (
 type Verifier struct {
 	Header, FunctionName string
 	ExpectingMessage     string // It has no use in CollectionVerifier
-	corevalidator.ValidatorCoreCondition
+	corevalidator.Condition
 	VerifyAs                 stringcompareas.Variant
 	IsCompareEmpty           bool // true means, seek for empty only
 	IsVerifyErrorMessageOnly bool // don't verify full message
@@ -38,9 +38,9 @@ func (it Verifier) NewTextValidator(
 	searchTerm string,
 ) *corevalidator.TextValidator {
 	return &corevalidator.TextValidator{
-		Search:                 searchTerm,
-		SearchAs:               it.VerifyAs,
-		ValidatorCoreCondition: it.ValidatorCoreCondition,
+		Search:    searchTerm,
+		SearchAs:  it.VerifyAs,
+		Condition: it.Condition,
 	}
 }
 
@@ -48,10 +48,10 @@ func (it Verifier) NewSliceValidator(
 	inputLines, comparingLines []string,
 ) *corevalidator.SliceValidator {
 	return &corevalidator.SliceValidator{
-		ValidatorCoreCondition: it.ValidatorCoreCondition,
-		ActualLines:            inputLines,
-		ExpectedLines:          comparingLines,
-		CompareAs:              it.VerifyAs,
+		Condition:     it.Condition,
+		ActualLines:   inputLines,
+		ExpectedLines: comparingLines,
+		CompareAs:     it.VerifyAs,
 	}
 }
 
