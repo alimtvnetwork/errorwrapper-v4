@@ -24,7 +24,7 @@ func Test_VerifierCollectionSliceValidator(t *testing.T) {
 
 		validatorParamsBase := &corevalidator.Parameter{
 			CaseIndex:                         caseIndex,
-			IsIgnoreCompareOnActualInputEmpty: false,
+			IsSkipCompareOnActualEmpty: false,
 			IsAttachUserInputs:                true,
 			IsCaseSensitive:                   true,
 		}
