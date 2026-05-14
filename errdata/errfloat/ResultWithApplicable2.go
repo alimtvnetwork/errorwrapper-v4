@@ -1,0 +1,6 @@
+package errfloat
+
+type ResultWithApplicable2 struct {
+	Result2
+	IsApplicable bool
+}

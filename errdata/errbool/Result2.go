@@ -1,0 +1,6 @@
+package errbool
+
+type Result2 struct {
+	Result
+	Value2 bool
+}
