@@ -41,7 +41,7 @@ func (it *CollectionVerifier) IsMatchTestCase(
 }
 
 func (it CollectionVerifier) ValidateErrUsingTextValidator(
-	params *corevalidator.ValidatorParamsBase,
+	params *corevalidator.Parameter,
 	isUseStrings bool,
 	errorCollectionActual *errwrappers.Collection,
 ) *errorwrapper.Wrapper {
@@ -53,7 +53,7 @@ func (it CollectionVerifier) ValidateErrUsingTextValidator(
 }
 
 func (it CollectionVerifier) ExpectedValidateErrUsingTextValidator(
-	params *corevalidator.ValidatorParamsBase,
+	params *corevalidator.Parameter,
 	isUseStrings bool,
 	errorCollectionActual *errwrappers.Collection,
 	expected string,
@@ -114,7 +114,7 @@ func (it CollectionVerifier) ExpectedValidateErrUsingTextValidator(
 }
 
 func (it CollectionVerifier) ValidateErrUsingSliceValidator(
-	params *corevalidator.ValidatorParamsBase,
+	params *corevalidator.Parameter,
 	errorCollectionActual *errwrappers.Collection,
 ) *errorwrapper.Wrapper {
 	return it.ExpectingLinesValidateErrUsingSliceValidator(
@@ -124,7 +124,7 @@ func (it CollectionVerifier) ValidateErrUsingSliceValidator(
 }
 
 func (it CollectionVerifier) ExpectingLinesValidateErrUsingSliceValidator(
-	params *corevalidator.ValidatorParamsBase,
+	params *corevalidator.Parameter,
 	errorCollectionActual *errwrappers.Collection,
 	expectedLines []string,
 ) *errorwrapper.Wrapper {

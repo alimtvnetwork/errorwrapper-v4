@@ -689,7 +689,7 @@ func (it *CmdOnce) String() string {
 
 		return it.
 			toString.
-			GetPlusSetOnUninitializedFunc(
+			GetOnceFunc(
 				toString)
 	}
 
@@ -704,6 +704,6 @@ func (it *CmdOnce) String() string {
 
 	return it.
 		toString.
-		GetPlusSetOnUninitialized(
+		GetSetOnce(
 			toString)
 }

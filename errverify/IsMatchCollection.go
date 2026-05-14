@@ -57,7 +57,7 @@ func IsMatchCollection(
 			errCollection.Length())
 	}
 
-	coreValidatorParams := corevalidator.ValidatorParamsBase{
+	coreValidatorParams := corevalidator.Parameter{
 		CaseIndex:                         params.CaseIndex,
 		IsIgnoreCompareOnActualInputEmpty: false,
 		IsAttachUserInputs:                true,

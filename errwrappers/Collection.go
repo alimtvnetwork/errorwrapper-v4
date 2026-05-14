@@ -2755,7 +2755,7 @@ func (it *Collection) JsonParseSelfInject(
 
 func (it *Collection) ValidationErrUsingTextValidator(
 	validator *corevalidator.TextValidator,
-	params *corevalidator.ValidatorParamsBase,
+	params *corevalidator.Parameter,
 ) *errorwrapper.Wrapper {
 	err := validator.VerifyDetailError(
 		params,
@@ -2773,7 +2773,7 @@ func (it *Collection) ValidationErrUsingTextValidator(
 
 func (it *Collection) ValidationErrUsingSliceValidator(
 	sliceValidator *corevalidator.SliceValidator,
-	params *corevalidator.ValidatorParamsBase,
+	params *corevalidator.Parameter,
 ) *errorwrapper.Wrapper {
 	sliceValidator.SetActual(
 		it.FullStrings())

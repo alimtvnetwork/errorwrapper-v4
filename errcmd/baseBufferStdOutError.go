@@ -54,7 +54,7 @@ func (it *baseBufferStdOutError) CompiledTrimmedOutput() string {
 
 	return it.
 		compiledTrimmedOutput.
-		GetPlusSetOnUninitialized(trimmed)
+		GetSetOnce(trimmed)
 }
 
 func (it *baseBufferStdOutError) CompiledTrimmedErrorOutput() string {
@@ -68,7 +68,7 @@ func (it *baseBufferStdOutError) CompiledTrimmedErrorOutput() string {
 
 	return it.
 		compiledTrimmedErrorOutput.
-		GetPlusSetOnUninitialized(trimmed)
+		GetSetOnce(trimmed)
 }
 
 func (it *baseBufferStdOutError) CombinedBothErrorOutputLines() []string {
@@ -251,13 +251,13 @@ func (it *baseBufferStdOutError) OutputString() string {
 
 		return it.
 			compiledOutputString.
-			GetPlusSetOnUninitialized(toString)
+			GetSetOnce(toString)
 	}
 
 	// no output
 	return it.
 		compiledOutputString.
-		GetPlusSetEmptyOnUninitialized()
+		GetOnce()
 }
 
 func (it *baseBufferStdOutError) ErrorString() string {
@@ -271,11 +271,11 @@ func (it *baseBufferStdOutError) ErrorString() string {
 
 		return it.
 			compiledErrorString.
-			GetPlusSetOnUninitialized(toString)
+			GetSetOnce(toString)
 	}
 
 	// no error
 	return it.
 		compiledErrorString.
-		GetPlusSetEmptyOnUninitialized()
+		GetOnce()
 }

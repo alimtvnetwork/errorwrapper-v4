@@ -10,7 +10,7 @@ import (
 
 func Test_VerifierValidator(t *testing.T) {
 	for caseIndex, testCase := range errverifytestwrappers.VerifyValidatorTestCases {
-		params := &corevalidator.ValidatorParamsBase{
+		params := &corevalidator.Parameter{
 			CaseIndex:                         caseIndex, // fixed
 			IsIgnoreCompareOnActualInputEmpty: false,
 			IsAttachUserInputs:                true,

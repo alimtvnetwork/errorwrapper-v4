@@ -251,7 +251,7 @@ func (it *Result) DetailedOutput() string {
 
 	return it.
 		detailedOutput.
-		GetPlusSetOnUninitialized(toString)
+		GetSetOnce(toString)
 }
 
 func (it *Result) HandleError() {

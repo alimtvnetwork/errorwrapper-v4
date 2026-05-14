@@ -465,12 +465,12 @@ func (it *Wrapper) StackTraceString() string {
 	if it.stackTraces.IsEmpty() {
 		return it.
 			stackTracesCompiled.
-			GetPlusSetEmptyOnUninitialized()
+			GetOnce()
 	}
 
 	toString := it.stackTraces.CodeStacksString()
 	it.stackTracesCompiled.
-		GetPlusSetOnUninitialized(toString)
+		GetSetOnce(toString)
 
 	return it.stackTracesCompiled.String()
 }
@@ -634,7 +634,7 @@ func (it *Wrapper) TypeCodeNameString() string {
 
 	return it.
 		typeCodeNameString.
-		GetPlusSetOnUninitialized(typeWithCode)
+		GetSetOnce(typeWithCode)
 }
 
 func (it *Wrapper) IsTypeOf(errType errtype.Variation) bool {
@@ -901,7 +901,7 @@ func (it *Wrapper) FullString() string {
 
 	finalResult := it.
 		wrapperCompiledWithoutTraces.
-		GetPlusSetOnUninitializedFunc(
+		GetOnceFunc(
 			it.finalMessageWithCategory)
 
 	it.wrapperCompiledWithoutTraces = it.
@@ -946,13 +946,13 @@ func (it *Wrapper) FullStringWithTraces() string {
 
 		return it.
 			wholeCompiled.
-			GetPlusSetOnUninitialized(
+			GetSetOnce(
 				toString)
 	}
 
 	return it.
 		wholeCompiled.
-		GetPlusSetOnUninitialized(fullString)
+		GetSetOnce(fullString)
 }
 
 func (it *Wrapper) StackTracesLimit(limit int) *codestack.TraceCollection {
@@ -1032,7 +1032,7 @@ func (it *Wrapper) RawErrorTypeName() string {
 
 	return it.
 		typeName.
-		GetPlusSetOnUninitialized(msg)
+		GetSetOnce(msg)
 }
 
 func (it Wrapper) String() string {
@@ -1216,7 +1216,7 @@ func (it *Wrapper) JsonParseSelfInject(
 
 func (it *Wrapper) ValidationErrUsingTextValidator(
 	validator *corevalidator.TextValidator,
-	params *corevalidator.ValidatorParamsBase,
+	params *corevalidator.Parameter,
 ) *Wrapper {
 	err := validator.VerifyDetailError(
 		params,
