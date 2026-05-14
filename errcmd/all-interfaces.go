@@ -9,7 +9,7 @@ import (
 	"github.com/alimtvnetwork/core-v9/coredata/corestr"
 	"github.com/alimtvnetwork/core-v9/coreinterface"
 	"github.com/alimtvnetwork/core-v9/coreinterface/errcoreinf"
-	"github.com/alimtvnetwork/enum-v10/osmixtype"
+	osmixtype "github.com/alimtvnetwork/enum-v10/osdetect"
 	"github.com/alimtvnetwork/enum-v10/scripttype"
 	"github.com/alimtvnetwork/errorwrapper-v3"
 )

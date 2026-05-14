@@ -978,11 +978,11 @@ func (it osTypeScriptBuilder) BuildersMapOnly(
 }
 
 func (it osTypeScriptBuilder) CurrentOsTypes() []osmixtype.Variant {
-	return osmixtype.CurrentOsMixTypes()
+	return osmixtype.CurrentOsTypes()
 }
 
 func (it osTypeScriptBuilder) CurrentOsTypesMap() map[osmixtype.Variant]bool {
-	return osmixtype.CurrentOsMixTypesMap()
+	return osmixtype.CurrentOsTypesMap()
 }
 
 func (it osTypeScriptBuilder) CurrentOsScriptBuilder() CurrentOsScriptBuilder {
