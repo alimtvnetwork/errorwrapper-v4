@@ -303,7 +303,7 @@ func (it newNullToErrorWrapperCreator) UsingStackSkip(
 		return nil
 	}
 
-	typeName := coredynamic.TypeName(objectNull)
+	typeName := coredynamic.SafeTypeName(objectNull)
 
 	if typeName == "" {
 		typeName = "interface{}.(nil)"

@@ -94,7 +94,7 @@ func (it *Results) ConvertToJsonResult() *corejson.Result {
 		return corejson.
 			Empty.
 			ResultPtrWithErr(
-				coredynamic.TypeName(Result{}),
+				coredynamic.SafeTypeName(Result{}),
 				errors.New("errbyte results object is nil"))
 	}
 

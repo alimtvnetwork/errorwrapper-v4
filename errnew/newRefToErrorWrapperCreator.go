@@ -732,6 +732,6 @@ func (it newRefToErrorWrapperCreator) Default(
 		},
 		ref.Value{
 			Variable: "Type",
-			Value:    coredynamic.TypeName(reference),
+			Value:    coredynamic.SafeTypeName(reference),
 		})
 }

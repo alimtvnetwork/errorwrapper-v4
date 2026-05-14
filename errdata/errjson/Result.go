@@ -206,7 +206,7 @@ func (it *Result) PrettyJsonBuffer(prefix, indent string) (*bytes.Buffer, error)
 	if it.IsAnyNull() {
 		return nil, errcore.
 			CannotBeNilType.
-			ErrorRefOnly(coredynamic.TypeName(it))
+			ErrorRefOnly(coredynamic.SafeTypeName(it))
 	}
 
 	return it.Result.PrettyJsonBuffer(prefix, indent)

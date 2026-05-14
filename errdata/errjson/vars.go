@@ -13,5 +13,5 @@ var (
 		ResultsCollection: &newResultsCollectionCreator{},
 	}
 	Empty      = &emptyCreator{}
-	resultType = coredynamic.TypeName(Result{})
+	resultType = coredynamic.SafeTypeName(Result{})
 )

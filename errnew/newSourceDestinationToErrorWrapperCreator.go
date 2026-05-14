@@ -21,8 +21,8 @@ func (it newSourceDestinationToErrorWrapperCreator) FromTo(
 		ref.Value{
 			Variable: "SetFromTo",
 			Value: coreinstruction.FromTo{
-				From: converters.AnyToValueString(from),
-				To:   converters.AnyToValueString(to),
+				From: converters.AnyTo.ToValueString(from),
+				To:   converters.AnyTo.ToValueString(to),
 			},
 		})
 }

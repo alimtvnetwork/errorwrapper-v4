@@ -76,7 +76,7 @@ func (it *Collection) HandleErrorWithRefs(
 
 	finalErrWp := errnew.Ref.Message(
 		errtype.Generic,
-		converters.AnyToValueString(refVar),
+		converters.AnyTo.ToValueString(refVar),
 		refVal,
 		newMessage)
 
