@@ -468,7 +468,7 @@ func (it *Collection) NewStackTracesJsonResult(
 //
 //  creates new stack-traces and returns as json
 func (it *Collection) NewDefaultStackTracesJsonResult() *corejson.Result {
-	return codestack.NewStacksDefaultCountSkip1().JsonPtr()
+	return codestack.New.StackTrace.DefaultCount(codestack.Skip1).JsonPtr()
 }
 
 func (it *Collection) CompiledToGenericBasicErrWrapper() errcoreinf.BasicErrWrapper {
