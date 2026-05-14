@@ -30,7 +30,7 @@ func (it newErrorToWrapperCreator) Many(
 		defaultSkipInternal,
 		mainErrType,
 		errorwrapper.MessagesJoiner,
-		compiledStrings.Items...)
+		(*compiledStrings)...)
 }
 
 func (it newErrorToWrapperCreator) ManyUsingStackSkip(
@@ -51,7 +51,7 @@ func (it newErrorToWrapperCreator) ManyUsingStackSkip(
 		skipStartStackIndex+defaultSkipInternal,
 		mainErrType,
 		errorwrapper.MessagesJoiner,
-		compiledStrings.Items...)
+		(*compiledStrings)...)
 }
 
 func (it *newTypeToWrapperCreator) Messages(
