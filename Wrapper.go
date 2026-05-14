@@ -398,7 +398,7 @@ func (it *Wrapper) SerializeWithoutTraces() ([]byte, error) {
 
 	cloned := it.cloneWithoutStacktrace()
 
-	return cloned.Json().Raw()
+	return cloned.JsonPtr().Raw()
 }
 
 // Serialize
@@ -409,7 +409,7 @@ func (it *Wrapper) Serialize() ([]byte, error) {
 		return nil, nil
 	}
 
-	return it.Json().Raw()
+	return it.JsonPtr().Raw()
 }
 
 func (it *Wrapper) SerializeMust() []byte {
@@ -417,7 +417,7 @@ func (it *Wrapper) SerializeMust() []byte {
 		return nil
 	}
 
-	rawJsonBytes, err := it.Json().Raw()
+	rawJsonBytes, err := it.JsonPtr().Raw()
 	errcore.MustBeEmpty(err)
 
 	return rawJsonBytes
