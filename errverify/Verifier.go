@@ -15,7 +15,7 @@ import (
 type Verifier struct {
 	Header, FunctionName string
 	ExpectingMessage     string // It has no use in CollectionVerifier
-	corevalidator.ValidatorCoreCondition
+	corevalidator.Condition
 	VerifyAs                 stringcompareas.Variant
 	IsCompareEmpty           bool // true means, seek for empty only
 	IsVerifyErrorMessageOnly bool // don't verify full message
