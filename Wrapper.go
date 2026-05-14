@@ -57,25 +57,25 @@ func (it *Wrapper) StackTraces() string {
 
 func (it *Wrapper) NewStackTraces(stackSkip int) string {
 	return codestack.
-		NewStacksDefaultCount(stackSkip + defaultSkipInternal).
+		New.StackTrace.DefaultCount(stackSkip + defaultSkipInternal).
 		CodeStacksString()
 }
 
 func (it *Wrapper) NewDefaultStackTraces() string {
 	return codestack.
-		NewStacksDefaultCount(defaultSkipInternal).
+		New.StackTrace.DefaultCount(defaultSkipInternal).
 		CodeStacksString()
 }
 
 func (it *Wrapper) NewStackTracesJsonResult(stackSkip int) *corejson.Result {
 	return codestack.
-		NewStacksDefaultCount(defaultSkipInternal + stackSkip).
+		New.StackTrace.DefaultCount(defaultSkipInternal + stackSkip).
 		JsonPtr()
 }
 
 func (it *Wrapper) NewDefaultStackTracesJsonResult() *corejson.Result {
 	return codestack.
-		NewStacksDefaultCount(defaultSkipInternal).
+		New.StackTrace.DefaultCount(defaultSkipInternal).
 		JsonPtr()
 }
 

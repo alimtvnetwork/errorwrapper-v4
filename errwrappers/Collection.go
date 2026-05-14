@@ -446,7 +446,7 @@ func (it *Collection) StackTraces() string {
 
 func (it *Collection) NewStackTraces(stackSkip int) string {
 	return codestack.
-		NewStacksDefaultCount(stackSkip + codestack.Skip1).
+		New.StackTrace.DefaultCount(stackSkip + codestack.Skip1).
 		CodeStacksString()
 }
 
@@ -460,7 +460,7 @@ func (it *Collection) NewStackTracesJsonResult(
 	stackSkip int,
 ) *corejson.Result {
 	return codestack.
-		NewStacksDefaultCount(stackSkip + codestack.Skip1).
+		New.StackTrace.DefaultCount(stackSkip + codestack.Skip1).
 		JsonPtr()
 }
 
