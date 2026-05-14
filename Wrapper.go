@@ -957,7 +957,7 @@ func (it *Wrapper) FullStringWithTraces() string {
 
 func (it *Wrapper) StackTracesLimit(limit int) *codestack.TraceCollection {
 	if it == nil {
-		return codestack.EmptyTraceCollection()
+		return &codestack.TraceCollection{}
 	}
 
 	if limit <= constants.TakeAllMinusOne {
