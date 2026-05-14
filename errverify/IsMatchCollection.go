@@ -68,7 +68,7 @@ func IsMatchCollection(
 		params.IsWithRef(),
 		&coreValidatorParams,
 		errCollection,
-		verifier.ExpectationLines.Items)
+		(*verifier.ExpectationLines))
 
 	verifyError.Log()
 

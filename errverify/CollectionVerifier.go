@@ -120,7 +120,7 @@ func (it CollectionVerifier) ValidateErrUsingSliceValidator(
 	return it.ExpectingLinesValidateErrUsingSliceValidator(
 		params,
 		errorCollectionActual,
-		it.ExpectationLines.Items)
+		(*it.ExpectationLines))
 }
 
 func (it CollectionVerifier) ExpectingLinesValidateErrUsingSliceValidator(
