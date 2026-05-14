@@ -131,7 +131,7 @@ func (it *CmdOnce) AddEnvVarsHashmap(
 		return it.GetFormattedKeyValueData(key, val)
 	})
 
-	return it.AddEnvVarsSlice(*slice...)
+	return it.AddEnvVarsSlice(slice...)
 }
 
 // AddEnvVarsSlice
@@ -218,7 +218,7 @@ func (it *CmdOnce) NewArgs(additionalArgs ...string) *CmdOnce {
 		it.hasOutput,
 		it.hasSecureData,
 		it.ProcessName(),
-		existingArgs.Items...)
+		(*existingArgs)...)
 }
 
 // Clone calls constructor Lines to create itself using the existing data.
@@ -237,7 +237,7 @@ func (it *CmdOnce) CmdCloneWithoutStd() *exec.Cmd {
 func (it *CmdOnce) CmdCloneCompiledOutputBytes() (cmd *exec.Cmd, allBytes []byte, err error) {
 	cmd = it.CmdCloneUsingStds(nil, nil)
 
-	errWholeLine := conditional.StringTrueFunc(
+	errWholeLine := conditional.IfTrueFuncString(
 		!it.hasSecureData,
 		it.WholeCommandLine)
 
@@ -276,7 +276,7 @@ func (it *CmdOnce) CmdCloneCompiledOutputStringLines() (fullOutputLines []string
 func (it *CmdOnce) CmdCloneCompiledOutputTrimStringLines() (fullOutputLines []string, err error) {
 	lines, err := it.CmdCloneCompiledOutputStringLines()
 
-	return stringslice.NonWhitespaceTrimSlice(lines), err
+	return stringslice.NonWhitespace(lines), err
 }
 
 func (it *CmdOnce) CmdCloneUsingStds(
@@ -689,7 +689,7 @@ func (it *CmdOnce) String() string {
 
 		return it.
 			toString.
-			GetPlusSetOnUninitializedFunc(
+			GetOnceFunc(
 				toString)
 	}
 
@@ -704,6 +704,6 @@ func (it *CmdOnce) String() string {
 
 	return it.
 		toString.
-		GetPlusSetOnUninitialized(
+		GetSetOnce(
 			toString)
 }

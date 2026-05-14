@@ -286,7 +286,7 @@ func NewMsgUsingAllParams(
 	message string,
 	references *refs.Collection,
 ) *Wrapper {
-	stacks := codestack.NewStacksDefaultCount(
+	stacks := codestack.New.StackTrace.DefaultCount(
 		stackSkipIndex + defaultSkipInternal)
 
 	if message == "" {
@@ -316,7 +316,7 @@ func NewMsgDisplayError(
 	message string,
 	references *refs.Collection,
 ) *Wrapper {
-	stacks := codestack.NewStacksDefaultCount(
+	stacks := codestack.New.StackTrace.DefaultCount(
 		stackSkipIndex + defaultSkipInternal)
 
 	if message == "" {
@@ -345,7 +345,7 @@ func NewMsgDisplayErrorNoReference(
 	errType errtype.Variation,
 	message string,
 ) *Wrapper {
-	stacks := codestack.NewStacksDefaultCount(
+	stacks := codestack.New.StackTrace.DefaultCount(
 		stackSkipIndex + defaultSkipInternal)
 
 	if message == "" {
@@ -372,7 +372,7 @@ func NewMsgDisplayErrorReferencesPtr(
 	message string,
 	references ...ref.Value,
 ) *Wrapper {
-	stacks := codestack.NewStacksDefaultCount(
+	stacks := codestack.New.StackTrace.DefaultCount(
 		stackSkipIndex + defaultSkipInternal)
 
 	refsCollection := refs.NewUsingRefsOrNil(
@@ -489,7 +489,7 @@ func NewErrorPlusMsgUsingAllParamsPtr(
 			references)
 	}
 
-	codeStacks := codestack.NewStacksDefaultCount(
+	codeStacks := codestack.New.StackTrace.DefaultCount(
 		stackSkipIndex + defaultSkipInternal)
 
 	if message == "" {
@@ -536,7 +536,7 @@ func NewErrUsingAllParamsPtr(
 	err error,
 	references *refs.Collection,
 ) *Wrapper {
-	codeStacks := codestack.NewStacksDefaultCount(
+	codeStacks := codestack.New.StackTrace.DefaultCount(
 		stackSkipIndex + defaultSkipInternal)
 
 	if err == nil {
@@ -565,7 +565,7 @@ func NewError(
 		return nil
 	}
 
-	codeStacks := codestack.NewStacksDefaultCount(
+	codeStacks := codestack.New.StackTrace.DefaultCount(
 		stackSkipIndex + defaultSkipInternal)
 
 	return &Wrapper{
@@ -581,7 +581,7 @@ func NewUsingError(
 	errType errtype.Variation,
 	err error,
 ) *Wrapper {
-	codeStacks := codestack.NewStacksDefaultCount(
+	codeStacks := codestack.New.StackTrace.DefaultCount(
 		stackSkipIndex + defaultSkipInternal)
 
 	if err == nil {
@@ -640,7 +640,7 @@ func NewUsingTypeErrorAndMessage(
 	err error,
 	msg string,
 ) *Wrapper {
-	codeStacks := codestack.NewStacksDefaultCount(
+	codeStacks := codestack.New.StackTrace.DefaultCount(
 		stackSkipIndex + defaultSkipInternal)
 
 	if err == nil {
@@ -681,7 +681,7 @@ func NewMessagesUsingJoiner(
 	joiner string,
 	messages ...string,
 ) *Wrapper {
-	codeStacks := codestack.NewStacksDefaultCount(
+	codeStacks := codestack.New.StackTrace.DefaultCount(
 		stackSkipIndex + defaultSkipInternal)
 
 	if len(messages) == 0 {
@@ -735,7 +735,7 @@ func NewUsingWrapper(
 		return nil
 	}
 
-	codeStacks := codestack.NewStacksDefault(
+	codeStacks := codestack.New.StackTrace.Default(
 		stackSkipIndex+defaultSkipInternal,
 		codestack.DefaultStackCount*2)
 

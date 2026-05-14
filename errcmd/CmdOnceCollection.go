@@ -86,9 +86,9 @@ func NewCmdOnceCollectionUsingLines(
 
 	collection := NewCmdOnceCollection(length)
 
-	scriptLines2 := conditional.Strings(
+	scriptLines2 := conditional.IfSliceString(
 		isTrimEmptyLines,
-		stringslice.NonWhitespaceTrimSlice(scriptLines),
+		stringslice.NonWhitespace(scriptLines),
 		scriptLines)
 
 	return collection.

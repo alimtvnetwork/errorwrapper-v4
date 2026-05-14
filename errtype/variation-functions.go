@@ -98,7 +98,7 @@ func (it Variation) ErrorReferences(
 	additionalMessage string,
 	references ...interface{},
 ) error {
-	referencesString := converters.AnyItemsJoin(
+	referencesString := converters.AnyTo.ItemsJoin(
 		constants.Space,
 		references...)
 
@@ -217,7 +217,7 @@ func (it Variation) ReferencesLines(
 	referencesLines ...interface{},
 ) string {
 	variantStructure := it.VariantStructure()
-	line := converters.AnyItemsJoin(constants.CommaSpace, referencesLines...)
+	line := converters.AnyTo.ItemsJoin(constants.CommaSpace, referencesLines...)
 
 	if additionalMessage == "" {
 		return fmt.Sprintf(

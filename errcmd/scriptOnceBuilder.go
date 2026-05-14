@@ -244,7 +244,7 @@ func (it *scriptOnceBuilder) Append(
 		}
 
 		it.scriptLines.Adds(
-			scriptBuilder.ScriptLines().Items...)
+			([]string)(scriptBuilder.ScriptLines())...)
 	}
 
 	return it
@@ -317,8 +317,7 @@ func (it *scriptOnceBuilder) Log() {
 
 func (it *scriptOnceBuilder) LogWithTraces() {
 	result := it.Result()
-	stackTraces := codestack.StacksString(
-		codestack.Skip1)
+	stackTraces := codestack.StacksTo.String(codestack.Skip1, codestack.DefaultStackCount)
 	output := result.DetailedOutput() +
 		constants.DefaultLine +
 		stackTraces
@@ -432,7 +431,7 @@ func (it *scriptOnceBuilder) CompiledProcessArgs() (
 ) {
 	return New.
 		Script.
-		ProcessScriptsFormat(it.scriptType, it.scriptLines.Items...)
+		ProcessScriptsFormat(it.scriptType, (*it.scriptLines)...)
 }
 
 // SetSecure
@@ -700,7 +699,7 @@ func (it *scriptOnceBuilder) Build() *CmdOnce {
 		it.stdOut,
 		it.stderr,
 		it.scriptType,
-		it.scriptLines.Items...)
+		(*it.scriptLines)...)
 
 	return it.setEnv(cmdOnce)
 }
@@ -743,7 +742,7 @@ func (it *scriptOnceBuilder) BuildCmd() *exec.Cmd {
 		it.stdOut,
 		it.stderr,
 		it.scriptType,
-		it.scriptLines.Items...)
+		(*it.scriptLines)...)
 
 	cmdOnce = it.setEnv(cmdOnce)
 	cmd := cmdOnce.Cmd

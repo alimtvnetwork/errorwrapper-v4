@@ -76,7 +76,7 @@ func (it *Collection) HandleErrorWithRefs(
 
 	finalErrWp := errnew.Ref.Message(
 		errtype.Generic,
-		converters.AnyToValueString(refVar),
+		converters.AnyTo.ToValueString(refVar),
 		refVal,
 		newMessage)
 
@@ -416,8 +416,9 @@ func (it *Collection) AllStackTraces() *codestack.TraceCollection {
 		return nil
 	}
 
-	traces := codestack.NewTraceCollection(
+	tracesVal := codestack.New.StackTrace.DefaultCount(
 		it.Length() * codestack.DefaultStackCount)
+	traces := &tracesVal
 
 	for _, errorWrapper := range it.items {
 		if errorWrapper.IsEmpty() {
@@ -446,13 +447,13 @@ func (it *Collection) StackTraces() string {
 
 func (it *Collection) NewStackTraces(stackSkip int) string {
 	return codestack.
-		NewStacksDefaultCount(stackSkip + codestack.Skip1).
+		New.StackTrace.DefaultCount(stackSkip + codestack.Skip1).
 		CodeStacksString()
 }
 
 func (it *Collection) NewDefaultStackTraces() string {
 	return codestack.
-		NewStacksDefaultCountSkip1().
+		New.StackTrace.DefaultCount(codestack.Skip1).
 		CodeStacksString()
 }
 
@@ -460,7 +461,7 @@ func (it *Collection) NewStackTracesJsonResult(
 	stackSkip int,
 ) *corejson.Result {
 	return codestack.
-		NewStacksDefaultCount(stackSkip + codestack.Skip1).
+		New.StackTrace.DefaultCount(stackSkip + codestack.Skip1).
 		JsonPtr()
 }
 
@@ -468,7 +469,7 @@ func (it *Collection) NewStackTracesJsonResult(
 //
 //  creates new stack-traces and returns as json
 func (it *Collection) NewDefaultStackTracesJsonResult() *corejson.Result {
-	return codestack.NewStacksDefaultCountSkip1().JsonPtr()
+	return codestack.New.StackTrace.DefaultCount(codestack.Skip1).JsonPtr()
 }
 
 func (it *Collection) CompiledToGenericBasicErrWrapper() errcoreinf.BasicErrWrapper {
@@ -2712,6 +2713,24 @@ func (it *Collection) JsonPtr() *corejson.Result {
 	return corejson.NewPtr(*it)
 }
 
+func (it *Collection) JsonResultWithoutTraces() *corejson.Result {
+	return it.JsonPtr()
+}
+
+func (it *Collection) LinesWithoutTraces() []string {
+	if it == nil || it.IsEmpty() {
+		return []string{}
+	}
+	lines := make([]string, 0, it.Length())
+	for _, w := range it.items {
+		if w.IsEmpty() {
+			continue
+		}
+		lines = append(lines, w.FullString())
+	}
+	return lines
+}
+
 //goland:noinspection GoLinterLocal
 func (it *Collection) ParseInjectUsingJson(
 	jsonResult *corejson.Result,
@@ -2755,7 +2774,7 @@ func (it *Collection) JsonParseSelfInject(
 
 func (it *Collection) ValidationErrUsingTextValidator(
 	validator *corevalidator.TextValidator,
-	params *corevalidator.ValidatorParamsBase,
+	params *corevalidator.Parameter,
 ) *errorwrapper.Wrapper {
 	err := validator.VerifyDetailError(
 		params,
@@ -2773,7 +2792,7 @@ func (it *Collection) ValidationErrUsingTextValidator(
 
 func (it *Collection) ValidationErrUsingSliceValidator(
 	sliceValidator *corevalidator.SliceValidator,
-	params *corevalidator.ValidatorParamsBase,
+	params *corevalidator.Parameter,
 ) *errorwrapper.Wrapper {
 	sliceValidator.SetActual(
 		it.FullStrings())

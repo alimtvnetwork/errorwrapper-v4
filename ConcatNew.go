@@ -246,7 +246,7 @@ func (it ConcatNew) MsgRefs(
 	// to be copied which will break the DRY principle
 	clonedNew.currentError =
 		errors.New(newErrMsg)
-	clonedNew.stackTraces = codestack.NewStacksDefault(
+	clonedNew.stackTraces = codestack.New.StackTrace.Default(
 		skipStackIndex+defaultSkipInternal,
 		codestack.DefaultStackCount*2)
 
@@ -318,7 +318,7 @@ func (it ConcatNew) MsgUsingStackSkip(
 	// to be copied which will break the DRY principle
 	clonedNew.currentError =
 		errors.New(newErrMsg)
-	clonedNew.stackTraces = codestack.NewStacksDefault(
+	clonedNew.stackTraces = codestack.New.StackTrace.Default(
 		skipStackIndex+defaultSkipInternal,
 		codestack.DefaultStackCount*2)
 
@@ -390,9 +390,7 @@ func (it ConcatNew) ErrorsUsingStackSkip(
 func (it ConcatNew) NewStackTraces(
 	stackTraces ...codestack.Trace,
 ) *Wrapper {
-	tracesCollection := codestack.NewNewTraceCollectionUsing(
-		false,
-		stackTraces...)
+	tracesCollection := &codestack.TraceCollection{Items: stackTraces}
 
 	if it.isAnyNull() {
 		empty := EmptyPtr()
@@ -477,7 +475,7 @@ func (it ConcatNew) WrapperUsingStackSkip(
 	}
 
 	// Give new stack traces
-	clonedNew.stackTraces = codestack.NewStacksDefault(
+	clonedNew.stackTraces = codestack.New.StackTrace.Default(
 		skipStackIndex+defaultSkipInternal,
 		codestack.DefaultStackCount*2)
 

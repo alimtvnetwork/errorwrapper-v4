@@ -120,8 +120,8 @@ func (it newReflectErrToWrapperCreator) ValueMismatchRegardless(
 		return nil
 	}
 
-	left := converters.AnyToValueString(actual)
-	right := converters.AnyToValueString(expected)
+	left := converters.AnyTo.ToValueString(actual)
+	right := converters.AnyTo.ToValueString(expected)
 
 	if left == right {
 		return nil
@@ -150,11 +150,11 @@ func (it newReflectErrToWrapperCreator) references(
 		},
 		{
 			Variable: "ActualType",
-			Value:    coredynamic.TypeName(actual),
+			Value:    coredynamic.SafeTypeName(actual),
 		},
 		{
 			Variable: "ExpectedType",
-			Value:    coredynamic.TypeName(expected),
+			Value:    coredynamic.SafeTypeName(expected),
 		},
 	}
 }

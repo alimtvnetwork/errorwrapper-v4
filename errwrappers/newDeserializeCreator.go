@@ -91,7 +91,7 @@ func (it newDeserializeCreator) UsingSerializer(
 		NewResult.Ptr(
 		allBytes,
 		err,
-		coredynamic.TypeName(empty))
+		coredynamic.SafeTypeName(empty))
 
 	return it.UsingJsonResult(jsonResult)
 }

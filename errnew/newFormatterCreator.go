@@ -316,7 +316,7 @@ func (it newFormatterCreator) MsgFormatUsingMap(
 		format = strings.ReplaceAll(
 			format,
 			search,
-			converters.AnyToValueString(replace))
+			converters.AnyTo.ToValueString(replace))
 	}
 
 	return errorwrapper.NewMsgDisplayErrorNoReference(
@@ -343,7 +343,7 @@ func (it newFormatterCreator) FormatUsingMap(
 		format = strings.ReplaceAll(
 			format,
 			search,
-			converters.AnyToValueString(replace))
+			converters.AnyTo.ToValueString(replace))
 	}
 
 	return errorwrapper.NewMsgDisplayErrorNoReference(
@@ -373,7 +373,7 @@ func (it newFormatterCreator) CurlyFormatUsingMap(
 		format = strings.ReplaceAll(
 			format,
 			simplewrap.CurlyWrap(search),
-			converters.AnyToValueString(replace))
+			converters.AnyTo.ToValueString(replace))
 	}
 
 	return errorwrapper.NewMsgDisplayErrorNoReference(
@@ -404,7 +404,7 @@ func (it newFormatterCreator) CurlyMsgFormatUsingMap(
 		format = strings.ReplaceAll(
 			format,
 			simplewrap.CurlyWrap(search),
-			converters.AnyToValueString(replace))
+			converters.AnyTo.ToValueString(replace))
 	}
 
 	return errorwrapper.NewMsgDisplayErrorNoReference(

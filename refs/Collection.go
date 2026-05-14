@@ -96,7 +96,7 @@ func (it *Collection) MapStringAny() map[string]interface{} {
 }
 
 func (it *Collection) Serialize() ([]byte, error) {
-	return it.Json().Raw()
+	return it.JsonPtr().Raw()
 }
 
 func (it *Collection) SerializeMust() (jsonBytes []byte) {

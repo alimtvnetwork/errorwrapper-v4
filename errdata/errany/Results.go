@@ -94,7 +94,7 @@ func (it *Results) IsFailed() bool {
 }
 
 func (it Results) String() string {
-	return converters.AnyToValueString(it.SafeValues())
+	return converters.AnyTo.ToValueString(it.SafeValues())
 }
 
 func (it *Results) ErrorWrapperInf() errorwrapper.ErrWrapper {

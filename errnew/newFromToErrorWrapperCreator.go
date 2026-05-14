@@ -106,7 +106,7 @@ func (it newFromToErrorWrapperCreator) MessagesUsingStackSkip(
 			},
 			ref.Value{
 				Variable: "FromType",
-				Value:    coredynamic.TypeName(from),
+				Value:    coredynamic.SafeTypeName(from),
 			},
 			ref.Value{
 				Variable: "To",
@@ -114,7 +114,7 @@ func (it newFromToErrorWrapperCreator) MessagesUsingStackSkip(
 			},
 			ref.Value{
 				Variable: "ToType",
-				Value:    coredynamic.TypeName(to),
+				Value:    coredynamic.SafeTypeName(to),
 			})
 	}
 
@@ -152,7 +152,7 @@ func (it newFromToErrorWrapperCreator) Messages(
 			},
 			ref.Value{
 				Variable: "FromType",
-				Value:    coredynamic.TypeName(from),
+				Value:    coredynamic.SafeTypeName(from),
 			},
 			ref.Value{
 				Variable: "To",
@@ -160,7 +160,7 @@ func (it newFromToErrorWrapperCreator) Messages(
 			},
 			ref.Value{
 				Variable: "ToType",
-				Value:    coredynamic.TypeName(to),
+				Value:    coredynamic.SafeTypeName(to),
 			})
 	}
 
@@ -199,7 +199,7 @@ func (it newFromToErrorWrapperCreator) WithMetaMessages(
 			},
 			ref.Value{
 				Variable: "FromType",
-				Value:    coredynamic.TypeName(from),
+				Value:    coredynamic.SafeTypeName(from),
 			},
 			ref.Value{
 				Variable: "FromMeta",
@@ -211,7 +211,7 @@ func (it newFromToErrorWrapperCreator) WithMetaMessages(
 			},
 			ref.Value{
 				Variable: "ToType",
-				Value:    coredynamic.TypeName(to),
+				Value:    coredynamic.SafeTypeName(to),
 			},
 			ref.Value{
 				Variable: "ToMeta",
@@ -304,7 +304,7 @@ func (it newFromToErrorWrapperCreator) withMetaMessagesUsingStackSkipIncludingTy
 		},
 		ref.Value{
 			Variable: "FromType",
-			Value:    coredynamic.TypeName(from),
+			Value:    coredynamic.SafeTypeName(from),
 		},
 		ref.Value{
 			Variable: "FromMeta",
@@ -316,7 +316,7 @@ func (it newFromToErrorWrapperCreator) withMetaMessagesUsingStackSkipIncludingTy
 		},
 		ref.Value{
 			Variable: "ToType",
-			Value:    coredynamic.TypeName(to),
+			Value:    coredynamic.SafeTypeName(to),
 		},
 		ref.Value{
 			Variable: "ToMeta",

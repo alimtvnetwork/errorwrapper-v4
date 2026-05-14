@@ -57,7 +57,7 @@ func (it Verifier) NewSliceValidator(
 
 func (it Verifier) ValidateErrUsingTextValidator(
 	isCompareIncludingReference bool,
-	params *corevalidator.ValidatorParamsBase,
+	params *corevalidator.Parameter,
 	actualErrorWrapper *errorwrapper.Wrapper,
 ) *errorwrapper.Wrapper {
 	if actualErrorWrapper.IsEmpty() &&
@@ -86,7 +86,7 @@ func (it Verifier) ValidateErrUsingTextValidator(
 }
 
 func (it Verifier) ValidateErrUsingSliceValidator(
-	params *corevalidator.ValidatorParamsBase,
+	params *corevalidator.Parameter,
 	errorWrapper *errorwrapper.Wrapper,
 	expectedLines []string,
 ) *errorwrapper.Wrapper {
@@ -112,7 +112,7 @@ func (it Verifier) ValidateErrUsingSliceValidator(
 
 func (it Verifier) ValidateErrCollectionUsingSliceValidator(
 	isIncludeReferences bool,
-	params *corevalidator.ValidatorParamsBase,
+	params *corevalidator.Parameter,
 	errCollection *errwrappers.Collection,
 	expectedLines []string,
 ) *errorwrapper.Wrapper {
@@ -129,7 +129,7 @@ func (it Verifier) ValidateErrCollectionUsingSliceValidator(
 }
 
 func (it Verifier) ValidateActualLinesSliceValidator(
-	params *corevalidator.ValidatorParamsBase,
+	params *corevalidator.Parameter,
 	actualLines []string,
 	expectedLines []string,
 ) *errorwrapper.Wrapper {

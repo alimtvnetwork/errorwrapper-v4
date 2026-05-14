@@ -6,7 +6,7 @@ import (
 )
 
 var (
-	typeName                = coredynamic.TypeName(NoError)
+	typeName                = coredynamic.SafeTypeName(NoError)
 	rangesCsvNameStringOnce = coreonce.NewStringOnce(func() string {
 		return generateRangesCsvString()
 	})

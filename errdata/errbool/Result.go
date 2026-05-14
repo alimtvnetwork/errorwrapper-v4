@@ -56,7 +56,7 @@ func (it *Result) HasIssuesOrEmpty() bool {
 }
 
 func (it Result) String() string {
-	return converters.AnyToValueString(
+	return converters.AnyTo.ToValueString(
 		it.Value)
 }
 

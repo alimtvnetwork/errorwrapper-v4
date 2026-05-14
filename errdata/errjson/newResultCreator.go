@@ -135,7 +135,7 @@ func (it *newResultCreator) BytesWithError(
 		jsonResult := corejson.
 			Empty.
 			ResultPtrWithErr(
-				coredynamic.TypeName(Result{}),
+				coredynamic.SafeTypeName(Result{}),
 				errWp.Error())
 
 		return &Result{

@@ -35,7 +35,7 @@ func Test_Creation(t *testing.T) {
 			CompareAs:     stringcompareas.Equal,
 		}
 
-		validatorParamBase := corevalidator.ValidatorParamsBase{
+		validatorParamBase := corevalidator.Parameter{
 			CaseIndex:          index,
 			IsAttachUserInputs: true,
 			IsCaseSensitive:    true,

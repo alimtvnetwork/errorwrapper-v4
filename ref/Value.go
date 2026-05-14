@@ -153,7 +153,7 @@ func (it Value) ValueDynamic() interface{} {
 }
 
 func (it Value) VariableValueString() (varName, value string) {
-	return it.Variable, converters.AnyToValueString(it.Value)
+	return it.Variable, converters.AnyTo.ToValueString(it.Value)
 }
 
 func (it Value) VariableValueDynamic() (varName string, value interface{}) {
@@ -165,7 +165,7 @@ func (it Value) Compile() string {
 }
 
 func (it Value) Serialize() ([]byte, error) {
-	return it.Json().Raw()
+	return it.JsonPtr().Raw()
 }
 
 func (it Value) SerializeMust() (jsonBytes []byte) {
@@ -228,7 +228,7 @@ func (it Value) StringWithoutType() string {
 
 	return it.
 		compiledWithoutType.
-		GetPlusSetOnUninitialized(msg)
+		GetSetOnce(msg)
 }
 
 func (it Value) FullString() string {
@@ -245,7 +245,7 @@ func (it Value) FullString() string {
 
 	return it.
 		compiled.
-		GetPlusSetOnUninitialized(compiled)
+		GetSetOnce(compiled)
 }
 
 func (it Value) Clone() Value {

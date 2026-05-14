@@ -57,25 +57,25 @@ func (it *Wrapper) StackTraces() string {
 
 func (it *Wrapper) NewStackTraces(stackSkip int) string {
 	return codestack.
-		NewStacksDefaultCount(stackSkip + defaultSkipInternal).
+		New.StackTrace.DefaultCount(stackSkip + defaultSkipInternal).
 		CodeStacksString()
 }
 
 func (it *Wrapper) NewDefaultStackTraces() string {
 	return codestack.
-		NewStacksDefaultCount(defaultSkipInternal).
+		New.StackTrace.DefaultCount(defaultSkipInternal).
 		CodeStacksString()
 }
 
 func (it *Wrapper) NewStackTracesJsonResult(stackSkip int) *corejson.Result {
 	return codestack.
-		NewStacksDefaultCount(defaultSkipInternal + stackSkip).
+		New.StackTrace.DefaultCount(defaultSkipInternal + stackSkip).
 		JsonPtr()
 }
 
 func (it *Wrapper) NewDefaultStackTracesJsonResult() *corejson.Result {
 	return codestack.
-		NewStacksDefaultCount(defaultSkipInternal).
+		New.StackTrace.DefaultCount(defaultSkipInternal).
 		JsonPtr()
 }
 
@@ -398,7 +398,7 @@ func (it *Wrapper) SerializeWithoutTraces() ([]byte, error) {
 
 	cloned := it.cloneWithoutStacktrace()
 
-	return cloned.Json().Raw()
+	return cloned.JsonPtr().Raw()
 }
 
 // Serialize
@@ -409,7 +409,7 @@ func (it *Wrapper) Serialize() ([]byte, error) {
 		return nil, nil
 	}
 
-	return it.Json().Raw()
+	return it.JsonPtr().Raw()
 }
 
 func (it *Wrapper) SerializeMust() []byte {
@@ -417,7 +417,7 @@ func (it *Wrapper) SerializeMust() []byte {
 		return nil
 	}
 
-	rawJsonBytes, err := it.Json().Raw()
+	rawJsonBytes, err := it.JsonPtr().Raw()
 	errcore.MustBeEmpty(err)
 
 	return rawJsonBytes
@@ -465,12 +465,12 @@ func (it *Wrapper) StackTraceString() string {
 	if it.stackTraces.IsEmpty() {
 		return it.
 			stackTracesCompiled.
-			GetPlusSetEmptyOnUninitialized()
+			GetOnce()
 	}
 
 	toString := it.stackTraces.CodeStacksString()
 	it.stackTracesCompiled.
-		GetPlusSetOnUninitialized(toString)
+		GetSetOnce(toString)
 
 	return it.stackTracesCompiled.String()
 }
@@ -634,7 +634,7 @@ func (it *Wrapper) TypeCodeNameString() string {
 
 	return it.
 		typeCodeNameString.
-		GetPlusSetOnUninitialized(typeWithCode)
+		GetSetOnce(typeWithCode)
 }
 
 func (it *Wrapper) IsTypeOf(errType errtype.Variation) bool {
@@ -901,7 +901,7 @@ func (it *Wrapper) FullString() string {
 
 	finalResult := it.
 		wrapperCompiledWithoutTraces.
-		GetPlusSetOnUninitializedFunc(
+		GetOnceFunc(
 			it.finalMessageWithCategory)
 
 	it.wrapperCompiledWithoutTraces = it.
@@ -946,18 +946,18 @@ func (it *Wrapper) FullStringWithTraces() string {
 
 		return it.
 			wholeCompiled.
-			GetPlusSetOnUninitialized(
+			GetSetOnce(
 				toString)
 	}
 
 	return it.
 		wholeCompiled.
-		GetPlusSetOnUninitialized(fullString)
+		GetSetOnce(fullString)
 }
 
 func (it *Wrapper) StackTracesLimit(limit int) *codestack.TraceCollection {
 	if it == nil {
-		return codestack.EmptyTraceCollection()
+		return &codestack.TraceCollection{}
 	}
 
 	if limit <= constants.TakeAllMinusOne {
@@ -1032,7 +1032,7 @@ func (it *Wrapper) RawErrorTypeName() string {
 
 	return it.
 		typeName.
-		GetPlusSetOnUninitialized(msg)
+		GetSetOnce(msg)
 }
 
 func (it Wrapper) String() string {
@@ -1216,7 +1216,7 @@ func (it *Wrapper) JsonParseSelfInject(
 
 func (it *Wrapper) ValidationErrUsingTextValidator(
 	validator *corevalidator.TextValidator,
-	params *corevalidator.ValidatorParamsBase,
+	params *corevalidator.Parameter,
 ) *Wrapper {
 	err := validator.VerifyDetailError(
 		params,
@@ -1314,7 +1314,7 @@ func (it Wrapper) CloneNewStackSkipPtr(stackSkip int) *Wrapper {
 		isDisplayableError: it.isDisplayableError,
 		errorType:          it.errorType,
 		references:         refCollection,
-		stackTraces:        codestack.NewStacksDefaultCount(stackSkip + defaultSkipInternal),
+		stackTraces:        codestack.New.StackTrace.DefaultCount(stackSkip + defaultSkipInternal),
 		currentError:       errors.New(errString),
 	}
 }

@@ -19,12 +19,12 @@ func cmdOutputForError(
 	hasStdOut := stdIn.HasStdOut()
 	hasStdErr := stdIn.HasStdErr()
 
-	stdOutString := conditional.StringTrueFunc(
+	stdOutString := conditional.IfTrueFuncString(
 		hasStdOut,
 		stdIn.StdOutString,
 	)
 
-	stdErrString := conditional.StringTrueFunc(
+	stdErrString := conditional.IfTrueFuncString(
 		hasStdOut,
 		stdIn.StdErrString)
 
