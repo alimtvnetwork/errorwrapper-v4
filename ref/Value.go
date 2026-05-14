@@ -245,7 +245,7 @@ func (it Value) FullString() string {
 
 	return it.
 		compiled.
-		GetPlusSetOnUninitialized(compiled)
+		GetSetOnce(compiled)
 }
 
 func (it Value) Clone() Value {
