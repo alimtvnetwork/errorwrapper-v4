@@ -654,7 +654,7 @@ func (it newRefToErrorWrapperCreator) WithMessagesJoiner(
 	joiner string,
 	messages ...interface{},
 ) *errorwrapper.Wrapper {
-	finalMessage := converters.AnyItemsJoin(
+	finalMessage := converters.AnyTo.ItemsJoin(
 		joiner,
 		messages...)
 
@@ -672,7 +672,7 @@ func (it newRefToErrorWrapperCreator) WithMessagesJoinerStackSkip(
 	joiner string,
 	messages ...interface{},
 ) *errorwrapper.Wrapper {
-	finalMessage := converters.AnyItemsJoin(
+	finalMessage := converters.AnyTo.ItemsJoin(
 		joiner,
 		messages...)
 
@@ -689,7 +689,7 @@ func (it newRefToErrorWrapperCreator) CollectionWithMessagesJoiner(
 	joiner string,
 	messages ...interface{},
 ) *errorwrapper.Wrapper {
-	finalMessage := converters.AnyItemsJoin(
+	finalMessage := converters.AnyTo.ItemsJoin(
 		joiner,
 		messages...)
 
@@ -707,7 +707,7 @@ func (it newRefToErrorWrapperCreator) CollectionWithMessagesJoinerUsingStackSkip
 	joiner string,
 	messages ...interface{},
 ) *errorwrapper.Wrapper {
-	finalMessage := converters.AnyItemsJoin(
+	finalMessage := converters.AnyTo.ItemsJoin(
 		joiner,
 		messages...)
 

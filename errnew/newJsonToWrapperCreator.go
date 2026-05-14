@@ -219,7 +219,7 @@ func (it newJsonToWrapperCreator) MessageReferenceJson(
 		return nil
 	}
 
-	refString := corejson.New(
+	refString := corejson.NewPtr(
 		referencesToJsonItems).
 		SafeString()
 
@@ -242,7 +242,7 @@ func (it newJsonToWrapperCreator) ErrorReferenceJson(
 		return nil
 	}
 
-	refString := corejson.New(referencesToJsonItems).
+	refString := corejson.NewPtr(referencesToJsonItems).
 		SafeString()
 
 	return errorwrapper.NewMsgDisplayErrorReferencesPtr(
