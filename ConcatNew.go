@@ -390,9 +390,7 @@ func (it ConcatNew) ErrorsUsingStackSkip(
 func (it ConcatNew) NewStackTraces(
 	stackTraces ...codestack.Trace,
 ) *Wrapper {
-	tracesCollection := codestack.NewNewTraceCollectionUsing(
-		false,
-		stackTraces...)
+	tracesCollection := &codestack.TraceCollection{Items: stackTraces}
 
 	if it.isAnyNull() {
 		empty := EmptyPtr()
