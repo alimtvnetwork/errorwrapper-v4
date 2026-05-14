@@ -25,12 +25,10 @@ var VerifyCollectionIsMatchTestCases = []VerifyErrorCollectionTestWrapper{
 				IsPrintError: true,
 			},
 			ExpectationLines: &corestr.SimpleSlice{
-				Items: []string{
 					"[Error (InvalidOption - #470): Selected option is invalid!]",
 					"[Error (NotSupportInWindows - #93): Current request is not supported in Windows Operating system.]",
 					"[Error (NotSupportedOption - #107): None of the option is supported.]",
 				},
-			},
 			ErrorLength: 3,
 		},
 	},
@@ -48,12 +46,10 @@ var VerifyCollectionIsMatchTestCases = []VerifyErrorCollectionTestWrapper{
 				IsPrintError: true,
 			},
 			ExpectationLines: &corestr.SimpleSlice{
-				Items: []string{
 					"[Error (InvalidOption - #470): Selected option is invalid!]",
 					"[Error (NotSupportInWindows - #93): Current request is not supported in Windows Operating system.]",
 					"[Error (NotSupportedOption - #107): None of the option is supported.]",
 				},
-			},
 			ErrorLength: constants.InvalidValue,
 		},
 	},
