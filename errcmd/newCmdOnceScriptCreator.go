@@ -282,7 +282,7 @@ func (it *newCmdOnceScriptCreator) Args(
 		hasOutput,
 		hasSecureData,
 		scriptDefault.ProcessName,
-		*compiledArguments...,
+		compiledArguments...,
 	)
 }
 

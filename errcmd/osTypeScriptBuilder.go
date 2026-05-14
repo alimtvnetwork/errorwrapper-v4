@@ -978,7 +978,7 @@ func (it osTypeScriptBuilder) BuildersMapOnly(
 }
 
 func (it osTypeScriptBuilder) CurrentOsTypes() []osmixtype.Variant {
-	return osmixtype.CurrentOsTypes()
+	return osmixtype.CurrentOsMixTypes()
 }
 
 func (it osTypeScriptBuilder) CurrentOsTypesMap() map[osmixtype.Variant]bool {
