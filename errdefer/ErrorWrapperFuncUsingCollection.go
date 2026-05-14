@@ -1,8 +1,8 @@
 package errdefer
 
 import (
-	"gitlab.com/evatix-go/errorwrapper/errfunc"
-	"gitlab.com/evatix-go/errorwrapper/errwrappers"
+	"github.com/alimtvnetwork/errorwrapper-v3/errfunc"
+	"github.com/alimtvnetwork/errorwrapper-v3/errwrappers"
 )
 
 func ErrorWrapperFuncUsingCollection(

@@ -3,11 +3,11 @@ package errnew
 import (
 	"strings"
 
-	"gitlab.com/evatix-go/core/constants"
-	"gitlab.com/evatix-go/core/coredata/stringslice"
-	"gitlab.com/evatix-go/errorwrapper"
-	"gitlab.com/evatix-go/errorwrapper/errtype"
-	"gitlab.com/evatix-go/errorwrapper/ref"
+	"github.com/alimtvnetwork/core-v9/constants"
+	"github.com/alimtvnetwork/core-v9/coredata/stringslice"
+	"github.com/alimtvnetwork/errorwrapper-v3"
+	"github.com/alimtvnetwork/errorwrapper-v3/errtype"
+	"github.com/alimtvnetwork/errorwrapper-v3/ref"
 )
 
 type newPathToErrorWrapperCreator struct{}

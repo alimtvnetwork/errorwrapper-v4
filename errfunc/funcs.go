@@ -1,12 +1,12 @@
 package errfunc
 
 import (
-	"gitlab.com/evatix-go/core/coredata/coredynamic"
-	"gitlab.com/evatix-go/errorwrapper"
-	"gitlab.com/evatix-go/errorwrapper/errdata/errbool"
-	"gitlab.com/evatix-go/errorwrapper/errdata/errstr"
-	"gitlab.com/evatix-go/errorwrapper/errtype"
-	"gitlab.com/evatix-go/errorwrapper/errwrappers"
+	"github.com/alimtvnetwork/core-v9/coredata/coredynamic"
+	"github.com/alimtvnetwork/errorwrapper-v3"
+	"github.com/alimtvnetwork/errorwrapper-v3/errdata/errbool"
+	"github.com/alimtvnetwork/errorwrapper-v3/errdata/errstr"
+	"github.com/alimtvnetwork/errorwrapper-v3/errtype"
+	"github.com/alimtvnetwork/errorwrapper-v3/errwrappers"
 )
 
 type (

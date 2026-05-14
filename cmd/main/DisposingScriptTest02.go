@@ -3,8 +3,8 @@ package main
 import (
 	"fmt"
 
-	"gitlab.com/evatix-go/enum/scripttype"
-	"gitlab.com/evatix-go/errorwrapper/errcmd"
+	"github.com/alimtvnetwork/enum-v10/scripttype"
+	"github.com/alimtvnetwork/errorwrapper-v3/errcmd"
 )
 
 func DisposingScriptTest02() {

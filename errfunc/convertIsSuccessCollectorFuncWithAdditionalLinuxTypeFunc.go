@@ -1,9 +1,9 @@
 package errfunc
 
 import (
-	"gitlab.com/evatix-go/enum/linuxtype"
-	"gitlab.com/evatix-go/errorwrapper/errwrappers"
-	"gitlab.com/evatix-go/errorwrapper/ref"
+	"github.com/alimtvnetwork/enum-v10/linuxtype"
+	"github.com/alimtvnetwork/errorwrapper-v3/errwrappers"
+	"github.com/alimtvnetwork/errorwrapper-v3/ref"
 )
 
 func convertIsSuccessCollectorFuncWithAdditionalLinuxTypeFunc(

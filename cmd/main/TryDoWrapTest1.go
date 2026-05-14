@@ -3,7 +3,7 @@ package main
 import (
 	"fmt"
 
-	"gitlab.com/evatix-go/errorwrapper/trydo"
+	"github.com/alimtvnetwork/errorwrapper-v3/trydo"
 )
 
 func TryDoWrapTest1() {

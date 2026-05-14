@@ -4,9 +4,9 @@ import (
 	"fmt"
 	"os/exec"
 
-	"gitlab.com/evatix-go/core/constants"
-	"gitlab.com/evatix-go/core/coredata/corestr"
-	"gitlab.com/evatix-go/enum/osmixtype"
+	"github.com/alimtvnetwork/core-v9/constants"
+	"github.com/alimtvnetwork/core-v9/coredata/corestr"
+	"github.com/alimtvnetwork/enum-v10/osmixtype"
 )
 
 type currentOsScriptBuilder struct {

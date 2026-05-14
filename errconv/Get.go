@@ -1,13 +1,13 @@
 package errconv
 
 import (
-	"gitlab.com/evatix-go/core/codestack"
-	"gitlab.com/evatix-go/core/coreinterface/errcoreinf"
-	"gitlab.com/evatix-go/core/isany"
-	"gitlab.com/evatix-go/errorwrapper"
-	"gitlab.com/evatix-go/errorwrapper/errdata/errcasted"
-	"gitlab.com/evatix-go/errorwrapper/errtype"
-	"gitlab.com/evatix-go/errorwrapper/internal/reflectinternal"
+	"github.com/alimtvnetwork/core-v9/codestack"
+	"github.com/alimtvnetwork/core-v9/coreinterface/errcoreinf"
+	"github.com/alimtvnetwork/core-v9/isany"
+	"github.com/alimtvnetwork/errorwrapper-v3"
+	"github.com/alimtvnetwork/errorwrapper-v3/errdata/errcasted"
+	"github.com/alimtvnetwork/errorwrapper-v3/errtype"
+	"github.com/alimtvnetwork/errorwrapper-v3/internal/reflectinternal"
 )
 
 func GetPtr(wrapper interface{}) *errcasted.ResultPtr {

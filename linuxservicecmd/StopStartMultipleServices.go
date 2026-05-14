@@ -3,7 +3,7 @@ package linuxservicecmd
 import (
 	"time"
 
-	"gitlab.com/evatix-go/errorwrapper/errwrappers"
+	"github.com/alimtvnetwork/errorwrapper-v3/errwrappers"
 )
 
 func StopStartMultipleServices(

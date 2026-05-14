@@ -1,10 +1,10 @@
 package errcmd
 
 import (
-	"gitlab.com/evatix-go/core/codestack"
-	"gitlab.com/evatix-go/enum/osmixtype"
-	"gitlab.com/evatix-go/errorwrapper"
-	"gitlab.com/evatix-go/errorwrapper/errtype"
+	"github.com/alimtvnetwork/core-v9/codestack"
+	"github.com/alimtvnetwork/enum-v10/osmixtype"
+	"github.com/alimtvnetwork/errorwrapper-v3"
+	"github.com/alimtvnetwork/errorwrapper-v3/errtype"
 )
 
 func CurrentOsDetails() (*osmixtype.OperatingSystemDetail, *errorwrapper.Wrapper) {

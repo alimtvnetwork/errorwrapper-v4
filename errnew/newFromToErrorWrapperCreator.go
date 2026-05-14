@@ -1,10 +1,10 @@
 package errnew
 
 import (
-	"gitlab.com/evatix-go/core/coredata/coredynamic"
-	"gitlab.com/evatix-go/errorwrapper"
-	"gitlab.com/evatix-go/errorwrapper/errtype"
-	"gitlab.com/evatix-go/errorwrapper/ref"
+	"github.com/alimtvnetwork/core-v9/coredata/coredynamic"
+	"github.com/alimtvnetwork/errorwrapper-v3"
+	"github.com/alimtvnetwork/errorwrapper-v3/errtype"
+	"github.com/alimtvnetwork/errorwrapper-v3/ref"
 )
 
 type newFromToErrorWrapperCreator struct{}

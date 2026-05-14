@@ -1,14 +1,14 @@
 package errnew
 
 import (
-	"gitlab.com/evatix-go/core/constants"
-	"gitlab.com/evatix-go/core/corecsv"
-	"gitlab.com/evatix-go/core/coredata/corestr"
-	"gitlab.com/evatix-go/core/coredata/stringslice"
-	"gitlab.com/evatix-go/errorwrapper"
-	"gitlab.com/evatix-go/errorwrapper/errtype"
-	"gitlab.com/evatix-go/errorwrapper/ref"
-	"gitlab.com/evatix-go/errorwrapper/refs"
+	"github.com/alimtvnetwork/core-v9/constants"
+	"github.com/alimtvnetwork/core-v9/corecsv"
+	"github.com/alimtvnetwork/core-v9/coredata/corestr"
+	"github.com/alimtvnetwork/core-v9/coredata/stringslice"
+	"github.com/alimtvnetwork/errorwrapper-v3"
+	"github.com/alimtvnetwork/errorwrapper-v3/errtype"
+	"github.com/alimtvnetwork/errorwrapper-v3/ref"
+	"github.com/alimtvnetwork/errorwrapper-v3/refs"
 )
 
 type newTypeToWrapperCreator struct{}

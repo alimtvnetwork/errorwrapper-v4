@@ -1,9 +1,9 @@
 package errcmd
 
 import (
-	"gitlab.com/evatix-go/core/coreinterface"
-	"gitlab.com/evatix-go/errorwrapper/errnew"
-	"gitlab.com/evatix-go/errorwrapper/errtype"
+	"github.com/alimtvnetwork/core-v9/coreinterface"
+	"github.com/alimtvnetwork/errorwrapper-v3/errnew"
+	"github.com/alimtvnetwork/errorwrapper-v3/errtype"
 )
 
 func getNotImplementedCmdOnceForScript(scriptDefaultStringer coreinterface.Stringer) *CmdOnce {

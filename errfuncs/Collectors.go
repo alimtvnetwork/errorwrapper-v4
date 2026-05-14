@@ -1,11 +1,11 @@
 package errfuncs
 
 import (
-	"gitlab.com/evatix-go/core/constants"
-	"gitlab.com/evatix-go/core/coreinterface"
-	"gitlab.com/evatix-go/errorwrapper"
-	"gitlab.com/evatix-go/errorwrapper/errfunc"
-	"gitlab.com/evatix-go/errorwrapper/errwrappers"
+	"github.com/alimtvnetwork/core-v9/constants"
+	"github.com/alimtvnetwork/core-v9/coreinterface"
+	"github.com/alimtvnetwork/errorwrapper-v3"
+	"github.com/alimtvnetwork/errorwrapper-v3/errfunc"
+	"github.com/alimtvnetwork/errorwrapper-v3/errwrappers"
 )
 
 type Collectors struct {

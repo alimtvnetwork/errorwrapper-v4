@@ -1,8 +1,8 @@
 package errtype
 
 import (
-	"gitlab.com/evatix-go/core/coredata/coredynamic"
-	"gitlab.com/evatix-go/core/coredata/coreonce"
+	"github.com/alimtvnetwork/core-v9/coredata/coredynamic"
+	"github.com/alimtvnetwork/core-v9/coredata/coreonce"
 )
 
 var (

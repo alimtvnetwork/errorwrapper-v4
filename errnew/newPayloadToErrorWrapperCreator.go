@@ -1,8 +1,8 @@
 package errnew
 
 import (
-	"gitlab.com/evatix-go/core/coredata/corepayload"
-	"gitlab.com/evatix-go/errorwrapper"
+	"github.com/alimtvnetwork/core-v9/coredata/corepayload"
+	"github.com/alimtvnetwork/errorwrapper-v3"
 )
 
 type newPayloadToErrorWrapperCreator struct{}

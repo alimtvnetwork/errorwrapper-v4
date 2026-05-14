@@ -3,11 +3,11 @@ package errcmd
 import (
 	"os/exec"
 
-	"gitlab.com/evatix-go/core/conditional"
-	"gitlab.com/evatix-go/core/constants"
-	"gitlab.com/evatix-go/core/coredata/corestr"
-	"gitlab.com/evatix-go/core/errcore"
-	"gitlab.com/evatix-go/errorwrapper/errtype"
+	"github.com/alimtvnetwork/core-v9/conditional"
+	"github.com/alimtvnetwork/core-v9/constants"
+	"github.com/alimtvnetwork/core-v9/coredata/corestr"
+	"github.com/alimtvnetwork/core-v9/errcore"
+	"github.com/alimtvnetwork/errorwrapper-v3/errtype"
 )
 
 func cmdOutputForError(

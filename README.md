@@ -1,16 +1,16 @@
 # `errorwrapper` Intro
 
-![Errorwrapper package](https://gitlab.com/evatix-go/errorwrapper/uploads/431c560f98827024257c4ac542623e36/image.png)
+![Errorwrapper package](https://github.com/alimtvnetwork/errorwrapper-v3/uploads/431c560f98827024257c4ac542623e36/image.png)
 
-[`errorwrapper`](https://gitlab.com/evatix-go/errorwrapper) is wrapper that helps error handling smartly in go.
+[`errorwrapper`](https://github.com/alimtvnetwork/errorwrapper-v3) is wrapper that helps error handling smartly in go.
 
 ## Git Clone
 
-`git clone https://gitlab.com/evatix-go/errorwrapper.git`
+`git clone https://github.com/alimtvnetwork/errorwrapper-v3.git`
 
 ### 2FA enabled, for linux
 
-`git clone https://[YourGitLabUserName]:[YourGitlabAcessTokenGenerateFromGitlabsTokens]@gitlab.com/evatix-go/errorwrapper.git`
+`git clone https://[YourGitLabUserName]:[YourGitlabAcessTokenGenerateFromGitlabsTokens]@github.com/alimtvnetwork/errorwrapper-v3.git`
 
 ### Prerequisites
 
@@ -21,7 +21,7 @@
 
 ## Installation
 
-`go get gitlab.com/evatix-go/errorwrapper`
+`go get github.com/alimtvnetwork/errorwrapper-v3`
 
 ### Go get issue for private package
 
@@ -45,7 +45,7 @@ It is to avoid the `if-else` part for checking errors not nil or handle error ba
 
 - [Basics of ErrorWrapper](https://drive.google.com/drive/folders/1hprKXbgVd8swV0zJ-Ew0mAPohLGksuEc?usp=sharing)
 
-## [Examples](https://gitlab.com/evatix-go/errorwrapper/-/issues/24)
+## [Examples](https://github.com/alimtvnetwork/errorwrapper-v3/-/issues/24)
 
 ### Example 1
 
@@ -128,7 +128,7 @@ jsonResult.Unmarshal(&errorsCollection)
 fmt.Println(errorsCollection.String())
 ```
 
-![Serializing ErrorWrapper](https://gitlab.com/evatix-go/errorwrapper/uploads/3f5b90840de73bff5d178ea8e055b75b/image.png)
+![Serializing ErrorWrapper](https://github.com/alimtvnetwork/errorwrapper-v3/uploads/3f5b90840de73bff5d178ea8e055b75b/image.png)
 
 ```
 # Error Wrappers - Collection - Length[1]
@@ -151,7 +151,7 @@ Any other packages used
 
 ## Issues
 
-- [Create your issues](https://gitlab.com/evatix-go/errorwrapper/-/issues)
+- [Create your issues](https://github.com/alimtvnetwork/errorwrapper-v3/-/issues)
 
 ## Notes
 

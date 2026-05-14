@@ -1,8 +1,8 @@
 package refs
 
 import (
-	"gitlab.com/evatix-go/core/corecsv"
-	"gitlab.com/evatix-go/errorwrapper/errtype"
+	"github.com/alimtvnetwork/core-v9/corecsv"
+	"github.com/alimtvnetwork/errorwrapper-v3/errtype"
 )
 
 type QuickReference struct {

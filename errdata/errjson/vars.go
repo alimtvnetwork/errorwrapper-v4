@@ -3,7 +3,7 @@ package errjson
 import (
 	"sync"
 
-	"gitlab.com/evatix-go/core/coredata/coredynamic"
+	"github.com/alimtvnetwork/core-v9/coredata/coredynamic"
 )
 
 var (

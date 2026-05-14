@@ -1,12 +1,12 @@
 package errorwrapper
 
 import (
-	"gitlab.com/evatix-go/core/coredata/corejson"
-	"gitlab.com/evatix-go/core/coreinterface"
-	"gitlab.com/evatix-go/core/coreinterface/errcoreinf"
-	"gitlab.com/evatix-go/errorwrapper/errtype"
-	"gitlab.com/evatix-go/errorwrapper/ref"
-	"gitlab.com/evatix-go/errorwrapper/refs"
+	"github.com/alimtvnetwork/core-v9/coredata/corejson"
+	"github.com/alimtvnetwork/core-v9/coreinterface"
+	"github.com/alimtvnetwork/core-v9/coreinterface/errcoreinf"
+	"github.com/alimtvnetwork/errorwrapper-v3/errtype"
+	"github.com/alimtvnetwork/errorwrapper-v3/ref"
+	"github.com/alimtvnetwork/errorwrapper-v3/refs"
 )
 
 type ResultsContractsBinder interface {

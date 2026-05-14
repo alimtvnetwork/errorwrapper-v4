@@ -3,9 +3,9 @@ package main
 import (
 	"fmt"
 
-	"gitlab.com/evatix-go/errorwrapper"
-	"gitlab.com/evatix-go/errorwrapper/errnew"
-	"gitlab.com/evatix-go/errorwrapper/errwrappers"
+	"github.com/alimtvnetwork/errorwrapper-v3"
+	"github.com/alimtvnetwork/errorwrapper-v3/errnew"
+	"github.com/alimtvnetwork/errorwrapper-v3/errwrappers"
 )
 
 func NullTest01() {

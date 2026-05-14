@@ -1,6 +1,6 @@
 package refs
 
-import "gitlab.com/evatix-go/errorwrapper/ref"
+import "github.com/alimtvnetwork/errorwrapper-v3/ref"
 
 type CollectionDataModel struct {
 	Refs []ref.Value

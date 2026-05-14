@@ -5,13 +5,13 @@ import (
 	"os/exec"
 	"sync"
 
-	"gitlab.com/evatix-go/core/coredata"
-	"gitlab.com/evatix-go/core/coredata/corestr"
-	"gitlab.com/evatix-go/core/coreinterface"
-	"gitlab.com/evatix-go/core/coreinterface/errcoreinf"
-	"gitlab.com/evatix-go/enum/osmixtype"
-	"gitlab.com/evatix-go/enum/scripttype"
-	"gitlab.com/evatix-go/errorwrapper"
+	"github.com/alimtvnetwork/core-v9/coredata"
+	"github.com/alimtvnetwork/core-v9/coredata/corestr"
+	"github.com/alimtvnetwork/core-v9/coreinterface"
+	"github.com/alimtvnetwork/core-v9/coreinterface/errcoreinf"
+	"github.com/alimtvnetwork/enum-v10/osmixtype"
+	"github.com/alimtvnetwork/enum-v10/scripttype"
+	"github.com/alimtvnetwork/errorwrapper-v3"
 )
 
 type ScriptOnceBuilder interface {

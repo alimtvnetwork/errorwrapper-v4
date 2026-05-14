@@ -3,7 +3,7 @@ package errdefer
 import (
 	"os"
 
-	"gitlab.com/evatix-go/errorwrapper"
+	"github.com/alimtvnetwork/errorwrapper-v3"
 )
 
 func CloseFileHandlerFunc(

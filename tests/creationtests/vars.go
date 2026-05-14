@@ -3,8 +3,8 @@ package creationtests
 import (
 	"errors"
 
-	"gitlab.com/evatix-go/errorwrapper/errnew"
-	"gitlab.com/evatix-go/errorwrapper/errtype"
+	"github.com/alimtvnetwork/errorwrapper-v3/errnew"
+	"github.com/alimtvnetwork/errorwrapper-v3/errtype"
 )
 
 var (

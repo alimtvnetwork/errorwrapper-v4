@@ -1,8 +1,8 @@
 package errdefer
 
 import (
-	"gitlab.com/evatix-go/core/codestack"
-	"gitlab.com/evatix-go/errorwrapper"
+	"github.com/alimtvnetwork/core-v9/codestack"
+	"github.com/alimtvnetwork/errorwrapper-v3"
 )
 
 func mergeErrorWrapper(

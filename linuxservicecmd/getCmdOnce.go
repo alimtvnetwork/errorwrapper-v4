@@ -1,9 +1,9 @@
 package linuxservicecmd
 
 import (
-	"gitlab.com/evatix-go/core/cmdconsts"
-	"gitlab.com/evatix-go/enum/servicestate"
-	"gitlab.com/evatix-go/errorwrapper/errcmd"
+	"github.com/alimtvnetwork/core-v9/cmdconsts"
+	"github.com/alimtvnetwork/enum-v10/servicestate"
+	"github.com/alimtvnetwork/errorwrapper-v3/errcmd"
 )
 
 func getCmdOnce(

@@ -1,8 +1,8 @@
 package errfunc
 
 import (
-	"gitlab.com/evatix-go/core/coredata/stringslice"
-	"gitlab.com/evatix-go/enum/linuxtype"
+	"github.com/alimtvnetwork/core-v9/coredata/stringslice"
+	"github.com/alimtvnetwork/enum-v10/linuxtype"
 )
 
 func LinuxTypesToNameSlice(

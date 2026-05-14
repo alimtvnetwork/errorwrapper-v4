@@ -1,11 +1,11 @@
 package errnew
 
 import (
-	"gitlab.com/evatix-go/core/coredata"
-	"gitlab.com/evatix-go/core/coredata/corejson"
-	"gitlab.com/evatix-go/errorwrapper"
-	"gitlab.com/evatix-go/errorwrapper/errtype"
-	"gitlab.com/evatix-go/errorwrapper/ref"
+	"github.com/alimtvnetwork/core-v9/coredata"
+	"github.com/alimtvnetwork/core-v9/coredata/corejson"
+	"github.com/alimtvnetwork/errorwrapper-v3"
+	"github.com/alimtvnetwork/errorwrapper-v3/errtype"
+	"github.com/alimtvnetwork/errorwrapper-v3/ref"
 )
 
 type newJsonToWrapperCreator struct{}

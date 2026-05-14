@@ -4,12 +4,12 @@ import (
 	"reflect"
 	"sync"
 
-	"gitlab.com/evatix-go/enum/linuxtype"
-	"gitlab.com/evatix-go/errorwrapper"
-	"gitlab.com/evatix-go/errorwrapper/errnew"
-	"gitlab.com/evatix-go/errorwrapper/errtype"
-	"gitlab.com/evatix-go/errorwrapper/errwrappers"
-	"gitlab.com/evatix-go/errorwrapper/internal/reflectinternal"
+	"github.com/alimtvnetwork/enum-v10/linuxtype"
+	"github.com/alimtvnetwork/errorwrapper-v3"
+	"github.com/alimtvnetwork/errorwrapper-v3/errnew"
+	"github.com/alimtvnetwork/errorwrapper-v3/errtype"
+	"github.com/alimtvnetwork/errorwrapper-v3/errwrappers"
+	"github.com/alimtvnetwork/errorwrapper-v3/internal/reflectinternal"
 )
 
 type LinuxVersionWrapperFunctionExecutor struct {

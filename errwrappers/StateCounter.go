@@ -1,7 +1,7 @@
 package errwrappers
 
 import (
-	"gitlab.com/evatix-go/core/coreinterface"
+	"github.com/alimtvnetwork/core-v9/coreinterface"
 )
 
 type StateCounter struct {

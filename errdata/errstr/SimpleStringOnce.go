@@ -3,12 +3,12 @@ package errstr
 import (
 	"strings"
 
-	"gitlab.com/evatix-go/core/constants"
-	"gitlab.com/evatix-go/core/converters"
-	"gitlab.com/evatix-go/core/coredata/corejson"
-	"gitlab.com/evatix-go/core/coredata/corestr"
-	"gitlab.com/evatix-go/core/coreutils/stringutil"
-	"gitlab.com/evatix-go/errorwrapper"
+	"github.com/alimtvnetwork/core-v9/constants"
+	"github.com/alimtvnetwork/core-v9/converters"
+	"github.com/alimtvnetwork/core-v9/coredata/corejson"
+	"github.com/alimtvnetwork/core-v9/coredata/corestr"
+	"github.com/alimtvnetwork/core-v9/coreutils/stringutil"
+	"github.com/alimtvnetwork/errorwrapper-v3"
 )
 
 type SimpleStringOnce struct {

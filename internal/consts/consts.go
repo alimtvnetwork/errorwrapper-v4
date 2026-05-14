@@ -1,6 +1,6 @@
 package consts
 
-import "gitlab.com/evatix-go/core/constants"
+import "github.com/alimtvnetwork/core-v9/constants"
 
 const (
 	InvalidExitCode                = constants.MinInt

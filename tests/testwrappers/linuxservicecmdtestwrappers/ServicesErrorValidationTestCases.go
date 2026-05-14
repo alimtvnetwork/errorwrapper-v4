@@ -1,8 +1,8 @@
 package linuxservicecmdtestwrappers
 
 import (
-	"gitlab.com/evatix-go/enum/linuxservicestate"
-	"gitlab.com/evatix-go/errorwrapper/linuxservicecmd"
+	"github.com/alimtvnetwork/enum-v10/linuxservicestate"
+	"github.com/alimtvnetwork/errorwrapper-v3/linuxservicecmd"
 )
 
 var ServicesErrorValidationTestCases = []ServicesTestCaseWrapper{

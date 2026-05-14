@@ -1,8 +1,8 @@
 package linuxservicecmd
 
 import (
-	"gitlab.com/evatix-go/enum/servicestate"
-	"gitlab.com/evatix-go/errorwrapper"
+	"github.com/alimtvnetwork/enum-v10/servicestate"
+	"github.com/alimtvnetwork/errorwrapper-v3"
 )
 
 func StopQuick(

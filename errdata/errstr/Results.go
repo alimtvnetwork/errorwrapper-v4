@@ -3,13 +3,13 @@ package errstr
 import (
 	"strings"
 
-	"gitlab.com/evatix-go/core/anycmp"
-	"gitlab.com/evatix-go/core/constants"
-	"gitlab.com/evatix-go/core/converters"
-	"gitlab.com/evatix-go/core/corecmp"
-	"gitlab.com/evatix-go/core/coredata/corejson"
-	"gitlab.com/evatix-go/core/coredata/corestr"
-	"gitlab.com/evatix-go/errorwrapper"
+	"github.com/alimtvnetwork/core-v9/anycmp"
+	"github.com/alimtvnetwork/core-v9/constants"
+	"github.com/alimtvnetwork/core-v9/converters"
+	"github.com/alimtvnetwork/core-v9/corecmp"
+	"github.com/alimtvnetwork/core-v9/coredata/corejson"
+	"github.com/alimtvnetwork/core-v9/coredata/corestr"
+	"github.com/alimtvnetwork/errorwrapper-v3"
 )
 
 type Results struct {

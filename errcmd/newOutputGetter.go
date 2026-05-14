@@ -5,11 +5,11 @@ import (
 	"os/exec"
 	"strings"
 
-	"gitlab.com/evatix-go/core/constants"
-	"gitlab.com/evatix-go/core/errcore"
-	"gitlab.com/evatix-go/errorwrapper"
-	"gitlab.com/evatix-go/errorwrapper/errnew"
-	"gitlab.com/evatix-go/errorwrapper/errtype"
+	"github.com/alimtvnetwork/core-v9/constants"
+	"github.com/alimtvnetwork/core-v9/errcore"
+	"github.com/alimtvnetwork/errorwrapper-v3"
+	"github.com/alimtvnetwork/errorwrapper-v3/errnew"
+	"github.com/alimtvnetwork/errorwrapper-v3/errtype"
 )
 
 type newOutputGetter struct{}

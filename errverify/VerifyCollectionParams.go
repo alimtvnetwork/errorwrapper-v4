@@ -1,6 +1,6 @@
 package errverify
 
-import "gitlab.com/evatix-go/errorwrapper/errwrappers"
+import "github.com/alimtvnetwork/errorwrapper-v3/errwrappers"
 
 type VerifyCollectionParams struct {
 	CaseIndex                 int

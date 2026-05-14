@@ -3,7 +3,7 @@ package errcmd
 import (
 	"os/exec"
 
-	"gitlab.com/evatix-go/core/coredata/corestr"
+	"github.com/alimtvnetwork/core-v9/coredata/corestr"
 )
 
 type cmdCompiledOutput struct {

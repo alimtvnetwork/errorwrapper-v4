@@ -1,8 +1,8 @@
 package refs
 
 import (
-	"gitlab.com/evatix-go/core/constants"
-	"gitlab.com/evatix-go/errorwrapper/ref"
+	"github.com/alimtvnetwork/core-v9/constants"
+	"github.com/alimtvnetwork/errorwrapper-v3/ref"
 )
 
 func LengthOfEachItemsPtr(manyCollections *[]*[]*ref.Value) int {

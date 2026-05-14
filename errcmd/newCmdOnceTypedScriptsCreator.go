@@ -1,8 +1,8 @@
 package errcmd
 
 import (
-	"gitlab.com/evatix-go/enum/scripttype"
-	"gitlab.com/evatix-go/errorwrapper"
+	"github.com/alimtvnetwork/enum-v10/scripttype"
+	"github.com/alimtvnetwork/errorwrapper-v3"
 )
 
 type newCmdOnceTypedScriptsCreator struct {

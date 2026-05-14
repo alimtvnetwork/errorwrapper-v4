@@ -4,11 +4,11 @@ import (
 	"testing"
 
 	"github.com/smartystreets/goconvey/convey"
-	"gitlab.com/evatix-go/core/constants"
-	"gitlab.com/evatix-go/core/coredata/corestr"
-	"gitlab.com/evatix-go/core/corevalidator"
-	"gitlab.com/evatix-go/core/enums/stringcompareas"
-	"gitlab.com/evatix-go/core/errcore"
+	"github.com/alimtvnetwork/core-v9/constants"
+	"github.com/alimtvnetwork/core-v9/coredata/corestr"
+	"github.com/alimtvnetwork/core-v9/corevalidator"
+	"github.com/alimtvnetwork/core-v9/enums/stringcompareas"
+	"github.com/alimtvnetwork/core-v9/errcore"
 )
 
 func Test_Creation(t *testing.T) {

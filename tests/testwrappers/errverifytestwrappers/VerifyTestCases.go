@@ -1,10 +1,10 @@
 package errverifytestwrappers
 
 import (
-	"gitlab.com/evatix-go/core/enums/stringcompareas"
-	"gitlab.com/evatix-go/errorwrapper/errnew"
-	"gitlab.com/evatix-go/errorwrapper/errtype"
-	"gitlab.com/evatix-go/errorwrapper/errverify"
+	"github.com/alimtvnetwork/core-v9/enums/stringcompareas"
+	"github.com/alimtvnetwork/errorwrapper-v3/errnew"
+	"github.com/alimtvnetwork/errorwrapper-v3/errtype"
+	"github.com/alimtvnetwork/errorwrapper-v3/errverify"
 )
 
 var VerifyValidatorTestCases = []VerifyTestWrapper{

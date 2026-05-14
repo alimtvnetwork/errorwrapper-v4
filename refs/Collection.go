@@ -4,13 +4,13 @@ import (
 	"encoding/json"
 	"strings"
 
-	"gitlab.com/evatix-go/core/constants"
-	"gitlab.com/evatix-go/core/coredata/coredynamic"
-	"gitlab.com/evatix-go/core/coredata/corejson"
-	"gitlab.com/evatix-go/core/coreimpl/enumimpl"
-	"gitlab.com/evatix-go/core/coreinterface/errcoreinf"
-	"gitlab.com/evatix-go/core/defaulterr"
-	"gitlab.com/evatix-go/errorwrapper/ref"
+	"github.com/alimtvnetwork/core-v9/constants"
+	"github.com/alimtvnetwork/core-v9/coredata/coredynamic"
+	"github.com/alimtvnetwork/core-v9/coredata/corejson"
+	"github.com/alimtvnetwork/core-v9/coreimpl/enumimpl"
+	"github.com/alimtvnetwork/core-v9/coreinterface/errcoreinf"
+	"github.com/alimtvnetwork/core-v9/defaulterr"
+	"github.com/alimtvnetwork/errorwrapper-v3/ref"
 )
 
 type Collection struct {

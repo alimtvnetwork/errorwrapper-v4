@@ -3,7 +3,7 @@ package errorwrapper
 import (
 	"strings"
 
-	"gitlab.com/evatix-go/core/constants"
+	"github.com/alimtvnetwork/core-v9/constants"
 )
 
 // ErrorsToStringUsingJoiner nil items will be ignored.

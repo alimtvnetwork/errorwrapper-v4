@@ -6,17 +6,17 @@ import (
 	"os/exec"
 	"sync"
 
-	"gitlab.com/evatix-go/core/codestack"
-	"gitlab.com/evatix-go/core/constants"
-	"gitlab.com/evatix-go/core/coredata"
-	"gitlab.com/evatix-go/core/coredata/corejson"
-	"gitlab.com/evatix-go/core/coredata/corestr"
-	"gitlab.com/evatix-go/core/errcore"
-	"gitlab.com/evatix-go/enum/osmixtype"
-	"gitlab.com/evatix-go/enum/scripttype"
-	"gitlab.com/evatix-go/errorwrapper"
-	"gitlab.com/evatix-go/errorwrapper/errtype"
-	"gitlab.com/evatix-go/errorwrapper/ref"
+	"github.com/alimtvnetwork/core-v9/codestack"
+	"github.com/alimtvnetwork/core-v9/constants"
+	"github.com/alimtvnetwork/core-v9/coredata"
+	"github.com/alimtvnetwork/core-v9/coredata/corejson"
+	"github.com/alimtvnetwork/core-v9/coredata/corestr"
+	"github.com/alimtvnetwork/core-v9/errcore"
+	"github.com/alimtvnetwork/enum-v10/osmixtype"
+	"github.com/alimtvnetwork/enum-v10/scripttype"
+	"github.com/alimtvnetwork/errorwrapper-v3"
+	"github.com/alimtvnetwork/errorwrapper-v3/errtype"
+	"github.com/alimtvnetwork/errorwrapper-v3/ref"
 )
 
 type osTypeScriptBuilder struct {

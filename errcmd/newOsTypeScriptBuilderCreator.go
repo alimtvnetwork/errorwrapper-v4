@@ -1,9 +1,9 @@
 package errcmd
 
 import (
-	"gitlab.com/evatix-go/core/constants"
-	"gitlab.com/evatix-go/enum/osmixtype"
-	"gitlab.com/evatix-go/enum/scripttype"
+	"github.com/alimtvnetwork/core-v9/constants"
+	"github.com/alimtvnetwork/enum-v10/osmixtype"
+	"github.com/alimtvnetwork/enum-v10/scripttype"
 )
 
 type newOsTypeScriptBuilderCreator struct{}

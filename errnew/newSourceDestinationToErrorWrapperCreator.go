@@ -1,11 +1,11 @@
 package errnew
 
 import (
-	"gitlab.com/evatix-go/core/converters"
-	"gitlab.com/evatix-go/core/coreinstruction"
-	"gitlab.com/evatix-go/errorwrapper"
-	"gitlab.com/evatix-go/errorwrapper/errtype"
-	"gitlab.com/evatix-go/errorwrapper/ref"
+	"github.com/alimtvnetwork/core-v9/converters"
+	"github.com/alimtvnetwork/core-v9/coreinstruction"
+	"github.com/alimtvnetwork/errorwrapper-v3"
+	"github.com/alimtvnetwork/errorwrapper-v3/errtype"
+	"github.com/alimtvnetwork/errorwrapper-v3/ref"
 )
 
 type newSourceDestinationToErrorWrapperCreator struct{}

@@ -1,9 +1,9 @@
 package errany
 
 import (
-	"gitlab.com/evatix-go/core/converters"
-	"gitlab.com/evatix-go/core/coredata/corejson"
-	"gitlab.com/evatix-go/errorwrapper"
+	"github.com/alimtvnetwork/core-v9/converters"
+	"github.com/alimtvnetwork/core-v9/coredata/corejson"
+	"github.com/alimtvnetwork/errorwrapper-v3"
 )
 
 type Results struct {

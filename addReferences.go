@@ -1,8 +1,8 @@
 package errorwrapper
 
 import (
-	"gitlab.com/evatix-go/errorwrapper/ref"
-	"gitlab.com/evatix-go/errorwrapper/refs"
+	"github.com/alimtvnetwork/errorwrapper-v3/ref"
+	"github.com/alimtvnetwork/errorwrapper-v3/refs"
 )
 
 func addReferences(

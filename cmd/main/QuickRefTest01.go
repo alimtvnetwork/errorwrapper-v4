@@ -3,8 +3,8 @@ package main
 import (
 	"fmt"
 
-	"gitlab.com/evatix-go/errorwrapper/errtype"
-	"gitlab.com/evatix-go/errorwrapper/refs"
+	"github.com/alimtvnetwork/errorwrapper-v3/errtype"
+	"github.com/alimtvnetwork/errorwrapper-v3/refs"
 )
 
 func QuickRefTest01() {

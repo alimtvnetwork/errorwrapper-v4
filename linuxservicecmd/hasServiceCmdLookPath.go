@@ -3,7 +3,7 @@ package linuxservicecmd
 import (
 	"os/exec"
 
-	"gitlab.com/evatix-go/core/cmdconsts"
+	"github.com/alimtvnetwork/core-v9/cmdconsts"
 )
 
 func hasServiceCmdLookPath() bool {

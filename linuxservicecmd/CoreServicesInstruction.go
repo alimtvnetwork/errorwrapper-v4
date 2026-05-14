@@ -1,6 +1,6 @@
 package linuxservicecmd
 
-import "gitlab.com/evatix-go/enum/servicestate"
+import "github.com/alimtvnetwork/enum-v10/servicestate"
 
 type CoreServicesInstruction struct {
 	IsIgnoreUnknownService bool                `json:"IsIgnoreUnknownService,omitempty"`

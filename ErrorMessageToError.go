@@ -3,7 +3,7 @@ package errorwrapper
 import (
 	"errors"
 
-	"gitlab.com/evatix-go/errorwrapper/internal/consts"
+	"github.com/alimtvnetwork/errorwrapper-v3/internal/consts"
 )
 
 // ErrorMessageToError final error is nil if err is nil

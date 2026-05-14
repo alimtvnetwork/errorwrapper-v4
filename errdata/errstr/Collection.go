@@ -1,8 +1,8 @@
 package errstr
 
 import (
-	"gitlab.com/evatix-go/core/coredata/corestr"
-	"gitlab.com/evatix-go/errorwrapper"
+	"github.com/alimtvnetwork/core-v9/coredata/corestr"
+	"github.com/alimtvnetwork/errorwrapper-v3"
 )
 
 type Collection struct {
