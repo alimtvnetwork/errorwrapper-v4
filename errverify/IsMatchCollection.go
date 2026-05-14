@@ -58,10 +58,10 @@ func IsMatchCollection(
 	}
 
 	coreValidatorParams := corevalidator.Parameter{
-		CaseIndex:                         params.CaseIndex,
-		IsIgnoreCompareOnActualInputEmpty: false,
-		IsAttachUserInputs:                true,
-		IsCaseSensitive:                   true,
+		CaseIndex:                  params.CaseIndex,
+		IsSkipCompareOnActualEmpty: false,
+		IsAttachUserInputs:         true,
+		IsCaseSensitive:            true,
 	}
 
 	verifyError := verifier.ValidateErrCollectionUsingSliceValidator(
