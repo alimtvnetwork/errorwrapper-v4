@@ -153,7 +153,7 @@ func (it Value) ValueDynamic() interface{} {
 }
 
 func (it Value) VariableValueString() (varName, value string) {
-	return it.Variable, converters.AnyToValueString(it.Value)
+	return it.Variable, converters.AnyTo.ToValueString(it.Value)
 }
 
 func (it Value) VariableValueDynamic() (varName string, value interface{}) {
