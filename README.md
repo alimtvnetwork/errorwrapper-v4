@@ -27,15 +27,15 @@
 
 - Update git to 2.29
 - Enable go modules. (Windows : `go env -w GO111MODULE=on`, Unix : `export GO111MODULE=on`)
-- Add `gitlab.com/evatix-go` to go env private
+- Add `github.com/alimtvnetwork` to go env private
 
 To set for Windows:
 
-`go env -w GOPRIVATE=[AddExistingOnes;]gitlab.com/evatix-go`
+`go env -w GOPRIVATE=[AddExistingOnes;]github.com/alimtvnetwork`
 
 To set for Unix:
 
-`expoort GOPRIVATE=[AddExistingOnes;]gitlab.com/evatix-go`
+`expoort GOPRIVATE=[AddExistingOnes;]github.com/alimtvnetwork`
 
 ## Why `errorwrapper?`
 
