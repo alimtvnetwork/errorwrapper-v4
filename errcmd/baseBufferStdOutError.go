@@ -76,7 +76,7 @@ func (it *baseBufferStdOutError) CombinedBothErrorOutputLines() []string {
 		return it.combinedBothErrorOutputLines
 	}
 
-	it.combinedBothErrorOutputLines = *stringslice.MergeNew(
+	it.combinedBothErrorOutputLines = stringslice.MergeNew(
 		it.CompiledErrorLines(),
 		it.CompiledOutputLines()...)
 

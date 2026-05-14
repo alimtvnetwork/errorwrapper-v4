@@ -117,7 +117,7 @@ func (it *Instance) HandleErrorWith(messages ...string) {
 
 func (it *Instance) ConcatNewString(messages ...string) string {
 	additionalMessages :=
-		converters.StringsToCsv(
+		converters.StringsTo.Csv(
 			false,
 			messages...,
 		)

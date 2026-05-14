@@ -66,7 +66,7 @@ func (it *newCmdOnceScriptCreator) ProcessScriptsFormat(
 		scriptDefault.DefaultArguments,
 		argsSingleLine)
 
-	return scriptDefault.ProcessName, *mergedSlice
+	return scriptDefault.ProcessName, mergedSlice
 }
 
 func (it *newCmdOnceScriptCreator) LinesWithStdIns(
