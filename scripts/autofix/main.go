@@ -23,7 +23,7 @@
 // Package main provides an auto-fixer for common Go test syntax errors.
 // It iteratively parses files, detects known error patterns, applies fixes, and re-checks.
 // Usage: go run ./scripts/autofix/ [--dry-run] [files or dirs...]
-// If no args, defaults to tests/integratedtests/corestrtests/
+// If no args, defaults to tests/integratedtests/corestrtests/ and skips cleanly if absent.
 package main
 
 import (
@@ -39,6 +39,8 @@ import (
 )
 
 var dryRun bool
+
+const defaultTarget = "tests/integratedtests/corestrtests/"
 
 const rulesReference = `────────────────────────────────────────────────────────────────────────────────
  SYNTAX RULES REFERENCE
@@ -170,7 +172,17 @@ func main() {
 		}
 	}
 	if len(args) == 0 {
-		args = []string{"tests/integratedtests/corestrtests/"}
+		if _, err := os.Stat(defaultTarget); err != nil {
+			if os.IsNotExist(err) {
+				fmt.Printf("✓ Default autofix target not found; skipping: %s\n", defaultTarget)
+				return
+			}
+
+			fmt.Fprintf(os.Stderr, "error: %s: %v\n", defaultTarget, err)
+			os.Exit(1)
+		}
+
+		args = []string{defaultTarget}
 	}
 
 	var files []string
