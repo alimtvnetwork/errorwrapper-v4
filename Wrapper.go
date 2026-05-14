@@ -1314,7 +1314,7 @@ func (it Wrapper) CloneNewStackSkipPtr(stackSkip int) *Wrapper {
 		isDisplayableError: it.isDisplayableError,
 		errorType:          it.errorType,
 		references:         refCollection,
-		stackTraces:        codestack.NewStacksDefaultCount(stackSkip + defaultSkipInternal),
+		stackTraces:        codestack.New.StackTrace.DefaultCount(stackSkip + defaultSkipInternal),
 		currentError:       errors.New(errString),
 	}
 }

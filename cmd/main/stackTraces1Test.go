@@ -23,7 +23,7 @@ func stackTraces1Test() *errwrappers.Collection {
 		errtype.SnapshotFailed,
 		errors.New("something wrong"))
 
-	stackTraces := codestack.NewStacksDefault(codestack.SkipNone, constants.Capacity2)
+	stackTraces := codestack.New.StackTrace.Default(codestack.SkipNone, constants.Capacity2)
 
 	err3 := errorwrapper.NewMsgDisplayErrorUsingStackTracesPtr(
 		errtype.DbMigration,
