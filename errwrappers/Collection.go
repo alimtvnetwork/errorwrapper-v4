@@ -452,7 +452,7 @@ func (it *Collection) NewStackTraces(stackSkip int) string {
 
 func (it *Collection) NewDefaultStackTraces() string {
 	return codestack.
-		NewStacksDefaultCountSkip1().
+		New.StackTrace.DefaultCount(codestack.Skip1).
 		CodeStacksString()
 }
 
