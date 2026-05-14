@@ -16,8 +16,8 @@ type Result struct {
 }
 
 func FailedTypeCast(any interface{}, toType interface{}, msg string) Result {
-	fromType := fmt.Sprint(constants.SprintTypeFormat, any)
-	typeName := fmt.Sprint(constants.SprintTypeFormat, toType)
+	fromType := fmt.Sprintf(constants.SprintTypeFormat, any)
+	typeName := fmt.Sprintf(constants.SprintTypeFormat, toType)
 	msg1 := "From (" + fromType + ") to (" + typeName + "). "
 
 	return Result{

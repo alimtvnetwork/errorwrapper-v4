@@ -317,8 +317,7 @@ func (it *scriptOnceBuilder) Log() {
 
 func (it *scriptOnceBuilder) LogWithTraces() {
 	result := it.Result()
-	stackTraces := codestack.StacksTo.String(
-		codestack.Skip1)
+	stackTraces := codestack.StacksTo.String(codestack.Skip1, codestack.DefaultStackCount)
 	output := result.DetailedOutput() +
 		constants.DefaultLine +
 		stackTraces

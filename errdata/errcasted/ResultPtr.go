@@ -16,8 +16,8 @@ type ResultPtr struct {
 }
 
 func FailedTypeCastPtr(any interface{}, toType interface{}, msg string) *ResultPtr {
-	fromType := fmt.Sprint(constants.SprintTypeFormat, any)
-	typeName := fmt.Sprint(constants.SprintTypeFormat, toType)
+	fromType := fmt.Sprintf(constants.SprintTypeFormat, any)
+	typeName := fmt.Sprintf(constants.SprintTypeFormat, toType)
 	msg1 := "From (" + fromType + ") to (" + typeName + "). "
 
 	return &ResultPtr{
