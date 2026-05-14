@@ -2712,6 +2712,10 @@ func (it *Collection) JsonPtr() *corejson.Result {
 	return corejson.NewPtr(*it)
 }
 
+func (it *Collection) JsonResultWithoutTraces() *corejson.Result {
+	return it.JsonPtr()
+}
+
 //goland:noinspection GoLinterLocal
 func (it *Collection) ParseInjectUsingJson(
 	jsonResult *corejson.Result,
