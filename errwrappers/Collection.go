@@ -2717,6 +2717,20 @@ func (it *Collection) JsonResultWithoutTraces() *corejson.Result {
 	return it.JsonPtr()
 }
 
+func (it *Collection) LinesWithoutTraces() []string {
+	if it == nil || it.IsEmpty() {
+		return []string{}
+	}
+	lines := make([]string, 0, it.Length())
+	for _, w := range it.items {
+		if w.IsEmpty() {
+			continue
+		}
+		lines = append(lines, w.FullString())
+	}
+	return lines
+}
+
 //goland:noinspection GoLinterLocal
 func (it *Collection) ParseInjectUsingJson(
 	jsonResult *corejson.Result,
