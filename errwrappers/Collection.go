@@ -416,7 +416,7 @@ func (it *Collection) AllStackTraces() *codestack.TraceCollection {
 		return nil
 	}
 
-	traces := codestack.NewTraceCollection(
+	traces := codestack.New.StackTrace.DefaultCount(
 		it.Length() * codestack.DefaultStackCount)
 
 	for _, errorWrapper := range it.items {
