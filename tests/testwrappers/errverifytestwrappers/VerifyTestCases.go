@@ -12,10 +12,10 @@ var VerifyValidatorTestCases = []VerifyTestWrapper{
 		Verifier: errverify.Verifier{
 			Header:       "Path location error wrapper validation",
 			FunctionName: VerifierIsMatchFunc,
-			ExpectingMessage: "[Error (PathMismatch - #299): " +
+			ExpectingMessage: "[Error (PathMismatch - #298): " +
 				"Path mismatch error, expectation didn't meet! " +
 				"Additional : my demo message. Ref(s) " +
-				"{[File Path (string): \"location 1\"]}]",
+				"{[Path (string): \"location 1\"]}]",
 			VerifyAs:                 stringcompareas.Equal,
 			IsCompareEmpty:           false,
 			IsVerifyErrorMessageOnly: false,
