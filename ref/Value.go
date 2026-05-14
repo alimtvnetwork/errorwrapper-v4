@@ -165,7 +165,7 @@ func (it Value) Compile() string {
 }
 
 func (it Value) Serialize() ([]byte, error) {
-	return it.Json().Raw()
+	return it.JsonPtr().Raw()
 }
 
 func (it Value) SerializeMust() (jsonBytes []byte) {
