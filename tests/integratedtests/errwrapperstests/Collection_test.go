@@ -60,8 +60,7 @@ func Test_NewWithMessage_Constructor(t *testing.T) {
 func Test_StateCounter_HasChanges(t *testing.T) {
 	Convey("StateCounter detects new errors added after start", t, func() {
 		c := errwrappers.Empty()
-		sc := errwrappers.NewStateCountUsingLengthGetter(c.Count)
-		sc.StartStateTracking(c.Count())
+		sc := errwrappers.NewStateCount(c)
 		So(sc.HasChanges(), ShouldBeFalse)
 		c.AddError(errors.New("late-failure"))
 		So(sc.HasChanges(), ShouldBeTrue)
