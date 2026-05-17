@@ -11,28 +11,7 @@ roadmap. Keep this file in sync when you add or resolve a TODO comment.
 
 ## Inline TODOs in source
 
-### `errdata/errstr/LinkedCollections.go:9`
-```go
-// LinkedCollections TODO constructors
-type LinkedCollections struct { ... }
-```
-- **What**: Constructors are missing. Today callers must zero-build the
-  struct and assign fields manually.
-- **Action**: Add `NewLinkedCollections(...)`,
-  `NewLinkedCollectionsWithError(...)` mirroring the patterns in sibling
-  `errdata/errstr` files.
-- **Phase**: Folds into Phase 5 (generics refactor) — the new
-  `errdata.Result[T]` should subsume this.
-
-### `errnew/constructors.go:122` and `:133` — `NotImpl` / `NotImplPtrUsingStackSkip`
-```go
-"TODO: url(" + url + ")"
-```
-- **What**: The error message hard-codes the literal string `TODO: url(...)`.
-  These are intentional placeholders surfaced to callers of `NotImpl`.
-- **Action**: Treat as **WONTFIX** — the literal `TODO:` prefix is the
-  signal that this code path is a stub. Do not remove without updating
-  every consumer that pattern-matches on the prefix.
+- None remaining.
 
 ---
 
