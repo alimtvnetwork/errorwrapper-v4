@@ -72,5 +72,6 @@ roadmap. Keep this file in sync when you add or resolve a TODO comment.
   `errcmd` pure-utility tests)
 - ✅ Phase 4 — `docs/extensibility.md`
 - ✅ Phase 5 PoC — `errdata/erranygen.Result[T]` + Convey tests
+- ✅ Phase 5a — `errdata/errstr.LinkedCollections` constructors + tests
 - ✅ Phase 6 — `TODO.md` extraction marker (this file)
 - ✅ Coverage backlog — auto-discovered, no manual list to maintain
