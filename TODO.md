@@ -11,28 +11,7 @@ roadmap. Keep this file in sync when you add or resolve a TODO comment.
 
 ## Inline TODOs in source
 
-### `errdata/errstr/LinkedCollections.go:9`
-```go
-// LinkedCollections TODO constructors
-type LinkedCollections struct { ... }
-```
-- **What**: Constructors are missing. Today callers must zero-build the
-  struct and assign fields manually.
-- **Action**: Add `NewLinkedCollections(...)`,
-  `NewLinkedCollectionsWithError(...)` mirroring the patterns in sibling
-  `errdata/errstr` files.
-- **Phase**: Folds into Phase 5 (generics refactor) — the new
-  `errdata.Result[T]` should subsume this.
-
-### `errnew/constructors.go:122` and `:133` — `NotImpl` / `NotImplPtrUsingStackSkip`
-```go
-"TODO: url(" + url + ")"
-```
-- **What**: The error message hard-codes the literal string `TODO: url(...)`.
-  These are intentional placeholders surfaced to callers of `NotImpl`.
-- **Action**: Treat as **WONTFIX** — the literal `TODO:` prefix is the
-  signal that this code path is a stub. Do not remove without updating
-  every consumer that pattern-matches on the prefix.
+- None remaining.
 
 ---
 
@@ -51,7 +30,7 @@ type LinkedCollections struct { ... }
      the PoC already is; legacy packages stay until callers migrate.
 - Recommended path forward: keep PoC as the migration target, mark
   legacy packages "frozen", let new code adopt `erranygen` directly.
-- `LinkedCollections` constructor work folds into whichever path wins.
+- ✅ `LinkedCollections` constructors added (mirrors `LinkedList` pattern).
 
 ### Phase 6 — This file
 - ✅ Created.
@@ -93,5 +72,6 @@ type LinkedCollections struct { ... }
   `errcmd` pure-utility tests)
 - ✅ Phase 4 — `docs/extensibility.md`
 - ✅ Phase 5 PoC — `errdata/erranygen.Result[T]` + Convey tests
+- ✅ Phase 5a — `errdata/errstr.LinkedCollections` constructors + tests
 - ✅ Phase 6 — `TODO.md` extraction marker (this file)
 - ✅ Coverage backlog — auto-discovered, no manual list to maintain
