@@ -30,7 +30,7 @@ roadmap. Keep this file in sync when you add or resolve a TODO comment.
      the PoC already is; legacy packages stay until callers migrate.
 - Recommended path forward: keep PoC as the migration target, mark
   legacy packages "frozen", let new code adopt `erranygen` directly.
-- `LinkedCollections` constructor work folds into whichever path wins.
+- ✅ `LinkedCollections` constructors added (mirrors `LinkedList` pattern).
 
 ### Phase 6 — This file
 - ✅ Created.
