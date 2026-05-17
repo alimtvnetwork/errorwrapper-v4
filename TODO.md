@@ -38,28 +38,38 @@ type LinkedCollections struct { ... }
 
 ## Roadmap items (carried from Phase plan)
 
-### Phase 5 — Generics refactor of `errdata/*`
-- Introduce `errdata.Result[T any]` consolidating
-  `errstr`, `errbool`, `errint`, `errint64`, `errfloat`, `errbytes`,
-  `errbytesarr`, `errjsonresult`, `errslice`, etc.
-- Decision pending: keep old packages as type aliases for one minor
-  cycle, or remove outright. **Blocker**: user input.
-- Migrate `LinkedCollections` constructor work into the new generic shape.
+### Phase 5 — Generics refactor of `errdata/*` (PoC delivered)
+- ✅ `errdata/erranygen.Result[T any]` added as additive PoC with tests.
+- ⚠️ Full migration of legacy `errdata/{errstr,errbool,errint,…}` is
+  **blocked**. Three viable strategies, each requires user buy-in:
+  1. **Type alias** (e.g. `type Result = erranygen.Result[bool]`) —
+     STRIPS all type-specific methods (`IsTrue`, `Int`, `Bool`,
+     `SplitLines`, `ValidValue`, `SimpleStringOnce`, …). Breaking.
+  2. **Embed generic in legacy struct** — changes JSON shape (nested
+     fields), silently breaks any persisted serialized data.
+  3. **Greenfield rewrite under new package path** — essentially what
+     the PoC already is; legacy packages stay until callers migrate.
+- Recommended path forward: keep PoC as the migration target, mark
+  legacy packages "frozen", let new code adopt `erranygen` directly.
+- `LinkedCollections` constructor work folds into whichever path wins.
 
 ### Phase 6 — This file
 - ✅ Created.
 - Going forward: every PR that adds a `// TODO` in Go source must add a
   matching bullet here in the same commit.
 
-### Phase 7 — Repository hygiene
-- Fix the misconfigured git remote.
-- **Blocker**: confirm working branch name + correct remote URL.
+### Phase 7 — Repository hygiene (OUT OF AGENT SCOPE)
+- ❌ Cannot be performed from the Lovable sandbox. The current `origin`
+  is a Lovable-managed JWT-auth GCP endpoint; stateful git commands
+  (`remote set-url`, push, etc.) are disabled per platform rules.
+- **Action for the human maintainer**: after exporting the repo
+  locally, run `git remote set-url origin <upstream-url>` and push.
 
 ### Test coverage backlog
-- Add the 12 new `tests/integratedtests/*tests` packages introduced in
-  Phase 3 to `.\run.ps1 -tc` (Windows) and `./run.sh -tc` (Linux)
-  coverage lists.
-- Decision pending: incremental update vs. one batch commit.
+- ✅ No action needed. `scripts/CoverageRunner.psm1` auto-discovers
+  test packages via `go list ./tests/integratedtests/...` — the 12
+  Phase 3 packages are picked up automatically by `run.ps1 -tc` /
+  `run.sh -tc`.
 
 ### Worker / edge-runtime compatibility (deferred research)
 - `errcmd` spawns real OS processes and is incompatible with
@@ -82,3 +92,6 @@ type LinkedCollections struct { ... }
 - ✅ Phase 3 — Core unit tests (11 packages + `errverify` review +
   `errcmd` pure-utility tests)
 - ✅ Phase 4 — `docs/extensibility.md`
+- ✅ Phase 5 PoC — `errdata/erranygen.Result[T]` + Convey tests
+- ✅ Phase 6 — `TODO.md` extraction marker (this file)
+- ✅ Coverage backlog — auto-discovered, no manual list to maintain
