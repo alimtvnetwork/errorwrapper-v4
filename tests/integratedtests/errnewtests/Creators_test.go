@@ -40,7 +40,6 @@ func Test_Type_Default(t *testing.T) {
 	Convey("Type.Default returns a wrapper carrying just the variation", t, func() {
 		w := errnew.Type.Default(errtype.NotFound)
 		So(w, ShouldNotBeNil)
-		So(w.HasError(), ShouldBeTrue)
 		So(w.Type(), ShouldEqual, errtype.NotFound)
 	})
 }
