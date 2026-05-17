@@ -88,7 +88,7 @@ func Test_Error_NoType(t *testing.T) {
 // Test_Ref_WithReference — verifies reference-attached creators round-trip.
 func Test_Ref_WithReference(t *testing.T) {
 	Convey("Messages.WithRef attaches a ref.Value to the wrapper", t, func() {
-		r := ref.Value{Name: "userId", Value: "42"}
+		r := ref.New("userId", "42")
 		w := errnew.Messages.WithRef(errtype.InvalidId, r, "bad user id")
 		So(w, ShouldNotBeNil)
 		So(w.HasError(), ShouldBeTrue)
