@@ -4,12 +4,13 @@ import (
 	"errors"
 	"testing"
 
-	. "github.com/smartystreets/goconvey/convey"
+	"github.com/alimtvnetwork/errorwrapper-v3"
 	"github.com/alimtvnetwork/errorwrapper-v3/errdefer"
 	"github.com/alimtvnetwork/errorwrapper-v3/errfunc"
 	"github.com/alimtvnetwork/errorwrapper-v3/errnew"
 	"github.com/alimtvnetwork/errorwrapper-v3/errtype"
 	"github.com/alimtvnetwork/errorwrapper-v3/errwrappers"
+	. "github.com/smartystreets/goconvey/convey"
 )
 
 // Test_Error_Merge verifies basic defer error merging with nil and non-nil existing wrappers.
