@@ -124,9 +124,10 @@ roadmap. Keep this file in sync when you add or resolve a TODO comment.
 ### Task K — ⬜ `errcmdbridge` test coverage (handled under Phase F)
 - See `.\run.ps1 -tc` results; if still missing, add `errcmdbridgetests/`.
 
-### Task #3 — ⬜ public-package test coverage
-- Need representative tests for: `errnew`, `errwrappers`, `errtype`, `errconv`, `trydo`, `eithererr`, `refs`, `errverify`, `errdefer`, `errfunc`, `linuxservicecmd`, `errcmd`.
-- Note: depth is "one meaningful test per package", not exhaustive per-function (to be confirmed by user if more is needed).
+### Task #3 — ✅ public-package test coverage
+- All 12 target packages have ≥1 `_test.go` file under `tests/integratedtests/<pkg>tests/`:
+  `errnew`, `errwrappers`, `errtype`, `errconv`, `trydo`, `eithererr`, `refs`, `errverify` (6 files), `errdefer`, `errfunc`, `linuxservicecmd` (2), `errcmd`.
+- Deeper per-function / edge-case expansion deferred until user requests it.
 
 ### Task #4 — ✅ `docs/extending-error-types.md`
 - ✅ Delivered: `docs/extending-error-types.md` with 3 injection approaches (interface-based, registry-based, context-based).
