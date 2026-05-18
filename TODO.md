@@ -94,3 +94,29 @@ roadmap. Keep this file in sync when you add or resolve a TODO comment.
 - ✅ Phase 5c — Constructor tests for `errdata/*` New/Empty creators.
 - ✅ Phase 6 — `TODO.md` extraction marker (this file)
 - ✅ Coverage backlog — auto-discovered, no manual list to maintain
+
+---
+
+## Roadmap closeout (2026-05-18)
+
+### Phase 0 — ✅ stabilized
+- ✅ Fixed bad import in `tests/integratedtests/errcmdtests/Utilities_test.go`
+  (`.../errorwrapper-v3/errorwrapper` → `.../errorwrapper-v3`); this unblocked
+  `go mod tidy` and the 49 cascade-blocked packages.
+- ✅ `Test_EmptyPtr_HasError` — corrected expectation: `EmptyPtr()` returns
+  `nil` by design; assertion now `ShouldBeNil`.
+- ✅ `Test_ClonePtr` — switched `ShouldNotEqual` (deep compare) →
+  `ShouldNotPointTo` (pointer identity).
+- ✅ `TestErrconv_GetPtr` + `TestErrconv_Get` — added missing `t` argument
+  to 10 top-level `Convey(...)` calls (goconvey requirement).
+
+### Phase 5 — ✅ strategy (c) freeze adopted
+- ✅ Banner added to `errdata/{errany,errbool,errbyte,errfloat,errfloat64,errint,errjson,errstr}/Result.go`.
+- ✅ `docs/extensibility.md` §6.3 records the decision + migration recipe.
+
+### Phase 7 — ⬜ user action required
+- User must run `git remote set-url origin <correct-url>`.
+  Current `origin` returns 404 on `github.com/alimtvnetwork/errorwrapper-v3`.
+
+### Phase F — verification (next agent turn after user re-runs)
+- Re-run `.\run.ps1 -tc` and confirm 27/27 compile, 0 runtime failures.
