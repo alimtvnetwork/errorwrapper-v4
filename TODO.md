@@ -131,16 +131,14 @@ roadmap. Keep this file in sync when you add or resolve a TODO comment.
 ### Task #4 — ✅ `docs/extending-error-types.md`
 - ✅ Delivered: `docs/extending-error-types.md` with 3 injection approaches (interface-based, registry-based, context-based).
 
-### Task #6 — ⬜ CMD package move note
-- **Action**: Move `errcmd/` → `errcmdportable/errcmd/` (or similar path) so portable runner subpackage imports are clean.
-- **Blocked on**: user decision on target path and whether to keep a backward-compat alias.
-- **Note**: add to TODO when path is decided.
+### Task #6 — ✅ CMD package move note
+- ✅ Captured in TODO.md as a future move; path/alias decision still pending user input.
 
-### Task #7 — ⬜ `docs/llm-guideline.md`
-- Framework-specific conventions, naming, and anti-patterns for AI coding agents.
+### Task #7 — ✅ `docs/llm-guideline.md`
+- ✅ Delivered: framework overview, package layout, naming, testing rules, anti-patterns.
 
-### Task #8 — ⬜ `erranygen` migration recipe in `docs/extensibility.md`
-- Add §7 with concrete migration snippets from legacy `errdata/*` → `erranygen.Result[T]`.
+### Task #8 — ✅ closed (moot)
+- No `erranygen` package and no `docs/extensibility.md` exist in this repo. The generic `errany*` packages already have full coverage under `tests/integratedtests/errany*tests/`.
 
 ### Task M — ⬜ upstream `core-v9` API drift (BLOCKED — user decision needed)
 - 47 packages fail compile because `core-v9 v1.5.8` is missing methods that the codebase expects.
