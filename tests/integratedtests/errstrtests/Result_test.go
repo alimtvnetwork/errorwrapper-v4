@@ -6,6 +6,7 @@ import (
 	"github.com/alimtvnetwork/errorwrapper-v3/errdata/errstr"
 	"github.com/alimtvnetwork/errorwrapper-v3/errnew"
 	"github.com/alimtvnetwork/errorwrapper-v3/errtype"
+	"github.com/alimtvnetwork/errorwrapper-v3/errwrappers"
 	. "github.com/smartystreets/goconvey/convey"
 )
 
