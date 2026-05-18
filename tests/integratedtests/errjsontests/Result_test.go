@@ -47,7 +47,7 @@ func Test_ErrJson_Result_Basics(t *testing.T) {
 	})
 
 	Convey("Json result with bytes without error", t, func() {
-		jr := corejson.NewPtr(`{"key":"value"}`)
+		jr := corejson.NewPtr([]byte(`{"key":"value"}`))
 		r := &errjson.Result{Result: jr, ErrorWrapper: nil}
 		So(r.IsAnyNull(), ShouldBeFalse)
 		So(r.IsEmpty(), ShouldBeFalse)
@@ -65,14 +65,14 @@ func Test_ErrJson_Result_Basics(t *testing.T) {
 	})
 
 	Convey("IsEqual and IsEqualIgnoreCase", t, func() {
-		jr := corejson.NewPtr(`"hello"`)
+		jr := corejson.NewPtr([]byte(`"hello"`))
 		r := &errjson.Result{Result: jr, ErrorWrapper: nil}
 		So(r.IsEqual("hello"), ShouldBeTrue)
 		So(r.IsEqualIgnoreCase("HELLO"), ShouldBeTrue)
 	})
 
 	Convey("Wrapper error takes precedence", t, func() {
-		jr := corejson.NewPtr(`{"ok":true}`)
+		jr := corejson.NewPtr([]byte(`{"ok":true}`))
 		w := errnew.Type.Message(errtype.InvalidValidate, "bad")
 		r := &errjson.Result{Result: jr, ErrorWrapper: w}
 		So(r.HasError(), ShouldBeTrue)
@@ -83,8 +83,8 @@ func Test_ErrJson_Result_Basics(t *testing.T) {
 	})
 
 	Convey("SplitLines", t, func() {
-		jr := corejson.NewPtr(`{"a":1}
-{"b":2}`)
+		jr := corejson.NewPtr([]byte(`{"a":1}
+{"b":2}`))
 		r := &errjson.Result{Result: jr, ErrorWrapper: nil}
 		lines := r.SplitLines()
 		So(len(lines) >= 1, ShouldBeTrue)
@@ -93,7 +93,7 @@ func Test_ErrJson_Result_Basics(t *testing.T) {
 
 func Test_ErrJson_Result_JSON(t *testing.T) {
 	Convey("Json round-trip", t, func() {
-		jr := corejson.NewPtr(`{"x":1}`)
+		jr := corejson.NewPtr([]byte(`{"x":1}`))
 		r := &errjson.Result{Result: jr, ErrorWrapper: nil}
 		j := r.Json()
 		So(j.HasError(), ShouldBeFalse)
