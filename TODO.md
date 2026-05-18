@@ -15,6 +15,17 @@ roadmap. Keep this file in sync when you add or resolve a TODO comment.
 
 ---
 
+## Frontend (TanStack Start)
+
+- ✅ Landing page (`/`) — replaced placeholder with real content: hero, install command with copy-to-clipboard, code examples, feature cards, package index, footer.
+- ✅ Navigation bar with links to GitHub, Docs.
+- ✅ `/docs` route — docs index with cards linking to individual guides.
+- ✅ `/docs/extending-error-types` — rendered guide page.
+- ✅ `/docs/llm-guideline` — rendered guide page.
+- ✅ Created missing markdown docs: `docs/extending-error-types.md`, `docs/llm-guideline.md`.
+
+---
+
 ## Roadmap items (carried from Phase plan)
 
 ### Phase 5 — Generics refactor of `errdata/*` (PoC delivered)
