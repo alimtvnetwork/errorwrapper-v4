@@ -73,5 +73,12 @@ roadmap. Keep this file in sync when you add or resolve a TODO comment.
 - ✅ Phase 4 — `docs/extensibility.md`
 - ✅ Phase 5 PoC — `errdata/erranygen.Result[T]` + Convey tests
 - ✅ Phase 5a — `errdata/errstr.LinkedCollections` constructors + tests
+- ✅ Phase 5b — Unit tests for all legacy `errdata/*` packages:
+  `errbool`, `errbyte`, `errint`, `errfloat`, `errfloat64`, `errany`,
+  `errstr` (Result/Results/Result2/ResultWithApplicable/
+  ResultWithApplicable2/ResultsWithErrorCollection/Collection/
+  LinkedList/SimpleStringOnce/LinkedCollections + constructors),
+  `errjson` (Result/ResultsCollection + constructors), `errcasted`.
+- ✅ Phase 5c — Constructor tests for `errdata/*` New/Empty creators.
 - ✅ Phase 6 — `TODO.md` extraction marker (this file)
 - ✅ Coverage backlog — auto-discovered, no manual list to maintain
