@@ -34,8 +34,18 @@
   native builds auto-wire the production adapter. Removed the TODO from
   `Runner.go` package doc.
 
+### Added (Task I — 2026-05-18)
+- `tests/integratedtests/errcmdportabletests/errcmdbridgetests/Bridge_test.go`
+  — first test coverage for `errcmdportable/errcmdbridge.FromErrcmdResult`:
+  nil input → zero `Result`, successful `*errcmd.Result` → stdout pass-through,
+  and `errorWrapper` carry-over as `Result.Err` with stderr trimming. Brings
+  test-package count to 28.
+
 ### Pending (user action)
 - **Phase 7** — fix bad git remote: `git remote set-url origin <correct-url>`
   (current origin 404s on `github.com/alimtvnetwork/errorwrapper-v3`).
-- **Phase F** — re-run `.\\run.ps1 -tc` and confirm 27/27 compile,
+- **Phase F** — re-run `.\run.ps1 -tc` and confirm 28/28 compile,
   0 runtime failures.
+- **Task J** — add tests for `internal/reflectinternal` (~450 lines of
+  reflection + `unsafe` pointer code, zero coverage today).
+
