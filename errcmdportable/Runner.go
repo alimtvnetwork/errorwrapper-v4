@@ -2,10 +2,10 @@
 // for environments that cannot spawn OS processes (Cloudflare Workers,
 // browser/WASM, sandboxed serverless runtimes, etc.).
 //
-// Status: deferred-research draft. The façade does not import errcmd
-// directly so it can be compiled and embedded into edge targets without
-// pulling `os/exec` transitively. When running on a real OS, callers
-// should wire the production adapter (TODO: errcmdportable/osadapter).
+// The façade does not import errcmd directly so it can be compiled and
+// embedded into edge targets without pulling `os/exec` transitively.
+// Callers should use Detect() which auto-wires the osadapter on native
+// OS builds and falls back to NoProcessRunner on edge targets.
 package errcmdportable
 
 import (
