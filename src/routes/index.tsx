@@ -64,7 +64,7 @@ function Index() {
               <a href="https://github.com/alimtvnetwork/errorwrapper-v3">View on GitHub</a>
             </Button>
             <Button variant="outline" size="lg" asChild>
-              <a href="/docs">Documentation</a>
+              <a href="https://github.com/alimtvnetwork/errorwrapper-v3/blob/main/docs/extending-error-types.md">Read the docs</a>
             </Button>
           </div>
         </div>
