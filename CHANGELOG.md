@@ -1,5 +1,20 @@
 # Changelog
 
+## 2026-05-18 — Task L: runtime test failures fixed
+
+### Fixed
+- `errconv/GetPtr` — non-`*errorwrapper.Wrapper` pointers (notably
+  `*errwrappers.Collection`) were being short-circuited to `EmptyPtr()`
+  inside the `IsPointer` branch, so they never reached the
+  `BasicErrWrapper` / `BaseErrorOrCollectionWrapper` switch. Now only
+  typed-nil `*Wrapper` returns early; other pointer types fall through.
+  Fixes `TestErrconv_GetPtr` line 115. Also clears `TestErrconv_Get`,
+  which was failing via shared panic from the reflect test below.
+- `tests/integratedtests/reflectinternaltests/reflect_test.go:28` —
+  `GetElementTypeMaxTry(&[]int{1}, 0)` peels one pointer layer then
+  exhausts budget and returns `nil`. Test now asserts `ShouldBeNil`
+  instead of dereferencing `.Kind()` on nil.
+
 ## 2026-05-18 — Roadmap stabilization & generics adoption
 
 ### Fixed (Phase 0)
