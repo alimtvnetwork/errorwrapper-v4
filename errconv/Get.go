@@ -20,12 +20,16 @@ func GetPtr(wrapper interface{}) *errcasted.ResultPtr {
 	if pointerInfo.IsPointer {
 		actualWrapperPtr, isSuccess := wrapper.(*errorwrapper.Wrapper)
 
-		if isSuccess && actualWrapperPtr != nil {
-			return errcasted.NewPtr(actualWrapperPtr)
+		if isSuccess {
+			if actualWrapperPtr != nil {
+				return errcasted.NewPtr(actualWrapperPtr)
+			}
+			// typed-nil *errorwrapper.Wrapper → empty, do not fall through.
+			return errcasted.EmptyPtr()
 		}
-		// fall through to the interface switch below so non-Wrapper
-		// pointers (e.g. *errwrappers.Collection) can still match
-		// BasicErrWrapper / BaseErrorOrCollectionWrapper.
+		// non-Wrapper pointer (e.g. *errwrappers.Collection): fall through
+		// to the interface switch so it can match BasicErrWrapper /
+		// BaseErrorOrCollectionWrapper.
 	}
 
 	actualWrapper, isSuccess := wrapper.(errorwrapper.Wrapper)
