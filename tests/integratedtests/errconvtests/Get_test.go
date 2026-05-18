@@ -14,7 +14,7 @@ import (
 )
 
 func TestErrconv_GetPtr(t *testing.T) {
-	Convey("Given nil input", func() {
+	Convey("Given nil input", t, func() {
 		result := errconv.GetPtr(nil)
 
 		Convey("should return empty ResultPtr", func() {
@@ -24,7 +24,7 @@ func TestErrconv_GetPtr(t *testing.T) {
 		})
 	})
 
-	Convey("Given a *errorwrapper.Wrapper", func() {
+	Convey("Given a *errorwrapper.Wrapper", t, func() {
 		wrapper := errnew.Type.Default(errtype.Invalid)
 		result := errconv.GetPtr(wrapper)
 
@@ -36,7 +36,7 @@ func TestErrconv_GetPtr(t *testing.T) {
 		})
 	})
 
-	Convey("Given a nil *errorwrapper.Wrapper pointer", func() {
+	Convey("Given a nil *errorwrapper.Wrapper pointer", t, func() {
 		var wrapper *errorwrapper.Wrapper
 		result := errconv.GetPtr(wrapper)
 
@@ -46,7 +46,7 @@ func TestErrconv_GetPtr(t *testing.T) {
 		})
 	})
 
-	Convey("Given an errorwrapper.Wrapper value", func() {
+	Convey("Given an errorwrapper.Wrapper value", t, func() {
 		wrapper := *errnew.Type.Default(errtype.NotFound)
 		result := errconv.GetPtr(wrapper)
 
@@ -58,7 +58,7 @@ func TestErrconv_GetPtr(t *testing.T) {
 		})
 	})
 
-	Convey("Given a BasicErrWrapper interface value (Wrapper)", func() {
+	Convey("Given a BasicErrWrapper interface value (Wrapper)", t, func() {
 		var basicInf errcoreinf.BasicErrWrapper = errnew.Type.Default(errtype.Null)
 		result := errconv.GetPtr(basicInf)
 
@@ -70,7 +70,7 @@ func TestErrconv_GetPtr(t *testing.T) {
 		})
 	})
 
-	Convey("Given a BaseErrorOrCollectionWrapper interface value (Collection)", func() {
+	Convey("Given a BaseErrorOrCollectionWrapper interface value (Collection)", t, func() {
 		collection := errwrappers.Empty().
 			AddWrapperPtr(errnew.Type.Default(errtype.InvalidOption))
 		var baseInf errcoreinf.BaseErrorOrCollectionWrapper = collection
@@ -84,7 +84,7 @@ func TestErrconv_GetPtr(t *testing.T) {
 		})
 	})
 
-	Convey("Given an unrelated type", func() {
+	Convey("Given an unrelated type", t, func() {
 		result := errconv.GetPtr("just a string")
 
 		Convey("should return empty ResultPtr", func() {
@@ -93,7 +93,7 @@ func TestErrconv_GetPtr(t *testing.T) {
 		})
 	})
 
-	Convey("Given a random struct", func() {
+	Convey("Given a random struct", t, func() {
 		type myStruct struct{ X int }
 		result := errconv.GetPtr(myStruct{X: 42})
 
@@ -105,7 +105,7 @@ func TestErrconv_GetPtr(t *testing.T) {
 }
 
 func TestErrconv_Get(t *testing.T) {
-	Convey("Given a wrapper value", func() {
+	Convey("Given a wrapper value", t, func() {
 		wrapper := errnew.Type.Default(errtype.PathMismatch)
 		result := errconv.Get(wrapper)
 
@@ -116,7 +116,7 @@ func TestErrconv_Get(t *testing.T) {
 		})
 	})
 
-	Convey("Given nil input", func() {
+	Convey("Given nil input", t, func() {
 		result := errconv.Get(nil)
 
 		Convey("Get should return failed cast Result", func() {
@@ -125,7 +125,7 @@ func TestErrconv_Get(t *testing.T) {
 		})
 	})
 
-	Convey("Given an error value", func() {
+	Convey("Given an error value", t, func() {
 		result := errconv.Get(errors.New("plain error"))
 
 		Convey("should not cast properly (unrecognized type)", func() {
