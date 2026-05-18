@@ -119,4 +119,15 @@ roadmap. Keep this file in sync when you add or resolve a TODO comment.
   Current `origin` returns 404 on `github.com/alimtvnetwork/errorwrapper-v3`.
 
 ### Phase F — verification (next agent turn after user re-runs)
-- Re-run `.\run.ps1 -tc` and confirm 27/27 compile, 0 runtime failures.
+- Re-run `.\run.ps1 -tc` and confirm 28/28 compile, 0 runtime failures.
+
+### Task I — ✅ `errcmdbridge` test coverage
+- ✅ `tests/integratedtests/errcmdportabletests/errcmdbridgetests/Bridge_test.go`
+  covers nil input → zero-Result, successful stdout pass-through, and
+  errorWrapper → `Result.Err` carry-over (with stderr trimming).
+
+### Task J — ⬜ tests for `internal/reflectinternal`
+- ~450 lines of reflection + `unsafe` pointer helpers
+  (`GetElementType`, `IsBytesOrBytesPointer`, `IsStringOrStringPointer`,
+  `IsBoolean`, `IsInteger`, `NewScanReport`, …) still have zero test
+  coverage. Suggested next agent turn.
