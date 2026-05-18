@@ -64,15 +64,14 @@ roadmap. Keep this file in sync when you add or resolve a TODO comment.
 
 ### Streaming verifier (delivered)
 - ✅ `errverify/StreamingCollectionVerifier.go` — Feed/Finish pull API,
-  five match modes (Equal, EqualFold, Contains, ContainsFold, Regex via
-  cached `regexp.Compile`), `FromVariant` mapper for upstream
-  `stringcompareas.Variant`, mismatch aggregation, missing-expected
-  detection, optional `ExpectedLength` soft check.
-- ✅ `tests/integratedtests/errverifytests/StreamingCollectionVerifier_test.go`
-  — Convey suite covering all 5 modes, extra/missing lines, length
-  check, nil-source guard, invalid-regex setup error.
-- ⬜ Follow-up: wire into `errwrappers.Collection` as a streaming
-  consumer adapter; doc in `docs/extensibility.md` §6.
+  five match modes (Equal, EqualFold, Contains, ContainsFold, Regex),
+  `FromVariant` mapper, mismatch aggregation, length check.
+- ✅ `errverify/CollectionStreamConsumer.go` — `ConsumeCollection`
+  (no intermediate slice copy from `*errwrappers.Collection`) and
+  `ConsumeChannel` (true streaming from `<-chan string`).
+- ✅ Convey suites:
+  `StreamingCollectionVerifier_test.go` + `CollectionStreamConsumer_test.go`.
+- ✅ Documented in `docs/extensibility.md` §6.2.
 
 ---
 
