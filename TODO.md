@@ -50,11 +50,13 @@ roadmap. Keep this file in sync when you add or resolve a TODO comment.
   Phase 3 packages are picked up automatically by `run.ps1 -tc` /
   `run.sh -tc`.
 
-### Worker / edge-runtime compatibility (deferred research)
-- `errcmd` spawns real OS processes and is incompatible with
-  Cloudflare Workers / serverless runtimes. Investigate a portable
-  façade that no-ops or returns a typed `NotSupported` wrapper on
-  non-OS targets. Tracked in `docs/extensibility.md` §6.
+### Worker / edge-runtime compatibility (draft delivered)
+- ✅ `errcmdportable/Runner.go` added: portable `Runner` interface,
+  `NoProcessRunner` safe default, `ErrNotSupported` sentinel, GOOS
+  detection (js/wasip1 → no-process).
+- ⬜ Follow-ups: `errcmdportable/osadapter` real `os/exec` adapter,
+  bridge that converts `errcmd.Result` → portable `Result`, Convey
+  tests, document in `docs/extensibility.md` §6.
 
 ### Streaming verifier (draft delivered)
 - ✅ `errverify/StreamingCollectionVerifier.go` added as a draft stub
