@@ -59,7 +59,7 @@ func Test_ClonePtr(t *testing.T) {
 		base := errnew.Messages.Single(errtype.NotFound, "missing")
 		clone := base.ClonePtr()
 		So(clone, ShouldNotBeNil)
-		So(clone, ShouldNotEqual, base)
+		So(clone, ShouldNotPointTo, base)
 		So(clone.Type(), ShouldEqual, base.Type())
 		So(clone.FullString(), ShouldContainSubstring, "missing")
 	})
