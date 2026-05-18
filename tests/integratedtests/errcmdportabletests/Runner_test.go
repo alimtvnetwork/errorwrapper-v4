@@ -27,9 +27,31 @@ func Test_NoProcessRunner(t *testing.T) {
 }
 
 func Test_Detect(t *testing.T) {
-	Convey("Detect returns NoProcessRunner by default", t, func() {
+	if runtime.GOOS == "js" || runtime.GOOS == "wasip1" {
+		Convey("Detect returns NoProcessRunner on edge targets", t, func() {
+			r := errcmdportable.Detect()
+			So(r.Capability(), ShouldEqual, errcmdportable.CapabilityNoProcess)
+		})
+		return
+	}
+
+	Convey("Detect auto-wires osadapter on native OS", t, func() {
 		r := errcmdportable.Detect()
-		So(r.Capability(), ShouldEqual, errcmdportable.CapabilityNoProcess)
+		So(r.Capability(), ShouldEqual, errcmdportable.CapabilityOsExec)
+	})
+
+	Convey("Detect-wired osadapter runs a real process", t, func() {
+		r := errcmdportable.Detect()
+		var res errcmdportable.Result
+		switch runtime.GOOS {
+		case "windows":
+			res = r.Run("cmd", "/C", "echo hi")
+		default:
+			res = r.Run("echo", "hi")
+		}
+		So(res.HasError(), ShouldBeFalse)
+		So(res.ExitCode, ShouldEqual, 0)
+		So(res.Stdout, ShouldContainSubstring, "hi")
 	})
 }
 
