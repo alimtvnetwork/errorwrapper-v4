@@ -1,6 +1,9 @@
 package errverify
 
 import (
+	"regexp"
+	"strings"
+
 	"github.com/alimtvnetwork/core-v9/constants"
 	"github.com/alimtvnetwork/core-v9/enums/stringcompareas"
 	"github.com/alimtvnetwork/errorwrapper-v3"
@@ -8,36 +11,75 @@ import (
 	"github.com/alimtvnetwork/errorwrapper-v3/errtype"
 )
 
+// StreamMatchMode controls how StreamingCollectionVerifier matches an
+// actual line against an expected line. Independent of the upstream
+// `stringcompareas.Variant` enum so this stub stays self-contained;
+// callers can map their preferred Variant via FromVariant().
+type StreamMatchMode int
+
+const (
+	// StreamMatchEqual — exact byte equality (default).
+	StreamMatchEqual StreamMatchMode = iota
+	// StreamMatchEqualFold — case-insensitive equality.
+	StreamMatchEqualFold
+	// StreamMatchContains — actual must contain expected as substring.
+	StreamMatchContains
+	// StreamMatchContainsFold — case-insensitive contains.
+	StreamMatchContainsFold
+	// StreamMatchRegex — expected is a Go regexp.MustCompile pattern,
+	// matched against the actual line.
+	StreamMatchRegex
+)
+
+// FromVariant maps the upstream stringcompareas.Variant to the local
+// StreamMatchMode. Unknown variants fall back to StreamMatchEqual.
+func FromVariant(v stringcompareas.Variant) StreamMatchMode {
+	// Defensive: stringcompareas constants aren't enumerated here to
+	// avoid coupling. Match by name to stay forward-compatible.
+	switch v.Name() {
+	case "Equal", "":
+		return StreamMatchEqual
+	case "EqualFold", "EqualCaseInsensitive":
+		return StreamMatchEqualFold
+	case "Contains":
+		return StreamMatchContains
+	case "ContainsFold", "ContainsCaseInsensitive":
+		return StreamMatchContainsFold
+	case "Regex", "Regexp":
+		return StreamMatchRegex
+	}
+	return StreamMatchEqual
+}
+
 // StreamingCollectionVerifier is a draft, line-at-a-time variant of
 // CollectionVerifier. It avoids materializing the full error collection
 // (no `errwrappers.Collection.StringsWithoutHeader()` slice copy) and is
 // intended for very large or unbounded error streams (e.g. log tailers,
 // long-running batch jobs, edge-runtime workers where memory is tight).
 //
-// Status: deferred-research stub. The shape is stable enough to wire into
-// callers; the matching logic intentionally mirrors `CollectionVerifier`'s
-// per-line equality / contains / regex semantics via `stringcompareas`.
-//
 // NOT a drop-in replacement for CollectionVerifier:
-//   - No length pre-check (length is only known after Finish()).
-//   - No SliceValidator integration (streaming, so cross-line rules like
-//     ordering-only-mismatch are reported as they occur).
+//   - Length is only known after Finish(); use ExpectedLength (>0) for a
+//     soft check that runs in Finish().
+//   - SliceValidator ordering rules are not applied; this is positional
+//     line-by-line matching.
 //   - Caller drives iteration via Feed(line) / Finish().
 type StreamingCollectionVerifier struct {
-	Header       string
-	VerifyAs     stringcompareas.Variant
-	ExpectedLine func(index int) (line string, hasMore bool) // pull-style expectation source
-	IsPrintError bool
+	Header         string
+	Mode           StreamMatchMode
+	ExpectedLine   func(index int) (line string, hasMore bool)
+	ExpectedLength int // 0 = no check
+	IsPrintError   bool
 
 	// internal cursor
 	index       int
 	mismatches  []string
 	expectedEnd bool
+	regexCache  map[string]*regexp.Regexp
 }
 
-// Feed processes a single actual line. Returns a non-nil wrapper only on
-// the first mismatch; subsequent mismatches are accumulated and surfaced
-// by Finish().
+// Feed processes a single actual line. Mismatches are accumulated and
+// surfaced by Finish(); Feed itself returns non-nil only for setup
+// errors (nil ExpectedLine, bad regex).
 func (it *StreamingCollectionVerifier) Feed(actual string) *errorwrapper.Wrapper {
 	if it.ExpectedLine == nil {
 		return errnew.Type.Message(
@@ -48,19 +90,21 @@ func (it *StreamingCollectionVerifier) Feed(actual string) *errorwrapper.Wrapper
 	expected, hasMore := it.ExpectedLine(it.index)
 	if !hasMore {
 		it.expectedEnd = true
-		mismatch := it.Header + " - unexpected extra line at index " +
-			itoa(it.index) + ": " + actual
-		it.mismatches = append(it.mismatches, mismatch)
+		it.mismatches = append(it.mismatches,
+			it.Header+" - unexpected extra line at index "+
+				itoa(it.index)+": "+actual)
 		it.index++
 		return nil
 	}
 
-	if !compareLine(expected, actual, it.VerifyAs) {
-		mismatch := it.Header + " - mismatch at index " +
-			itoa(it.index) +
-			" expected=" + expected +
-			" actual=" + actual
-		it.mismatches = append(it.mismatches, mismatch)
+	ok, setupErr := it.compare(expected, actual)
+	if setupErr != nil {
+		return setupErr
+	}
+	if !ok {
+		it.mismatches = append(it.mismatches,
+			it.Header+" - mismatch at index "+itoa(it.index)+
+				" expected="+expected+" actual="+actual)
 	}
 
 	it.index++
@@ -68,8 +112,7 @@ func (it *StreamingCollectionVerifier) Feed(actual string) *errorwrapper.Wrapper
 }
 
 // Finish must be called after the last Feed(). Returns nil on full match,
-// or a ValidationFailed wrapper aggregating every mismatch (including any
-// expected lines that were never fed).
+// or a ValidationFailed wrapper aggregating every mismatch.
 func (it *StreamingCollectionVerifier) Finish() *errorwrapper.Wrapper {
 	if it.ExpectedLine != nil && !it.expectedEnd {
 		for {
@@ -82,6 +125,12 @@ func (it *StreamingCollectionVerifier) Finish() *errorwrapper.Wrapper {
 					itoa(it.index)+": "+expected)
 			it.index++
 		}
+	}
+
+	if it.ExpectedLength > 0 && it.ExpectedLength != it.fedCount() {
+		it.mismatches = append(it.mismatches,
+			it.Header+" - length mismatch expected="+
+				itoa(it.ExpectedLength)+" actual="+itoa(it.fedCount()))
 	}
 
 	if len(it.mismatches) == 0 {
@@ -101,15 +150,41 @@ func (it *StreamingCollectionVerifier) Finish() *errorwrapper.Wrapper {
 		joined)
 }
 
-func compareLine(expected, actual string, as stringcompareas.Variant) bool {
-	// Minimal semantics: equality. Full parity with corevalidator.TextValidator
-	// (contains/regex/case-insensitive) is left for the implementation phase.
-	_ = as
-	return expected == actual
+// fedCount approximates how many actual lines were fed (index advances
+// once per Feed, including over-feeds past expected end).
+func (it *StreamingCollectionVerifier) fedCount() int { return it.index }
+
+func (it *StreamingCollectionVerifier) compare(expected, actual string) (bool, *errorwrapper.Wrapper) {
+	switch it.Mode {
+	case StreamMatchEqual:
+		return expected == actual, nil
+	case StreamMatchEqualFold:
+		return strings.EqualFold(expected, actual), nil
+	case StreamMatchContains:
+		return strings.Contains(actual, expected), nil
+	case StreamMatchContainsFold:
+		return strings.Contains(strings.ToLower(actual), strings.ToLower(expected)), nil
+	case StreamMatchRegex:
+		if it.regexCache == nil {
+			it.regexCache = map[string]*regexp.Regexp{}
+		}
+		re, ok := it.regexCache[expected]
+		if !ok {
+			compiled, err := regexp.Compile(expected)
+			if err != nil {
+				return false, errnew.Type.Message(
+					errtype.ValidationFailed,
+					it.Header+" - invalid regex at index "+itoa(it.index)+": "+err.Error())
+			}
+			re = compiled
+			it.regexCache[expected] = re
+		}
+		return re.MatchString(actual), nil
+	}
+	return expected == actual, nil
 }
 
 func itoa(i int) string {
-	// avoid pulling in strconv at module init scope; trivial positive-int path
 	if i == 0 {
 		return "0"
 	}
