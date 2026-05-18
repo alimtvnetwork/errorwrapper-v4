@@ -77,7 +77,8 @@ roadmap. Keep this file in sync when you add or resolve a TODO comment.
   `errbool`, `errbyte`, `errint`, `errfloat`, `errfloat64`, `errany`,
   `errstr` (Result/Results/Result2/ResultWithApplicable/
   ResultWithApplicable2/ResultsWithErrorCollection/Collection/
-  LinkedList/SimpleStringOnce/LinkedCollections),
-  `errjson` (Result/ResultsCollection), `errcasted`.
+  LinkedList/SimpleStringOnce/LinkedCollections + constructors),
+  `errjson` (Result/ResultsCollection + constructors), `errcasted`.
+- ✅ Phase 5c — Constructor tests for `errdata/*` New/Empty creators.
 - ✅ Phase 6 — `TODO.md` extraction marker (this file)
 - ✅ Coverage backlog — auto-discovered, no manual list to maintain
