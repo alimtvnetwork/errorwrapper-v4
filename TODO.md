@@ -121,18 +121,29 @@ roadmap. Keep this file in sync when you add or resolve a TODO comment.
 ### Phase F — verification (next agent turn after user re-runs)
 - Re-run `.\run.ps1 -tc` and confirm 29/29 compile, 0 runtime failures.
 
-### Task I — ✅ `errcmdbridge` test coverage
-- ✅ `tests/integratedtests/errcmdportabletests/errcmdbridgetests/Bridge_test.go`
-  covers nil input → zero-Result, successful stdout pass-through, and
-  errorWrapper → `Result.Err` carry-over (with stderr trimming).
+### Task K — ⬜ `errcmdbridge` test coverage (handled under Phase F)
+- See `.\run.ps1 -tc` results; if still missing, add `errcmdbridgetests/`.
 
-### Task J — ✅ `internal/reflectinternal` test coverage
-- ✅ `tests/integratedtests/reflectinternaltests/reflect_test.go` —
-  Convey suite covering `GetElementType{,MaxTry}`, `GetElementTypesMaxTry`,
-  `GetTypeName`, `IsType`, `IsTypeSame`, `GetPointerInfo`,
-  `IsBytesOrBytesPointer`, `IsStringOrStringPointer`, `IsString`,
-  `IsStringsOrStringsPointer`, `IsIntegersOrIntegersPointer`,
-  `IsIntegerOrIntegerPointer`, `IsInteger`, `IsBoolean`,
-  `IsBooleanPointer`, `IsFloat64sOrFloat64sPointer`, `NewScanReport`,
-  and `GetFieldValue` (value + pointer + non-matching paths).
+### Task #3 — ⬜ public-package test coverage
+- Need representative tests for: `errnew`, `errwrappers`, `errtype`, `errconv`, `trydo`, `eithererr`, `refs`, `errverify`, `errdefer`, `errfunc`, `linuxservicecmd`, `errcmd`.
+- Note: depth is "one meaningful test per package", not exhaustive per-function (to be confirmed by user if more is needed).
+
+### Task #4 — ✅ `docs/extending-error-types.md`
+- ✅ Delivered: `docs/extending-error-types.md` with 3 injection approaches (interface-based, registry-based, context-based).
+
+### Task #6 — ⬜ CMD package move note
+- **Action**: Move `errcmd/` → `errcmdportable/errcmd/` (or similar path) so portable runner subpackage imports are clean.
+- **Blocked on**: user decision on target path and whether to keep a backward-compat alias.
+- **Note**: add to TODO when path is decided.
+
+### Task #7 — ⬜ `docs/llm-guideline.md`
+- Framework-specific conventions, naming, and anti-patterns for AI coding agents.
+
+### Task #8 — ⬜ `erranygen` migration recipe in `docs/extensibility.md`
+- Add §7 with concrete migration snippets from legacy `errdata/*` → `erranygen.Result[T]`.
+
+### Task M — ⬜ upstream `core-v9` API drift (BLOCKED — user decision needed)
+- 47 packages fail compile because `core-v9 v1.5.8` is missing methods that the codebase expects.
+- Options: (a) bump `core-v9` to newer version, (b) fork `core-v9` and patch, (c) vendor `core-v9` locally, (d) stub missing methods in this repo.
+- **Needs user call** before any agent work.
 
