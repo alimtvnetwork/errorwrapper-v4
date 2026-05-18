@@ -8,10 +8,7 @@
 // OS builds and falls back to NoProcessRunner on edge targets.
 package errcmdportable
 
-import (
-	"errors"
-	"runtime"
-)
+import "errors"
 
 // Capability reports whether the current runtime can spawn OS processes.
 type Capability int
