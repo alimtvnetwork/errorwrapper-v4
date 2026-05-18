@@ -27,9 +27,15 @@
 - `errnew/constructors.go` — replaced placeholder `"TODO: url("+url+")"` messages
   in `NotImpl()` and `NotImplPtrUsingStackSkip()` with proper `"Not implemented: "+url`.
 
+### Changed (Task G — 2026-05-18)
+- `errcmdportable/Detect()` split into build-tag-guarded files:
+  `detect_default.go` (js/wasip1 → `NoProcessRunner`) and `detect_os.go`
+  (native OS → `osadapter.New()`). Edge builds stay `os/exec`-free;
+  native builds auto-wire the production adapter. Removed the TODO from
+  `Runner.go` package doc.
+
 ### Pending (user action)
 - **Phase 7** — fix bad git remote: `git remote set-url origin <correct-url>`
   (current origin 404s on `github.com/alimtvnetwork/errorwrapper-v3`).
 - **Phase F** — re-run `.\\run.ps1 -tc` and confirm 27/27 compile,
   0 runtime failures.
-- **Task G** — decide `errcmdportable` production adapter wiring strategy.
