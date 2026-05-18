@@ -58,14 +58,17 @@ roadmap. Keep this file in sync when you add or resolve a TODO comment.
   bridge that converts `errcmd.Result` → portable `Result`, Convey
   tests, document in `docs/extensibility.md` §6.
 
-### Streaming verifier (draft delivered)
-- ✅ `errverify/StreamingCollectionVerifier.go` added as a draft stub
-  (Feed/Finish pull-style API, equality-only matching, mismatch
-  aggregation, missing-expected detection).
-- ⬜ Follow-ups: parity with `corevalidator.TextValidator`
-  (contains/regex/case-insensitive via `stringcompareas.Variant`),
-  optional length pre-check hook, Convey tests, wire into
-  `errwrappers.Collection` as a streaming consumer.
+### Streaming verifier (delivered)
+- ✅ `errverify/StreamingCollectionVerifier.go` — Feed/Finish pull API,
+  five match modes (Equal, EqualFold, Contains, ContainsFold, Regex via
+  cached `regexp.Compile`), `FromVariant` mapper for upstream
+  `stringcompareas.Variant`, mismatch aggregation, missing-expected
+  detection, optional `ExpectedLength` soft check.
+- ✅ `tests/integratedtests/errverifytests/StreamingCollectionVerifier_test.go`
+  — Convey suite covering all 5 modes, extra/missing lines, length
+  check, nil-source guard, invalid-regex setup error.
+- ⬜ Follow-up: wire into `errwrappers.Collection` as a streaming
+  consumer adapter; doc in `docs/extensibility.md` §6.
 
 ---
 
