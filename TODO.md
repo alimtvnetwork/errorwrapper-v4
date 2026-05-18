@@ -141,8 +141,7 @@ roadmap. Keep this file in sync when you add or resolve a TODO comment.
 ### Task #8 — ✅ closed (moot)
 - No `erranygen` package and no `docs/extensibility.md` exist in this repo. The generic `errany*` packages already have full coverage under `tests/integratedtests/errany*tests/`.
 
-### Task M — ⬜ upstream `core-v9` API drift (BLOCKED — user decision needed)
-- 47 packages fail compile because `core-v9 v1.5.8` is missing methods that the codebase expects.
-- Options: (a) bump `core-v9` to newer version, (b) fork `core-v9` and patch, (c) vendor `core-v9` locally, (d) stub missing methods in this repo.
-- **Needs user call** before any agent work.
+### Task M — ✅ upstream `core-v9` API drift (RESOLVED)
+- `core-v9` and `enum-v10` were dead dependencies — no `.go` file in the repo imported them.
+- Removed both from `go.mod` and `go.sum`. Compile issue eliminated.
 
