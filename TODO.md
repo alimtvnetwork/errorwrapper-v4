@@ -56,10 +56,14 @@ roadmap. Keep this file in sync when you add or resolve a TODO comment.
   façade that no-ops or returns a typed `NotSupported` wrapper on
   non-OS targets. Tracked in `docs/extensibility.md` §6.
 
-### Streaming verifier (deferred research)
-- `errverify.CollectionVerifier` materializes the full slice. For very
-  large collections a streaming variant would be useful. Tracked in
-  `docs/extensibility.md` §6.
+### Streaming verifier (draft delivered)
+- ✅ `errverify/StreamingCollectionVerifier.go` added as a draft stub
+  (Feed/Finish pull-style API, equality-only matching, mismatch
+  aggregation, missing-expected detection).
+- ⬜ Follow-ups: parity with `corevalidator.TextValidator`
+  (contains/regex/case-insensitive via `stringcompareas.Variant`),
+  optional length pre-check hook, Convey tests, wire into
+  `errwrappers.Collection` as a streaming consumer.
 
 ---
 
