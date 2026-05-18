@@ -22,10 +22,10 @@ func Test_GetElementType(t *testing.T) {
 		So(reflectinternal.GetElementType(ptrSlice), ShouldEqual, reflectinternal.StringType)
 	})
 
-	Convey("GetElementTypeMaxTry stops at depth 0 and returns nil if exhausted", t, func() {
+	Convey("GetElementTypeMaxTry returns nil when budget exhausts before reaching a base type", t, func() {
 		ints := &[]int{1}
-		// 0 tries: returns the top type without peeling
-		So(reflectinternal.GetElementTypeMaxTry(ints, 0).Kind(), ShouldEqual, reflect.Ptr)
+		// 0 tries: peels one pointer layer then runs out of budget → nil
+		So(reflectinternal.GetElementTypeMaxTry(ints, 0), ShouldBeNil)
 	})
 }
 
