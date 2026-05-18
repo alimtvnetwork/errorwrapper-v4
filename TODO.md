@@ -76,7 +76,8 @@ roadmap. Keep this file in sync when you add or resolve a TODO comment.
 - ✅ Phase 5b — Unit tests for all legacy `errdata/*` packages:
   `errbool`, `errbyte`, `errint`, `errfloat`, `errfloat64`, `errany`,
   `errstr` (Result/Results/Result2/ResultWithApplicable/
-  ResultWithApplicable2/ResultsWithErrorCollection),
-  `errjson`, `errcasted`.
+  ResultWithApplicable2/ResultsWithErrorCollection/Collection/
+  LinkedList/SimpleStringOnce/LinkedCollections),
+  `errjson` (Result/ResultsCollection), `errcasted`.
 - ✅ Phase 6 — `TODO.md` extraction marker (this file)
 - ✅ Coverage backlog — auto-discovered, no manual list to maintain
