@@ -9,82 +9,38 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
-import { Route as DocsRouteImport } from './routes/docs'
 import { Route as IndexRouteImport } from './routes/index'
-import { Route as DocsLlmGuidelineRouteImport } from './routes/docs.llm-guideline'
-import { Route as DocsExtendingErrorTypesRouteImport } from './routes/docs.extending-error-types'
 
-const DocsRoute = DocsRouteImport.update({
-  id: '/docs',
-  path: '/docs',
-  getParentRoute: () => rootRouteImport,
-} as any)
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
-const DocsLlmGuidelineRoute = DocsLlmGuidelineRouteImport.update({
-  id: '/llm-guideline',
-  path: '/llm-guideline',
-  getParentRoute: () => DocsRoute,
-} as any)
-const DocsExtendingErrorTypesRoute = DocsExtendingErrorTypesRouteImport.update({
-  id: '/extending-error-types',
-  path: '/extending-error-types',
-  getParentRoute: () => DocsRoute,
-} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
-  '/docs': typeof DocsRouteWithChildren
-  '/docs/extending-error-types': typeof DocsExtendingErrorTypesRoute
-  '/docs/llm-guideline': typeof DocsLlmGuidelineRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
-  '/docs': typeof DocsRouteWithChildren
-  '/docs/extending-error-types': typeof DocsExtendingErrorTypesRoute
-  '/docs/llm-guideline': typeof DocsLlmGuidelineRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
-  '/docs': typeof DocsRouteWithChildren
-  '/docs/extending-error-types': typeof DocsExtendingErrorTypesRoute
-  '/docs/llm-guideline': typeof DocsLlmGuidelineRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths:
-    | '/'
-    | '/docs'
-    | '/docs/extending-error-types'
-    | '/docs/llm-guideline'
+  fullPaths: '/'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/docs' | '/docs/extending-error-types' | '/docs/llm-guideline'
-  id:
-    | '__root__'
-    | '/'
-    | '/docs'
-    | '/docs/extending-error-types'
-    | '/docs/llm-guideline'
+  to: '/'
+  id: '__root__' | '/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
-  DocsRoute: typeof DocsRouteWithChildren
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
-    '/docs': {
-      id: '/docs'
-      path: '/docs'
-      fullPath: '/docs'
-      preLoaderRoute: typeof DocsRouteImport
-      parentRoute: typeof rootRouteImport
-    }
     '/': {
       id: '/'
       path: '/'
@@ -92,49 +48,12 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/docs/llm-guideline': {
-      id: '/docs/llm-guideline'
-      path: '/llm-guideline'
-      fullPath: '/docs/llm-guideline'
-      preLoaderRoute: typeof DocsLlmGuidelineRouteImport
-      parentRoute: typeof DocsRoute
-    }
-    '/docs/extending-error-types': {
-      id: '/docs/extending-error-types'
-      path: '/extending-error-types'
-      fullPath: '/docs/extending-error-types'
-      preLoaderRoute: typeof DocsExtendingErrorTypesRouteImport
-      parentRoute: typeof DocsRoute
-    }
   }
 }
 
-interface DocsRouteChildren {
-  DocsExtendingErrorTypesRoute: typeof DocsExtendingErrorTypesRoute
-  DocsLlmGuidelineRoute: typeof DocsLlmGuidelineRoute
-}
-
-const DocsRouteChildren: DocsRouteChildren = {
-  DocsExtendingErrorTypesRoute: DocsExtendingErrorTypesRoute,
-  DocsLlmGuidelineRoute: DocsLlmGuidelineRoute,
-}
-
-const DocsRouteWithChildren = DocsRoute._addFileChildren(DocsRouteChildren)
-
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
-  DocsRoute: DocsRouteWithChildren,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
   ._addFileTypes<FileRouteTypes>()
-
-import type { getRouter } from './router.tsx'
-import type { startInstance } from './start.ts'
-declare module '@tanstack/react-start' {
-  interface Register {
-    ssr: true
-    router: Awaited<ReturnType<typeof getRouter>>
-    config: Awaited<ReturnType<typeof startInstance.getOptions>>
-  }
-}
