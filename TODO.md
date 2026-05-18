@@ -50,13 +50,17 @@ roadmap. Keep this file in sync when you add or resolve a TODO comment.
   Phase 3 packages are picked up automatically by `run.ps1 -tc` /
   `run.sh -tc`.
 
-### Worker / edge-runtime compatibility (draft delivered)
-- ✅ `errcmdportable/Runner.go` added: portable `Runner` interface,
-  `NoProcessRunner` safe default, `ErrNotSupported` sentinel, GOOS
-  detection (js/wasip1 → no-process).
-- ⬜ Follow-ups: `errcmdportable/osadapter` real `os/exec` adapter,
-  bridge that converts `errcmd.Result` → portable `Result`, Convey
-  tests, document in `docs/extensibility.md` §6.
+### Worker / edge-runtime compatibility (delivered)
+- ✅ `errcmdportable/Runner.go` — portable `Runner`, `NoProcessRunner`,
+  `ErrNotSupported`, GOOS-based `Detect()`.
+- ✅ `errcmdportable/osadapter/Runner.go` — real `os/exec` adapter in a
+  subpackage so edge bundlers don't transitively pull `os/exec`.
+- ✅ `errcmdportable/errcmdbridge/Bridge.go` — `*errcmd.Result` →
+  portable `Result` converter.
+- ✅ `tests/integratedtests/errcmdportabletests/Runner_test.go` —
+  Convey suite (NoProcess sentinel, Detect default, osadapter exec +
+  non-zero exit, edge-target skip).
+- ✅ `docs/extensibility.md` §6 written.
 
 ### Streaming verifier (delivered)
 - ✅ `errverify/StreamingCollectionVerifier.go` — Feed/Finish pull API,
