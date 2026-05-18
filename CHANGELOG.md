@@ -1,0 +1,30 @@
+# Changelog
+
+## 2026-05-18 — Roadmap stabilization & generics adoption
+
+### Fixed (Phase 0)
+- `tests/integratedtests/errcmdtests/Utilities_test.go` — corrected bad import
+  path (`.../errorwrapper-v3/errorwrapper` → `.../errorwrapper-v3`).
+  Unblocked `go mod tidy` and 49 cascade-blocked packages.
+- `Test_EmptyPtr_HasError` — `EmptyPtr()` returns `nil` by design;
+  assertion switched to `ShouldBeNil`.
+- `Test_ClonePtr` — replaced `ShouldNotEqual` (DeepEqual) with
+  `ShouldNotPointTo` (pointer identity).
+- `TestErrconv_GetPtr` + `TestErrconv_Get` — added missing `t` argument
+  to 10 top-level `Convey(...)` calls.
+
+### Changed (Phase 5 — strategy (c) freeze)
+- `errdata/{errany,errbool,errbyte,errfloat,errfloat64,errint,errjson,errstr}/Result.go`
+  — added `// Frozen: prefer erranygen.Result[T] for new code` banner.
+- Legacy `errdata/*` packages remain fully supported; new code should adopt
+  `errdata/erranygen.Result[T]` directly.
+
+### Documented
+- `docs/extensibility.md` §6.3 — Phase 5 decision record + migration recipe.
+- `TODO.md` — roadmap closeout entry.
+
+### Pending (user action)
+- **Phase 7** — fix bad git remote: `git remote set-url origin <correct-url>`
+  (current origin 404s on `github.com/alimtvnetwork/errorwrapper-v3`).
+- **Phase F** — re-run `.\run.ps1 -tc` and confirm 27/27 compile,
+  0 runtime failures.
