@@ -1,3 +1,4 @@
+// Frozen: prefer erranygen.Result[T] for new code; see docs/extensibility.md §6.3.
 package errbool
 
 import (
