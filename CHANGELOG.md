@@ -41,11 +41,22 @@
   and `errorWrapper` carry-over as `Result.Err` with stderr trimming. Brings
   test-package count to 28.
 
+### Added (Task J — 2026-05-18)
+- `tests/integratedtests/reflectinternaltests/reflect_test.go` — first test
+  coverage for `internal/reflectinternal` (~450 lines of reflection + `unsafe`
+  pointer code). Convey suite covers `GetElementType{,MaxTry}`,
+  `GetElementTypesMaxTry`, `GetTypeName`, `IsType`, `IsTypeSame`,
+  `GetPointerInfo`, `IsBytesOrBytesPointer`, `IsStringOrStringPointer`,
+  `IsString`, `IsStringsOrStringsPointer`, `IsIntegersOrIntegersPointer`,
+  `IsIntegerOrIntegerPointer`, `IsInteger`, `IsBoolean`, `IsBooleanPointer`,
+  `IsFloat64sOrFloat64sPointer`, `NewScanReport`, and `GetFieldValue` —
+  value, pointer, and non-matching paths each asserted. Brings
+  test-package count to 29.
+
 ### Pending (user action)
 - **Phase 7** — fix bad git remote: `git remote set-url origin <correct-url>`
   (current origin 404s on `github.com/alimtvnetwork/errorwrapper-v3`).
-- **Phase F** — re-run `.\run.ps1 -tc` and confirm 28/28 compile,
+- **Phase F** — re-run `.\run.ps1 -tc` and confirm 29/29 compile,
   0 runtime failures.
-- **Task J** — add tests for `internal/reflectinternal` (~450 lines of
-  reflection + `unsafe` pointer code, zero coverage today).
+
 
