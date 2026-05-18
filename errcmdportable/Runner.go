@@ -2,16 +2,13 @@
 // for environments that cannot spawn OS processes (Cloudflare Workers,
 // browser/WASM, sandboxed serverless runtimes, etc.).
 //
-// Status: deferred-research draft. The façade does not import errcmd
-// directly so it can be compiled and embedded into edge targets without
-// pulling `os/exec` transitively. When running on a real OS, callers
-// should wire the production adapter (TODO: errcmdportable/osadapter).
+// The façade does not import errcmd directly so it can be compiled and
+// embedded into edge targets without pulling `os/exec` transitively.
+// Callers should use Detect() which auto-wires the osadapter on native
+// OS builds and falls back to NoProcessRunner on edge targets.
 package errcmdportable
 
-import (
-	"errors"
-	"runtime"
-)
+import "errors"
 
 // Capability reports whether the current runtime can spawn OS processes.
 type Capability int
@@ -72,17 +69,3 @@ func (NoProcessRunner) Run(name string, args ...string) Result {
 	}
 }
 
-// Detect returns the conservative best-guess Runner for the current
-// build target. Cloudflare Workers / js+wasm / wasip1 → NoProcessRunner.
-// Native OS targets fall back to NoProcessRunner here too; consumers
-// that want real execution must explicitly wire the osadapter Runner
-// (kept out of this package so this file stays import-clean for edge
-// bundlers that refuse to resolve `os/exec`).
-func Detect() Runner {
-	switch runtime.GOOS {
-	case "js", "wasip1":
-		return NoProcessRunner{}
-	}
-	// Default safe: callers opt-in to OS execution explicitly.
-	return NoProcessRunner{}
-}

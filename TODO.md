@@ -11,8 +11,7 @@ roadmap. Keep this file in sync when you add or resolve a TODO comment.
 
 ## Inline TODOs in source
 
-- `errcmdportable/Runner.go:8` — package doc says callers should wire the
-  production adapter (`errcmdportable/osadapter`) when on a real OS.
+- None remaining.
 
 ---
 
