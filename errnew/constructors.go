@@ -119,7 +119,7 @@ func NotImpl(
 	return errorwrapper.NewMsgDisplayError(
 		defaultSkipInternal,
 		errtype.NotImplemented,
-		"TODO: url("+url+")",
+		"Not implemented: "+url,
 		nil)
 }
 
@@ -130,6 +130,6 @@ func NotImplPtrUsingStackSkip(
 	return errorwrapper.NewMsgDisplayError(
 		stackSkipIndex+defaultSkipInternal,
 		errtype.NotImplemented,
-		"TODO: url("+url+")",
+		"Not implemented: "+url,
 		nil)
 }
