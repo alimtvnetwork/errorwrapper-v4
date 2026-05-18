@@ -77,4 +77,28 @@ function DocsIndex() {
               >
                 GitHub Repository
               </a>
-              {
+              {" — Source code and issues"}
+            </li>
+            <li>
+              <a
+                href="https://github.com/alimtvnetwork/errorwrapper-v3/blob/main/README.md"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-foreground hover:underline"
+              >
+                README
+              </a>
+              {" — Quick start and examples"}
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <footer className="border-t bg-muted/40 mt-auto">
+        <div className="mx-auto max-w-5xl px-6 py-8 text-sm text-muted-foreground text-center">
+          errorwrapper-v3 — MIT License
+        </div>
+      </footer>
+    </div>
+  );
+}
