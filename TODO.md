@@ -13,9 +13,6 @@ roadmap. Keep this file in sync when you add or resolve a TODO comment.
 
 - `errcmdportable/Runner.go:8` — package doc says callers should wire the
   production adapter (`errcmdportable/osadapter`) when on a real OS.
-- `errnew/constructors.go:122` / `errnew/constructors.go:133` —
-  `NotImpl()` and `NotImplPtrUsingStackSkip()` embed `"TODO: url("+url+")"`
-  as the human-readable message. Should be a real description.
 
 ---
 

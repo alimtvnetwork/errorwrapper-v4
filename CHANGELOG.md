@@ -23,8 +23,13 @@
 - `docs/extensibility.md` §6.3 — Phase 5 decision record + migration recipe.
 - `TODO.md` — roadmap closeout entry.
 
+### Fixed (Task H — 2026-05-18)
+- `errnew/constructors.go` — replaced placeholder `"TODO: url("+url+")"` messages
+  in `NotImpl()` and `NotImplPtrUsingStackSkip()` with proper `"Not implemented: "+url`.
+
 ### Pending (user action)
 - **Phase 7** — fix bad git remote: `git remote set-url origin <correct-url>`
   (current origin 404s on `github.com/alimtvnetwork/errorwrapper-v3`).
-- **Phase F** — re-run `.\run.ps1 -tc` and confirm 27/27 compile,
+- **Phase F** — re-run `.\\run.ps1 -tc` and confirm 27/27 compile,
   0 runtime failures.
+- **Task G** — decide `errcmdportable` production adapter wiring strategy.
