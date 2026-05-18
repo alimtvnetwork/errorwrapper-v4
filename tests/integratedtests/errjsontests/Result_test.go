@@ -38,7 +38,7 @@ func Test_ErrJson_Result_Basics(t *testing.T) {
 	})
 
 	Convey("Empty json result without error", t, func() {
-		jr := corejson.NewPtr(nil)
+		jr := corejson.NewPtr([]byte{})
 		r := &errjson.Result{Result: jr, ErrorWrapper: nil}
 		So(r.IsAnyNull(), ShouldBeFalse)
 		So(r.IsNull(), ShouldBeFalse)
