@@ -72,14 +72,14 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "Lovable App" },
-      { name: "description", content: "Lovable Generated Project" },
-      { name: "author", content: "Lovable" },
-      { property: "og:title", content: "Lovable App" },
-      { property: "og:description", content: "Lovable Generated Project" },
+      { title: "errorwrapper-v3 — Structured Error Handling for Go" },
+      { name: "description", content: "A comprehensive Go library for structured error handling, wrapping, verification, and portable command execution." },
+      { name: "author", content: "alimtvnetwork" },
+      { property: "og:title", content: "errorwrapper-v3 — Structured Error Handling for Go" },
+      { property: "og:description", content: "A comprehensive Go library for structured error handling, wrapping, verification, and portable command execution." },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary" },
-      { name: "twitter:site", content: "@Lovable" },
+      { name: "twitter:site", content: "@alimtvnetwork" },
     ],
     links: [
       {
