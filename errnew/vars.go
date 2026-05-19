@@ -7,6 +7,8 @@ import (
 var (
 	Messages                      = newMessagesToErrorWrapperCreator{}
 	Message                       = newMessageToErrorWrapperCreator{}
+	// Compatibility alias for older public call sites that used errnew.Message("...")
+	// to construct a plain error. Prefer Type/Error/Message helpers in new code.
 	Enum                          = newEnumToErrorWrapperCreator{}
 	Ref                           = newRefToErrorWrapperCreator{}
 	Refs                          = newReferencesToErrorWrapperCreator{}
@@ -37,3 +39,15 @@ var (
 	Invalid                       = Type.Default(errtype.Invalid)
 	InvalidOption                 = Type.Default(errtype.InvalidOption)
 )
+
+func MessageError(message string) error {
+	if message == "" {
+		return nil
+	}
+
+	return errtype.Generic.ErrorNoRefs(message)
+}
+
+func Message(message string) error {
+	return MessageError(message)
+}
