@@ -46,9 +46,9 @@ func Test_OrEmpty(t *testing.T) {
 
 // Test_OrCollectionPtr verifies conditional collection selection.
 func Test_OrCollectionPtr(t *testing.T) {
-	trueC := errwrappers.NewEmpty()
+	trueC := errwrappers.Empty()
 	trueC.AddTypeError(errtype.Generic, errors.New("true"))
-	falseC := errwrappers.NewEmpty()
+	falseC := errwrappers.Empty()
 	falseC.AddTypeError(errtype.NotFound, errors.New("false"))
 
 	Convey("OrCollectionPtr returns true collection when condition is true", t, func() {
@@ -64,7 +64,7 @@ func Test_OrCollectionPtr(t *testing.T) {
 
 // Test_OrEmptyCollectionPtr verifies conditional collection or empty.
 func Test_OrEmptyCollectionPtr(t *testing.T) {
-	trueC := errwrappers.NewEmpty()
+	trueC := errwrappers.Empty()
 	trueC.AddTypeError(errtype.Generic, errors.New("true"))
 
 	Convey("OrEmptyCollectionPtr returns collection when true", t, func() {
@@ -104,8 +104,8 @@ func Test_AnyFirstOrEmpty(t *testing.T) {
 
 // Test_AnyErrInfFirstOrEmpty returns first interface with error.
 func Test_AnyErrInfFirstOrEmpty(t *testing.T) {
-	emptyInf := errwrappers.NewEmpty()
-	collInf := errwrappers.NewEmpty()
+	emptyInf := errwrappers.Empty()
+	collInf := errwrappers.Empty()
 	collInf.AddTypeError(errtype.Generic, errors.New("coll"))
 	w := errnew.Type.Error(errtype.NotFound, errors.New("w"))
 

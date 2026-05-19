@@ -28,7 +28,7 @@ func Test_LinkedCollections_Constructors(t *testing.T) {
 
 	Convey("NewLinkedCollectionsUsingItemsErrorWrapper uses provided wrapper", t, func() {
 		items := []string{"x"}
-		w := errnew.Type.Message(errtype.Generic, "test")
+		w := errnew.Message.Type(errtype.Generic, "test")
 		lc := errstr.NewLinkedCollectionsUsingItemsErrorWrapper(&items, w)
 		So(lc, ShouldNotBeNil)
 		So(lc.LinkedCollections, ShouldNotBeNil)
@@ -36,7 +36,7 @@ func Test_LinkedCollections_Constructors(t *testing.T) {
 	})
 
 	Convey("EmptyLinkedCollectionsUsingError returns empty collections with wrapper", t, func() {
-		w := errnew.Type.Message(errtype.Generic, "empty")
+		w := errnew.Message.Type(errtype.Generic, "empty")
 		lc := errstr.EmptyLinkedCollectionsUsingError(w)
 		So(lc, ShouldNotBeNil)
 		So(lc.LinkedCollections, ShouldNotBeNil)

@@ -22,7 +22,7 @@ func Test_ErrJson_ResultsCollection_Basics(t *testing.T) {
 	Convey("Empty ResultsCollection", t, func() {
 		r := &errjson.ResultsCollection{
 			ResultsCollection: corejson.Empty.ResultsCollection(),
-			ErrorCollection:   errwrappers.EmptyCollection(),
+			ErrorCollection:   errwrappers.Empty(),
 		}
 		So(r.IsAnyNull(), ShouldBeFalse)
 		So(r.IsEmpty(), ShouldBeTrue)
@@ -36,7 +36,7 @@ func Test_ErrJson_ResultsCollection_Basics(t *testing.T) {
 				[]byte(`{"a":1}`),
 				[]byte(`{"b":2}`),
 			),
-			ErrorCollection: errwrappers.EmptyCollection(),
+			ErrorCollection: errwrappers.Empty(),
 		}
 		So(r.IsAnyNull(), ShouldBeFalse)
 		So(r.IsEmpty(), ShouldBeFalse)
@@ -49,7 +49,7 @@ func Test_ErrJson_ResultsCollection_Basics(t *testing.T) {
 			ResultsCollection: corejson.NewResultsCollection.AnyItems(
 				[]byte(`{"x":1}`),
 			),
-			ErrorCollection: errwrappers.EmptyCollection(),
+			ErrorCollection: errwrappers.Empty(),
 		}
 		So(func() { r.Dispose() }, ShouldNotPanic)
 	})

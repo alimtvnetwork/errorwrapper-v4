@@ -57,7 +57,7 @@ func Test_ErrAny_Results_Basics(t *testing.T) {
 	})
 
 	Convey("Dispose nils values", t, func() {
-		w := errnew.Type.Message(errtype.InvalidValidate, "x")
+		w := errnew.Message.Type(errtype.InvalidValidate, "x")
 		r := &errany.Results{Values: []interface{}{"a"}, ErrorWrapper: w}
 		r.Dispose()
 		So(r.Values, ShouldBeNil)
@@ -87,7 +87,7 @@ func Test_ErrAny_ResultsWithErrorCollection_Basics(t *testing.T) {
 	Convey("Non-empty without error", t, func() {
 		r := &errany.ResultsWithErrorCollection{
 			Values:        []interface{}{"a", 1},
-			ErrorWrappers: errwrappers.EmptyCollection(),
+			ErrorWrappers: errwrappers.Empty(),
 		}
 		So(r.IsAnyNull(), ShouldBeFalse)
 		So(r.IsEmpty(), ShouldBeFalse)
@@ -103,7 +103,7 @@ func Test_ErrAny_ResultsWithErrorCollection_Basics(t *testing.T) {
 	Convey("Clear resets values", t, func() {
 		r := &errany.ResultsWithErrorCollection{
 			Values:        []interface{}{"a"},
-			ErrorWrappers: errwrappers.EmptyCollection(),
+			ErrorWrappers: errwrappers.Empty(),
 		}
 		r.Clear()
 		So(r.Length(), ShouldEqual, 0)
@@ -112,7 +112,7 @@ func Test_ErrAny_ResultsWithErrorCollection_Basics(t *testing.T) {
 	Convey("Dispose nils values", t, func() {
 		r := &errany.ResultsWithErrorCollection{
 			Values:        []interface{}{"a"},
-			ErrorWrappers: errwrappers.EmptyCollection(),
+			ErrorWrappers: errwrappers.Empty(),
 		}
 		r.Dispose()
 		So(r.Values, ShouldBeNil)

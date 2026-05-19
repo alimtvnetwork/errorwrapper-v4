@@ -56,14 +56,14 @@ func Test_Errfloat64_Results_Basics(t *testing.T) {
 	})
 
 	Convey("Dispose nils values and wrapper", t, func() {
-		w := errnew.Type.Message(errtype.InvalidValidate, "x")
+		w := errnew.Message.Type(errtype.InvalidValidate, "x")
 		r := &errfloat64.Results{Values: []float64{1.1, 2.2}, ErrorWrapper: w}
 		r.Dispose()
 		So(r.Values, ShouldBeNil)
 	})
 
 	Convey("Value with error", t, func() {
-		w := errnew.Type.Message(errtype.InvalidValidate, "bad")
+		w := errnew.Message.Type(errtype.InvalidValidate, "bad")
 		r := &errfloat64.Results{Values: []float64{1.1, 2.2}, ErrorWrapper: w}
 		So(r.HasError(), ShouldBeTrue)
 		So(r.IsEmptyError(), ShouldBeFalse)

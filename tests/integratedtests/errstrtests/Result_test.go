@@ -87,7 +87,7 @@ func Test_ErrStr_Result_Basics(t *testing.T) {
 	})
 
 	Convey("Value with error", t, func() {
-		w := errnew.Type.Message(errtype.InvalidValidate, "bad")
+		w := errnew.Message.Type(errtype.InvalidValidate, "bad")
 		r := &errstr.Result{Value: "x", ErrorWrapper: w}
 		So(r.HasError(), ShouldBeTrue)
 		So(r.IsEmptyError(), ShouldBeFalse)
@@ -106,7 +106,7 @@ func Test_ErrStr_Result_Basics(t *testing.T) {
 	})
 
 	Convey("Dispose clears value", t, func() {
-		w := errnew.Type.Message(errtype.InvalidValidate, "x")
+		w := errnew.Message.Type(errtype.InvalidValidate, "x")
 		r := &errstr.Result{Value: "test", ErrorWrapper: w}
 		r.Dispose()
 		So(r.Value, ShouldEqual, "")
@@ -181,7 +181,7 @@ func Test_ErrStr_Results_Basics(t *testing.T) {
 	})
 
 	Convey("Dispose nils values and wrapper", t, func() {
-		w := errnew.Type.Message(errtype.InvalidValidate, "x")
+		w := errnew.Message.Type(errtype.InvalidValidate, "x")
 		r := &errstr.Results{Values: []string{"a"}, ErrorWrapper: w}
 		r.Dispose()
 		So(r.Values, ShouldBeNil)
@@ -257,7 +257,7 @@ func Test_ErrStr_ResultsWithErrorCollection_Basics(t *testing.T) {
 	Convey("Non-empty without error", t, func() {
 		r := &errstr.ResultsWithErrorCollection{
 			Values:        []string{"a", "b"},
-			ErrorWrappers: errwrappers.EmptyCollection(),
+			ErrorWrappers: errwrappers.Empty(),
 		}
 		So(r.IsAnyNull(), ShouldBeFalse)
 		So(r.IsEmpty(), ShouldBeFalse)
@@ -273,7 +273,7 @@ func Test_ErrStr_ResultsWithErrorCollection_Basics(t *testing.T) {
 	Convey("Clear resets values", t, func() {
 		r := &errstr.ResultsWithErrorCollection{
 			Values:        []string{"a", "b"},
-			ErrorWrappers: errwrappers.EmptyCollection(),
+			ErrorWrappers: errwrappers.Empty(),
 		}
 		r.Clear()
 		So(r.Length(), ShouldEqual, 0)
@@ -282,7 +282,7 @@ func Test_ErrStr_ResultsWithErrorCollection_Basics(t *testing.T) {
 	Convey("Dispose nils values", t, func() {
 		r := &errstr.ResultsWithErrorCollection{
 			Values:        []string{"a"},
-			ErrorWrappers: errwrappers.EmptyCollection(),
+			ErrorWrappers: errwrappers.Empty(),
 		}
 		r.Dispose()
 		So(r.Values, ShouldBeNil)

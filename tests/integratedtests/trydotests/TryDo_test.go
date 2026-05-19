@@ -112,7 +112,7 @@ func Test_GetErrorWrapperWrappedPanic(t *testing.T) {
 // Test_GetErrorWrapperCollectionWrappedPanic extracts Collection from panic.
 func Test_GetErrorWrapperCollectionWrappedPanic(t *testing.T) {
 	Convey("returns the collection when a Collection is panicked", t, func() {
-		c := errwrappers.NewEmpty()
+		c := errwrappers.Empty()
 		c.AddTypeError(errtype.Generic, errors.New("coll panic"))
 		got := trydo.GetErrorWrapperCollectionWrappedPanic(func() { panic(c) })
 		So(got, ShouldNotBeNil)
@@ -154,7 +154,7 @@ func Test_WrapPanicToBaseErrorCollection(t *testing.T) {
 	})
 
 	Convey("captures a Collection panic directly", t, func() {
-		c := errwrappers.NewEmpty()
+		c := errwrappers.Empty()
 		c.AddTypeError(errtype.Generic, errors.New("from coll"))
 		bec := trydo.WrapPanicToBaseErrorCollection(func() { panic(c) })
 		So(bec, ShouldNotBeNil)

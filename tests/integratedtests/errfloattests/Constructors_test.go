@@ -27,13 +27,13 @@ func Test_Errfloat_Constructors_New(t *testing.T) {
 	})
 
 	Convey("New.Result.ErrorWrapper", t, func() {
-		w := errnew.Type.Message(errtype.InvalidValidate, "bad")
+		w := errnew.Message.Type(errtype.InvalidValidate, "bad")
 		r := errfloat.New.Result.ErrorWrapper(w)
 		So(r.HasError(), ShouldBeTrue)
 	})
 
 	Convey("New.Result.Create", t, func() {
-		w := errnew.Type.Message(errtype.InvalidValidate, "bad")
+		w := errnew.Message.Type(errtype.InvalidValidate, "bad")
 		r := errfloat.New.Result.Create(3.14, w)
 		So(r.Value, ShouldEqual, 3.14)
 		So(r.HasError(), ShouldBeTrue)
@@ -80,13 +80,13 @@ func Test_Errfloat_Constructors_Empty(t *testing.T) {
 	})
 
 	Convey("Empty.ResultWithError", t, func() {
-		w := errnew.Type.Message(errtype.InvalidValidate, "bad")
+		w := errnew.Message.Type(errtype.InvalidValidate, "bad")
 		r := errfloat.Empty.ResultWithError(w)
 		So(r.HasError(), ShouldBeTrue)
 	})
 
 	Convey("Empty.ResultsWithError", t, func() {
-		w := errnew.Type.Message(errtype.InvalidValidate, "bad")
+		w := errnew.Message.Type(errtype.InvalidValidate, "bad")
 		r := errfloat.Empty.ResultsWithError(w)
 		So(r.HasError(), ShouldBeTrue)
 	})
