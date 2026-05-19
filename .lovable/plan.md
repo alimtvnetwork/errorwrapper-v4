@@ -1,130 +1,70 @@
 # Completion Plan — errorwrapper-v3
 
-Three roadmap items remain: **Phase 0** (3 runtime test failures), **Phase 5** (generics refactor of `errdata/*`), **Phase 7** (bad git remote). This plan splits the remaining work into 6 sequenced execution phases (A–F) so each is independently shippable and verifiable.
+Active roadmap. Fully-complete items live in `## Completed` at the bottom — never deleted.
+
+## Active
+
+### Phase F — Final verification (🔄 In Progress)
+- Re-run `.\run.ps1 -tc` after Phase 7 + CI issues 02 + 03 resolved.
+- Target: 11/11 phases ✓, 27/27 (or 29/29) compile, 0 runtime failures.
+
+### Phase 7 — Git remote fix (🚫 Blocked — user-side)
+- User runs locally: `git remote set-url origin <correct-url>` then `git fetch origin`.
+- Then re-run `.\run.ps1 -tc`.
+- Agent cannot perform this (sandbox forbids stateful git).
+
+### CI/CD #02 — Compile Check: 57 blocked sub-packages (⏳ Pending log)
+- Needs first 80 lines of `data/coverage/build-errors.txt`.
+- Fallback: `go build ./tests/errtypetests/... ./tests/errorwrappertests/... 2>&1 | Select-Object -First 60`.
+- Or user says `scan` → agent does speculative drift-signature grep.
+
+### CI/CD #03 — `sync.noCopy` at `errwrappers/Collection.go:1216` (⏳ Pending)
+- Switch to pointer receivers or pointer-to-mutex field around that line.
+
+### Task #6 — CMD package move path + alias policy (⏳ Awaiting user decision)
+- Optional housekeeping.
 
 ---
 
-## Phase A — Diagnose the 3 runtime failures
+## Completed
 
-**Goal:** Get exact failure messages for `Test_EmptyPtr_HasError`, `Test_ClonePtr`, `TestErrconv_GetPtr`.
+### Phase 0 — Stabilize build ✅ (2026-05-18, Tasks H–L)
+- Fixed bad import in `tests/integratedtests/errcmdtests/Utilities_test.go`.
+- `Test_EmptyPtr_HasError` → `ShouldBeNil`.
+- `Test_ClonePtr` → `ShouldNotPointTo`.
+- `TestErrconv_Get*` → added missing `t` arg to top-level `Convey(...)` calls.
+- `errconv/GetPtr` — fixed early return for non-`*Wrapper` pointers.
+- `reflectinternaltests/reflect_test.go:28` — `ShouldBeNil` instead of dereferencing nil.
 
-Steps:
-1. User pastes `data/test-logs/failing-tests.txt` (or runs `go test -run "Test_EmptyPtr_HasError|Test_ClonePtr|TestErrconv_GetPtr" ./... -v` and pastes output).
-2. Confirm whether failures stem from:
-   - assertion semantics (e.g. `ShouldNotEqual` doing DeepEqual on `*Wrapper`),
-   - actual logic regression in `EmptyPtr` / `ClonePtr` / `errconv.GetPtr`,
-   - or a transitive break from the recent `errcmdtests` import fix.
+### Phase 1 — `docs/ARCHITECTURE.md` ✅
+### Phase 2 — `docs/LLM_GUIDELINE.md` ✅
+### Phase 3 — Unit tests for 11 public packages ✅ (29 test-packages total after Tasks I+J)
+### Phase 4 — `docs/extensibility.md` ✅
 
-**Exit:** Root cause identified for all 3, written into `TODO.md` Phase 0 section.
+### Phase 5 — Generics refactor ✅ (strategy (c) freeze)
+- Banner added to 8 `errdata/*/Result.go` files.
+- `docs/extensibility.md` §6.3 records the decision + migration recipe.
 
----
+### Phase 6 — CMD extraction ✅
+- `errcmdportable/Runner.go` + `NoProcessRunner` + GOOS-based `Detect()`.
+- `osadapter/Runner.go` real `os/exec` adapter.
+- `errcmdbridge/Bridge.go` converter + test coverage.
 
-## Phase B — Fix the 3 runtime failures
+### Task G — `errcmdportable` build-tag split ✅
+- `detect_default.go` (js/wasip1) + `detect_os.go` (native).
 
-**Goal:** Green build with 0 runtime test failures and 0 blocked packages.
+### Task H — `errnew/constructors.go` ✅
+- Replaced TODO placeholder messages in `NotImpl()` / `NotImplPtrUsingStackSkip()`.
 
-Steps:
-1. Apply targeted fixes per Phase A diagnosis:
-   - If assertion semantics → switch to `ShouldNotPointTo` / address comparison.
-   - If logic regression → patch `Wrapper.go` / `errconv/Get.go` and add regression tests.
-2. Re-run `.\run.ps1 -tc`.
-3. Verify: 27/27 compile, 0 runtime failures, `errconvtests` + `errorwrappertests` green.
+### Task I — `errcmdbridge` test coverage ✅
+### Task J — `internal/reflectinternal` indirect test coverage ✅
+- Test lives under `tests/integratedtests/reflectinternaltests/`, NOT inside `internal/`.
 
-**Exit:** All Phase 0 items checked off in `TODO.md`.
+### Task K — Fix import cycle from Task G ✅
+- `detect_os.go` inlines `autoOsRunner` instead of delegating to `osadapter.New()`.
 
----
+### Task L — Runtime test failures ✅
+- `errconv/GetPtr` short-circuit bug + `reflect_test.go:28` nil deref.
 
-## Phase C — Phase 5 strategy decision (1 question)
-
-**Goal:** Pick the migration strategy for `errdata/*` → `erranygen.Result[T]`.
-
-Ask the user once:
-- **(a) Type-alias bridge** — `type Result = erranygen.Result[string]`. Smallest diff, but breaks method sets that depend on concrete receivers.
-- **(b) Embed** — each `errstr.Result` embeds `erranygen.Result[string]`. Preserves identity, allows extra methods, modest churn.
-- **(c) Freeze legacy + generics-only in new code** *(recommended)* — zero churn to legacy callers, new packages adopt `erranygen` directly.
-
-**Exit:** Strategy locked. `docs/extensibility.md` §6.3 records the decision + rationale.
-
----
-
-## Phase D — Execute Phase 5 migration
-
-Branches by strategy chosen in Phase C.
-
-### If (c) freeze — smallest path
-1. Add `// Frozen: prefer erranygen.Result[T] for new code` banner to `errdata/*/Result.go` files.
-2. Add `docs/extensibility.md` §6.3 with the migration recipe + worked example.
-3. Done.
-
-### If (b) embed — medium path
-1. For each of `errstr`, `errint`, `errbool`, `errbyte`, `errfloat`, `errfloat64`, `errany`:
-   - Add embedded `*erranygen.Result[T]` field on `Result`.
-   - Forward `Value`/`ErrorWrapper` access through the embed.
-   - Update constructors in `New.Result.*` to populate both.
-2. Run unit tests after each package; commit per package.
-3. Update `docs/extensibility.md` §6.3.
-
-### If (a) alias — largest blast radius
-1. Replace concrete `Result` structs with `type Result = erranygen.Result[T]`.
-2. Move package-specific methods to free functions or wrapper types.
-3. Fix all downstream call sites (expect 50–200 edits).
-4. Full test sweep.
-
-**Exit:** All Phase 5 items checked off in `TODO.md`; new code path documented.
-
----
-
-## Phase E — Phase 7 git remote fix (user action)
-
-**Goal:** `git pull` in `run.ps1` succeeds.
-
-Steps (user-side, agent cannot run git state mutations):
-1. User confirms the correct remote URL (likely a typo in the org/repo name on GitHub).
-2. User runs locally:
-   ```
-   git remote set-url origin <correct-url>
-   git fetch origin
-   ```
-3. Re-run `.\run.ps1 -tc` and confirm "Pulling latest from remote" succeeds.
-
-**Exit:** Phase 7 checked off; `TestRunnerCore.psm1 → Invoke-GitPull` no longer warns.
-
----
-
-## Phase F — Final verification & sign-off
-
-1. Run `.\run.ps1 -tc` end-to-end.
-2. Confirm in the phase summary panel:
-   - Compile Check: 27/27
-   - Runtime failures: 0
-   - All previously-blocked subpackages now contribute to coverage
-3. Update `TODO.md`: mark Phases 0, 5, 7 ✅; close the roadmap.
-4. Write a short `CHANGELOG.md` entry summarizing the stabilization + generics adoption.
-
-**Exit:** Roadmap complete.
-
----
-
-## Full roadmap status after this plan
-
-| # | Phase | Status |
-|---|---|---|
-| 0 | Stabilize build + 6 failing tests | A + B |
-| 1 | `docs/ARCHITECTURE.md` | ✅ done |
-| 2 | `docs/LLM_GUIDELINE.md` | ✅ done |
-| 3 | Unit tests for 11 public packages | ✅ done (compile clears after B) |
-| 4 | `docs/extensibility.md` | ✅ done |
-| 5 | Generics refactor of `errdata/*` | C + D |
-| 6 | CMD extraction (errcmdportable) | ✅ done |
-| 7 | Fix bad git remote | E |
-| — | Final verification | F |
-
----
-
-## Execution order
-
-A → B → C → D → E (parallel, user-side) → F
-
-Phases A, C, E need user input; B, D, F are agent-executed.
-
-**On `next`** without further input, agent will request the failing-tests log (Phase A) and propose strategy **(c)** for Phase C.
+### Task M — Remove dead `core-v9` / `enum-v10` deps ✅
+- No `.go` file imported them; removed from `go.mod` + `go.sum`.
