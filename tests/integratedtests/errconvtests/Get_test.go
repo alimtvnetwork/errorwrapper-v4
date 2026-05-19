@@ -32,7 +32,7 @@ func TestErrconv_GetPtr(t *testing.T) {
 			So(result, ShouldNotBeNil)
 			So(result.IsCastedProperly, ShouldBeTrue)
 			So(result.Wrapper, ShouldNotBeNil)
-			So(result.Wrapper.HasError(), ShouldBeTrue)
+			So(result.Wrapper.Type(), ShouldEqual, errtype.Invalid)
 		})
 	})
 
@@ -54,7 +54,7 @@ func TestErrconv_GetPtr(t *testing.T) {
 			So(result, ShouldNotBeNil)
 			So(result.IsCastedProperly, ShouldBeTrue)
 			So(result.Wrapper, ShouldNotBeNil)
-			So(result.Wrapper.HasError(), ShouldBeTrue)
+			So(result.Wrapper.Type(), ShouldEqual, errtype.NotFound)
 		})
 	})
 
@@ -66,7 +66,7 @@ func TestErrconv_GetPtr(t *testing.T) {
 			So(result, ShouldNotBeNil)
 			So(result.IsCastedProperly, ShouldBeTrue)
 			So(result.Wrapper, ShouldNotBeNil)
-			So(result.Wrapper.HasError(), ShouldBeTrue)
+			So(result.Wrapper.Type(), ShouldEqual, errtype.Null)
 		})
 	})
 
@@ -112,7 +112,7 @@ func TestErrconv_Get(t *testing.T) {
 		Convey("Get should return a properly casted Result", func() {
 			So(result.IsCastedProperly, ShouldBeTrue)
 			So(result.Wrapper, ShouldNotBeNil)
-			So(result.Wrapper.HasError(), ShouldBeTrue)
+			So(result.Wrapper.Type(), ShouldEqual, errtype.PathMismatch)
 		})
 	})
 
