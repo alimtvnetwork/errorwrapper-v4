@@ -12,6 +12,8 @@ const (
 	IO
 	ReadWrite
 	InvalidInput
+	// Compatibility alias retained for older public callers/tests.
+	InvalidValidate = InvalidInput
 	InvalidOutput
 	InvalidCondition
 	EmptyString
