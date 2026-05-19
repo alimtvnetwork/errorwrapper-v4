@@ -1,6 +1,7 @@
 package errjsontests
 
 import (
+	"errors"
 	"testing"
 
 	"github.com/alimtvnetwork/core-v9/coredata/corejson"
@@ -25,7 +26,7 @@ func Test_ErrJson_Constructors_New(t *testing.T) {
 	})
 
 	Convey("New.Result.Error", t, func() {
-		r := errjson.New.Result.Error(errtype.InvalidValidate, errnew.Message("bad"))
+		r := errjson.New.Result.Error(errtype.InvalidValidate, errors.New("bad"))
 		So(r, ShouldNotBeNil)
 		So(r.HasError(), ShouldBeTrue)
 	})

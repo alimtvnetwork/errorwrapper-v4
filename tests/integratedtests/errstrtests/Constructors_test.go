@@ -1,6 +1,7 @@
 package errstrtests
 
 import (
+	"errors"
 	"testing"
 
 	"github.com/alimtvnetwork/errorwrapper-v3/errdata/errstr"
@@ -27,18 +28,18 @@ func Test_ErrStr_Constructors_New(t *testing.T) {
 	})
 
 	Convey("New.Result.Error", t, func() {
-		r := errstr.New.Result.Error(errtype.InvalidValidate, errnew.Message("bad"))
+		r := errstr.New.Result.Error(errtype.InvalidValidate, errors.New("bad"))
 		So(r.HasError(), ShouldBeTrue)
 	})
 
 	Convey("New.Result.ErrorWrapper", t, func() {
-		w := errnew.Type.Message(errtype.InvalidValidate, "bad")
+		w := errnew.Message.New(errtype.InvalidValidate, "bad")
 		r := errstr.New.Result.ErrorWrapper(w)
 		So(r.HasError(), ShouldBeTrue)
 	})
 
 	Convey("New.Result.Create", t, func() {
-		w := errnew.Type.Message(errtype.InvalidValidate, "bad")
+		w := errnew.Message.New(errtype.InvalidValidate, "bad")
 		r := errstr.New.Result.Create("x", w)
 		So(r.Value, ShouldEqual, "x")
 		So(r.HasError(), ShouldBeTrue)

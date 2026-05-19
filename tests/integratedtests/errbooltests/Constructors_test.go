@@ -1,6 +1,7 @@
 package errbooltests
 
 import (
+	"errors"
 	"testing"
 
 	"github.com/alimtvnetwork/errorwrapper-v3/errdata/errbool"
@@ -41,32 +42,32 @@ func Test_ErrBool_Constructors_New(t *testing.T) {
 	})
 
 	Convey("New.Result.TrueWithErr", t, func() {
-		w := errnew.Type.Message(errtype.InvalidValidate, "bad")
+		w := errnew.Message.New(errtype.InvalidValidate, "bad")
 		r := errbool.New.Result.TrueWithErr(w)
 		So(r.Value, ShouldBeTrue)
 		So(r.HasError(), ShouldBeTrue)
 	})
 
 	Convey("New.Result.FalseWithErr", t, func() {
-		w := errnew.Type.Message(errtype.InvalidValidate, "bad")
+		w := errnew.Message.New(errtype.InvalidValidate, "bad")
 		r := errbool.New.Result.FalseWithErr(w)
 		So(r.Value, ShouldBeFalse)
 		So(r.HasError(), ShouldBeTrue)
 	})
 
 	Convey("New.Result.Error", t, func() {
-		r := errbool.New.Result.Error(errtype.InvalidValidate, errnew.Message("bad"))
+		r := errbool.New.Result.Error(errtype.InvalidValidate, errors.New("bad"))
 		So(r.HasError(), ShouldBeTrue)
 	})
 
 	Convey("New.Result.ErrorWrapper", t, func() {
-		w := errnew.Type.Message(errtype.InvalidValidate, "bad")
+		w := errnew.Message.New(errtype.InvalidValidate, "bad")
 		r := errbool.New.Result.ErrorWrapper(w)
 		So(r.HasError(), ShouldBeTrue)
 	})
 
 	Convey("New.Result.Create", t, func() {
-		w := errnew.Type.Message(errtype.InvalidValidate, "bad")
+		w := errnew.Message.New(errtype.InvalidValidate, "bad")
 		r := errbool.New.Result.Create(true, w)
 		So(r.Value, ShouldBeTrue)
 		So(r.HasError(), ShouldBeTrue)
@@ -118,13 +119,13 @@ func Test_ErrBool_Constructors_Empty(t *testing.T) {
 	})
 
 	Convey("Empty.ResultWithError", t, func() {
-		w := errnew.Type.Message(errtype.InvalidValidate, "bad")
+		w := errnew.Message.New(errtype.InvalidValidate, "bad")
 		r := errbool.Empty.ResultWithError(w)
 		So(r.HasError(), ShouldBeTrue)
 	})
 
 	Convey("Empty.ResultsWithError", t, func() {
-		w := errnew.Type.Message(errtype.InvalidValidate, "bad")
+		w := errnew.Message.New(errtype.InvalidValidate, "bad")
 		r := errbool.Empty.ResultsWithError(w)
 		So(r.HasError(), ShouldBeTrue)
 	})

@@ -49,7 +49,7 @@ func Test_ErrFloat_Result_Basics(t *testing.T) {
 	})
 
 	Convey("Value with error", t, func() {
-		w := errnew.Type.Message(errtype.InvalidValidate, "bad")
+		w := errnew.Message.New(errtype.InvalidValidate, "bad")
 		r := &errfloat.Result{Value: 1.5, ErrorWrapper: w}
 		So(r.HasError(), ShouldBeTrue)
 		So(r.IsEmptyError(), ShouldBeFalse)
@@ -65,7 +65,7 @@ func Test_ErrFloat_Result_Basics(t *testing.T) {
 	})
 
 	Convey("SafeValidRange requires empty error", t, func() {
-		w := errnew.Type.Message(errtype.InvalidValidate, "bad")
+		w := errnew.Message.New(errtype.InvalidValidate, "bad")
 		r := &errfloat.Result{Value: 5.5, ErrorWrapper: w}
 		So(r.IsSafeValidRange(1.0, 10.0), ShouldBeFalse)
 	})
@@ -81,7 +81,7 @@ func Test_ErrFloat_Result_Basics(t *testing.T) {
 	})
 
 	Convey("Dispose clears value", t, func() {
-		w := errnew.Type.Message(errtype.InvalidValidate, "x")
+		w := errnew.Message.New(errtype.InvalidValidate, "x")
 		r := &errfloat.Result{Value: 1.5, ErrorWrapper: w}
 		r.Dispose()
 		So(r.Value, ShouldEqual, 0)

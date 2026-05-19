@@ -128,7 +128,7 @@ func Test_Collectors_BasicContracts(t *testing.T) {
 		c.Add(errfunc.CollectorFunc(func(ec *errwrappers.Collection) {
 			ec.AddTypeError(errtype.Generic, errors.New("one"))
 		}))
-		coll := errwrappers.NewEmpty()
+		coll := errwrappers.Empty()
 		c.ExecuteAllCollection(coll)
 		So(coll.StateCounter().HasChanges(), ShouldBeTrue)
 	})

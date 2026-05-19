@@ -1,6 +1,7 @@
 package errbytetests
 
 import (
+	"errors"
 	"testing"
 
 	"github.com/alimtvnetwork/errorwrapper-v3/errdata/errbyte"
@@ -22,18 +23,18 @@ func Test_Errbyte_Constructors_New(t *testing.T) {
 	})
 
 	Convey("New.Result.Error", t, func() {
-		r := errbyte.New.Result.Error(errtype.InvalidValidate, errnew.Message("bad"))
+		r := errbyte.New.Result.Error(errtype.InvalidValidate, errors.New("bad"))
 		So(r.HasError(), ShouldBeTrue)
 	})
 
 	Convey("New.Result.ErrorWrapper", t, func() {
-		w := errnew.Type.Message(errtype.InvalidValidate, "bad")
+		w := errnew.Message.New(errtype.InvalidValidate, "bad")
 		r := errbyte.New.Result.ErrorWrapper(w)
 		So(r.HasError(), ShouldBeTrue)
 	})
 
 	Convey("New.Result.Create", t, func() {
-		w := errnew.Type.Message(errtype.InvalidValidate, "bad")
+		w := errnew.Message.New(errtype.InvalidValidate, "bad")
 		r := errbyte.New.Result.Create(65, w)
 		So(r.Value, ShouldEqual, 65)
 		So(r.HasError(), ShouldBeTrue)
@@ -80,13 +81,13 @@ func Test_Errbyte_Constructors_Empty(t *testing.T) {
 	})
 
 	Convey("Empty.ResultWithError", t, func() {
-		w := errnew.Type.Message(errtype.InvalidValidate, "bad")
+		w := errnew.Message.New(errtype.InvalidValidate, "bad")
 		r := errbyte.Empty.ResultWithError(w)
 		So(r.HasError(), ShouldBeTrue)
 	})
 
 	Convey("Empty.ResultsWithError", t, func() {
-		w := errnew.Type.Message(errtype.InvalidValidate, "bad")
+		w := errnew.Message.New(errtype.InvalidValidate, "bad")
 		r := errbyte.Empty.ResultsWithError(w)
 		So(r.HasError(), ShouldBeTrue)
 	})

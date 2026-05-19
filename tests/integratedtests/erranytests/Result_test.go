@@ -80,7 +80,7 @@ func Test_ErrAny_Result_Basics(t *testing.T) {
 	})
 
 	Convey("Value with error", t, func() {
-		w := errnew.Type.Message(errtype.InvalidValidate, "bad")
+		w := errnew.Message.New(errtype.InvalidValidate, "bad")
 		r := &errany.Result{Value: "x", ErrorWrapper: w}
 		So(r.HasError(), ShouldBeTrue)
 		So(r.IsEmptyError(), ShouldBeFalse)
@@ -90,7 +90,7 @@ func Test_ErrAny_Result_Basics(t *testing.T) {
 	})
 
 	Convey("Dispose clears value", t, func() {
-		w := errnew.Type.Message(errtype.InvalidValidate, "x")
+		w := errnew.Message.New(errtype.InvalidValidate, "x")
 		r := &errany.Result{Value: "test", ErrorWrapper: w}
 		r.Dispose()
 		So(r.Value, ShouldBeNil)

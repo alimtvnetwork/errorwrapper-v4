@@ -1,6 +1,7 @@
 package errstrtests
 
 import (
+	"errors"
 	"testing"
 
 	"github.com/alimtvnetwork/core-v9/coredata/corestr"
@@ -48,7 +49,7 @@ func Test_ErrStr_Collection_Basics(t *testing.T) {
 	})
 
 	Convey("With error wrapper", t, func() {
-		w := errnew.Type.Message(errtype.InvalidValidate, "bad")
+		w := errnew.Message.New(errtype.InvalidValidate, "bad")
 		c := &errstr.Collection{
 			Collection:   corestr.New.Collection.Strings([]string{"a"}),
 			ErrorWrapper: w,
@@ -70,7 +71,7 @@ func Test_ErrStr_LinkedList_Basics(t *testing.T) {
 
 	Convey("NewLinkedListUsingItemsError", t, func() {
 		ll := errstr.NewLinkedListUsingItemsError(
-			errtype.InvalidValidate, errnew.Message("bad"),
+			errtype.InvalidValidate, errors.New("bad"),
 			[]string{"a", "b"})
 		So(ll, ShouldNotBeNil)
 		So(ll.LinkedList, ShouldNotBeNil)
@@ -78,7 +79,7 @@ func Test_ErrStr_LinkedList_Basics(t *testing.T) {
 	})
 
 	Convey("NewLinkedListUsingItemsErrorWrapper", t, func() {
-		w := errnew.Type.Message(errtype.InvalidValidate, "bad")
+		w := errnew.Message.New(errtype.InvalidValidate, "bad")
 		items := []string{"a"}
 		ll := errstr.NewLinkedListUsingItemsErrorWrapper(&items, w)
 		So(ll, ShouldNotBeNil)
@@ -86,7 +87,7 @@ func Test_ErrStr_LinkedList_Basics(t *testing.T) {
 	})
 
 	Convey("EmptyLinkedListUsingError", t, func() {
-		w := errnew.Type.Message(errtype.InvalidValidate, "bad")
+		w := errnew.Message.New(errtype.InvalidValidate, "bad")
 		ll := errstr.EmptyLinkedListUsingError(w)
 		So(ll, ShouldNotBeNil)
 		So(ll.ErrorWrapper.HasError(), ShouldBeTrue)
@@ -100,7 +101,7 @@ func Test_ErrStr_LinkedList_Basics(t *testing.T) {
 	Convey("NewLinkedListUsingPtrItemsError", t, func() {
 		ptrItems := []*string{}
 		ll := errstr.NewLinkedListUsingPtrItemsError(
-			ptrItems, errnew.Message("bad"), errtype.InvalidValidate)
+			ptrItems, errors.New("bad"), errtype.InvalidValidate)
 		So(ll, ShouldNotBeNil)
 		So(ll.ErrorWrapper.HasError(), ShouldBeTrue)
 	})
@@ -173,7 +174,7 @@ func Test_ErrStr_SimpleStringOnce_Basics(t *testing.T) {
 	})
 
 	Convey("Value with error", t, func() {
-		w := errnew.Type.Message(errtype.InvalidValidate, "bad")
+		w := errnew.Message.New(errtype.InvalidValidate, "bad")
 		s := &errstr.SimpleStringOnce{
 			Value:        corestr.New.SimpleStringOnce.Create("x", true),
 			ErrorWrapper: w,
@@ -186,7 +187,7 @@ func Test_ErrStr_SimpleStringOnce_Basics(t *testing.T) {
 	})
 
 	Convey("Dispose", t, func() {
-		w := errnew.Type.Message(errtype.InvalidValidate, "x")
+		w := errnew.Message.New(errtype.InvalidValidate, "x")
 		s := &errstr.SimpleStringOnce{
 			Value:        corestr.New.SimpleStringOnce.Create("test", true),
 			ErrorWrapper: w,

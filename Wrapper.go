@@ -653,6 +653,12 @@ func (it *Wrapper) Error() error {
 	return it.currentError
 }
 
+// Message returns the compiled error string for backward compatibility.
+// Prefer ErrorString()/FullString() in new code.
+func (it *Wrapper) Message() string {
+	return it.ErrorString()
+}
+
 // ErrorString if empty error then returns ""
 func (it *Wrapper) ErrorString() string {
 	if it.IsEmpty() || it.currentError == nil {

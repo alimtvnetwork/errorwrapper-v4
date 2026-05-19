@@ -59,7 +59,7 @@ func Test_ErrBool_Result_Basics(t *testing.T) {
 	})
 
 	Convey("True value with error wrapper", t, func() {
-		w := errnew.Type.Message(errtype.InvalidValidate, "bad")
+		w := errnew.Message.New(errtype.InvalidValidate, "bad")
 		r := &errbool.Result{Value: true, ErrorWrapper: w}
 		So(r.HasError(), ShouldBeTrue)
 		So(r.IsEmptyError(), ShouldBeFalse)
@@ -126,7 +126,7 @@ func Test_ErrBool_Results_Basics(t *testing.T) {
 	})
 
 	Convey("Dispose nils values and wrapper", t, func() {
-		w := errnew.Type.Message(errtype.InvalidValidate, "x")
+		w := errnew.Message.New(errtype.InvalidValidate, "x")
 		r := &errbool.Results{Values: []bool{true}, ErrorWrapper: w}
 		r.Dispose()
 		So(r.Values, ShouldBeNil)

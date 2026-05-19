@@ -73,7 +73,7 @@ func Test_ErrJson_Result_Basics(t *testing.T) {
 
 	Convey("Wrapper error takes precedence", t, func() {
 		jr := corejson.NewPtr([]byte(`{"ok":true}`))
-		w := errnew.Type.Message(errtype.InvalidValidate, "bad")
+		w := errnew.Message.New(errtype.InvalidValidate, "bad")
 		r := &errjson.Result{Result: jr, ErrorWrapper: w}
 		So(r.HasError(), ShouldBeTrue)
 		So(r.IsEmptyError(), ShouldBeFalse)
