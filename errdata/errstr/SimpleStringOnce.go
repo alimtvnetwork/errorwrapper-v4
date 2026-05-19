@@ -30,7 +30,7 @@ func (it *SimpleStringOnce) Dispose() {
 }
 
 func (it *SimpleStringOnce) IsEmpty() bool {
-	return it == nil || it.Value.IsUnInit()
+	return it == nil || it.Value.IsUninitialized()
 }
 
 func (it *SimpleStringOnce) IsValid() bool {
@@ -79,7 +79,7 @@ func (it *SimpleStringOnce) Int() int {
 		return constants.Zero
 	}
 
-	v, _ := converters.StringToIntegerWithDefault(
+	v, _ := converters.StringTo.IntegerWithDefault(
 		it.Value.Value(),
 		constants.Zero)
 
