@@ -12,8 +12,6 @@ const (
 	IO
 	ReadWrite
 	InvalidInput
-	// Compatibility alias retained for older public callers/tests.
-	InvalidValidate = InvalidInput
 	InvalidOutput
 	InvalidCondition
 	EmptyString
@@ -986,3 +984,8 @@ const (
 	ReflectSetTo
 	MaxError
 )
+
+// Compatibility alias retained for older public callers/tests.
+// Declared outside the iota block above to avoid breaking the iota chain.
+const InvalidValidate = InvalidInput
+
