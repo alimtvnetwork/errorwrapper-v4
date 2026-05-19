@@ -1,6 +1,7 @@
 package errstrtests
 
 import (
+	"errors"
 	"testing"
 
 	"github.com/alimtvnetwork/errorwrapper-v3/errdata/errstr"

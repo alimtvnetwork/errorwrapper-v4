@@ -1,6 +1,7 @@
 package errbytetests
 
 import (
+	"errors"
 	"testing"
 
 	"github.com/alimtvnetwork/errorwrapper-v3/errdata/errbyte"

@@ -1,6 +1,7 @@
 package errjsontests
 
 import (
+	"errors"
 	"testing"
 
 	"github.com/alimtvnetwork/core-v9/coredata/corejson"

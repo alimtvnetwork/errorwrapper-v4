@@ -1,6 +1,7 @@
 package errinttests
 
 import (
+	"errors"
 	"testing"
 
 	"github.com/alimtvnetwork/errorwrapper-v3/errdata/errint"
