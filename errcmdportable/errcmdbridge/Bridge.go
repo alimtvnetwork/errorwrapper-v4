@@ -32,7 +32,7 @@ func FromErrcmdResult(r *errcmd.Result) errcmdportable.Result {
 
 	var portableErr error
 	if w := r.ErrorWrapper(); w != nil && w.HasError() {
-		portableErr = w
+		portableErr = w.Error()
 	}
 
 	return errcmdportable.Result{
