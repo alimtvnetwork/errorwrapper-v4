@@ -27,7 +27,7 @@ func Test_ErrInt_Constructors_New(t *testing.T) {
 	})
 
 	Convey("New.Result.Error", t, func() {
-		r := errint.New.Result.Error(errtype.InvalidValidate, errnew.Message("bad"))
+		r := errint.New.Result.Error(errtype.InvalidValidate, errors.New("bad"))
 		So(r.HasError(), ShouldBeTrue)
 	})
 

@@ -22,7 +22,7 @@ func Test_Errany_Constructors_New(t *testing.T) {
 	})
 
 	Convey("New.Result.Error", t, func() {
-		r := errany.New.Result.Error(errtype.InvalidValidate, errnew.Message("bad"))
+		r := errany.New.Result.Error(errtype.InvalidValidate, errors.New("bad"))
 		So(r.HasError(), ShouldBeTrue)
 	})
 

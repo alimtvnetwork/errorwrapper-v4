@@ -69,7 +69,7 @@ func Test_ErrInt_ResultsWithErrorCollection_Basics(t *testing.T) {
 
 	Convey("NewResultsWithErrorCollectionUsingTypeError", t, func() {
 		r := errint.NewResultsWithErrorCollectionUsingTypeError(
-			errtype.InvalidValidate, errnew.Message("bad"))
+			errtype.InvalidValidate, errors.New("bad"))
 		So(r.IsEmpty(), ShouldBeTrue)
 		So(r.HasError(), ShouldBeTrue)
 	})

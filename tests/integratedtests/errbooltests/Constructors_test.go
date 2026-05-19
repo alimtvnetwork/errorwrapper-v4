@@ -55,7 +55,7 @@ func Test_ErrBool_Constructors_New(t *testing.T) {
 	})
 
 	Convey("New.Result.Error", t, func() {
-		r := errbool.New.Result.Error(errtype.InvalidValidate, errnew.Message("bad"))
+		r := errbool.New.Result.Error(errtype.InvalidValidate, errors.New("bad"))
 		So(r.HasError(), ShouldBeTrue)
 	})
 

@@ -70,7 +70,7 @@ func Test_ErrStr_LinkedList_Basics(t *testing.T) {
 
 	Convey("NewLinkedListUsingItemsError", t, func() {
 		ll := errstr.NewLinkedListUsingItemsError(
-			errtype.InvalidValidate, errnew.Message("bad"),
+			errtype.InvalidValidate, errors.New("bad"),
 			[]string{"a", "b"})
 		So(ll, ShouldNotBeNil)
 		So(ll.LinkedList, ShouldNotBeNil)
@@ -100,7 +100,7 @@ func Test_ErrStr_LinkedList_Basics(t *testing.T) {
 	Convey("NewLinkedListUsingPtrItemsError", t, func() {
 		ptrItems := []*string{}
 		ll := errstr.NewLinkedListUsingPtrItemsError(
-			ptrItems, errnew.Message("bad"), errtype.InvalidValidate)
+			ptrItems, errors.New("bad"), errtype.InvalidValidate)
 		So(ll, ShouldNotBeNil)
 		So(ll.ErrorWrapper.HasError(), ShouldBeTrue)
 	})

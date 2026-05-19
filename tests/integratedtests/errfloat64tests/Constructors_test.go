@@ -22,7 +22,7 @@ func Test_Errfloat64_Constructors_New(t *testing.T) {
 	})
 
 	Convey("New.Result.Error", t, func() {
-		r := errfloat64.New.Result.Error(errtype.InvalidValidate, errnew.Message("bad"))
+		r := errfloat64.New.Result.Error(errtype.InvalidValidate, errors.New("bad"))
 		So(r.HasError(), ShouldBeTrue)
 	})
 
