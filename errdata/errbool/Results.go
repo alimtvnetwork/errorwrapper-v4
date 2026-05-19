@@ -4,7 +4,7 @@ import (
 	"strings"
 
 	"github.com/alimtvnetwork/core-v9/constants"
-	"github.com/alimtvnetwork/core-v9/coredata/coredynamic"
+	"github.com/alimtvnetwork/core-v9/converters"
 	"github.com/alimtvnetwork/core-v9/coredata/corejson"
 	"github.com/alimtvnetwork/errorwrapper-v3"
 )
@@ -97,12 +97,8 @@ func (it *Results) IsFailed() bool {
 }
 
 func (it Results) String() string {
-	items, err := coredynamic.SliceItemsAsStringsAny(
-		it.SafeValues())
-
-	if err != nil {
-		panic(err)
-	}
+	items := converters.AnyTo.ToStrings(
+		false, it.SafeValues())
 
 	return strings.Join(
 		items,
