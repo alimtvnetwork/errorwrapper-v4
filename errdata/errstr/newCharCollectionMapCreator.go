@@ -73,14 +73,13 @@ func (it *newCharCollectionMapCreator) ErrorWithPointerItemsPtr(
 	ptrItems *[]*string,
 ) *CharCollectionMap {
 	errWrapper := errnew.Type.Error(errVariation, err)
-	items := converters.
-		PointerStringsToStrings(ptrItems)
+	items := converters.StringsTo.PtrOfPtrToPtrStrings(ptrItems)
 
 	return &CharCollectionMap{
 		CharCollectionMap: corestr.
 			New.
 			CharCollectionMap.
-			ItemsPtr(items),
+			ItemsPtrWithCap(0, constants.ArbitraryCapacity30, *items),
 		ErrorWrapper: errWrapper,
 	}
 }

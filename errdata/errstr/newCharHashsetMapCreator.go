@@ -108,7 +108,7 @@ func (it *newCharHashsetMapCreator) ErrorWithTypePointerStringsPtr(
 	ptrItems *[]*string,
 ) *CharHashsetMap {
 	errWrapper := errnew.Type.Error(errVariation, err)
-	items := converters.PointerStringsToStrings(ptrItems)
+	items := converters.StringsTo.PtrOfPtrToPtrStrings(ptrItems)
 	length := len(*items)
 
 	return &CharHashsetMap{

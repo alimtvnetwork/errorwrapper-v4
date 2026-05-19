@@ -97,7 +97,7 @@ func (it *Result) Int() int {
 		return constants.Zero
 	}
 
-	v, _ := converters.StringToIntegerWithDefault(
+	v, _ := converters.StringTo.IntegerWithDefault(
 		it.Value,
 		constants.Zero)
 
