@@ -1,3 +1,7 @@
+github.com/alimtvnetwork/core-v9 v1.5.8 h1:5ooYWJxOUgN8LC33pazD1q6YhyTl6pskl6235aVlTk0=
+github.com/alimtvnetwork/core-v9 v1.5.8/go.mod h1:E7CGA37aIVmKt+Kmnn+RuJdy7/LkHRyNatZMLE8mtwA=
+github.com/alimtvnetwork/enum-v10 v0.5.5 h1:5eaoYdOu18qshOYkT3tRtHJqI6s8gQiUqV/mAtUrvkc=
+github.com/alimtvnetwork/enum-v10 v0.5.5/go.mod h1:EiljBoldowAnkuAICWko9RL586u9LwLlS8PS748YbUo=
 github.com/gopherjs/gopherjs v1.20.1 h1:22uLWFvVcxhJ+j3dJ99NNfwGyHynxCmjhYsrcwqbY60=
 github.com/gopherjs/gopherjs v1.20.1/go.mod h1:h+FTmmLgbXMmmtuZFp9bUqXciN429Wx0sJEJuMnpyfM=
 github.com/jtolds/gls v4.20.0+incompatible h1:xdiiI2gbIgH/gLH7ADydsJ1uDOEzR8yvV7C0MuV77Wo=
