@@ -299,6 +299,16 @@ func Empty() *Collection {
 	return New(0)
 }
 
+// NewEmpty is a backward-compatible alias for Empty.
+func NewEmpty() *Collection {
+	return Empty()
+}
+
+// EmptyCollection is a backward-compatible alias for Empty.
+func EmptyCollection() *Collection {
+	return Empty()
+}
+
 func MutexEmpty() *MutexCollection {
 	collection := New(0)
 
