@@ -32,13 +32,13 @@ func Test_ErrStr_Constructors_New(t *testing.T) {
 	})
 
 	Convey("New.Result.ErrorWrapper", t, func() {
-		w := errnew.Message.Type(errtype.InvalidValidate, "bad")
+		w := errnew.Message.New(errtype.InvalidValidate, "bad")
 		r := errstr.New.Result.ErrorWrapper(w)
 		So(r.HasError(), ShouldBeTrue)
 	})
 
 	Convey("New.Result.Create", t, func() {
-		w := errnew.Message.Type(errtype.InvalidValidate, "bad")
+		w := errnew.Message.New(errtype.InvalidValidate, "bad")
 		r := errstr.New.Result.Create("x", w)
 		So(r.Value, ShouldEqual, "x")
 		So(r.HasError(), ShouldBeTrue)

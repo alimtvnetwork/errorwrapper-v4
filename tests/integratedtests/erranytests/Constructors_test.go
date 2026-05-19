@@ -27,13 +27,13 @@ func Test_Errany_Constructors_New(t *testing.T) {
 	})
 
 	Convey("New.Result.ErrorWrapper", t, func() {
-		w := errnew.Message.Type(errtype.InvalidValidate, "bad")
+		w := errnew.Message.New(errtype.InvalidValidate, "bad")
 		r := errany.New.Result.ErrorWrapper(w)
 		So(r.HasError(), ShouldBeTrue)
 	})
 
 	Convey("New.Result.Create", t, func() {
-		w := errnew.Message.Type(errtype.InvalidValidate, "bad")
+		w := errnew.Message.New(errtype.InvalidValidate, "bad")
 		r := errany.New.Result.Create("hello", w)
 		So(r.Value, ShouldEqual, "hello")
 		So(r.HasError(), ShouldBeTrue)
@@ -80,13 +80,13 @@ func Test_Errany_Constructors_Empty(t *testing.T) {
 	})
 
 	Convey("Empty.ResultWithError", t, func() {
-		w := errnew.Message.Type(errtype.InvalidValidate, "bad")
+		w := errnew.Message.New(errtype.InvalidValidate, "bad")
 		r := errany.Empty.ResultWithError(w)
 		So(r.HasError(), ShouldBeTrue)
 	})
 
 	Convey("Empty.ResultsWithError", t, func() {
-		w := errnew.Message.Type(errtype.InvalidValidate, "bad")
+		w := errnew.Message.New(errtype.InvalidValidate, "bad")
 		r := errany.Empty.ResultsWithError(w)
 		So(r.HasError(), ShouldBeTrue)
 	})

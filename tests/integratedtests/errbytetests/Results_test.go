@@ -56,14 +56,14 @@ func Test_Errbyte_Results_Basics(t *testing.T) {
 	})
 
 	Convey("Dispose nils values and wrapper", t, func() {
-		w := errnew.Message.Type(errtype.InvalidValidate, "x")
+		w := errnew.Message.New(errtype.InvalidValidate, "x")
 		r := &errbyte.Results{Values: []byte{65, 66}, ErrorWrapper: w}
 		r.Dispose()
 		So(r.Values, ShouldBeNil)
 	})
 
 	Convey("Value with error", t, func() {
-		w := errnew.Message.Type(errtype.InvalidValidate, "bad")
+		w := errnew.Message.New(errtype.InvalidValidate, "bad")
 		r := &errbyte.Results{Values: []byte{65, 66}, ErrorWrapper: w}
 		So(r.HasError(), ShouldBeTrue)
 		So(r.IsEmptyError(), ShouldBeFalse)

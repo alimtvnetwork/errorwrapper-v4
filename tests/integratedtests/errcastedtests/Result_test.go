@@ -18,7 +18,7 @@ func Test_ErrCasted_Result_Basics(t *testing.T) {
 	})
 
 	Convey("New with wrapper", t, func() {
-		w := errnew.Message.Type(errtype.InvalidValidate, "ok")
+		w := errnew.Message.New(errtype.InvalidValidate, "ok")
 		r := errcasted.New(w)
 		So(r.IsCastedProperly, ShouldBeTrue)
 		So(r.Wrapper.HasError(), ShouldBeTrue)
@@ -31,7 +31,7 @@ func Test_ErrCasted_Result_Basics(t *testing.T) {
 	})
 
 	Convey("ToResultPtr", t, func() {
-		w := errnew.Message.Type(errtype.InvalidValidate, "ok")
+		w := errnew.Message.New(errtype.InvalidValidate, "ok")
 		r := errcasted.New(w)
 		rp := r.ToResultPtr()
 		So(rp, ShouldNotBeNil)
@@ -54,14 +54,14 @@ func Test_ErrCasted_ResultPtr_Basics(t *testing.T) {
 	})
 
 	Convey("NewPtr with wrapper", t, func() {
-		w := errnew.Message.Type(errtype.InvalidValidate, "ok")
+		w := errnew.Message.New(errtype.InvalidValidate, "ok")
 		rp := errcasted.NewPtr(w)
 		So(rp.IsCastedProperly, ShouldBeTrue)
 		So(rp.Wrapper.HasError(), ShouldBeTrue)
 	})
 
 	Convey("ToResult", t, func() {
-		w := errnew.Message.Type(errtype.InvalidValidate, "ok")
+		w := errnew.Message.New(errtype.InvalidValidate, "ok")
 		rp := errcasted.NewPtr(w)
 		r := rp.ToResult()
 		So(r.IsCastedProperly, ShouldBeTrue)

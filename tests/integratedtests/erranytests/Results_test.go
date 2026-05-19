@@ -57,7 +57,7 @@ func Test_ErrAny_Results_Basics(t *testing.T) {
 	})
 
 	Convey("Dispose nils values", t, func() {
-		w := errnew.Message.Type(errtype.InvalidValidate, "x")
+		w := errnew.Message.New(errtype.InvalidValidate, "x")
 		r := &errany.Results{Values: []interface{}{"a"}, ErrorWrapper: w}
 		r.Dispose()
 		So(r.Values, ShouldBeNil)

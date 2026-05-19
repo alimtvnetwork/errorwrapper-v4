@@ -47,7 +47,7 @@ func Test_GenericResult_Basics(t *testing.T) {
 	})
 
 	Convey("Wrapper-bearing result reports error", t, func() {
-		w := errnew.Message.Type(errtype.InvalidValidate, "bad input")
+		w := errnew.Message.New(errtype.InvalidValidate, "bad input")
 		r := erranygen.NewResult("v", w, nil)
 		So(r.HasError(), ShouldBeTrue)
 		So(r.IsEmptyError(), ShouldBeFalse)
@@ -72,7 +72,7 @@ func Test_GenericResult_JSONAndDispose(t *testing.T) {
 	})
 
 	Convey("Dispose clears value and wrapper", t, func() {
-		w := errnew.Message.Type(errtype.InvalidValidate, "x")
+		w := errnew.Message.New(errtype.InvalidValidate, "x")
 		r := erranygen.NewResult("v", w, nil)
 		r.Dispose()
 		So(r.Value, ShouldEqual, "")
