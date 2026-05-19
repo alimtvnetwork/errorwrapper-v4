@@ -1213,11 +1213,11 @@ func (it *Collection) AddAllIsSuccessCollectorFunctions(
 }
 
 func (it *Collection) AddAllIsSuccessProcessCollectorFunc(
-	dynamicInput coredynamic.Dynamic,
+	dynamicInput *coredynamic.Dynamic,
 	isSuccessProcessCollector func(
-	dynamicIn coredynamic.Dynamic,
-	errorCollection *Collection,
-) (isSuccess bool),
+		dynamicIn *coredynamic.Dynamic,
+		errorCollection *Collection,
+	) (isSuccess bool),
 ) *Collection {
 	isSuccessProcessCollector(dynamicInput, it)
 
