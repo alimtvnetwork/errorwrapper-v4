@@ -192,7 +192,11 @@ func (it *WrappersMap) ExecuteByKeysAndCollection(
 	errorWrapperCollection *errwrappers.Collection,
 	keys ...string,
 ) *errwrappers.Collection {
-	if it.IsEmpty() {
+	if errorWrapperCollection == nil {
+		errorWrapperCollection = errwrappers.Empty()
+	}
+
+	if it.IsEmpty() && len(keys) == 0 {
 		return errorWrapperCollection
 	}
 
