@@ -1,12 +1,22 @@
 package errstr
 
 import (
+	"errors"
+
 	"github.com/alimtvnetwork/core-v9/coredata/corestr"
 
 	"github.com/alimtvnetwork/errorwrapper-v3"
 	"github.com/alimtvnetwork/errorwrapper-v3/errnew"
 	"github.com/alimtvnetwork/errorwrapper-v3/errtype"
 )
+
+func linkedCollectionsErrorWrapper(errVariation errtype.Variation, err error) *errorwrapper.Wrapper {
+	if err == nil {
+		err = errors.New(errVariation.Name())
+	}
+
+	return errnew.Type.Error(errVariation, err)
+}
 
 type LinkedCollections struct {
 	*corestr.LinkedCollections
@@ -25,7 +35,7 @@ func NewLinkedCollectionsUsingItemsError(
 	err error,
 	items []string,
 ) *LinkedCollections {
-	errWrapper := errnew.Type.Error(errVariation, err)
+	errWrapper := linkedCollectionsErrorWrapper(errVariation, err)
 
 	return &LinkedCollections{
 		LinkedCollections: corestr.New.LinkedCollection.Strings(items...),
@@ -69,7 +79,7 @@ func NewLinkedCollectionsUsingPtrItemsError(
 	err error,
 	errVariation errtype.Variation,
 ) *LinkedCollections {
-	errWrapper := errnew.Type.Error(errVariation, err)
+	errWrapper := linkedCollectionsErrorWrapper(errVariation, err)
 
 	return &LinkedCollections{
 		LinkedCollections: corestr.New.LinkedCollection.PointerStringsPtr(&ptrItems),
