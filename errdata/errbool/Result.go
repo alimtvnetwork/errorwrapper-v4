@@ -37,7 +37,7 @@ func (it *Result) IsEmpty() bool {
 }
 
 func (it *Result) IsValid() bool {
-	return !it.HasIssuesOrEmpty()
+	return it == nil
 }
 
 // IsSuccess
@@ -68,11 +68,13 @@ func (it *Result) HasSafeItems() bool {
 }
 
 func (it *Result) HasError() bool {
-	return it != nil && it.ErrorWrapper.HasError()
+	return it != nil && it.ErrorWrapper != nil &&
+		it.ErrorWrapper.HasError()
 }
 
 func (it *Result) IsEmptyError() bool {
-	return it == nil || it.ErrorWrapper.IsEmpty()
+	return it == nil || it.ErrorWrapper == nil ||
+		it.ErrorWrapper.IsEmpty()
 }
 
 func (it *Result) IsTrue() bool {
@@ -95,7 +97,7 @@ func (it *Result) IsInvalid() bool {
 }
 
 func (it *Result) Int() int {
-	if it.IsValid() {
+	if it != nil && it.Value && !it.HasError() {
 		return constants.One
 	}
 
@@ -103,7 +105,7 @@ func (it *Result) Int() int {
 }
 
 func (it *Result) Byte() byte {
-	if it.IsValid() {
+	if it != nil && it.Value && !it.HasError() {
 		return constants.One
 	}
 
