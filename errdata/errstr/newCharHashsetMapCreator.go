@@ -43,7 +43,7 @@ func (it *newCharHashsetMapCreator) NewCharHashsetMapUsingItemsError(
 		CharHashsetMap: corestr.
 			New.
 			CharHashsetMap.
-			CapItems(length, length, items),
+			CapItems(length, length, items...),
 		ErrorWrapper: errWrapper,
 	}
 }
