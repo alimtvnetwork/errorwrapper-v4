@@ -389,7 +389,7 @@ func (it *Collection) IsEmptyAll(
 }
 
 func (it *Collection) GetAsBasicWrapper() errcoreinf.BasicErrWrapper {
-	return it.GetAsBasicWrapper()
+	return it.GetAsErrorWrapperPtr()
 }
 
 func (it *Collection) GetAsBasicWrapperUsingTyper(
