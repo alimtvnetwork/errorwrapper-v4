@@ -2,9 +2,6 @@
 package errany
 
 import (
-	"fmt"
-	"strconv"
-
 	"github.com/alimtvnetwork/core-v9/constants"
 	"github.com/alimtvnetwork/core-v9/converters"
 	"github.com/alimtvnetwork/core-v9/coredata/coredynamic"
@@ -122,7 +119,11 @@ func (it *Result) Byte() byte {
 		return 0
 	}
 
-	return it.Value.(byte)
+	if value, ok := it.Value.(byte); ok {
+		return value
+	}
+
+	return 0
 }
 
 func (it *Result) Float32() float32 {
@@ -130,7 +131,14 @@ func (it *Result) Float32() float32 {
 		return 0
 	}
 
-	return it.Value.(float32)
+	switch value := it.Value.(type) {
+	case float32:
+		return value
+	case float64:
+		return float32(value)
+	}
+
+	return 0
 }
 
 func (it *Result) Float64() float64 {
@@ -138,7 +146,14 @@ func (it *Result) Float64() float64 {
 		return 0
 	}
 
-	return it.Value.(float64)
+	switch value := it.Value.(type) {
+	case float64:
+		return value
+	case float32:
+		return float64(value)
+	}
+
+	return 0
 }
 
 func (it *Result) ErrorWrapperInf() errorwrapper.ErrWrapper {
