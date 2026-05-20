@@ -26,7 +26,7 @@ func (it *Collection) IsEmpty() bool {
 
 // HasSafeItems No errors and has items
 func (it *Collection) HasSafeItems() bool {
-	return it != nil && it.ErrorWrapper.IsEmpty() &&
+	return it != nil && it.IsEmptyError() &&
 		!it.IsEmpty()
 }
 
