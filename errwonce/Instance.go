@@ -7,7 +7,6 @@ import (
 
 	"github.com/alimtvnetwork/core-v9/codestack"
 	"github.com/alimtvnetwork/core-v9/constants"
-	"github.com/alimtvnetwork/core-v9/converters"
 	"github.com/alimtvnetwork/core-v9/coredata/corejson"
 	"github.com/alimtvnetwork/errorwrapper-v3"
 	"github.com/alimtvnetwork/errorwrapper-v3/errnew"
@@ -46,7 +45,7 @@ func NewPtrUsingErrFunc(errType errtype.Variation, initializerFunc func() error)
 	return NewPtr(newFunc)
 }
 
-func (it Instance) MarshalJSON() ([]byte, error) {
+func (it *Instance) MarshalJSON() ([]byte, error) {
 	if it.IsNullOrEmpty() {
 		return json.Marshal("")
 	}
@@ -64,15 +63,15 @@ func (it *Instance) UnmarshalJSON(data []byte) error {
 	return err
 }
 
-func (it Instance) HasError() bool {
+func (it *Instance) HasError() bool {
 	return !it.IsNullOrEmpty()
 }
 
-func (it Instance) IsNull() bool {
+func (it *Instance) IsNull() bool {
 	return it.Value() == nil
 }
 
-func (it Instance) IsNullOrEmpty() bool {
+func (it *Instance) IsNullOrEmpty() bool {
 	err := it.Value()
 
 	return err == nil || err.IsEmpty()
