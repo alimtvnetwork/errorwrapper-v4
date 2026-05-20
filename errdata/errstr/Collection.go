@@ -11,13 +11,13 @@ type Collection struct {
 }
 
 func (it *Collection) HasError() bool {
-	return it.ErrorWrapper != nil &&
+	return it != nil && it.ErrorWrapper != nil &&
 		it.ErrorWrapper.HasError()
 }
 
 func (it *Collection) IsEmptyError() bool {
-	return it.ErrorWrapper != nil &&
-		it.ErrorWrapper.HasError()
+	return it == nil || it.ErrorWrapper == nil ||
+		it.ErrorWrapper.IsEmpty()
 }
 
 func (it *Collection) IsEmpty() bool {
