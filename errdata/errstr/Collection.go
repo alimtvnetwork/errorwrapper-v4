@@ -21,12 +21,12 @@ func (it *Collection) IsEmptyError() bool {
 }
 
 func (it *Collection) IsEmpty() bool {
-	return it.Collection == nil || it.Collection.IsEmpty()
+	return it == nil || it.Collection == nil || it.Collection.IsEmpty()
 }
 
 // HasSafeItems No errors and has items
 func (it *Collection) HasSafeItems() bool {
-	return it.ErrorWrapper.IsEmpty() &&
+	return it != nil && it.ErrorWrapper.IsEmpty() &&
 		!it.IsEmpty()
 }
 

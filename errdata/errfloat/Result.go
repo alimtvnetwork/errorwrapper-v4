@@ -2,6 +2,8 @@
 package errfloat
 
 import (
+	"math"
+
 	"github.com/alimtvnetwork/core-v9/constants"
 	"github.com/alimtvnetwork/core-v9/converters"
 	"github.com/alimtvnetwork/core-v9/coredata/corejson"
@@ -9,8 +11,12 @@ import (
 )
 
 type Result struct {
-	Value        float32
+	Value        float64
 	ErrorWrapper *errorwrapper.Wrapper
+}
+
+func normalizeFloat(value float32) float64 {
+	return math.Round(float64(value)*1_000_000) / 1_000_000
 }
 
 func (it *Result) IsInvalid() bool {
@@ -68,7 +74,7 @@ func (it *Result) IsValidRange(min, max float32) bool {
 		return false
 	}
 
-	return it.Value >= min && it.Value <= max
+	return it.Value >= float64(min) && it.Value <= float64(max)
 }
 
 func (it *Result) IsSafeValidRange(min, max float32) bool {
@@ -77,8 +83,8 @@ func (it *Result) IsSafeValidRange(min, max float32) bool {
 	}
 
 	return it.IsEmptyError() &&
-		it.Value >= min &&
-		it.Value <= max
+		it.Value >= float64(min) &&
+		it.Value <= float64(max)
 }
 
 func (it *Result) Int() int {
@@ -94,7 +100,7 @@ func (it *Result) Byte() byte {
 		return 0
 	}
 
-	if it.Value > constants.MaxUnit8AsFloat32 {
+	if it.Value > float64(constants.MaxUnit8AsFloat32) {
 		return constants.MaxUnit8
 	}
 

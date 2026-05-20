@@ -38,6 +38,19 @@ func (it *Result) IsNull() bool {
 	return it == nil || it.Result == nil
 }
 
+func (it *Result) Dispose() {
+	if it == nil {
+		return
+	}
+
+	if it.Result != nil {
+		it.Result.Dispose()
+	}
+	if it.ErrorWrapper != nil {
+		it.ErrorWrapper.Dispose()
+	}
+}
+
 func (it *Result) HasAnyItem() bool {
 	return it != nil &&
 		it.Result != nil &&
@@ -56,10 +69,12 @@ func (it *Result) IsEmpty() bool {
 }
 
 func (it *Result) HasError() bool {
-	return it != nil &&
-		it.ErrorWrapper.HasError() ||
-		it != nil &&
-			it.Result.HasError()
+	if it == nil {
+		return false
+	}
+
+	return it.ErrorWrapper.HasError() ||
+		it.Result.HasError()
 }
 
 func (it *Result) SafeValuesPtr() *[]byte {
@@ -146,7 +161,7 @@ func (it *Result) IsEqual(term string) bool {
 		return false
 	}
 
-	return it.SafeString() == term
+	return strings.Trim(it.SafeString(), `"`) == term
 }
 
 func (it *Result) IsEqualIgnoreCase(term string) bool {
@@ -154,7 +169,7 @@ func (it *Result) IsEqualIgnoreCase(term string) bool {
 		return false
 	}
 
-	return strings.EqualFold(it.SafeString(), term)
+	return strings.EqualFold(strings.Trim(it.SafeString(), `"`), term)
 }
 
 func (it *Result) SplitLinesSimpleSlice() *corestr.SimpleSlice {
@@ -214,7 +229,7 @@ func (it *Result) PrettyJsonBuffer(prefix, indent string) (*bytes.Buffer, error)
 }
 
 func (it *Result) IsEmptyError() bool {
-	return !it.HasError()
+	return it == nil || !it.HasError()
 }
 
 func (it *Result) IsSuccess() bool {
@@ -222,6 +237,10 @@ func (it *Result) IsSuccess() bool {
 }
 
 func (it *Result) CompiledErrorWrapper() *errorwrapper.Wrapper {
+	if it == nil {
+		return nil
+	}
+
 	if it.HasError() && it.ErrorWrapper.HasError() {
 		return it.ErrorWrapper
 	}

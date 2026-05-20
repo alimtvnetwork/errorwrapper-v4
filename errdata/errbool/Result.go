@@ -20,7 +20,9 @@ func (it *Result) Dispose() {
 		return
 	}
 
-	it.ErrorWrapper.Dispose()
+	if it.ErrorWrapper != nil {
+		it.ErrorWrapper.Dispose()
+	}
 }
 
 func (it *Result) IsAnyNull() bool {
@@ -109,6 +111,10 @@ func (it *Result) Byte() byte {
 }
 
 func (it *Result) ErrorWrapperInf() errorwrapper.ErrWrapper {
+	if it == nil {
+		return nil
+	}
+
 	return it.ErrorWrapper
 }
 

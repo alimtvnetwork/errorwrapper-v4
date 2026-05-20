@@ -1,14 +1,12 @@
 package errverify
 
 import (
+	"errors"
 	"regexp"
 	"strings"
 
 	"github.com/alimtvnetwork/core-v9/constants"
 	"github.com/alimtvnetwork/core-v9/enums/stringcompareas"
-	"github.com/alimtvnetwork/errorwrapper-v3"
-	"github.com/alimtvnetwork/errorwrapper-v3/errnew"
-	"github.com/alimtvnetwork/errorwrapper-v3/errtype"
 )
 
 // StreamMatchMode controls how StreamingCollectionVerifier matches an
@@ -80,11 +78,9 @@ type StreamingCollectionVerifier struct {
 // Feed processes a single actual line. Mismatches are accumulated and
 // surfaced by Finish(); Feed itself returns non-nil only for setup
 // errors (nil ExpectedLine, bad regex).
-func (it *StreamingCollectionVerifier) Feed(actual string) *errorwrapper.Wrapper {
+func (it *StreamingCollectionVerifier) Feed(actual string) error {
 	if it.ExpectedLine == nil {
-		return errnew.Type.Message(
-			errtype.ValidationFailed,
-			it.Header+" - StreamingCollectionVerifier.ExpectedLine is nil")
+		return errors.New(it.Header + " - StreamingCollectionVerifier.ExpectedLine is nil")
 	}
 
 	expected, hasMore := it.ExpectedLine(it.index)
@@ -113,7 +109,7 @@ func (it *StreamingCollectionVerifier) Feed(actual string) *errorwrapper.Wrapper
 
 // Finish must be called after the last Feed(). Returns nil on full match,
 // or a ValidationFailed wrapper aggregating every mismatch.
-func (it *StreamingCollectionVerifier) Finish() *errorwrapper.Wrapper {
+func (it *StreamingCollectionVerifier) Finish() error {
 	if it.ExpectedLine != nil && !it.expectedEnd {
 		for {
 			expected, hasMore := it.ExpectedLine(it.index)
@@ -145,16 +141,14 @@ func (it *StreamingCollectionVerifier) Finish() *errorwrapper.Wrapper {
 		joined += m
 	}
 
-	return errnew.Type.Message(
-		errtype.ValidationFailed,
-		joined)
+	return errors.New(joined)
 }
 
 // fedCount approximates how many actual lines were fed (index advances
 // once per Feed, including over-feeds past expected end).
 func (it *StreamingCollectionVerifier) fedCount() int { return it.index }
 
-func (it *StreamingCollectionVerifier) compare(expected, actual string) (bool, *errorwrapper.Wrapper) {
+func (it *StreamingCollectionVerifier) compare(expected, actual string) (bool, error) {
 	switch it.Mode {
 	case StreamMatchEqual:
 		return expected == actual, nil
@@ -172,9 +166,7 @@ func (it *StreamingCollectionVerifier) compare(expected, actual string) (bool, *
 		if !ok {
 			compiled, err := regexp.Compile(expected)
 			if err != nil {
-				return false, errnew.Type.Message(
-					errtype.ValidationFailed,
-					it.Header+" - invalid regex at index "+itoa(it.index)+": "+err.Error())
+				return false, errors.New(it.Header + " - invalid regex at index " + itoa(it.index) + ": " + err.Error())
 			}
 			re = compiled
 			it.regexCache[expected] = re

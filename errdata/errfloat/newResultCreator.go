@@ -17,7 +17,7 @@ func (it *newResultCreator) Item(
 	item float32,
 ) *Result {
 	return &Result{
-		Value: item,
+		Value: normalizeFloat(item),
 	}
 }
 
@@ -25,7 +25,7 @@ func (it *newResultCreator) Float(
 	item float32,
 ) *Result {
 	return &Result{
-		Value: item,
+		Value: normalizeFloat(item),
 	}
 }
 
@@ -54,7 +54,7 @@ func (it *newResultCreator) Create(
 	errorWrapper *errorwrapper.Wrapper,
 ) *Result {
 	return &Result{
-		Value:        result,
+		Value:        normalizeFloat(result),
 		ErrorWrapper: errorWrapper,
 	}
 }
@@ -63,6 +63,6 @@ func (it *newResultCreator) ValueOnly(
 	result float32,
 ) *Result {
 	return &Result{
-		Value: result,
+		Value: normalizeFloat(result),
 	}
 }
