@@ -42,7 +42,7 @@ func (it *emptyCreator) ResultsWithError(errorWrapper *errorwrapper.Wrapper) *Re
 
 func (it *emptyCreator) ResultWithValue(value float32) *Result {
 	return &Result{
-		Value: value,
+		Value: normalizeFloat(value),
 	}
 }
 
