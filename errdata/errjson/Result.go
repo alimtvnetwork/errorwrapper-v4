@@ -216,7 +216,7 @@ func (it *Result) PrettyJsonBuffer(prefix, indent string) (*bytes.Buffer, error)
 }
 
 func (it *Result) IsEmptyError() bool {
-	return !it.HasError()
+	return it == nil || !it.HasError()
 }
 
 func (it *Result) IsSuccess() bool {
@@ -224,6 +224,10 @@ func (it *Result) IsSuccess() bool {
 }
 
 func (it *Result) CompiledErrorWrapper() *errorwrapper.Wrapper {
+	if it == nil {
+		return nil
+	}
+
 	if it.HasError() && it.ErrorWrapper.HasError() {
 		return it.ErrorWrapper
 	}
