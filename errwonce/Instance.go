@@ -208,12 +208,22 @@ func (it *Instance) HasReferences() bool {
 	return value != nil && value.HasReferences()
 }
 
-func (it Instance) FullString() string {
-	return it.Value().FullString()
+func (it *Instance) FullString() string {
+	value := it.Value()
+	if value == nil {
+		return constants.EmptyString
+	}
+
+	return value.FullString()
 }
 
-func (it Instance) FullStringWithTraces() string {
-	return it.Value().FullStringWithTraces()
+func (it *Instance) FullStringWithTraces() string {
+	value := it.Value()
+	if value == nil {
+		return constants.EmptyString
+	}
+
+	return value.FullStringWithTraces()
 }
 
 func (it Instance) Json() corejson.Result {
