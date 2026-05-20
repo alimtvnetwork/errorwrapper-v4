@@ -7,6 +7,8 @@
 package errcmdbridge
 
 import (
+	"strings"
+
 	"github.com/alimtvnetwork/errorwrapper-v3/errcmd"
 	"github.com/alimtvnetwork/errorwrapper-v3/errcmdportable"
 )
@@ -24,10 +26,10 @@ func FromErrcmdResult(r *errcmd.Result) errcmdportable.Result {
 	stdout := ""
 	stderr := ""
 	if base := r.CompiledTrimmedOutput(); base != "" {
-		stdout = base
+		stdout = strings.TrimRight(base, "\r\n")
 	}
 	if base := r.CompiledTrimmedErrorOutput(); base != "" {
-		stderr = base
+		stderr = strings.TrimRight(base, "\r\n")
 	}
 
 	var portableErr error
