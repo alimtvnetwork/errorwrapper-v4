@@ -2,6 +2,9 @@
 package errany
 
 import (
+	"fmt"
+	"strconv"
+
 	"github.com/alimtvnetwork/core-v9/constants"
 	"github.com/alimtvnetwork/core-v9/converters"
 	"github.com/alimtvnetwork/core-v9/coredata/coredynamic"
@@ -28,11 +31,11 @@ func (it *Result) Dispose() {
 }
 
 func (it *Result) IsEmpty() bool {
-	return it == nil || it.Value == 0
+	return it == nil || it.Value == nil || it.Value == 0
 }
 
 func (it *Result) IsValid() bool {
-	return it.HasIssuesOrEmpty()
+	return !it.HasError()
 }
 
 func (it *Result) IsSuccess() bool {
@@ -69,7 +72,11 @@ func (it *Result) Str() string {
 		return constants.EmptyString
 	}
 
-	return it.Value.(string)
+	if value, ok := it.Value.(string); ok {
+		return value
+	}
+
+	return constants.EmptyString
 }
 
 func (it *Result) Dynamic() *coredynamic.Dynamic {
@@ -87,7 +94,8 @@ func (it *Result) Bool() bool {
 		return false
 	}
 
-	return it.Value.(bool)
+	value, ok := it.Value.(bool)
+	return ok && value
 }
 
 func (it *Result) Int() int {
@@ -95,7 +103,18 @@ func (it *Result) Int() int {
 		return 0
 	}
 
-	return it.Value.(int)
+	switch value := it.Value.(type) {
+	case int:
+		return value
+	case byte:
+		return int(value)
+	case float32:
+		return int(value)
+	case float64:
+		return int(value)
+	}
+
+	return 0
 }
 
 func (it *Result) Byte() byte {
