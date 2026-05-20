@@ -53,10 +53,16 @@ func (it *Result) Dispose() {
 }
 
 func (it *Result) HasAnyItem() bool {
-	return it != nil &&
-		it.Result != nil &&
-		it.Result.Length() > 0 &&
-		!it.Result.IsEmptyJsonBytes()
+	if it == nil || it.Result == nil {
+		return false
+	}
+	if len(it.Result.Bytes) == 0 {
+		return false
+	}
+	if it.Result.IsEmptyJsonBytes() {
+		return false
+	}
+	return true
 }
 
 // HasSafeItems No errors and has items
