@@ -217,6 +217,17 @@ func (it *Result) PrettyJsonString() string {
 	return it.Result.PrettyJsonString()
 }
 
+func (it *Result) normalizedString() string {
+	raw := strings.Trim(it.SafeString(), `"`)
+
+	decoded, err := base64.StdEncoding.DecodeString(raw)
+	if err == nil {
+		return strings.Trim(string(decoded), `"`)
+	}
+
+	return raw
+}
+
 func (it *Result) PrettyJsonStringOrErrString() string {
 	if it == nil {
 		return constants.EmptyString
