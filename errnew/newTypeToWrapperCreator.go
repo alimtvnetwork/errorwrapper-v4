@@ -264,9 +264,15 @@ func (it *newTypeToWrapperCreator) Default(
 		return nil
 	}
 
-	return errorwrapper.NewPtrUsingStackSkip(
+	msg := variant.Message()
+	if msg == "" {
+		msg = variant.String()
+	}
+
+	return errorwrapper.NewMsgDisplayErrorNoReference(
 		defaultSkipInternal,
-		variant)
+		variant,
+		msg)
 }
 
 func (it *newTypeToWrapperCreator) DefaultUsingStackSkip(
@@ -277,9 +283,15 @@ func (it *newTypeToWrapperCreator) DefaultUsingStackSkip(
 		return nil
 	}
 
-	return errorwrapper.NewPtrUsingStackSkip(
+	msg := variant.Message()
+	if msg == "" {
+		msg = variant.String()
+	}
+
+	return errorwrapper.NewMsgDisplayErrorNoReference(
 		skipStartStackIndex+defaultSkipInternal,
-		variant)
+		variant,
+		msg)
 }
 
 func (it *newTypeToWrapperCreator) Create(
@@ -289,9 +301,15 @@ func (it *newTypeToWrapperCreator) Create(
 		return nil
 	}
 
-	return errorwrapper.NewPtrUsingStackSkip(
+	msg := variant.Message()
+	if msg == "" {
+		msg = variant.String()
+	}
+
+	return errorwrapper.NewMsgDisplayErrorNoReference(
 		defaultSkipInternal,
-		variant)
+		variant,
+		msg)
 }
 
 func (it *newTypeToWrapperCreator) UsingStackSkip(
@@ -302,9 +320,15 @@ func (it *newTypeToWrapperCreator) UsingStackSkip(
 		return nil
 	}
 
-	return errorwrapper.NewPtrUsingStackSkip(
+	msg := variant.Message()
+	if msg == "" {
+		msg = variant.String()
+	}
+
+	return errorwrapper.NewMsgDisplayErrorNoReference(
 		skipStartStackIndex+defaultSkipInternal,
-		variant)
+		variant,
+		msg)
 }
 
 func (it *newTypeToWrapperCreator) ErrorUsingStackSkip(
