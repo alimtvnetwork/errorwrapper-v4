@@ -72,7 +72,7 @@ func NewLinkedCollectionsUsingPtrItemsError(
 	errWrapper := errnew.Type.Error(errVariation, err)
 
 	return &LinkedCollections{
-		LinkedCollections: corestr.New.LinkedCollections.PointerStringsPtr(&ptrItems),
+		LinkedCollections: corestr.New.LinkedCollection.PointerStringsPtr(&ptrItems),
 		ErrorWrapper:      errWrapper,
 	}
 }
