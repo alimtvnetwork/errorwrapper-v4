@@ -11,7 +11,7 @@ import (
 	"github.com/alimtvnetwork/errorwrapper-v3/errwrappers"
 )
 
-func WrapPanicToBaseErrorCollection(voidFunc func()) errcoreinf.BaseErrorOrCollectionWrapper {
+func WrapPanicToBaseErrorCollection(voidFunc func()) *errwrappers.Collection {
 	finalErr := errwrappers.Empty()
 
 	Block{
