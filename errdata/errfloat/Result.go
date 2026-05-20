@@ -31,7 +31,7 @@ func (it *Result) IsEmpty() bool {
 }
 
 func (it *Result) IsValid() bool {
-	return it.HasIssuesOrEmpty()
+	return !it.HasError()
 }
 
 func (it *Result) IsSuccess() bool {
@@ -82,10 +82,18 @@ func (it *Result) IsSafeValidRange(min, max float32) bool {
 }
 
 func (it *Result) Int() int {
+	if it == nil {
+		return 0
+	}
+
 	return int(it.Value)
 }
 
 func (it *Result) Byte() byte {
+	if it == nil {
+		return 0
+	}
+
 	if it.Value > constants.MaxUnit8AsFloat32 {
 		return constants.MaxUnit8
 	}
