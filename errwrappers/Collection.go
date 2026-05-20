@@ -2190,6 +2190,10 @@ func (it *Collection) Length() int {
 	return len(it.items)
 }
 
+func (it *Collection) StateCounter() StateCounter {
+	return NewStateCount(it)
+}
+
 func (it *Collection) ToString(
 	isIncludeStakeTraces,
 	isIncludeHeader bool,
