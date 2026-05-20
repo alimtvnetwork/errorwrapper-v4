@@ -59,12 +59,16 @@ func (it Result) String() string {
 	return it.Value
 }
 
-func (it Result) Bytes() []byte {
+func (it *Result) Bytes() []byte {
+	if it == nil {
+		return []byte{}
+	}
+
 	return []byte(it.Value)
 }
 
-func (it Result) SafeBytes() []byte {
-	if it.HasIssuesOrEmpty() {
+func (it *Result) SafeBytes() []byte {
+	if it == nil || it.HasIssuesOrEmpty() {
 		return []byte{}
 	}
 
