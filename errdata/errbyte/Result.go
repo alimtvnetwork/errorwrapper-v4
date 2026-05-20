@@ -63,15 +63,15 @@ func (it Result) String() string {
 	return string(it.Value)
 }
 
-func (it Result) NumberString() string {
-	return strconv.Itoa(int(it.Value))
-}
-
-func (it *Result) NumberStringSafe() string {
+func (it *Result) NumberString() string {
 	if it == nil {
 		return "0"
 	}
 
+	return strconv.Itoa(int(it.Value))
+}
+
+func (it *Result) NumberStringSafe() string {
 	return it.NumberString()
 }
 
