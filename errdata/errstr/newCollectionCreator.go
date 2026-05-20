@@ -117,10 +117,14 @@ func (it *newCollectionCreator) ItemsWithErrorWrapper(
 	errorWrapper *errorwrapper.Wrapper,
 	items *[]string,
 ) *Collection {
+	var deref []string
+	if items != nil {
+		deref = *items
+	}
 	return &Collection{
-		Collection: corestr.New.Collection.StringsPtrOption(
+		Collection: corestr.New.Collection.StringsOptions(
 			isMakeClone,
-			items),
+			deref),
 		ErrorWrapper: errorWrapper,
 	}
 }
