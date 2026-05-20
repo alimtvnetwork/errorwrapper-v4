@@ -54,14 +54,18 @@ func (it *newCharHashsetMapCreator) ErrorWrapperItemsPtr(
 	errorWrapper *errorwrapper.Wrapper,
 	items *[]string,
 ) *CharHashsetMap {
+	var deref []string
+	if items != nil {
+		deref = *items
+	}
 	return &CharHashsetMap{
 		CharHashsetMap: corestr.
 			New.
 			CharHashsetMap.
-			CapItemsPtr(
+			CapItems(
 				constants.ArbitraryCapacity30,
 				eachHashsetCapacity,
-				items,
+				deref...,
 			),
 		ErrorWrapper: errorWrapper,
 	}
