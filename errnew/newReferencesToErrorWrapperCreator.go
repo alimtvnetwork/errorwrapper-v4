@@ -102,10 +102,7 @@ func (it newReferencesToErrorWrapperCreator) Quick(
 ) *errorwrapper.Wrapper {
 	refValues := make([]ref.Value, 0, len(locations))
 	for i, loc := range locations {
-		refValues = append(refValues, ref.Value{
-			Location: loc,
-			Name:     "ref" + strings.TrimSpace(strings.Repeat(" ", 0)) + itoaQuick(i),
-		})
+		refValues = append(refValues, ref.New("ref"+itoaQuick(i), loc))
 	}
 	return errorwrapper.NewMsgDisplayErrorReferencesPtr(
 		defaultSkipInternal,
