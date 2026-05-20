@@ -178,7 +178,7 @@ func (it *Result) SplitLinesSimpleSlice() *corestr.SimpleSlice {
 		it.SplitLines())
 }
 
-func (it Result) String() string {
+func (it *Result) String() string {
 	if it.IsAnyNull() {
 		return constants.EmptyString
 	}
@@ -186,7 +186,7 @@ func (it Result) String() string {
 	return it.Result.JsonString()
 }
 
-func (it Result) SafeString() string {
+func (it *Result) SafeString() string {
 	if it.IsAnyNull() {
 		return constants.EmptyString
 	}
@@ -194,7 +194,7 @@ func (it Result) SafeString() string {
 	return it.Result.JsonString()
 }
 
-func (it Result) JsonString() string {
+func (it *Result) JsonString() string {
 	if it.IsAnyNull() {
 		return constants.EmptyString
 	}
@@ -202,7 +202,7 @@ func (it Result) JsonString() string {
 	return it.Result.JsonString()
 }
 
-func (it Result) PrettyJsonString() string {
+func (it *Result) PrettyJsonString() string {
 	if it.IsAnyNull() {
 		return constants.EmptyString
 	}
