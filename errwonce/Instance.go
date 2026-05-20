@@ -226,12 +226,22 @@ func (it *Instance) FullStringWithTraces() string {
 	return value.FullStringWithTraces()
 }
 
-func (it Instance) Json() corejson.Result {
-	return it.Value().Json()
+func (it *Instance) Json() corejson.Result {
+	value := it.Value()
+	if value == nil {
+		return corejson.New(constants.EmptyString)
+	}
+
+	return value.Json()
 }
 
-func (it Instance) JsonPtr() *corejson.Result {
-	return it.Value().JsonPtr()
+func (it *Instance) JsonPtr() *corejson.Result {
+	value := it.Value()
+	if value == nil {
+		return corejson.NewPtr(constants.EmptyString)
+	}
+
+	return value.JsonPtr()
 }
 
 func (it Instance) Serialize() ([]byte, error) {
