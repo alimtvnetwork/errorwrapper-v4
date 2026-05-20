@@ -310,8 +310,8 @@ func (it *Collection) ReflectSetTo(
 
 // IsCollect
 //
-//  first tries to cast to errorwrapper.Wrapper
-//  if not successful then creates new one
+//	first tries to cast to errorwrapper.Wrapper
+//	if not successful then creates new one
 func (it *Collection) IsCollect(
 	another errcoreinf.BaseErrorOrCollectionWrapper,
 ) bool {
@@ -353,7 +353,7 @@ func (it *Collection) IsPayloadWrapperCollected(
 
 // IsCollectOn
 //
-//  Only returns true if condition is true + error exist
+//	Only returns true if condition is true + error exist
 func (it *Collection) IsCollectOn(
 	isCollect bool,
 	another errcoreinf.BaseErrorOrCollectionWrapper,
@@ -367,7 +367,7 @@ func (it *Collection) IsCollectOn(
 
 // IsEmptyAll
 //
-//  true represents no error occurred.
+//	true represents no error occurred.
 //
 // To check error occurred check IsCollected or IsCollectedAny
 func (it *Collection) IsEmptyAll(
@@ -410,7 +410,7 @@ func (it *Collection) StackTracesJsonResult() *corejson.Result {
 
 // AllStackTraces
 //
-//  it will return all stack-traces string
+//	it will return all stack-traces string
 func (it *Collection) AllStackTraces() *codestack.TraceCollection {
 	if it.IsEmpty() {
 		return nil
@@ -436,7 +436,7 @@ func (it *Collection) AllStackTraces() *codestack.TraceCollection {
 
 // StackTraces
 //
-//  it will return all stack-traces string
+//	it will return all stack-traces string
 func (it *Collection) StackTraces() string {
 	if it.IsEmpty() {
 		return ""
@@ -467,7 +467,7 @@ func (it *Collection) NewStackTracesJsonResult(
 
 // NewDefaultStackTracesJsonResult
 //
-//  creates new stack-traces and returns as json
+//	creates new stack-traces and returns as json
 func (it *Collection) NewDefaultStackTracesJsonResult() *corejson.Result {
 	return codestack.New.StackTrace.DefaultCount(codestack.Skip1).JsonPtr()
 }
@@ -708,7 +708,7 @@ func (it *Collection) AddError(err error) {
 
 // AddErrorChain
 //
-//  no error then skip adding
+//	no error then skip adding
 func (it *Collection) AddErrorChain(err error) *Collection {
 	if err == nil {
 		return it
@@ -930,18 +930,18 @@ func (it *Collection) ConditionalAddErrorWrapper(
 
 // AddAllErrorFunctions
 //
-//  Runs until all execution is done.
-//  All errors wrappers will be collected.
+//	Runs until all execution is done.
+//	All errors wrappers will be collected.
 //
-//  Finally, returns status if any error is collected.
+//	Finally, returns status if any error is collected.
 //
-//  Once error is returned process halted and exits out the loop
-//  Only the first occurred error will be collected.
+//	Once error is returned process halted and exits out the loop
+//	Only the first occurred error will be collected.
 //
-//  Warning:
-//   - Getting an error will NOT halt the process and continue running.
+//	Warning:
+//	 - Getting an error will NOT halt the process and continue running.
 //
-//  To exit out on first error see AddAnyErrorFunctions
+//	To exit out on first error see AddAnyErrorFunctions
 func (it *Collection) AddAllErrorFunctions(
 	errorType errtype.Variation,
 	executeAllFunctions ...func() error,
@@ -972,15 +972,15 @@ func (it *Collection) AddAllErrorFunctions(
 
 // AddAnyErrorFunctions
 //
-//  Runs until first function returns error.
+//	Runs until first function returns error.
 //
-//  Once error is returned process halted and exits out the loop
-//  Only the first occurred error will be collected.
+//	Once error is returned process halted and exits out the loop
+//	Only the first occurred error will be collected.
 //
-//  Warning:
-//   - After first error, rest will not be executed.
+//	Warning:
+//	 - After first error, rest will not be executed.
 //
-//  To run all functions see AddAllErrorFunctions
+//	To run all functions see AddAllErrorFunctions
 func (it *Collection) AddAnyErrorFunctions(
 	errorType errtype.Variation,
 	executeFunctions ...func() error,
@@ -1031,15 +1031,15 @@ func (it *Collection) AddFunction(
 
 // AddAnyFunctions
 //
-//  Runs until first function returns error.
+//	Runs until first function returns error.
 //
-//  Once error is returned process halted and exits out the loop
-//  Only the first occurred error will be collected.
+//	Once error is returned process halted and exits out the loop
+//	Only the first occurred error will be collected.
 //
-//  Warning:
-//   - After first error, rest will not be executed.
+//	Warning:
+//	 - After first error, rest will not be executed.
 //
-//  To run all functions see AddAllFunctions
+//	To run all functions see AddAllFunctions
 func (it *Collection) AddAnyFunctions(
 	successExecutes ...func() *errorwrapper.Wrapper,
 ) (isAnyAdded, isNothingAdded bool) {
@@ -1072,18 +1072,18 @@ func (it *Collection) AddAnyFunctions(
 
 // AddAllFunctions
 //
-//  Runs until all execution is done.
-//  All errors wrappers will be collected.
+//	Runs until all execution is done.
+//	All errors wrappers will be collected.
 //
-//  Finally, returns status if any error is collected.
+//	Finally, returns status if any error is collected.
 //
-//  Once error is returned process halted and exits out the loop
-//  Only the first occurred error will be collected.
+//	Once error is returned process halted and exits out the loop
+//	Only the first occurred error will be collected.
 //
-//  Warning:
-//   - Getting an error will NOT halt the process and continue running.
+//	Warning:
+//	 - Getting an error will NOT halt the process and continue running.
 //
-//  To exit out on first error see AddAnyFunctions
+//	To exit out on first error see AddAnyFunctions
 func (it *Collection) AddAllFunctions(
 	executeFunctions ...func() *errorwrapper.Wrapper,
 ) (isAddedAny, isNothingAdded bool) {
@@ -1115,14 +1115,15 @@ func (it *Collection) AddAllFunctions(
 
 // IsSuccessFunc
 //
-//  returns true  if error is not returned  nor collected.
-//  returns false if error is returned      and collected.
+//	returns true  if error is not returned  nor collected.
+//	returns false if error is returned      and collected.
 //
 // Usages:
 // - if IsSuccessFunc() { do this }
 //
 // See also IsFailedFunc
-//  invert of IsFailedFunc
+//
+//	invert of IsFailedFunc
 func (it *Collection) IsSuccessFunc(
 	executeFunction func() *errorwrapper.Wrapper,
 ) (isSuccess bool) {
@@ -1144,14 +1145,15 @@ func (it *Collection) IsSuccessFunc(
 
 // IsFailedFunc
 //
-//  returns true  if error is returned     and collected.
-//  returns false if error is not returned nor collected.
+//	returns true  if error is returned     and collected.
+//	returns false if error is not returned nor collected.
 //
 // Usages:
 // - if IsFailedFunc() { return failed exit }
 //
 // See also IsSuccessFunc
-//  invert of IsSuccessFunc
+//
+//	invert of IsSuccessFunc
 func (it *Collection) IsFailedFunc(
 	executeFunction func() *errorwrapper.Wrapper,
 ) (isFailed bool) {
@@ -1327,7 +1329,7 @@ func (it *Collection) ConcatNewClone(
 
 // ConcatNew
 //
-//  no clone copies to new list
+//	no clone copies to new list
 func (it *Collection) ConcatNew(
 	errCollections ...*Collection,
 ) *Collection {
@@ -1428,14 +1430,14 @@ func (it *Collection) IsAnyWrappersCollected(
 
 // IsNoneCollected
 //
-//  refers to IsSuccess, no errors found
+//	refers to IsSuccess, no errors found
 //
-//  Invert of IsAnyWrappersCollected
+//	Invert of IsAnyWrappersCollected
 //
-//  alias of IsEmptyAll, IsSuccessAll
+//	alias of IsEmptyAll, IsSuccessAll
 //
 // Usages:
-//  - if IsNoneCollected() { do success }
+//   - if IsNoneCollected() { do success }
 func (it *Collection) IsNoneCollected(
 	errorWrappers ...*errorwrapper.Wrapper,
 ) (isNoneCollected bool) {
@@ -1449,14 +1451,14 @@ func (it *Collection) IsNoneCollected(
 
 // IsSuccessAll
 //
-//  refers to IsSuccess, no errors found
+//	refers to IsSuccess, no errors found
 //
-//  Invert of IsAnyWrappersCollected
+//	Invert of IsAnyWrappersCollected
 //
-//  alias of IsEmptyAll, IsSuccessAll
+//	alias of IsEmptyAll, IsSuccessAll
 //
 // Usages:
-//  - if IsSuccessAll() { do success }
+//   - if IsSuccessAll() { do success }
 func (it *Collection) IsSuccessAll(
 	errorWrappers ...*errorwrapper.Wrapper,
 ) (isSuccessAll bool) {
@@ -1470,13 +1472,13 @@ func (it *Collection) IsSuccessAll(
 
 // IsFailedAny
 //
-//  refers to if any errors found and collected
+//	refers to if any errors found and collected
 //
-//  alias of  IsAnyWrappersCollected
-//  invert of IsEmptyAll, IsSuccessAll
+//	alias of  IsAnyWrappersCollected
+//	invert of IsEmptyAll, IsSuccessAll
 //
 // Usages:
-//  - if IsFailedAny() { return exit }
+//   - if IsFailedAny() { return exit }
 func (it *Collection) IsFailedAny(
 	errorWrappers ...*errorwrapper.Wrapper,
 ) (isSuccessAll bool) {
@@ -1538,8 +1540,8 @@ func (it *Collection) Null(
 
 // IsAnyOfNull
 //
-//  returns true if any is null and also will be collected as error
-//  Usages : errnew.Null .ManyByCheckingUsingStackSkip
+//	returns true if any is null and also will be collected as error
+//	Usages : errnew.Null .ManyByCheckingUsingStackSkip
 func (it *Collection) IsAnyOfNull(
 	anyItems ...interface{},
 ) (isNoneCollected bool) {
@@ -1556,8 +1558,8 @@ func (it *Collection) IsAnyOfNull(
 
 // IsAnyOfNullMessage
 //
-//  returns true if any is null and also will be collected as error
-//  Usages : errnew.Null .ManyWithMessage
+//	returns true if any is null and also will be collected as error
+//	Usages : errnew.Null .ManyWithMessage
 func (it *Collection) IsAnyOfNullMessage(
 	message string,
 	anyItems ...interface{},
@@ -1575,10 +1577,10 @@ func (it *Collection) IsAnyOfNullMessage(
 
 // IsNullItem
 //
-//  returns true if the item is null and
-//  new error will be created and collected
+//	returns true if the item is null and
+//	new error will be created and collected
 //
-//  Usages : errnew.Null .UsingStackSkip
+//	Usages : errnew.Null .UsingStackSkip
 func (it *Collection) IsNullItem(
 	anyItem interface{},
 ) (isNoneCollected bool) {
@@ -1593,10 +1595,10 @@ func (it *Collection) IsNullItem(
 
 // IsNullItemMessage
 //
-//  returns true if the item is null and
-//  new error will be created and collected
+//	returns true if the item is null and
+//	new error will be created and collected
 //
-//  Usages : errnew.Null .UsingStackSkip
+//	Usages : errnew.Null .UsingStackSkip
 func (it *Collection) IsNullItemMessage(
 	msg string,
 	anyItem interface{},
@@ -1612,9 +1614,9 @@ func (it *Collection) IsNullItemMessage(
 
 // Append
 //
-//  Skip on empty or nil
+//	Skip on empty or nil
 //
-//  alias for AddWrapperPtr
+//	alias for AddWrapperPtr
 func (it *Collection) Append(
 	errorWrapper *errorwrapper.Wrapper,
 ) *Collection {
@@ -1639,12 +1641,12 @@ func (it *Collection) AddWrapperPtr(
 
 // IsCollectedErrorWrapperOrFunc
 //
-//  On existing error, errWrapperFunc will NOT be executed.
+//	On existing error, errWrapperFunc will NOT be executed.
 //
-//  If existingErrWrapper doesn't contain error
-//  then return status based on errWrapperFunc
+//	If existingErrWrapper doesn't contain error
+//	then return status based on errWrapperFunc
 //
-//  alias for AddExistingErrorWrapperOrFunc
+//	alias for AddExistingErrorWrapperOrFunc
 func (it *Collection) IsCollectedErrorWrapperOrFunc(
 	existingErrWrapper *errorwrapper.Wrapper,
 	errWrapperFunc func() *errorwrapper.Wrapper,
@@ -1662,12 +1664,12 @@ func (it *Collection) IsCollectedErrorWrapperOrFunc(
 
 // AddExistingErrorWrapperOrFunc
 //
-//  On existing error, errWrapperFunc will NOT be executed.
+//	On existing error, errWrapperFunc will NOT be executed.
 //
-//  If existingErrWrapper doesn't contain error
-//  then return status based on errWrapperFunc
+//	If existingErrWrapper doesn't contain error
+//	then return status based on errWrapperFunc
 //
-//  alias for IsCollectedErrorWrapperOrFunc
+//	alias for IsCollectedErrorWrapperOrFunc
 func (it *Collection) AddExistingErrorWrapperOrFunc(
 	existingErrWrapper *errorwrapper.Wrapper,
 	errWrapperFunc func() *errorwrapper.Wrapper,
@@ -2129,7 +2131,7 @@ func (it *Collection) AddUsingMessagesUsingStackSkip(
 
 // Adds
 //
-//  for each variation errorwrapper.New will be created and stored.
+//	for each variation errorwrapper.New will be created and stored.
 func (it *Collection) Adds(
 	variations ...errtype.Variation,
 ) *Collection {
@@ -2151,8 +2153,8 @@ func (it *Collection) Adds(
 
 // AddsUsingStackSkip
 //
-//  for each variation errorwrapper.New
-//  will be created and stored.
+//	for each variation errorwrapper.New
+//	will be created and stored.
 func (it *Collection) AddsUsingStackSkip(
 	stackStartIndex int,
 	variations ...errtype.Variation,
@@ -2670,8 +2672,8 @@ func (it *Collection) Clear() {
 
 // Dispose
 //
-//  After dispose nothing will work,
-//  everything be removed from memory.
+//	After dispose nothing will work,
+//	everything be removed from memory.
 func (it *Collection) Dispose() {
 	if it == nil {
 		return
