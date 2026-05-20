@@ -58,7 +58,7 @@ func (it *newResultTwoCreator) Create(
 			Value:        normalizeFloat(result),
 			ErrorWrapper: wrapper,
 		},
-		Value2: result2,
+		Value2: normalizeFloat(result2),
 	}
 }
 
