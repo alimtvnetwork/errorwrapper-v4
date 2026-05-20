@@ -206,7 +206,8 @@ func NewResultsWithErrorCollectionUsingType(
 ) *ResultsWithErrorCollection {
 	return &ResultsWithErrorCollection{
 		Values: []int{},
-		ErrorWrappers: errwrappers.NewWithType(
-			errType),
+		ErrorWrappers: errwrappers.NewWithMessage(
+			errType,
+			errType.Name()),
 	}
 }
