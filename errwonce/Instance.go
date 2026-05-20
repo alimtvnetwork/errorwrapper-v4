@@ -181,8 +181,17 @@ func (it *Instance) ConcatNew(messages ...string) error {
 }
 
 func (it *Instance) Value() *errorwrapper.Wrapper {
+	if it == nil {
+		return nil
+	}
+
 	if it.isInitialized {
 		return it.innerData
+	}
+
+	if it.initializerFunc == nil {
+		it.isInitialized = true
+		return nil
 	}
 
 	it.innerData = it.initializerFunc()
