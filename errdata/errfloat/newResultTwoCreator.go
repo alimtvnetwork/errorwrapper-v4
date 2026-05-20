@@ -42,7 +42,7 @@ func (it *newResultTwoCreator) ValueOnly(
 ) *Result2 {
 	return &Result2{
 		Result: Result{
-			Value: result1,
+			Value: normalizeFloat(result1),
 		},
 		Value2: result2,
 	}
