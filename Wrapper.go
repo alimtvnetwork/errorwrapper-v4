@@ -1015,6 +1015,11 @@ func (it *Wrapper) finalMessageWithoutRefPlusCategory(referencesCompiled string)
 
 	errorVariantStructure := it.GetTypeVariantStruct()
 	errString := it.ErrorString()
+	// Avoid duplicating the variant's default message when the wrapper's
+	// currentError text is exactly the variant's own Message (e.g. Default()).
+	if errString == errorVariantStructure.Message {
+		errString = ""
+	}
 	finalString := errorVariantStructure.
 		CombineRefs(
 			errString,
