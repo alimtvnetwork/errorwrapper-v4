@@ -67,7 +67,8 @@ func (it *Result) IsEmpty() bool {
 	return it == nil ||
 		it.Result == nil ||
 		it.Result.Length() == 0 ||
-		it.Result.IsEmptyJsonBytes()
+		it.Result.IsEmptyJsonBytes() ||
+		it.normalizedString() == constants.EmptyString
 }
 
 func (it *Result) HasError() bool {
@@ -267,7 +268,7 @@ func (it *Result) CompiledErrorWrapper() *errorwrapper.Wrapper {
 }
 
 func (it *Result) IsFailed() bool {
-	return it.HasError()
+	return it.HasIssuesOrEmpty()
 }
 
 func (it *Result) UnmarshalJsonResultTo(unmarshalToReferencePtr interface{}) *errorwrapper.Wrapper {
