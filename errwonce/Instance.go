@@ -82,7 +82,7 @@ func (it *Instance) Message() string {
 		return constants.EmptyString
 	}
 
-	return it.Value().ErrorString()
+	return it.Value().FullString()
 }
 
 func (it *Instance) IsMessageEqual(msg string) bool {
