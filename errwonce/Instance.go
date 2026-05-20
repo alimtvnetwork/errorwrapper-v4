@@ -3,10 +3,10 @@ package errwonce
 import (
 	"encoding/json"
 	"errors"
+	"strings"
 
 	"github.com/alimtvnetwork/core-v9/codestack"
 	"github.com/alimtvnetwork/core-v9/constants"
-	"github.com/alimtvnetwork/core-v9/converters"
 	"github.com/alimtvnetwork/core-v9/coredata/corejson"
 	"github.com/alimtvnetwork/errorwrapper-v3"
 	"github.com/alimtvnetwork/errorwrapper-v3/errnew"
@@ -45,7 +45,7 @@ func NewPtrUsingErrFunc(errType errtype.Variation, initializerFunc func() error)
 	return NewPtr(newFunc)
 }
 
-func (it Instance) MarshalJSON() ([]byte, error) {
+func (it *Instance) MarshalJSON() ([]byte, error) {
 	if it.IsNullOrEmpty() {
 		return json.Marshal("")
 	}
@@ -63,15 +63,15 @@ func (it *Instance) UnmarshalJSON(data []byte) error {
 	return err
 }
 
-func (it Instance) HasError() bool {
+func (it *Instance) HasError() bool {
 	return !it.IsNullOrEmpty()
 }
 
-func (it Instance) IsNull() bool {
+func (it *Instance) IsNull() bool {
 	return it.Value() == nil
 }
 
-func (it Instance) IsNullOrEmpty() bool {
+func (it *Instance) IsNullOrEmpty() bool {
 	err := it.Value()
 
 	return err == nil || err.IsEmpty()
@@ -117,10 +117,7 @@ func (it *Instance) HandleErrorWith(messages ...string) {
 
 func (it *Instance) ConcatNewString(messages ...string) string {
 	additionalMessages :=
-		converters.StringsTo.Csv(
-			false,
-			messages...,
-		)
+		strings.Join(messages, ", ")
 
 	if it.IsNullOrEmpty() {
 		return additionalMessages
@@ -184,8 +181,17 @@ func (it *Instance) ConcatNew(messages ...string) error {
 }
 
 func (it *Instance) Value() *errorwrapper.Wrapper {
+	if it == nil {
+		return nil
+	}
+
 	if it.isInitialized {
 		return it.innerData
+	}
+
+	if it.initializerFunc == nil {
+		it.isInitialized = true
+		return nil
 	}
 
 	it.innerData = it.initializerFunc()
@@ -194,50 +200,81 @@ func (it *Instance) Value() *errorwrapper.Wrapper {
 	return it.innerData
 }
 
-func (it Instance) IsEmpty() bool {
-	return it.Value().IsEmpty()
+func (it *Instance) IsEmpty() bool {
+	return it.IsNullOrEmpty()
 }
 
-func (it Instance) IsSuccess() bool {
-	return it.Value().IsEmpty()
+func (it *Instance) IsSuccess() bool {
+	return it.IsNullOrEmpty()
 }
 
-func (it Instance) IsFailed() bool {
-	return it.Value().HasError()
+func (it *Instance) IsFailed() bool {
+	return it.HasError()
 }
 
-func (it Instance) HasReferences() bool {
-	return it.Value().HasReferences()
+func (it *Instance) HasReferences() bool {
+	value := it.Value()
+	return value != nil && value.HasReferences()
 }
 
-func (it Instance) FullString() string {
-	return it.Value().FullString()
+func (it *Instance) FullString() string {
+	value := it.Value()
+	if value == nil {
+		return constants.EmptyString
+	}
+
+	return value.FullString()
 }
 
-func (it Instance) FullStringWithTraces() string {
-	return it.Value().FullStringWithTraces()
+func (it *Instance) FullStringWithTraces() string {
+	value := it.Value()
+	if value == nil {
+		return constants.EmptyString
+	}
+
+	return value.FullStringWithTraces()
 }
 
-func (it Instance) Json() corejson.Result {
-	return it.Value().Json()
+func (it *Instance) Json() corejson.Result {
+	value := it.Value()
+	if value == nil {
+		return corejson.New(constants.EmptyString)
+	}
+
+	return value.Json()
 }
 
-func (it Instance) JsonPtr() *corejson.Result {
-	return it.Value().JsonPtr()
+func (it *Instance) JsonPtr() *corejson.Result {
+	value := it.Value()
+	if value == nil {
+		return corejson.NewPtr(constants.EmptyString)
+	}
+
+	return value.JsonPtr()
 }
 
-func (it Instance) Serialize() ([]byte, error) {
-	return it.Value().Serialize()
+func (it *Instance) Serialize() ([]byte, error) {
+	value := it.Value()
+	if value == nil {
+		return nil, nil
+	}
+
+	return value.Serialize()
 }
 
-func (it Instance) SerializeMust() []byte {
-	return it.Value().SerializeMust()
+func (it *Instance) SerializeMust() []byte {
+	value := it.Value()
+	if value == nil {
+		return nil
+	}
+
+	return value.SerializeMust()
 }
 
-func (it Instance) ErrorWrapper() *errorwrapper.Wrapper {
+func (it *Instance) ErrorWrapper() *errorwrapper.Wrapper {
 	return it.Value()
 }
 
-func (it Instance) String() string {
-	return it.Value().FullString()
+func (it *Instance) String() string {
+	return it.FullString()
 }

@@ -42,6 +42,8 @@ func GetPtr(wrapper interface{}) *errcasted.ResultPtr {
 	switch castedNew := wrapper.(type) {
 	case *errwrappers.Collection:
 		return errcasted.NewPtr(castedNew.GetAsErrorWrapperPtr())
+	case errwrappers.Collection:
+		return errcasted.NewPtr(castedNew.GetAsErrorWrapperPtr())
 	case errcoreinf.BasicErrWrapper:
 		return errcasted.NewPtr(
 			errorwrapper.NewUsingBasicErr(castedNew))

@@ -3,7 +3,7 @@ package trydo
 import "github.com/alimtvnetwork/errorwrapper-v3"
 
 func GetErrorWrapperWrappedPanic(voidFunc func()) *errorwrapper.Wrapper {
-	errWrapper := errorwrapper.EmptyPtr()
+	errWrapper := errorwrapper.StaticEmptyPtr
 
 	Block{
 		Try: func() {
