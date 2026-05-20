@@ -116,7 +116,7 @@ func (it *newCharHashsetMapCreator) ErrorWithTypePointerStringsPtr(
 	length := len(*items)
 
 	return &CharHashsetMap{
-		CharHashsetMap: corestr.New.CharHashsetMap.CapItemsPtr(length, length/constants.ArbitraryCapacity3, items),
+		CharHashsetMap: corestr.New.CharHashsetMap.CapItems(length, length/constants.ArbitraryCapacity3, (*items)...),
 		ErrorWrapper:   errWrapper,
 	}
 }
