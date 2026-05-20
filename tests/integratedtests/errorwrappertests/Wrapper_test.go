@@ -9,12 +9,12 @@ import (
 	"github.com/alimtvnetwork/errorwrapper-v3/errtype"
 )
 
-// Test_EmptyPtr_HasError — EmptyPtr() returns nil sentinel; nil receivers
-// must still report HasError=false and IsEmpty=true.
+// Test_EmptyPtr_HasError — EmptyPtr() returns a non-nil empty sentinel that
+// still reports HasError=false and IsEmpty=true.
 func Test_EmptyPtr_HasError(t *testing.T) {
-	Convey("EmptyPtr() returns nil sentinel that reports empty/no-error", t, func() {
+	Convey("EmptyPtr() returns non-nil empty sentinel", t, func() {
 		w := errorwrapper.EmptyPtr()
-		So(w, ShouldBeNil)
+		So(w, ShouldNotBeNil)
 		So(w.HasError(), ShouldBeFalse)
 		So(w.IsEmpty(), ShouldBeTrue)
 	})
