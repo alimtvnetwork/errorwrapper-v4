@@ -455,7 +455,7 @@ func NewMsgUsingCodeStacksPtr(
 }
 
 func EmptyPtr() *Wrapper {
-	return StaticEmptyPtr
+	return nil
 }
 
 func Empty() Wrapper {
