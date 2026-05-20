@@ -191,20 +191,21 @@ func (it *Instance) Value() *errorwrapper.Wrapper {
 	return it.innerData
 }
 
-func (it Instance) IsEmpty() bool {
-	return it.Value().IsEmpty()
+func (it *Instance) IsEmpty() bool {
+	return it.IsNullOrEmpty()
 }
 
-func (it Instance) IsSuccess() bool {
-	return it.Value().IsEmpty()
+func (it *Instance) IsSuccess() bool {
+	return it.IsNullOrEmpty()
 }
 
-func (it Instance) IsFailed() bool {
-	return it.Value().HasError()
+func (it *Instance) IsFailed() bool {
+	return it.HasError()
 }
 
-func (it Instance) HasReferences() bool {
-	return it.Value().HasReferences()
+func (it *Instance) HasReferences() bool {
+	value := it.Value()
+	return value != nil && value.HasReferences()
 }
 
 func (it Instance) FullString() string {
