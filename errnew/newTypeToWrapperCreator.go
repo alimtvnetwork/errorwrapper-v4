@@ -65,6 +65,17 @@ func (it *newTypeToWrapperCreator) Messages(
 		messages...)
 }
 
+func (it *newTypeToWrapperCreator) Message(
+	variant errtype.Variation,
+	message string,
+) *errorwrapper.Wrapper {
+	return errorwrapper.NewMessagesUsingJoiner(
+		defaultSkipInternal,
+		variant,
+		errorwrapper.MessagesJoiner,
+		message)
+}
+
 func (it *newTypeToWrapperCreator) MessagesUsingStackSkip(
 	skipStartStackIndex int,
 	variant errtype.Variation,
