@@ -55,7 +55,8 @@ func (it *Result) Dispose() {
 func (it *Result) HasAnyItem() bool {
 	return it != nil &&
 		it.Result != nil &&
-		it.Result.HasBytes()
+		it.Result.Length() > 0 &&
+		!it.Result.IsEmptyJsonBytes()
 }
 
 // HasSafeItems No errors and has items

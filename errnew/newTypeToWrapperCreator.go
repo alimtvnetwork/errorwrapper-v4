@@ -264,10 +264,9 @@ func (it *newTypeToWrapperCreator) Default(
 		return nil
 	}
 
-	return errorwrapper.NewMsgDisplayErrorNoReference(
+	return errorwrapper.NewPtrUsingStackSkip(
 		defaultSkipInternal,
-		variant,
-		variant.String())
+		variant)
 }
 
 func (it *newTypeToWrapperCreator) DefaultUsingStackSkip(
@@ -278,10 +277,9 @@ func (it *newTypeToWrapperCreator) DefaultUsingStackSkip(
 		return nil
 	}
 
-	return errorwrapper.NewMsgDisplayErrorNoReference(
+	return errorwrapper.NewPtrUsingStackSkip(
 		skipStartStackIndex+defaultSkipInternal,
-		variant,
-		variant.String())
+		variant)
 }
 
 func (it *newTypeToWrapperCreator) Create(
