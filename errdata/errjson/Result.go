@@ -56,10 +56,12 @@ func (it *Result) IsEmpty() bool {
 }
 
 func (it *Result) HasError() bool {
-	return it != nil &&
-		it.ErrorWrapper.HasError() ||
-		it != nil &&
-			it.Result.HasError()
+	if it == nil {
+		return false
+	}
+
+	return it.ErrorWrapper.HasError() ||
+		it.Result.HasError()
 }
 
 func (it *Result) SafeValuesPtr() *[]byte {
@@ -146,7 +148,7 @@ func (it *Result) IsEqual(term string) bool {
 		return false
 	}
 
-	return it.SafeString() == term
+	return strings.Trim(it.SafeString(), `"`) == term
 }
 
 func (it *Result) IsEqualIgnoreCase(term string) bool {
@@ -154,7 +156,7 @@ func (it *Result) IsEqualIgnoreCase(term string) bool {
 		return false
 	}
 
-	return strings.EqualFold(it.SafeString(), term)
+	return strings.EqualFold(strings.Trim(it.SafeString(), `"`), term)
 }
 
 func (it *Result) SplitLinesSimpleSlice() *corestr.SimpleSlice {
