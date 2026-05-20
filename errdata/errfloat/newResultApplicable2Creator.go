@@ -79,7 +79,7 @@ func (it *newResultApplicable2Creator) ApplicableValue(
 			Result: Result{
 				Value: normalizeFloat(value),
 			},
-			Value2: value2,
+			Value2: normalizeFloat(value2),
 		},
 		IsApplicable: true,
 	}
