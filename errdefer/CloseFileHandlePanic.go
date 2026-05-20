@@ -11,6 +11,10 @@ func CloseFileHandlePanic(
 	existingErrorWrapper *errorwrapper.Wrapper,
 	osFile *os.File,
 ) {
+	if osFile == nil {
+		return
+	}
+
 	finalError := CloseFile(
 		location,
 		existingErrorWrapper,
