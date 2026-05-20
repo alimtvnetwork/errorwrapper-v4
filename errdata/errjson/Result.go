@@ -38,6 +38,19 @@ func (it *Result) IsNull() bool {
 	return it == nil || it.Result == nil
 }
 
+func (it *Result) Dispose() {
+	if it == nil {
+		return
+	}
+
+	if it.Result != nil {
+		it.Result.Dispose()
+	}
+	if it.ErrorWrapper != nil {
+		it.ErrorWrapper.Dispose()
+	}
+}
+
 func (it *Result) HasAnyItem() bool {
 	return it != nil &&
 		it.Result != nil &&
