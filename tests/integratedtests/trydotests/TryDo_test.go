@@ -116,19 +116,19 @@ func Test_GetErrorWrapperCollectionWrappedPanic(t *testing.T) {
 		c.AddTypeError(errtype.Generic, errors.New("coll panic"))
 		got := trydo.GetErrorWrapperCollectionWrappedPanic(func() { panic(c) })
 		So(got, ShouldNotBeNil)
-		So(got.StateCounter().HasChanges(), ShouldBeTrue)
+		So(got.HasAnyItem(), ShouldBeTrue)
 	})
 
 	Convey("returns empty collection when panic is not a Collection", t, func() {
 		got := trydo.GetErrorWrapperCollectionWrappedPanic(func() { panic("not a coll") })
 		So(got, ShouldNotBeNil)
-		So(got.StateCounter().HasChanges(), ShouldBeFalse)
+		So(got.HasAnyItem(), ShouldBeFalse)
 	})
 
 	Convey("returns empty collection when no panic", t, func() {
 		got := trydo.GetErrorWrapperCollectionWrappedPanic(func() {})
 		So(got, ShouldNotBeNil)
-		So(got.StateCounter().HasChanges(), ShouldBeFalse)
+		So(got.HasAnyItem(), ShouldBeFalse)
 	})
 }
 

@@ -199,6 +199,10 @@ func (it *Results) SimpleSlice() *corestr.SimpleSlice {
 }
 
 func (it *Results) Hashset() *corestr.Hashset {
+	if it.IsAnyNull() {
+		return corestr.New.Hashset.Strings(nil)
+	}
+
 	return corestr.New.Hashset.Strings(
 		it.Values)
 }
