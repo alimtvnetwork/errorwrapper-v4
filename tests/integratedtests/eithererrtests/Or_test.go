@@ -75,7 +75,7 @@ func Test_OrEmptyCollectionPtr(t *testing.T) {
 	Convey("OrEmptyCollectionPtr returns empty collection when false", t, func() {
 		c := eithererr.OrEmptyCollectionPtr(false, trueC)
 		So(c, ShouldNotBeNil)
-		So(c.StateCounter().HasChanges(), ShouldBeFalse)
+		So(c.HasAnyError(), ShouldBeFalse)
 	})
 }
 
