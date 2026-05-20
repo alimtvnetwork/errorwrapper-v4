@@ -169,7 +169,7 @@ func WrapperOrFunc(
 	wrapper *errorwrapper.Wrapper,
 	errWrapperFunc func() *errorwrapper.Wrapper,
 ) *errorwrapper.Wrapper {
-	if wrapper != nil && wrapper.HasError() {
+	if wrapper != nil {
 		return wrapper
 	}
 
