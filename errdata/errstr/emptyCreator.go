@@ -1,6 +1,9 @@
 package errstr
 
-import "github.com/alimtvnetwork/errorwrapper-v3"
+import (
+	"github.com/alimtvnetwork/core-v9/coredata/corestr"
+	"github.com/alimtvnetwork/errorwrapper-v3"
+)
 
 type emptyCreator struct{}
 
@@ -10,6 +13,16 @@ func (it *emptyCreator) Result() *Result {
 
 func (it *emptyCreator) Results() *Results {
 	return &Results{}
+}
+
+func (it *emptyCreator) Collection() *Collection {
+	return &Collection{
+		Collection: corestr.Empty.Collection(),
+	}
+}
+
+func (it *emptyCreator) LinkedCollections() *LinkedCollections {
+	return EmptyLinkedCollections()
 }
 
 func (it *emptyCreator) Result2() *Result2 {
