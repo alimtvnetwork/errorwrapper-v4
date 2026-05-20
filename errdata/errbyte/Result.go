@@ -67,6 +67,14 @@ func (it Result) NumberString() string {
 	return strconv.Itoa(int(it.Value))
 }
 
+func (it *Result) NumberStringSafe() string {
+	if it == nil {
+		return "0"
+	}
+
+	return it.NumberString()
+}
+
 func (it *Result) HasSafeItems() bool {
 	return !it.HasIssuesOrEmpty()
 }
@@ -131,6 +139,10 @@ func (it *Result) Bool() bool {
 }
 
 func (it *Result) ErrorWrapperInf() errorwrapper.ErrWrapper {
+	if it == nil {
+		return nil
+	}
+
 	return it.ErrorWrapper
 }
 
