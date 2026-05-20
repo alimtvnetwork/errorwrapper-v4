@@ -95,6 +95,44 @@ func (it newReferencesToErrorWrapperCreator) Msg(
 		references...)
 }
 
+func (it newReferencesToErrorWrapperCreator) Quick(
+	errType errtype.Variation,
+	msg string,
+	locations ...string,
+) *errorwrapper.Wrapper {
+	refValues := make([]ref.Value, 0, len(locations))
+	for i, loc := range locations {
+		refValues = append(refValues, ref.Value{
+			Location: loc,
+			Name:     "ref" + strings.TrimSpace(strings.Repeat(" ", 0)) + itoaQuick(i),
+		})
+	}
+	return errorwrapper.NewMsgDisplayErrorReferencesPtr(
+		defaultSkipInternal,
+		errType,
+		msg,
+		refValues...)
+}
+
+func itoaQuick(i int) string {
+	if i == 0 {
+		return "0"
+	}
+	digits := ""
+	neg := i < 0
+	if neg {
+		i = -i
+	}
+	for i > 0 {
+		digits = string(rune('0'+i%10)) + digits
+		i /= 10
+	}
+	if neg {
+		return "-" + digits
+	}
+	return digits
+}
+
 func (it newReferencesToErrorWrapperCreator) MsgUsingStackSkip(
 	stackSkipIndex int,
 	errType errtype.Variation,
