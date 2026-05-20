@@ -28,7 +28,7 @@ func NewLinkedCollectionsUsingItemsError(
 	errWrapper := errnew.Type.Error(errVariation, err)
 
 	return &LinkedCollections{
-		LinkedCollections: corestr.New.LinkedCollections.Strings(items),
+		LinkedCollections: corestr.New.LinkedCollection.Strings(items),
 		ErrorWrapper:      errWrapper,
 	}
 }
