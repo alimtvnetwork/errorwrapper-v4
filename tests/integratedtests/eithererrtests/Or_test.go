@@ -108,6 +108,7 @@ func Test_AnyErrInfFirstOrEmpty(t *testing.T) {
 	collInf := errwrappers.Empty()
 	collInf.AddTypeError(errtype.Generic, errors.New("coll"))
 	w := errnew.Type.Error(errtype.NotFound, errors.New("w"))
+	_ = w
 
 	Convey("empty args returns nil", t, func() {
 		So(eithererr.AnyErrInfFirstOrEmpty(), ShouldBeNil)
