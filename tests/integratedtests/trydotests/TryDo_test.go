@@ -4,7 +4,7 @@ import (
 	"errors"
 	"testing"
 
-	"github.com/alimtvnetwork/errorwrapper-v3"
+	_ "github.com/alimtvnetwork/errorwrapper-v3"
 	"github.com/alimtvnetwork/errorwrapper-v3/errnew"
 	"github.com/alimtvnetwork/errorwrapper-v3/errtype"
 	"github.com/alimtvnetwork/errorwrapper-v3/errwrappers"
