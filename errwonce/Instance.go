@@ -262,10 +262,10 @@ func (it *Instance) SerializeMust() []byte {
 	return value.SerializeMust()
 }
 
-func (it Instance) ErrorWrapper() *errorwrapper.Wrapper {
+func (it *Instance) ErrorWrapper() *errorwrapper.Wrapper {
 	return it.Value()
 }
 
-func (it Instance) String() string {
-	return it.Value().FullString()
+func (it *Instance) String() string {
+	return it.FullString()
 }
