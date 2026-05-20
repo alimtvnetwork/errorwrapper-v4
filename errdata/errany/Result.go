@@ -28,11 +28,11 @@ func (it *Result) Dispose() {
 }
 
 func (it *Result) IsEmpty() bool {
-	return it == nil || it.Value == 0
+	return it == nil || it.Value == nil || it.Value == 0
 }
 
 func (it *Result) IsValid() bool {
-	return it.HasIssuesOrEmpty()
+	return !it.HasError()
 }
 
 func (it *Result) IsSuccess() bool {
@@ -69,7 +69,11 @@ func (it *Result) Str() string {
 		return constants.EmptyString
 	}
 
-	return it.Value.(string)
+	if value, ok := it.Value.(string); ok {
+		return value
+	}
+
+	return constants.EmptyString
 }
 
 func (it *Result) Dynamic() *coredynamic.Dynamic {
@@ -87,7 +91,8 @@ func (it *Result) Bool() bool {
 		return false
 	}
 
-	return it.Value.(bool)
+	value, ok := it.Value.(bool)
+	return ok && value
 }
 
 func (it *Result) Int() int {
@@ -95,7 +100,18 @@ func (it *Result) Int() int {
 		return 0
 	}
 
-	return it.Value.(int)
+	switch value := it.Value.(type) {
+	case int:
+		return value
+	case byte:
+		return int(value)
+	case float32:
+		return int(value)
+	case float64:
+		return int(value)
+	}
+
+	return 0
 }
 
 func (it *Result) Byte() byte {
@@ -103,7 +119,11 @@ func (it *Result) Byte() byte {
 		return 0
 	}
 
-	return it.Value.(byte)
+	if value, ok := it.Value.(byte); ok {
+		return value
+	}
+
+	return 0
 }
 
 func (it *Result) Float32() float32 {
@@ -111,7 +131,14 @@ func (it *Result) Float32() float32 {
 		return 0
 	}
 
-	return it.Value.(float32)
+	switch value := it.Value.(type) {
+	case float32:
+		return value
+	case float64:
+		return float32(value)
+	}
+
+	return 0
 }
 
 func (it *Result) Float64() float64 {
@@ -119,7 +146,14 @@ func (it *Result) Float64() float64 {
 		return 0
 	}
 
-	return it.Value.(float64)
+	switch value := it.Value.(type) {
+	case float64:
+		return value
+	case float32:
+		return float64(value)
+	}
+
+	return 0
 }
 
 func (it *Result) ErrorWrapperInf() errorwrapper.ErrWrapper {

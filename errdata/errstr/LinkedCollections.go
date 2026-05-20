@@ -28,7 +28,7 @@ func NewLinkedCollectionsUsingItemsError(
 	errWrapper := errnew.Type.Error(errVariation, err)
 
 	return &LinkedCollections{
-		LinkedCollections: corestr.New.LinkedCollection.Strings(items),
+		LinkedCollections: corestr.New.LinkedCollection.Strings(items...),
 		ErrorWrapper:      errWrapper,
 	}
 }
@@ -43,7 +43,7 @@ func NewLinkedCollectionsUsingItemsErrorWrapper(
 		deref = *items
 	}
 	return &LinkedCollections{
-		LinkedCollections: corestr.New.LinkedCollection.Strings(deref),
+		LinkedCollections: corestr.New.LinkedCollection.Strings(deref...),
 		ErrorWrapper:      errorWrapper,
 	}
 }

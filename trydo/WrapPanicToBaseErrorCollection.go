@@ -41,7 +41,7 @@ func WrapPanicToBaseErrorCollection(voidFunc func()) errcoreinf.BaseErrorOrColle
 					finalErr.AddTypeError(errtype.Unmarshalling, err)
 				}
 			default:
-				finalErr.AddError(errors.New(converters.AnyToString(true, cast)))
+				finalErr.AddError(errors.New(converters.AnyTo.ToValueString(cast)))
 			}
 		},
 		Finally: nil,
