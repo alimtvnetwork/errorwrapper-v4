@@ -74,7 +74,7 @@ func (it *Result) IsValidRange(min, max float32) bool {
 		return false
 	}
 
-	return it.Value >= min && it.Value <= max
+	return it.Value >= float64(min) && it.Value <= float64(max)
 }
 
 func (it *Result) IsSafeValidRange(min, max float32) bool {
@@ -83,8 +83,8 @@ func (it *Result) IsSafeValidRange(min, max float32) bool {
 	}
 
 	return it.IsEmptyError() &&
-		it.Value >= min &&
-		it.Value <= max
+		it.Value >= float64(min) &&
+		it.Value <= float64(max)
 }
 
 func (it *Result) Int() int {
@@ -100,7 +100,7 @@ func (it *Result) Byte() byte {
 		return 0
 	}
 
-	if it.Value > constants.MaxUnit8AsFloat32 {
+	if it.Value > float64(constants.MaxUnit8AsFloat32) {
 		return constants.MaxUnit8
 	}
 
