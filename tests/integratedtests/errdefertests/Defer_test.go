@@ -91,28 +91,28 @@ func Test_ErrorUsingCollection(t *testing.T) {
 	Convey("ErrorUsingCollection appends an error to the collection", t, func() {
 		c := errwrappers.Empty()
 		errdefer.ErrorUsingCollection(c, errtype.Generic, errors.New("coll error"))
-		So(c.StateCounter().HasChanges(), ShouldBeTrue)
+		So(c.HasAnyItem(), ShouldBeTrue)
 	})
 
 	Convey("ErrorWithMessagesUsingCollection returns true when err is nil", t, func() {
 		c := errwrappers.Empty()
 		ok := errdefer.ErrorWithMessagesUsingCollection(c, errtype.Generic, nil, "msg")
 		So(ok, ShouldBeTrue)
-		So(c.StateCounter().HasChanges(), ShouldBeFalse)
+		So(c.HasAnyItem(), ShouldBeFalse)
 	})
 
 	Convey("ErrorWithMessagesUsingCollection returns false when err is non-nil", t, func() {
 		c := errwrappers.Empty()
 		ok := errdefer.ErrorWithMessagesUsingCollection(c, errtype.Generic, errors.New("fail"), "msg")
 		So(ok, ShouldBeFalse)
-		So(c.StateCounter().HasChanges(), ShouldBeTrue)
+		So(c.HasAnyItem(), ShouldBeTrue)
 	})
 
 	Convey("ErrorMessagesUsingCollectionFunc with nil func does nothing", t, func() {
 		c := errwrappers.Empty()
 		ok := errdefer.ErrorMessagesUsingCollectionFunc(c, errtype.Generic, nil, "msg")
 		So(ok, ShouldBeFalse)
-		So(c.StateCounter().HasChanges(), ShouldBeFalse)
+		So(c.HasAnyItem(), ShouldBeFalse)
 	})
 
 	Convey("ErrorMessagesUsingCollectionFunc with func returns true on success", t, func() {
@@ -121,7 +121,7 @@ func Test_ErrorUsingCollection(t *testing.T) {
 			return nil
 		}, "msg")
 		So(ok, ShouldBeTrue)
-		So(c.StateCounter().HasChanges(), ShouldBeFalse)
+		So(c.HasAnyItem(), ShouldBeFalse)
 	})
 
 	Convey("ErrorMessagesUsingCollectionFunc with func returns false on error", t, func() {
@@ -130,7 +130,7 @@ func Test_ErrorUsingCollection(t *testing.T) {
 			return errors.New("boom")
 		}, "msg")
 		So(ok, ShouldBeFalse)
-		So(c.StateCounter().HasChanges(), ShouldBeTrue)
+		So(c.HasAnyItem(), ShouldBeTrue)
 	})
 }
 
@@ -153,7 +153,7 @@ func Test_ErrorWrapperFunc(t *testing.T) {
 		})
 		ok := errdefer.ErrorWrapperFuncUsingCollection(c, wf)
 		So(ok, ShouldBeTrue)
-		So(c.StateCounter().HasChanges(), ShouldBeFalse)
+		So(c.HasAnyItem(), ShouldBeFalse)
 	})
 
 	Convey("ErrorWrapperFuncUsingCollection returns false when wrapper has error", t, func() {
@@ -163,7 +163,7 @@ func Test_ErrorWrapperFunc(t *testing.T) {
 		})
 		ok := errdefer.ErrorWrapperFuncUsingCollection(c, wf)
 		So(ok, ShouldBeFalse)
-		So(c.StateCounter().HasChanges(), ShouldBeTrue)
+		So(c.HasAnyItem(), ShouldBeTrue)
 	})
 }
 
@@ -205,6 +205,6 @@ func Test_CloseFile(t *testing.T) {
 		c := errwrappers.Empty()
 		ok := errdefer.CloseFileUsingErrorCollection("/tmp/x", c, nil)
 		So(ok, ShouldBeFalse)
-		So(c.StateCounter().HasChanges(), ShouldBeFalse)
+		So(c.HasAnyItem(), ShouldBeFalse)
 	})
 }

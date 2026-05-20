@@ -70,7 +70,7 @@ func Test_Wrappers_BasicContracts(t *testing.T) {
 		)
 		So(w.Length(), ShouldEqual, 1)
 		coll := w.ExecuteAllCollection()
-		So(coll.StateCounter().HasChanges(), ShouldBeTrue)
+		So(coll.HasAnyItem(), ShouldBeTrue)
 	})
 
 	Convey("ExecuteAll aggregates wrappers into a single Wrapper", t, func() {
@@ -130,7 +130,7 @@ func Test_Collectors_BasicContracts(t *testing.T) {
 		}))
 		coll := errwrappers.Empty()
 		c.ExecuteAllCollection(coll)
-		So(coll.StateCounter().HasChanges(), ShouldBeTrue)
+		So(coll.HasAnyItem(), ShouldBeTrue)
 	})
 
 	Convey("ExecuteAllCollectionWithNewEmpty returns a new populated collection", t, func() {
@@ -140,7 +140,7 @@ func Test_Collectors_BasicContracts(t *testing.T) {
 		}))
 		coll := c.ExecuteAllCollectionWithNewEmpty()
 		So(coll, ShouldNotBeNil)
-		So(coll.StateCounter().HasChanges(), ShouldBeTrue)
+		So(coll.HasAnyItem(), ShouldBeTrue)
 	})
 
 	Convey("ExecuteAll returns aggregated wrapper", t, func() {
@@ -192,7 +192,7 @@ func Test_IsSuccessCollectors_BasicContracts(t *testing.T) {
 		)
 		So(isc.Length(), ShouldEqual, 1)
 		coll := isc.ExecuteAllCollection()
-		So(coll.StateCounter().HasChanges(), ShouldBeTrue)
+		So(coll.HasAnyItem(), ShouldBeTrue)
 	})
 
 	Convey("ExecuteAllCollection aggregates into collection", t, func() {
@@ -202,7 +202,7 @@ func Test_IsSuccessCollectors_BasicContracts(t *testing.T) {
 			return false
 		}))
 		coll := isc.ExecuteAllCollection()
-		So(coll.StateCounter().HasChanges(), ShouldBeTrue)
+		So(coll.HasAnyItem(), ShouldBeTrue)
 	})
 
 	Convey("ExecuteAll returns aggregated wrapper", t, func() {
@@ -275,13 +275,13 @@ func Test_WrappersMap_BasicContracts(t *testing.T) {
 			return errnew.Type.Error(errtype.Generic, errors.New("bad"))
 		}))
 		coll := m.ExecuteByKeys("ok", "bad")
-		So(coll.StateCounter().HasChanges(), ShouldBeTrue)
+		So(coll.HasAnyItem(), ShouldBeTrue)
 	})
 
 	Convey("ExecuteByKeys reports missing keys", t, func() {
 		m := errfuncs.NewWrappersMap(2)
 		coll := m.ExecuteByKeys("missing")
-		So(coll.StateCounter().HasChanges(), ShouldBeTrue)
+		So(coll.HasAnyItem(), ShouldBeTrue)
 	})
 
 	Convey("ExecuteAll aggregates every entry", t, func() {
@@ -347,7 +347,7 @@ func Test_IsSuccessCollectorsMap_BasicContracts(t *testing.T) {
 			return false
 		}))
 		coll := m.ExecuteByKeys("good", "bad")
-		So(coll.StateCounter().HasChanges(), ShouldBeTrue)
+		So(coll.HasAnyItem(), ShouldBeTrue)
 	})
 
 	Convey("ExecuteAll aggregates every entry", t, func() {

@@ -50,7 +50,7 @@ func Test_ConvertErrorFuncToIsSuccessCollectorFunc(t *testing.T) {
 		c := errwrappers.Empty()
 		ok := cf(c)
 		So(ok, ShouldBeTrue)
-		So(c.StateCounter().HasChanges(), ShouldBeFalse)
+		So(c.HasAnyItem(), ShouldBeFalse)
 	})
 
 	Convey("collector returns false and populates collection on error", t, func() {
@@ -61,7 +61,7 @@ func Test_ConvertErrorFuncToIsSuccessCollectorFunc(t *testing.T) {
 		c := errwrappers.Empty()
 		ok := cf(c)
 		So(ok, ShouldBeFalse)
-		So(c.StateCounter().HasChanges(), ShouldBeTrue)
+		So(c.HasAnyItem(), ShouldBeTrue)
 	})
 }
 
@@ -81,7 +81,7 @@ func Test_ConvertWrapperFuncToIsSuccessCollectorFunc(t *testing.T) {
 		c := errwrappers.Empty()
 		ok := cf(c)
 		So(ok, ShouldBeTrue)
-		So(c.StateCounter().HasChanges(), ShouldBeFalse)
+		So(c.HasAnyItem(), ShouldBeFalse)
 	})
 
 	Convey("non-empty wrapper yields false and collection changes", t, func() {
@@ -93,6 +93,6 @@ func Test_ConvertWrapperFuncToIsSuccessCollectorFunc(t *testing.T) {
 		c := errwrappers.Empty()
 		ok := cf(c)
 		So(ok, ShouldBeFalse)
-		So(c.StateCounter().HasChanges(), ShouldBeTrue)
+		So(c.HasAnyItem(), ShouldBeTrue)
 	})
 }
