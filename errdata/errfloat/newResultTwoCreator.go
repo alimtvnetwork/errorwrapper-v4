@@ -44,7 +44,7 @@ func (it *newResultTwoCreator) ValueOnly(
 		Result: Result{
 			Value: normalizeFloat(result1),
 		},
-		Value2: result2,
+		Value2: normalizeFloat(result2),
 	}
 }
 
