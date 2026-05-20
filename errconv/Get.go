@@ -7,6 +7,7 @@ import (
 	"github.com/alimtvnetwork/errorwrapper-v3"
 	"github.com/alimtvnetwork/errorwrapper-v3/errdata/errcasted"
 	"github.com/alimtvnetwork/errorwrapper-v3/errtype"
+	"github.com/alimtvnetwork/errorwrapper-v3/errwrappers"
 	"github.com/alimtvnetwork/errorwrapper-v3/internal/reflectinternal"
 )
 
@@ -39,6 +40,8 @@ func GetPtr(wrapper interface{}) *errcasted.ResultPtr {
 	}
 
 	switch castedNew := wrapper.(type) {
+	case *errwrappers.Collection:
+		return errcasted.NewPtr(castedNew.GetAsErrorWrapperPtr())
 	case errcoreinf.BasicErrWrapper:
 		return errcasted.NewPtr(
 			errorwrapper.NewUsingBasicErr(castedNew))
