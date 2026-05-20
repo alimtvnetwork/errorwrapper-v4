@@ -3,6 +3,7 @@ package errwonce
 import (
 	"encoding/json"
 	"errors"
+	"strings"
 
 	"github.com/alimtvnetwork/core-v9/codestack"
 	"github.com/alimtvnetwork/core-v9/constants"
@@ -117,10 +118,7 @@ func (it *Instance) HandleErrorWith(messages ...string) {
 
 func (it *Instance) ConcatNewString(messages ...string) string {
 	additionalMessages :=
-		converters.StringsTo.Csv(
-			false,
-			messages...,
-		)
+		strings.Join(messages, ", ")
 
 	if it.IsNullOrEmpty() {
 		return additionalMessages
