@@ -18,7 +18,7 @@ func (it *newResultTwoCreator) Item(
 ) *Result2 {
 	return &Result2{
 		Result: Result{
-			Value: input,
+			Value: normalizeFloat(input),
 		},
 	}
 }
