@@ -3,6 +3,7 @@ package errjson
 
 import (
 	"bytes"
+	"encoding/base64"
 	"encoding/json"
 	"strings"
 
@@ -65,6 +66,7 @@ func (it *Result) HasSafeItems() bool {
 func (it *Result) IsEmpty() bool {
 	return it == nil ||
 		it.Result == nil ||
+		it.Result.Length() == 0 ||
 		it.Result.IsEmptyJsonBytes()
 }
 
@@ -106,10 +108,15 @@ func (it *Result) ValidValue() *corestr.ValidValue {
 		return corestr.InvalidValidValueNoMessage()
 	}
 
+	message := constants.EmptyString
+	if it.ErrorWrapper != nil {
+		message = it.ErrorWrapper.FullString()
+	}
+
 	return &corestr.ValidValue{
 		Value:   it.SafeString(),
 		IsValid: it.IsSuccess(),
-		Message: it.ErrorWrapper.FullString(),
+		Message: message,
 	}
 }
 
@@ -161,7 +168,7 @@ func (it *Result) IsEqual(term string) bool {
 		return false
 	}
 
-	return strings.Trim(it.SafeString(), `"`) == term
+	return it.normalizedString() == term
 }
 
 func (it *Result) IsEqualIgnoreCase(term string) bool {
@@ -169,7 +176,7 @@ func (it *Result) IsEqualIgnoreCase(term string) bool {
 		return false
 	}
 
-	return strings.EqualFold(strings.Trim(it.SafeString(), `"`), term)
+	return strings.EqualFold(it.normalizedString(), term)
 }
 
 func (it *Result) SplitLinesSimpleSlice() *corestr.SimpleSlice {
