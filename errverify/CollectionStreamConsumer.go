@@ -1,6 +1,7 @@
 package errverify
 
 import (
+	"github.com/alimtvnetwork/errorwrapper-v3"
 	"github.com/alimtvnetwork/errorwrapper-v3/errwrappers"
 )
 
@@ -17,7 +18,6 @@ func ConsumeCollection(
 	verifier *StreamingCollectionVerifier,
 	coll *errwrappers.Collection,
 	isIncludeReferences bool,
-) *errorwrapper.Wrapper {
 ) error {
 	if verifier == nil {
 		return nil
@@ -48,7 +48,6 @@ func ConsumeCollection(
 func ConsumeChannel(
 	verifier *StreamingCollectionVerifier,
 	lines <-chan string,
-) *errorwrapper.Wrapper {
 ) error {
 	if verifier == nil {
 		return nil
