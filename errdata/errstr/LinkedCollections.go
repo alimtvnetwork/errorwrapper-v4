@@ -38,8 +38,12 @@ func NewLinkedCollectionsUsingItemsErrorWrapper(
 	items *[]string,
 	errorWrapper *errorwrapper.Wrapper,
 ) *LinkedCollections {
+	var deref []string
+	if items != nil {
+		deref = *items
+	}
 	return &LinkedCollections{
-		LinkedCollections: corestr.New.LinkedCollections.StringsPtr(items),
+		LinkedCollections: corestr.New.LinkedCollection.Strings(deref),
 		ErrorWrapper:      errorWrapper,
 	}
 }
