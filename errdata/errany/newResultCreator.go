@@ -14,7 +14,7 @@ func (it *newResultCreator) Empty() *Result {
 }
 
 func (it *newResultCreator) Item(
-	item float32,
+	item interface{},
 ) *Result {
 	return &Result{
 		Value: item,
