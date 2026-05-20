@@ -84,7 +84,7 @@ func (it *newCharHashsetMapCreator) ErrorWrapperItems(
 			CapItems(
 				constants.ArbitraryCapacity30,
 				eachHashsetCapacity,
-				items,
+				items...,
 			),
 		ErrorWrapper: errorWrapper,
 	}
