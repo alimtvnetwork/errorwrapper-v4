@@ -47,7 +47,7 @@ func (it *newCharCollectionMapCreator) ItemsWithErrorWrapper(
 		CharCollectionMap: corestr.New.CharCollectionMap.ItemsPtrWithCap(
 			length,
 			constants.ArbitraryCapacity30,
-			&items,
+			items,
 		),
 		ErrorWrapper: errorWrapper,
 	}
