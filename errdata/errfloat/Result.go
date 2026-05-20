@@ -2,6 +2,8 @@
 package errfloat
 
 import (
+	"math"
+
 	"github.com/alimtvnetwork/core-v9/constants"
 	"github.com/alimtvnetwork/core-v9/converters"
 	"github.com/alimtvnetwork/core-v9/coredata/corejson"
@@ -9,8 +11,12 @@ import (
 )
 
 type Result struct {
-	Value        float32
+	Value        float64
 	ErrorWrapper *errorwrapper.Wrapper
+}
+
+func normalizeFloat(value float32) float64 {
+	return math.Round(float64(value)*1_000_000) / 1_000_000
 }
 
 func (it *Result) IsInvalid() bool {
