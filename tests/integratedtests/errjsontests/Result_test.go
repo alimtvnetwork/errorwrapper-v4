@@ -31,7 +31,7 @@ func Test_ErrJson_Result_Basics(t *testing.T) {
 		So(r.IsSuccess(), ShouldBeFalse)
 		So(r.IsFailed(), ShouldBeTrue)
 		So(func() { r.Dispose() }, ShouldNotPanic)
-		So(func() { r.SplitLines() }, ShouldResemble, []string{})
+		So(r.SplitLines(), ShouldResemble, []string{})
 		So(func() { r.SplitLinesSimpleSlice() }, ShouldNotPanic)
 		So(func() { r.ValidValue() }, ShouldNotPanic)
 		So(func() { r.SimpleStringOnce(true) }, ShouldNotPanic)
