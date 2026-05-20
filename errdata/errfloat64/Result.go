@@ -133,3 +133,7 @@ func (it *Result) AsJsonContractsBinder() corejson.JsonContractsBinder {
 func (it *Result) AsValueWithErrorWrapperBinder() errorwrapper.ValueWithErrorWrapperBinder {
 	return it
 }
+
+func (it *Result) IsAnyNull() bool {
+	return it == nil
+}

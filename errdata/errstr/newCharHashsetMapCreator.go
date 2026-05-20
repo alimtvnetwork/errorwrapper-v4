@@ -43,7 +43,7 @@ func (it *newCharHashsetMapCreator) NewCharHashsetMapUsingItemsError(
 		CharHashsetMap: corestr.
 			New.
 			CharHashsetMap.
-			CapItems(length, length, items),
+			CapItems(length, length, items...),
 		ErrorWrapper: errWrapper,
 	}
 }
@@ -54,14 +54,18 @@ func (it *newCharHashsetMapCreator) ErrorWrapperItemsPtr(
 	errorWrapper *errorwrapper.Wrapper,
 	items *[]string,
 ) *CharHashsetMap {
+	var deref []string
+	if items != nil {
+		deref = *items
+	}
 	return &CharHashsetMap{
 		CharHashsetMap: corestr.
 			New.
 			CharHashsetMap.
-			CapItemsPtr(
+			CapItems(
 				constants.ArbitraryCapacity30,
 				eachHashsetCapacity,
-				items,
+				deref...,
 			),
 		ErrorWrapper: errorWrapper,
 	}
@@ -80,7 +84,7 @@ func (it *newCharHashsetMapCreator) ErrorWrapperItems(
 			CapItems(
 				constants.ArbitraryCapacity30,
 				eachHashsetCapacity,
-				items,
+				items...,
 			),
 		ErrorWrapper: errorWrapper,
 	}
@@ -112,7 +116,7 @@ func (it *newCharHashsetMapCreator) ErrorWithTypePointerStringsPtr(
 	length := len(*items)
 
 	return &CharHashsetMap{
-		CharHashsetMap: corestr.New.CharHashsetMap.CapItemsPtr(length, length/constants.ArbitraryCapacity3, items),
+		CharHashsetMap: corestr.New.CharHashsetMap.CapItems(length, length/constants.ArbitraryCapacity3, (*items)...),
 		ErrorWrapper:   errWrapper,
 	}
 }

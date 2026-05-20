@@ -38,8 +38,12 @@ func NewLinkedListUsingItemsErrorWrapper(
 	items *[]string,
 	errorWrapper *errorwrapper.Wrapper,
 ) *LinkedList {
+	var deref []string
+	if items != nil {
+		deref = *items
+	}
 	return &LinkedList{
-		LinkedList:   corestr.New.LinkedList.StringsPtr(items),
+		LinkedList:   corestr.New.LinkedList.Strings(deref),
 		ErrorWrapper: errorWrapper,
 	}
 }

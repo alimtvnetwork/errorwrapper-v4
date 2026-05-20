@@ -14,7 +14,7 @@ func (it *newResultCreator) Empty() *Result {
 }
 
 func (it *newResultCreator) Item(
-	item float32,
+	item interface{},
 ) *Result {
 	return &Result{
 		Value: item,
@@ -50,7 +50,7 @@ func (it *newResultCreator) ErrorWrapper(
 }
 
 func (it *newResultCreator) Create(
-	result float32,
+	result interface{},
 	errorWrapper *errorwrapper.Wrapper,
 ) *Result {
 	return &Result{
@@ -60,7 +60,7 @@ func (it *newResultCreator) Create(
 }
 
 func (it *newResultCreator) ValueOnly(
-	result float32,
+	result interface{},
 ) *Result {
 	return &Result{
 		Value: result,

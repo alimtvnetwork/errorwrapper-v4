@@ -4,7 +4,7 @@ import (
 	"errors"
 	"testing"
 
-	"github.com/alimtvnetwork/core-v9/coreinterface/errcoreinf"
+	
 	"github.com/alimtvnetwork/errorwrapper-v3"
 	"github.com/alimtvnetwork/errorwrapper-v3/eithererr"
 	"github.com/alimtvnetwork/errorwrapper-v3/errnew"
@@ -75,7 +75,7 @@ func Test_OrEmptyCollectionPtr(t *testing.T) {
 	Convey("OrEmptyCollectionPtr returns empty collection when false", t, func() {
 		c := eithererr.OrEmptyCollectionPtr(false, trueC)
 		So(c, ShouldNotBeNil)
-		So(c.StateCounter().HasChanges(), ShouldBeFalse)
+		So(c.HasAnyError(), ShouldBeFalse)
 	})
 }
 
@@ -108,6 +108,7 @@ func Test_AnyErrInfFirstOrEmpty(t *testing.T) {
 	collInf := errwrappers.Empty()
 	collInf.AddTypeError(errtype.Generic, errors.New("coll"))
 	w := errnew.Type.Error(errtype.NotFound, errors.New("w"))
+	_ = w
 
 	Convey("empty args returns nil", t, func() {
 		So(eithererr.AnyErrInfFirstOrEmpty(), ShouldBeNil)

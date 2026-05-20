@@ -28,7 +28,7 @@ func NewLinkedCollectionsUsingItemsError(
 	errWrapper := errnew.Type.Error(errVariation, err)
 
 	return &LinkedCollections{
-		LinkedCollections: corestr.New.LinkedCollections.Strings(items),
+		LinkedCollections: corestr.New.LinkedCollection.Strings(items),
 		ErrorWrapper:      errWrapper,
 	}
 }
@@ -38,8 +38,12 @@ func NewLinkedCollectionsUsingItemsErrorWrapper(
 	items *[]string,
 	errorWrapper *errorwrapper.Wrapper,
 ) *LinkedCollections {
+	var deref []string
+	if items != nil {
+		deref = *items
+	}
 	return &LinkedCollections{
-		LinkedCollections: corestr.New.LinkedCollections.StringsPtr(items),
+		LinkedCollections: corestr.New.LinkedCollection.Strings(deref),
 		ErrorWrapper:      errorWrapper,
 	}
 }
@@ -68,7 +72,7 @@ func NewLinkedCollectionsUsingPtrItemsError(
 	errWrapper := errnew.Type.Error(errVariation, err)
 
 	return &LinkedCollections{
-		LinkedCollections: corestr.New.LinkedCollections.PointerStringsPtr(&ptrItems),
+		LinkedCollections: corestr.New.LinkedCollection.PointerStringsPtr(&ptrItems),
 		ErrorWrapper:      errWrapper,
 	}
 }

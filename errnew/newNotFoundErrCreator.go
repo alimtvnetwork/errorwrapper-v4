@@ -171,6 +171,16 @@ func (it newNotFoundErrCreator) Message(
 	)
 }
 
+func (it newNotFoundErrCreator) Simple(
+	message string,
+) *errorwrapper.Wrapper {
+	return errorwrapper.NewMsgDisplayErrorNoReference(
+		defaultSkipInternal,
+		errtype.NotFound,
+		message,
+	)
+}
+
 func (it newNotFoundErrCreator) MessageError(
 	message string,
 	err error,

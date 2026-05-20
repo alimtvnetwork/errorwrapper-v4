@@ -3,7 +3,7 @@ package errcastedtests
 import (
 	"testing"
 
-	"github.com/alimtvnetwork/errorwrapper-v3"
+	
 	"github.com/alimtvnetwork/errorwrapper-v3/errdata/errcasted"
 	"github.com/alimtvnetwork/errorwrapper-v3/errnew"
 	"github.com/alimtvnetwork/errorwrapper-v3/errtype"
