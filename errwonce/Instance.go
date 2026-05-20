@@ -244,12 +244,22 @@ func (it *Instance) JsonPtr() *corejson.Result {
 	return value.JsonPtr()
 }
 
-func (it Instance) Serialize() ([]byte, error) {
-	return it.Value().Serialize()
+func (it *Instance) Serialize() ([]byte, error) {
+	value := it.Value()
+	if value == nil {
+		return nil, nil
+	}
+
+	return value.Serialize()
 }
 
-func (it Instance) SerializeMust() []byte {
-	return it.Value().SerializeMust()
+func (it *Instance) SerializeMust() []byte {
+	value := it.Value()
+	if value == nil {
+		return nil
+	}
+
+	return value.SerializeMust()
 }
 
 func (it Instance) ErrorWrapper() *errorwrapper.Wrapper {
