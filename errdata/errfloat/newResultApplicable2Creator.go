@@ -49,7 +49,7 @@ func (it *newResultApplicable2Creator) Create(
 	return &ResultWithApplicable2{
 		Result2: Result2{
 			Result: Result{
-				Value:        value,
+				Value:        normalizeFloat(value),
 				ErrorWrapper: errWrapper,
 			},
 		},
@@ -64,7 +64,7 @@ func (it *newResultApplicable2Creator) ValuesOnly(
 	return &ResultWithApplicable2{
 		Result2: Result2{
 			Result: Result{
-				Value: value,
+				Value: normalizeFloat(value),
 			},
 		},
 		IsApplicable: isApplicable,
@@ -77,7 +77,7 @@ func (it *newResultApplicable2Creator) ApplicableValue(
 	return &ResultWithApplicable2{
 		Result2: Result2{
 			Result: Result{
-				Value: value,
+				Value: normalizeFloat(value),
 			},
 			Value2: value2,
 		},
@@ -91,7 +91,7 @@ func (it *newResultApplicable2Creator) NonApplicableValue(
 	return &ResultWithApplicable2{
 		Result2: Result2{
 			Result: Result{
-				Value: value,
+				Value: normalizeFloat(value),
 			},
 			Value2: value2,
 		},

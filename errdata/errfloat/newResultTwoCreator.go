@@ -18,7 +18,7 @@ func (it *newResultTwoCreator) Item(
 ) *Result2 {
 	return &Result2{
 		Result: Result{
-			Value: input,
+			Value: normalizeFloat(input),
 		},
 	}
 }
@@ -42,7 +42,7 @@ func (it *newResultTwoCreator) ValueOnly(
 ) *Result2 {
 	return &Result2{
 		Result: Result{
-			Value: result1,
+			Value: normalizeFloat(result1),
 		},
 		Value2: result2,
 	}
@@ -55,7 +55,7 @@ func (it *newResultTwoCreator) Create(
 ) *Result2 {
 	return &Result2{
 		Result: Result{
-			Value:        result,
+			Value:        normalizeFloat(result),
 			ErrorWrapper: wrapper,
 		},
 		Value2: result2,
