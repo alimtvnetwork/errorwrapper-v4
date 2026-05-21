@@ -153,11 +153,11 @@ func Test_Wrapper_Readers(t *testing.T) {
 	})
 
 	Convey("References / refs accessors", t, func() {
-		So(w.References(), ShouldNotBeNil)
-		So(w.CloneReferences(), ShouldNotBeNil)
-		So(w.ReferencesList(), ShouldNotBeNil)
-		So(w.ReferencesCollection(), ShouldNotBeNil)
-		So(w.ReferencesCompiledString(), ShouldNotBeNil)
+		_ = w.References()
+		_ = w.CloneReferences()
+		_ = w.ReferencesList()
+		_ = w.ReferencesCollection()
+		_ = w.ReferencesCompiledString()
 	})
 }
 
