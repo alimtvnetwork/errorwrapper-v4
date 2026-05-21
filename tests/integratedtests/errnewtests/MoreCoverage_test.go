@@ -182,7 +182,7 @@ func Test_MoreCoverage_Path(t *testing.T) {
 		So(errnew.Path.TypeUsingStackSkip(0, errtype.IO, "/a"), ShouldNotBeNil)
 		So(errnew.Path.Error(err, "/a").HasError(), ShouldBeTrue)
 		So(errnew.Path.Messages(errtype.IO, "/a", "m1", "m2"), ShouldNotBeNil)
-		So(errnew.Path.ErrorMessages(err, "/a", "m1"), ShouldNotBeNil)
+		So(errnew.Path.ErrorMessages(errtype.IO, err, "/a", "m1"), ShouldNotBeNil)
 	})
 }
 
