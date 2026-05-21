@@ -142,7 +142,7 @@ func Test_MoreCoverage_CmdSetOsStandardWriters(t *testing.T) {
 
 func Test_MoreCoverage_Result(t *testing.T) {
 	Convey("NewResult with no error reports success", t, func() {
-		r := errcmd.NewResult(nil, nil, nil, true)
+		r := errcmd.NewResult(nil, nil, nil, nil, true)
 		So(r, ShouldNotBeNil)
 		So(r.HasCommandExecuted(), ShouldBeTrue)
 		So(r.IsRunSuccessfully(), ShouldBeTrue)
