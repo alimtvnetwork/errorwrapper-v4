@@ -37,8 +37,41 @@ func Test_TopLevel_Funcs(t *testing.T) {
 	})
 
 	Convey("SimpleReferencesCompile", t, func() {
-		So(errorwrapper.SimpleReferencesCompile("a", 1, true), ShouldNotBeBlank)
-		So(errorwrapper.SimpleReferencesCompileOptimized("a", 1, true), ShouldNotBeBlank)
+		So(errorwrapper.SimpleReferencesCompile(errtype.NotFound, "a", 1, true), ShouldNotBeBlank)
+		So(errorwrapper.SimpleReferencesCompileOptimized(errtype.NotFound, "a", 1, true), ShouldNotBeBlank)
+	})
+}
+
+func Test_Constructors_Root(t *testing.T) {
+	Convey("Constructor family", t, func() {
+		So(errorwrapper.Empty().HasError(), ShouldBeFalse)
+		So(errorwrapper.EmptyPtr().IsEmpty(), ShouldBeTrue)
+		So(errorwrapper.EmptyPrint().HasError(), ShouldBeFalse)
+		So(errorwrapper.New(errtype.NotFound).Type(), ShouldEqual, errtype.NotFound)
+		So(errorwrapper.NewPtr(errtype.NotFound), ShouldNotBeNil)
+		So(errorwrapper.NewTypeUsingStackSkip(0, errtype.NotFound), ShouldNotBeNil)
+		So(errorwrapper.NewPtrUsingStackSkip(0, errtype.NotFound), ShouldNotBeNil)
+		So(errorwrapper.NewError(0, errors.New("e")), ShouldNotBeNil)
+		So(errorwrapper.NewUsingError(0, errtype.Generic, errors.New("e")), ShouldNotBeNil)
+		So(errorwrapper.NewUsingErrorWithoutTypeDisplay(errtype.Generic, errors.New("e")), ShouldNotBeNil)
+		So(errorwrapper.NewUsingErrorWithoutTypeDisplayPtr(errtype.Generic, errors.New("e")), ShouldNotBeNil)
+		So(errorwrapper.NewUsingTypeErrorAndMessage(0, errtype.Generic, errors.New("e"), "msg"), ShouldNotBeNil)
+		So(errorwrapper.NewUsingErrorAndMessage(0, errors.New("e"), "msg"), ShouldNotBeNil)
+		So(errorwrapper.NewMessagesUsingJoiner(0, errtype.Generic, " | ", "a", "b"), ShouldNotBeNil)
+		So(errorwrapper.NewGeneric(0, errors.New("g")), ShouldNotBeNil)
+		So(errorwrapper.NewUnknownMessage(0, true, "u"), ShouldNotBeNil)
+	})
+
+	Convey("Ref + Path constructors", t, func() {
+		So(errorwrapper.NewRefOne(0, errtype.NotFound, "name", "val"), ShouldNotBeNil)
+		So(errorwrapper.TypeReferenceQuick(0, errtype.NotFound, "ref"), ShouldNotBeNil)
+	})
+
+	Convey("Wrapper-wrapping constructors", t, func() {
+		base := makeWrapper()
+		So(errorwrapper.NewUsingWrapper(0, base), ShouldNotBeNil)
+		dataModel := base.JsonModel()
+		So(errorwrapper.NewFromDataModel(&dataModel), ShouldNotBeNil)
 	})
 }
 
