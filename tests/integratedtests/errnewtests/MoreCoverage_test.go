@@ -81,7 +81,7 @@ func Test_MoreCoverage_Type(t *testing.T) {
 	Convey("Type creator family", t, func() {
 		So(errnew.Type.Default(errtype.IO).Type(), ShouldEqual, errtype.IO)
 		So(errnew.Type.DefaultUsingStackSkip(0, errtype.IO).Type(), ShouldEqual, errtype.IO)
-		So(errnew.Type.UsingStackSkip(0, errtype.IO, "m").Type(), ShouldEqual, errtype.IO)
+		So(errnew.Type.UsingStackSkip(0, errtype.IO).Type(), ShouldEqual, errtype.IO)
 		So(errnew.Type.Create(errtype.IO, "m").Type(), ShouldEqual, errtype.IO)
 		So(errnew.Type.New(errtype.IO, errors.New("m")).Type(), ShouldEqual, errtype.IO)
 		So(errnew.Type.Message(errtype.IO, "m").Type(), ShouldEqual, errtype.IO)
