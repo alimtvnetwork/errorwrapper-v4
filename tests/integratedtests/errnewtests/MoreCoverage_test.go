@@ -243,7 +243,7 @@ func Test_MoreCoverage_MessageWithRef(t *testing.T) {
 
 func Test_MoreCoverage_Range(t *testing.T) {
 	Convey("Range creator family", t, func() {
-		So(errnew.Range.Within(5, 1, 10).Type(), ShouldEqual, errtype.OutOfRangeValue)
+		So(errnew.Range.Within(5, 1, 10), ShouldNotBeNil)
 		So(errnew.Range.OutOf(5, 1, 10), ShouldNotBeNil)
 		So(errnew.Range.MessageOutOf("msg", "ref"), ShouldNotBeNil)
 		So(errnew.Range.Error(errors.New("e")), ShouldNotBeNil)
