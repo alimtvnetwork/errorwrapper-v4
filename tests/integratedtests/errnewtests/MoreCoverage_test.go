@@ -180,12 +180,14 @@ func Test_Null_Creators(t *testing.T) {
 		var v interface{} = nil
 		So(errnew.Null.WithMessage("missing", v), ShouldNotBeNil)
 		So(errnew.Null.Message("missing"), ShouldNotBeNil)
+		So(errnew.Null.Message(""), ShouldBeNil)
 	})
 
 	Convey("Null.Error nil + non-nil", t, func() {
-		var nilE error = nil
-		So(errnew.Null.Error(nilE), ShouldNotBeNil)
-		So(errnew.Null.ErrorWithMessage(errors.New("x"), "msg"), ShouldNotBeNil)
+		So(errnew.Null.Error(nil), ShouldBeNil)
+		So(errnew.Null.Error(errors.New("x")), ShouldNotBeNil)
+		So(errnew.Null.ErrorWithMessage("msg", nil), ShouldBeNil)
+		So(errnew.Null.ErrorWithMessage("msg", errors.New("x")), ShouldNotBeNil)
 	})
 }
 
