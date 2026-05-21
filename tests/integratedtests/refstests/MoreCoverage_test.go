@@ -52,7 +52,8 @@ func Test_MoreCoverage_Ref_Value(t *testing.T) {
 		So(err, ShouldBeNil)
 		So(bytes, ShouldNotBeEmpty)
 		So(v.SerializeMust(), ShouldNotBeEmpty)
-		So(v.Json().IsEmpty(), ShouldBeFalse)
+		jr := v.Json()
+		So(jr.IsEmpty(), ShouldBeFalse)
 		So(v.JsonPtr(), ShouldNotBeNil)
 
 		So(v.AsJsoner(), ShouldNotBeNil)
