@@ -17,6 +17,10 @@ func mkWrap(msg string) *errorwrapper.Wrapper {
 	return errnew.Type.Error(errtype.Generic, errors.New(msg))
 }
 
+func mkWrapWithRef(msg string) *errorwrapper.Wrapper {
+	return errnew.Ref.ErrorOne(errtype.Generic, errors.New(msg), "k", "v")
+}
+
 func Test_MoreCoverage2_MergeAndCollect(t *testing.T) {
 	Convey("MergeNewMessage on an error wrapper returns a non-empty combiner", t, func() {
 		w := mkWrap("base")
