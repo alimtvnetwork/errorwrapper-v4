@@ -138,7 +138,7 @@ func Test_Range_Creators(t *testing.T) {
 		So(errnew.Range.OutOf(20, 1, 10), ShouldNotBeNil)
 		So(errnew.Range.OutOfRanges(20, 1, 5, 10), ShouldNotBeNil)
 		So(errnew.Range.StartEnd(1, 10), ShouldNotBeNil)
-		So(errnew.Range.MessageOutOf("msg", 5, 1, 10), ShouldNotBeNil)
+		So(errnew.Range.MessageOutOf("msg", 5), ShouldNotBeNil)
 		So(errnew.Range.RefStartEndValues("name", 1, 10, 20), ShouldNotBeNil)
 	})
 }
