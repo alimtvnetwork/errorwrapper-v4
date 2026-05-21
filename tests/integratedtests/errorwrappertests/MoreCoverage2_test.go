@@ -89,7 +89,7 @@ func Test_MoreCoverage2_References(t *testing.T) {
 	})
 
 	Convey("References / HasReferences with refs-bearing wrapper", t, func() {
-		w := errnew.RefOne.Error(errtype.Generic, errors.New("x"), "k", "v")
+		w := mkWrapWithRef("x")
 		So(w.References(), ShouldNotBeNil)
 		So(w.HasReferences(), ShouldBeTrue)
 		So(w.ReferencesList(), ShouldNotBeNil)
@@ -100,7 +100,7 @@ func Test_MoreCoverage2_References(t *testing.T) {
 	})
 
 	Convey("CloneReferences on refs-bearing wrapper is non-nil", t, func() {
-		w := errnew.RefOne.Error(errtype.Generic, errors.New("x"), "k", "v")
+		w := mkWrapWithRef("x")
 		So(w.CloneReferences(), ShouldNotBeNil)
 	})
 
@@ -111,14 +111,14 @@ func Test_MoreCoverage2_References(t *testing.T) {
 	})
 
 	Convey("MergeNewReferences on existing references appends", t, func() {
-		w := errnew.RefOne.Error(errtype.Generic, errors.New("x"), "k", "v")
+		w := mkWrapWithRef("x")
 		got := w.MergeNewReferences(ref.New("a", 1))
 		So(got, ShouldNotBeNil)
 		So(got.HasAnyItem(), ShouldBeTrue)
 	})
 
 	Convey("ReferencesCollection / ReferencesCompiledString are safe", t, func() {
-		w := errnew.RefOne.Error(errtype.Generic, errors.New("x"), "k", "v")
+		w := mkWrapWithRef("x")
 		So(w.ReferencesCollection(), ShouldNotBeNil)
 		So(w.ReferencesCompiledString(), ShouldNotBeBlank)
 	})
