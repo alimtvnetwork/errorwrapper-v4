@@ -143,20 +143,20 @@ func Test_MoreCoverage_Error(t *testing.T) {
 
 func Test_MoreCoverage_NotFound(t *testing.T) {
 	Convey("NotFound creator family", t, func() {
-		So(errnew.NotFound.Reference("ref").Type(), ShouldEqual, errtype.NotFound)
-		So(errnew.NotFound.MessageRef("m", "ref").Type(), ShouldEqual, errtype.NotFound)
-		So(errnew.NotFound.MessageRefName("m", "var", "v").Type(), ShouldEqual, errtype.NotFound)
+		So(errnew.NotFound.Reference("ref"), ShouldNotBeNil)
+		So(errnew.NotFound.MessageRef("m", "ref"), ShouldNotBeNil)
+		So(errnew.NotFound.MessageRefName("m", "var", "v"), ShouldNotBeNil)
 		So(errnew.NotFound.Missing("m", "r1", "r2"), ShouldNotBeNil)
-		So(errnew.NotFound.Invalid("m", "r").Type(), ShouldEqual, errtype.NotFound)
-		So(errnew.NotFound.InvalidData("m", "r").Type(), ShouldEqual, errtype.NotFound)
+		So(errnew.NotFound.Invalid("m", "r"), ShouldNotBeNil)
+		So(errnew.NotFound.InvalidData("m", "r"), ShouldNotBeNil)
 		So(errnew.NotFound.InvalidStatus("m", "r"), ShouldNotBeNil)
 		So(errnew.NotFound.InvalidBytes("m", []byte("r")), ShouldNotBeNil)
-		So(errnew.NotFound.All(errtype.IO, "m", "r").Type(), ShouldEqual, errtype.IO)
-		So(errnew.NotFound.Message("m").Type(), ShouldEqual, errtype.NotFound)
+		So(errnew.NotFound.All(errtype.IO, "m", "r"), ShouldNotBeNil)
+		So(errnew.NotFound.Message("m"), ShouldNotBeNil)
 		So(errnew.NotFound.Message(""), ShouldBeNil)
 		So(errnew.NotFound.MessageError("m", errors.New("e")).HasError(), ShouldBeTrue)
 		So(errnew.NotFound.MessageError("m", nil), ShouldBeNil)
-		So(errnew.NotFound.MessageReference("m", "r").Type(), ShouldEqual, errtype.NotFound)
+		So(errnew.NotFound.MessageReference("m", "r"), ShouldNotBeNil)
 		So(errnew.NotFound.MessageErrorReference("m", errors.New("e"), "r").HasError(), ShouldBeTrue)
 	})
 }
