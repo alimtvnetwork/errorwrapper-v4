@@ -226,7 +226,7 @@ func Test_MoreCoverage_Null(t *testing.T) {
 		So(errnew.Null.ErrorWithMessage("ctx", errors.New("e")), ShouldNotBeNil)
 		So(errnew.Null.OrWrapper(errnew.Messages.Single(errtype.IO, "fallback"), nil), ShouldNotBeNil)
 		So(errnew.Null.OrWrapper(nil, "notnull"), ShouldBeNil)
-		So(errnew.Null.OrError(nil, errors.New("e")), ShouldNotBeNil)
+		So(errnew.Null.OrError(errtype.IO, errors.New("e"), nil), ShouldNotBeNil)
 	})
 }
 
