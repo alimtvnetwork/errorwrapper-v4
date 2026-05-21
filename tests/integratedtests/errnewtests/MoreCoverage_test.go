@@ -258,8 +258,8 @@ func Test_MoreCoverage_Fmt(t *testing.T) {
 		So(errnew.Fmt.MessageRefs(errtype.IO, "m %d", 1), ShouldNotBeNil)
 		So(errnew.Fmt.ErrorRefs(errtype.IO, errors.New("e"), "m %d", 1), ShouldNotBeNil)
 		So(errnew.Fmt.Error(errtype.IO, errors.New("e"), "m %d", 1), ShouldNotBeNil)
-		So(errnew.Fmt.Message(errtype.IO, "m %d", 1), ShouldNotBeNil)
-		So(errnew.Fmt.MessageError(errtype.IO, errors.New("e"), "m %s", "x"), ShouldNotBeNil)
+		So(errnew.Fmt.Message(errtype.IO, "msg", "m %d", 1), ShouldNotBeNil)
+		So(errnew.Fmt.MessageError(errtype.IO, "msg", errors.New("e"), "m %s", "x"), ShouldNotBeNil)
 		So(errnew.Fmt.If(true, errtype.IO, "m %s", "x"), ShouldNotBeNil)
 	})
 }
