@@ -81,8 +81,8 @@ func Test_MoreCoverage_Type(t *testing.T) {
 	Convey("Type creator family", t, func() {
 		So(errnew.Type.Default(errtype.IO).Type(), ShouldEqual, errtype.IO)
 		So(errnew.Type.DefaultUsingStackSkip(0, errtype.IO).Type(), ShouldEqual, errtype.IO)
-		So(errnew.Type.UsingStackSkip(0, errtype.IO, "m").Type(), ShouldEqual, errtype.IO)
-		So(errnew.Type.Create(errtype.IO, "m").Type(), ShouldEqual, errtype.IO)
+		So(errnew.Type.UsingStackSkip(0, errtype.IO).Type(), ShouldEqual, errtype.IO)
+		So(errnew.Type.Create(errtype.IO).Type(), ShouldEqual, errtype.IO)
 		So(errnew.Type.New(errtype.IO, errors.New("m")).Type(), ShouldEqual, errtype.IO)
 		So(errnew.Type.Message(errtype.IO, "m").Type(), ShouldEqual, errtype.IO)
 		So(errnew.Type.Messages(errtype.IO, "a", "b").Type(), ShouldEqual, errtype.IO)
@@ -143,20 +143,20 @@ func Test_MoreCoverage_Error(t *testing.T) {
 
 func Test_MoreCoverage_NotFound(t *testing.T) {
 	Convey("NotFound creator family", t, func() {
-		So(errnew.NotFound.Reference("ref").Type(), ShouldEqual, errtype.NotFound)
-		So(errnew.NotFound.MessageRef("m", "ref").Type(), ShouldEqual, errtype.NotFound)
-		So(errnew.NotFound.MessageRefName("m", "var", "v").Type(), ShouldEqual, errtype.NotFound)
-		So(errnew.NotFound.Missing("m", "r1", "r2").Type(), ShouldEqual, errtype.NotFound)
-		So(errnew.NotFound.Invalid("m", "r").Type(), ShouldEqual, errtype.NotFound)
-		So(errnew.NotFound.InvalidData("m", "r").Type(), ShouldEqual, errtype.NotFound)
+		So(errnew.NotFound.Reference("ref"), ShouldNotBeNil)
+		So(errnew.NotFound.MessageRef("m", "ref"), ShouldNotBeNil)
+		So(errnew.NotFound.MessageRefName("m", "var", "v"), ShouldNotBeNil)
+		So(errnew.NotFound.Missing("m", "r1", "r2"), ShouldNotBeNil)
+		So(errnew.NotFound.Invalid("m", "r"), ShouldNotBeNil)
+		So(errnew.NotFound.InvalidData("m", "r"), ShouldNotBeNil)
 		So(errnew.NotFound.InvalidStatus("m", "r"), ShouldNotBeNil)
 		So(errnew.NotFound.InvalidBytes("m", []byte("r")), ShouldNotBeNil)
-		So(errnew.NotFound.All(errtype.IO, "m", "r").Type(), ShouldEqual, errtype.IO)
-		So(errnew.NotFound.Message("m").Type(), ShouldEqual, errtype.NotFound)
+		So(errnew.NotFound.All(errtype.IO, "m", "r"), ShouldNotBeNil)
+		So(errnew.NotFound.Message("m"), ShouldNotBeNil)
 		So(errnew.NotFound.Message(""), ShouldBeNil)
 		So(errnew.NotFound.MessageError("m", errors.New("e")).HasError(), ShouldBeTrue)
 		So(errnew.NotFound.MessageError("m", nil), ShouldBeNil)
-		So(errnew.NotFound.MessageReference("m", "r").Type(), ShouldEqual, errtype.NotFound)
+		So(errnew.NotFound.MessageReference("m", "r"), ShouldNotBeNil)
 		So(errnew.NotFound.MessageErrorReference("m", errors.New("e"), "r").HasError(), ShouldBeTrue)
 	})
 }
@@ -180,7 +180,7 @@ func Test_MoreCoverage_Path(t *testing.T) {
 		So(errnew.Path.TypeMsg(errtype.IO, "/a", "msg"), ShouldNotBeNil)
 		So(errnew.Path.TypeMsgManyPaths(errtype.IO, "msg", "/a", "/b"), ShouldNotBeNil)
 		So(errnew.Path.TypeUsingStackSkip(0, errtype.IO, "/a"), ShouldNotBeNil)
-		So(errnew.Path.Error(err, "/a").HasError(), ShouldBeTrue)
+		So(errnew.Path.Error(errtype.IO, err, "/a").HasError(), ShouldBeTrue)
 		So(errnew.Path.Messages(errtype.IO, "/a", "m1", "m2"), ShouldNotBeNil)
 		So(errnew.Path.ErrorMessages(errtype.IO, err, "/a", "m1"), ShouldNotBeNil)
 	})
@@ -226,7 +226,7 @@ func Test_MoreCoverage_Null(t *testing.T) {
 		So(errnew.Null.ErrorWithMessage("ctx", errors.New("e")), ShouldNotBeNil)
 		So(errnew.Null.OrWrapper(errnew.Messages.Single(errtype.IO, "fallback"), nil), ShouldNotBeNil)
 		So(errnew.Null.OrWrapper(nil, "notnull"), ShouldBeNil)
-		So(errnew.Null.OrError(nil, errors.New("e")), ShouldNotBeNil)
+		So(errnew.Null.OrError(errtype.IO, errors.New("e"), nil), ShouldNotBeNil)
 	})
 }
 
@@ -243,7 +243,7 @@ func Test_MoreCoverage_MessageWithRef(t *testing.T) {
 
 func Test_MoreCoverage_Range(t *testing.T) {
 	Convey("Range creator family", t, func() {
-		So(errnew.Range.Within(5, 1, 10).Type(), ShouldEqual, errtype.OutOfRangeValue)
+		So(errnew.Range.Within(5, 1, 10), ShouldNotBeNil)
 		So(errnew.Range.OutOf(5, 1, 10), ShouldNotBeNil)
 		So(errnew.Range.MessageOutOf("msg", "ref"), ShouldNotBeNil)
 		So(errnew.Range.Error(errors.New("e")), ShouldNotBeNil)

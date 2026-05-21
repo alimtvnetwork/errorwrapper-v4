@@ -159,7 +159,7 @@ func Test_MoreCoverage_Refs_Collection(t *testing.T) {
 		c.AddCollection(other)
 		c.AddCollections(other)
 		c.AddCollectionCloned(other)
-		So(c.ConcatNew(other), ShouldNotBeNil)
+		So(c.ConcatNew(false, other), ShouldNotBeNil)
 
 		c.AddsPtr(ref.NewPtr("p", 9))
 		c.AddsByCloningItems(ref.New("q", 10))
