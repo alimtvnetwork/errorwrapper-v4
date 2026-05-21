@@ -246,7 +246,7 @@ func Test_MoreCoverage_Range(t *testing.T) {
 		So(errnew.Range.Within(5, 1, 10).Type(), ShouldEqual, errtype.OutOfRangeValue)
 		So(errnew.Range.OutOf(5, 1, 10), ShouldNotBeNil)
 		So(errnew.Range.MessageOutOf("msg", "ref"), ShouldNotBeNil)
-		So(errnew.Range.Error(errors.New("e"), "msg"), ShouldNotBeNil)
+		So(errnew.Range.Error(errors.New("e")), ShouldNotBeNil)
 	})
 }
 
