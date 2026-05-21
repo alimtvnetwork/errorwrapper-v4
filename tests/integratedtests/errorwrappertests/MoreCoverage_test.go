@@ -209,9 +209,11 @@ func Test_Wrapper_Clone(t *testing.T) {
 
 	Convey("Clone + NonPtr + Ptr + AsErrorWrapper", t, func() {
 		So(w.ClonePtr(), ShouldNotBeNil)
-		So(w.NonPtr().HasError(), ShouldBeTrue)
+		np := w.NonPtr()
+		So(np.Ptr().HasError(), ShouldBeTrue)
 		So(w.Ptr(), ShouldNotBeNil)
-		So(w.Clone().HasError(), ShouldBeTrue)
+		cl := w.Clone()
+		So(cl.Ptr().HasError(), ShouldBeTrue)
 		So(w.CloneNewStackSkipPtr(0), ShouldNotBeNil)
 		So(w.CloneInterface(), ShouldNotBeNil)
 		So(w.AsErrorWrapper(), ShouldEqual, w)
