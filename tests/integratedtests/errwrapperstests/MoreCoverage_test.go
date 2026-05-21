@@ -190,8 +190,7 @@ func Test_Collection_Mutations(t *testing.T) {
 
 	Convey("AddSlice + AddRawErrCollection", t, func() {
 		c := errwrappers.Empty()
-		slice := []*errwrappers.Collection{newPopulated()}
-		c.AddSlice(slice...)
+		c.AddSlice(errtype.NotFound, "label", "m1", "m2")
 		So(c.HasAnyError(), ShouldBeTrue)
 	})
 }
