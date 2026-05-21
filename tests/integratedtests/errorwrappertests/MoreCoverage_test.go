@@ -135,7 +135,7 @@ func Test_Wrapper_Readers(t *testing.T) {
 		So(w.CompiledErrorWithStackTraces(), ShouldNotBeNil)
 		So(w.CompiledJsonErrorWithStackTraces(), ShouldNotBeNil)
 		So(w.CompiledJsonStringWithStackTraces(), ShouldNotBeBlank)
-		So(w.FullOrErrorMessage(errors.New("fallback")), ShouldNotBeBlank)
+		So(w.FullOrErrorMessage(true, true), ShouldNotBeBlank)
 		So(w.GetTypeVariantStruct().Name, ShouldEqual, errtype.NotFound.Name())
 		So(w.ErrorTypeAsBasicErrorTyper(), ShouldNotBeNil)
 	})
