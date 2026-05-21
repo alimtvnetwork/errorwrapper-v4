@@ -234,8 +234,8 @@ func Test_MoreCoverage_MessageWithRef(t *testing.T) {
 	Convey("MessageWithRef family", t, func() {
 		So(errnew.MessageWithRef.Default(errtype.IO, "m", "r").Type(), ShouldEqual, errtype.IO)
 		So(errnew.MessageWithRef.DefaultVarName(errtype.IO, "m", "var", "v"), ShouldNotBeNil)
-		So(errnew.MessageWithRef.Error(errtype.IO, errors.New("e"), "m", "r"), ShouldNotBeNil)
-		So(errnew.MessageWithRef.ErrorVarName(errtype.IO, errors.New("e"), "m", "var", "v"), ShouldNotBeNil)
+		So(errnew.MessageWithRef.Error(errtype.IO, errors.New("e"), "r"), ShouldNotBeNil)
+		So(errnew.MessageWithRef.ErrorVarName(errtype.IO, errors.New("e"), "var", "v"), ShouldNotBeNil)
 		So(errnew.MessageWithRef.ErrorRefs(errtype.IO, errors.New("e"), "m", ref.New("k", "v")), ShouldNotBeNil)
 		So(errnew.MessageWithRef.References(errtype.IO, "m", ref.New("k", "v")), ShouldNotBeNil)
 	})
