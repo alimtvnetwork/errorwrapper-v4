@@ -41,13 +41,14 @@ func Test_MoreCoverage3_NotFound_ErrorPaths(t *testing.T) {
 		So(errnew.NotFound.ProcessWholeCommand(""), ShouldBeNil)
 		So(errnew.NotFound.ProcessWholeCommand("ls -la").HasError(), ShouldBeTrue)
 
-		So(errnew.NotFound.Cmd(nil), ShouldBeNil)
+		// Cmd / CmdWholeCommand return nil when cmd != nil, wrapper when nil.
 		cmd := exec.Command("echo", "hi")
-		So(errnew.NotFound.Cmd(cmd).HasError(), ShouldBeTrue)
-		So(errnew.NotFound.CmdWholeCommand(cmd, "echo hi").HasError(), ShouldBeTrue)
+		So(errnew.NotFound.Cmd(cmd), ShouldBeNil)
+		So(errnew.NotFound.Cmd(nil).HasError(), ShouldBeTrue)
+		So(errnew.NotFound.CmdWholeCommand(cmd, "echo hi"), ShouldBeNil)
 		So(errnew.NotFound.CmdWholeCommand(nil, "echo hi").HasError(), ShouldBeTrue)
 
-		So(errnew.NotFound.ProcessMessageError("msg", nil), ShouldNotBeNil)
+		So(errnew.NotFound.ProcessMessageError("msg", nil), ShouldBeNil)
 		So(errnew.NotFound.ProcessMessageError("msg", errors.New("e")).HasError(), ShouldBeTrue)
 	})
 }
