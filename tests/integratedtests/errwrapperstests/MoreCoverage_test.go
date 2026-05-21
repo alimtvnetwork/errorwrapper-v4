@@ -43,17 +43,17 @@ func Test_Constructors(t *testing.T) {
 		So(errwrappers.NewWithTypeUsingStackSkip(0, errtype.NotFound).Count(), ShouldEqual, 1)
 		So(errwrappers.NewWithMessage(errtype.NotFound, "x").Count(), ShouldEqual, 1)
 		So(errwrappers.NewWithMessageUsingStackSkip(0, errtype.NotFound, "y").Count(), ShouldEqual, 1)
-		So(errwrappers.NewWithError(errtype.Generic, errors.New("err")).Count(), ShouldEqual, 1)
+		So(errwrappers.NewWithError(2, errtype.Generic, errors.New("err")).Count(), ShouldEqual, 1)
 		So(errwrappers.NewWithErrorUsingStackSkip(0, errtype.Generic, errors.New("err")).Count(), ShouldEqual, 1)
 		So(errwrappers.NewWithOnlyError(errors.New("e")).Count(), ShouldEqual, 1)
 		So(errwrappers.NewWithOnlyCapError(2, errors.New("e")).Count(), ShouldEqual, 1)
 	})
 
-	Convey("NewWithItem with a wrapper", t, func() {
-		w := errnew.Messages.Single(errtype.NotFound, "item")
-		c := errwrappers.NewWithItem(w)
-		So(c.Count(), ShouldEqual, 1)
+	Convey("NewWithItem with capacity + type", t, func() {
+		c := errwrappers.NewWithItem(2, errtype.NotFound)
+		So(c, ShouldNotBeNil)
 	})
+
 
 	Convey("NewUsingErrorWrappers + clone + ptr", t, func() {
 		w1 := errnew.Messages.Single(errtype.NotFound, "w1")
