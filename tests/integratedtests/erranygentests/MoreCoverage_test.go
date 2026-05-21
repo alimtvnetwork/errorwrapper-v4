@@ -92,7 +92,7 @@ func Test_GenericResult_JsonSurface(t *testing.T) {
 	})
 
 	Convey("JsonParseSelfInject on bad payload returns error", t, func() {
-		bad := corejson.NewResult([]byte("{not-json"), nil)
+		bad := &corejson.Result{Bytes: []byte("{not-json")}
 		var dst erranygen.Result[string]
 		err := dst.JsonParseSelfInject(bad)
 		So(err, ShouldNotBeNil)
