@@ -190,7 +190,7 @@ func Test_Wrapper_Serialize(t *testing.T) {
 		So(err, ShouldBeNil)
 		So(jb, ShouldNotBeEmpty)
 
-		So(w.JsonModel().ErrType, ShouldNotEqual, 0)
+		So(w.JsonModel().ErrorType, ShouldEqual, errtype.NotFound)
 		So(w.JsonModelAny(), ShouldNotBeNil)
 		So(w.Json(), ShouldNotBeNil)
 		So(w.JsonPtr(), ShouldNotBeNil)
