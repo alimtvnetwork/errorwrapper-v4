@@ -75,41 +75,6 @@ func Test_Constructors_Root(t *testing.T) {
 	})
 }
 
-func Test_Constructors_Root(t *testing.T) {
-	Convey("Constructor family", t, func() {
-		So(errorwrapper.Empty().IsEmpty(), ShouldBeTrue)
-		So(errorwrapper.EmptyPtr().IsEmpty(), ShouldBeTrue)
-		So(errorwrapper.EmptyPrint().IsEmpty(), ShouldBeTrue)
-		So(errorwrapper.New(errtype.NotFound), ShouldNotBeNil)
-		So(errorwrapper.NewPtr(errtype.NotFound), ShouldNotBeNil)
-		So(errorwrapper.NewTypeUsingStackSkip(0, errtype.NotFound), ShouldNotBeNil)
-		So(errorwrapper.NewPtrUsingStackSkip(0, errtype.NotFound), ShouldNotBeNil)
-		So(errorwrapper.NewError(0, errtype.Generic, errors.New("e")), ShouldNotBeNil)
-		So(errorwrapper.NewUsingError(errtype.Generic, errors.New("e")), ShouldNotBeNil)
-		So(errorwrapper.NewUsingErrorWithoutTypeDisplay(errtype.Generic, errors.New("e")), ShouldNotBeNil)
-		So(errorwrapper.NewUsingErrorWithoutTypeDisplayPtr(errtype.Generic, errors.New("e")), ShouldNotBeNil)
-		So(errorwrapper.NewUsingTypeErrorAndMessage(errtype.Generic, errors.New("e"), "msg"), ShouldNotBeNil)
-		So(errorwrapper.NewUsingErrorAndMessage(errors.New("e"), "msg"), ShouldNotBeNil)
-		So(errorwrapper.NewMessagesUsingJoiner(errtype.Generic, " | ", "a", "b"), ShouldNotBeNil)
-		So(errorwrapper.NewGeneric("g"), ShouldNotBeNil)
-		So(errorwrapper.NewUnknownMessage("u"), ShouldNotBeNil)
-	})
-
-	Convey("Ref + Path constructors", t, func() {
-		So(errorwrapper.NewRefOne(errtype.NotFound, "ref1"), ShouldNotBeNil)
-		So(errorwrapper.NewOnlyRefs(errtype.NotFound, "a", "b"), ShouldNotBeNil)
-		So(errorwrapper.NewRefs(errtype.NotFound, "msg", "a", "b"), ShouldNotBeNil)
-		So(errorwrapper.NewRefWithMessage(errtype.NotFound, "msg", "ref"), ShouldNotBeNil)
-		So(errorwrapper.TypeReferenceQuick(errtype.NotFound, "ref"), ShouldNotBeNil)
-	})
-
-	Convey("Wrapper-wrapping constructors", t, func() {
-		base := makeWrapper()
-		So(errorwrapper.NewUsingWrapper(errtype.NotFound, base), ShouldNotBeNil)
-		dataModel := base.JsonModel()
-		So(errorwrapper.NewFromDataModel(&dataModel), ShouldNotBeNil)
-	})
-}
 
 func Test_Wrapper_Readers(t *testing.T) {
 	w := makeWrapper()
