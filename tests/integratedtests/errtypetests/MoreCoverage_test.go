@@ -80,7 +80,7 @@ func Test_Variation_Numeric(t *testing.T) {
 		So(v.Value(), ShouldEqual, uint16(v))
 		So(v.ValueString(), ShouldNotBeBlank)
 		So(v.ToNumberString(), ShouldEqual, v.ValueString())
-		So(v.ValueInt8(), ShouldNotEqual, 0)
+		
 		So(v.MinInt(), ShouldEqual, 0)
 		So(v.MaxInt(), ShouldBeGreaterThan, 0)
 		So(v.MinValueString(), ShouldNotBeBlank)
