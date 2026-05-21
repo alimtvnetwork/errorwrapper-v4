@@ -251,3 +251,94 @@ func Test_MoreCoverage_CmdOnceCollection(t *testing.T) {
 		})
 	})
 }
+
+func Test_MoreCoverage_ScriptCreators(t *testing.T) {
+	Convey("Script.Lines / LinesDefault / ArgsDefault build CmdOnce", t, func() {
+		c1 := errcmd.New.Script.Lines(true, false, scripttype.Bash, "echo a", "echo b")
+		So(c1, ShouldNotBeNil)
+		So(c1.HasCmd(), ShouldBeTrue)
+
+		c2 := errcmd.New.Script.LinesDefault(scripttype.Bash, "echo a")
+		So(c2, ShouldNotBeNil)
+
+		c3 := errcmd.New.Script.ArgsDefault(scripttype.Bash, "echo", "x")
+		So(c3, ShouldNotBeNil)
+
+		c4 := errcmd.New.Script.ProcessArgsDefault(scripttype.Bash, "echo", "x", "y")
+		So(c4, ShouldNotBeNil)
+
+		c5 := errcmd.New.Script.BashArgsDefault("echo", "z")
+		So(c5, ShouldNotBeNil)
+
+		c6 := errcmd.New.Script.PowershellArgsDefault("echo", "z")
+		So(c6, ShouldNotBeNil)
+	})
+
+	Convey("Script.ProcessScriptsFormat returns process + lines", t, func() {
+		proc, lines := errcmd.New.Script.ProcessScriptsFormat(scripttype.Bash, "echo a", "echo b")
+		So(proc, ShouldNotBeEmpty)
+		So(lines, ShouldNotBeEmpty)
+	})
+}
+
+func Test_MoreCoverage_ScriptBuilder(t *testing.T) {
+	Convey("ScriptBuilder factories", t, func() {
+		So(errcmd.New.ScriptBuilder.Default(scripttype.Bash), ShouldNotBeNil)
+		So(errcmd.New.ScriptBuilder.DefaultBash(), ShouldNotBeNil)
+		So(errcmd.New.ScriptBuilder.DefaultShell(), ShouldNotBeNil)
+		So(errcmd.New.ScriptBuilder.DefaultCmd(), ShouldNotBeNil)
+		So(errcmd.New.ScriptBuilder.DefaultPowershell(), ShouldNotBeNil)
+		So(errcmd.New.ScriptBuilder.DefaultDependingOnOs(), ShouldNotBeNil)
+		So(errcmd.New.ScriptBuilder.DependingOnOs(scripttype.Bash, scripttype.Powershell), ShouldNotBeNil)
+		So(errcmd.New.ScriptBuilder.SecureOutput(scripttype.Bash), ShouldNotBeNil)
+		So(errcmd.New.ScriptBuilder.NoOutput(scripttype.Bash), ShouldNotBeNil)
+		So(errcmd.New.ScriptBuilder.NoOutputSecure(scripttype.Bash), ShouldNotBeNil)
+		So(errcmd.New.ScriptBuilder.CustomStdIns(scripttype.Bash, nil, nil, nil), ShouldNotBeNil)
+		So(errcmd.New.ScriptBuilder.ProcessArgs(scripttype.Bash, false, true, "echo", "v"), ShouldNotBeNil)
+		So(errcmd.New.ScriptBuilder.ProcessArgsDefault(scripttype.Bash, "echo", "v"), ShouldNotBeNil)
+	})
+
+	Convey("Builder fluent chain (Args / Process / Process / If variants)", t, func() {
+		b := errcmd.New.ScriptBuilder.DefaultBash().
+			Args("echo", "one").
+			ArgsIf(true, "echo", "two").
+			ArgsIf(false, "echo", "skipped").
+			Process("ls").
+			ProcessIf(true, "pwd").
+			ProcessIf(false, "skipme").
+			ProcessArgs("echo", "three").
+			ProcessArgsIf(true, "echo", "four").
+			ProcessArgsIf(false, "echo", "skip")
+
+		So(b, ShouldNotBeNil)
+		So(b.IsEmpty(), ShouldBeFalse)
+		So(b.HasAnyItem(), ShouldBeTrue)
+		So(b.Length(), ShouldBeGreaterThan, 0)
+		So(b.IsNull(), ShouldBeFalse)
+		So(b.IsNotNull(), ShouldBeTrue)
+		So(b.IsAnyNull(), ShouldBeFalse)
+		So(b.IsValid(), ShouldBeTrue)
+		So(b.IsDefined(), ShouldBeTrue)
+		So(b.IsCurrentEnvSet(), ShouldBeFalse)
+		So(b.HasStdIn(), ShouldBeFalse)
+		So(b.HasStdOut(), ShouldBeFalse)
+		So(b.HasStdErr(), ShouldBeFalse)
+		So(b.HasInsecureOutput(), ShouldBeTrue)
+		So(b.HasPlainOutput(), ShouldBeTrue)
+		So(b.HasAnyEnvVars(), ShouldBeFalse)
+
+		// Toggles
+		b.SetSecure()
+		b.SetPlainOutput()
+		b.EnableOutput()
+		b.DisableOutput()
+		b.SetScriptType(scripttype.Bash)
+		b.SetCurrentEnv()
+		So(b.IsCurrentEnvSet(), ShouldBeTrue)
+
+		// Clone reproduces shape
+		So(b.Clone(), ShouldNotBeNil)
+		So(b.NewBuilderWithArgs("echo", "x"), ShouldNotBeNil)
+		So(b.OutputLinesSimpleSlice(), ShouldNotBeNil)
+	})
+}
