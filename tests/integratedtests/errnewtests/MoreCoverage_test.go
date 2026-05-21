@@ -82,7 +82,7 @@ func Test_MoreCoverage_Type(t *testing.T) {
 		So(errnew.Type.DefaultUsingStackSkip(0, errtype.IO).Type(), ShouldEqual, errtype.IO)
 		So(errnew.Type.UsingStackSkip(0, errtype.IO, "m").Type(), ShouldEqual, errtype.IO)
 		So(errnew.Type.Create(errtype.IO, "m").Type(), ShouldEqual, errtype.IO)
-		So(errnew.Type.New(errtype.IO, "m").Type(), ShouldEqual, errtype.IO)
+		So(errnew.Type.New(errtype.IO, errors.New("m")).Type(), ShouldEqual, errtype.IO)
 		So(errnew.Type.Message(errtype.IO, "m").Type(), ShouldEqual, errtype.IO)
 		So(errnew.Type.Messages(errtype.IO, "a", "b").Type(), ShouldEqual, errtype.IO)
 		So(errnew.Type.MessagesUsingStackSkip(0, errtype.IO, "a", "b").Type(), ShouldEqual, errtype.IO)
@@ -91,8 +91,9 @@ func Test_MoreCoverage_Type(t *testing.T) {
 		So(errnew.Type.Error(errtype.IO, err).HasError(), ShouldBeTrue)
 		So(errnew.Type.Error(errtype.IO, nil), ShouldBeNil)
 		So(errnew.Type.ErrorUsingStackSkip(0, errtype.IO, err).HasError(), ShouldBeTrue)
-		So(errnew.Type.ErrorWithMessage(errtype.IO, err, "ctx").HasError(), ShouldBeTrue)
-		So(errnew.Type.ErrorWithMessageUsingStackSkip(0, errtype.IO, err, "ctx").HasError(), ShouldBeTrue)
+		emptyRefs := refs.Empty()
+		So(errnew.Type.ErrorWithMessage(errtype.IO, err, "ctx", emptyRefs).HasError(), ShouldBeTrue)
+		So(errnew.Type.ErrorWithMessageUsingStackSkip(0, errtype.IO, err, "ctx", emptyRefs).HasError(), ShouldBeTrue)
 		So(errnew.Type.ErrorWithMessages(errtype.IO, err, "a", "b").HasError(), ShouldBeTrue)
 		So(errnew.Type.ErrorWithMessagesUsingStackSkip(0, errtype.IO, err, "a", "b").HasError(), ShouldBeTrue)
 
@@ -101,7 +102,7 @@ func Test_MoreCoverage_Type(t *testing.T) {
 
 		r := ref.New("k", "v")
 		So(errnew.Type.Refs(errtype.IO, r), ShouldNotBeNil)
-		So(errnew.Type.References(errtype.IO, "m", r), ShouldNotBeNil)
+		So(errnew.Type.References(errtype.IO, r), ShouldNotBeNil)
 		So(errnew.Type.DirectRefs(errtype.IO, "m", "k", "v"), ShouldNotBeNil)
 	})
 }
