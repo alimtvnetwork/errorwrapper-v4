@@ -44,10 +44,13 @@ func Test_TopLevel_Funcs(t *testing.T) {
 
 func Test_Constructors_Root(t *testing.T) {
 	Convey("Constructor family", t, func() {
-		So(errorwrapper.Empty().HasError(), ShouldBeFalse)
+		e1 := errorwrapper.Empty()
+		So(e1.Ptr().HasError(), ShouldBeFalse)
 		So(errorwrapper.EmptyPtr().IsEmpty(), ShouldBeTrue)
-		So(errorwrapper.EmptyPrint().HasError(), ShouldBeFalse)
-		So(errorwrapper.New(errtype.NotFound).Type(), ShouldEqual, errtype.NotFound)
+		e2 := errorwrapper.EmptyPrint()
+		So(e2.Ptr().HasError(), ShouldBeFalse)
+		v := errorwrapper.New(errtype.NotFound)
+		So(v.Ptr().Type(), ShouldEqual, errtype.NotFound)
 		So(errorwrapper.NewPtr(errtype.NotFound), ShouldNotBeNil)
 		So(errorwrapper.NewTypeUsingStackSkip(0, errtype.NotFound), ShouldNotBeNil)
 		So(errorwrapper.NewPtrUsingStackSkip(0, errtype.NotFound), ShouldNotBeNil)
