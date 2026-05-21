@@ -208,8 +208,8 @@ func Test_MoreCoverage_FromTo(t *testing.T) {
 		So(errnew.FromTo.CreateUsingStackSkip(0, errtype.IO, "from", "to"), ShouldNotBeNil)
 		So(errnew.FromTo.Message(errtype.IO, "msg", "from", "to"), ShouldNotBeNil)
 		So(errnew.FromTo.MessageStackSkip(0, errtype.IO, "msg", "from", "to"), ShouldNotBeNil)
-		So(errnew.FromTo.Messages(errtype.IO, "from", "to", "m1", "m2"), ShouldNotBeNil)
-		So(errnew.FromTo.MessagesUsingStackSkip(0, errtype.IO, "from", "to", "m1"), ShouldNotBeNil)
+		So(errnew.FromTo.Messages(errtype.IO, true, "from", "to", "m1", "m2"), ShouldNotBeNil)
+		So(errnew.FromTo.MessagesUsingStackSkip(0, errtype.IO, true, "from", "to", "m1"), ShouldNotBeNil)
 	})
 }
 
