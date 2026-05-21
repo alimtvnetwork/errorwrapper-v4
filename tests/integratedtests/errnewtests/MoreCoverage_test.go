@@ -82,7 +82,7 @@ func Test_MoreCoverage_Type(t *testing.T) {
 		So(errnew.Type.Default(errtype.IO).Type(), ShouldEqual, errtype.IO)
 		So(errnew.Type.DefaultUsingStackSkip(0, errtype.IO).Type(), ShouldEqual, errtype.IO)
 		So(errnew.Type.UsingStackSkip(0, errtype.IO).Type(), ShouldEqual, errtype.IO)
-		So(errnew.Type.Create(errtype.IO, "m").Type(), ShouldEqual, errtype.IO)
+		So(errnew.Type.Create(errtype.IO).Type(), ShouldEqual, errtype.IO)
 		So(errnew.Type.New(errtype.IO, errors.New("m")).Type(), ShouldEqual, errtype.IO)
 		So(errnew.Type.Message(errtype.IO, "m").Type(), ShouldEqual, errtype.IO)
 		So(errnew.Type.Messages(errtype.IO, "a", "b").Type(), ShouldEqual, errtype.IO)
