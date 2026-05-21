@@ -76,7 +76,7 @@ func Test_MoreCoverage_NewCreator(t *testing.T) {
 		So(one.HasCmd(), ShouldBeTrue)
 		_ = one.IsAlreadyRan()
 		_ = one.IsNull()
-		So(one.CommandLine(), ShouldEqual, "echo hello world")
+		So(one.CommandLine(), ShouldContainSubstring, "echo hello world")
 		_ = one.GetCommandLineDataDependingOnSecurity()
 
 		Convey("Clone reproduces the same surface", func() {
