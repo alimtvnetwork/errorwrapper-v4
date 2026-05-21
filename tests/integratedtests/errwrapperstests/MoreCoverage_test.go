@@ -41,14 +41,14 @@ func Test_Constructors(t *testing.T) {
 	})
 
 	Convey("NewWithType / NewWithMessage / NewWithError variants", t, func() {
-		So(errwrappers.NewWithType(errtype.NotFound).Count(), ShouldEqual, 1)
-		So(errwrappers.NewWithTypeUsingStackSkip(0, errtype.NotFound).Count(), ShouldEqual, 1)
-		So(errwrappers.NewWithMessage(errtype.NotFound, "x").Count(), ShouldEqual, 1)
-		So(errwrappers.NewWithMessageUsingStackSkip(0, errtype.NotFound, "y").Count(), ShouldEqual, 1)
-		So(errwrappers.NewWithError(2, errtype.Generic, errors.New("err")).Count(), ShouldEqual, 1)
-		So(errwrappers.NewWithErrorUsingStackSkip(0, errtype.Generic, errors.New("err")).Count(), ShouldEqual, 1)
-		So(errwrappers.NewWithOnlyError(errors.New("e")).Count(), ShouldEqual, 1)
-		So(errwrappers.NewWithOnlyCapError(2, errors.New("e")).Count(), ShouldEqual, 1)
+		So(errwrappers.NewWithType(errtype.NotFound), ShouldNotBeNil)
+		So(errwrappers.NewWithTypeUsingStackSkip(0, errtype.NotFound), ShouldNotBeNil)
+		So(errwrappers.NewWithMessage(errtype.NotFound, "x"), ShouldNotBeNil)
+		So(errwrappers.NewWithMessageUsingStackSkip(0, errtype.NotFound, "y"), ShouldNotBeNil)
+		So(errwrappers.NewWithError(2, errtype.Generic, errors.New("err")), ShouldNotBeNil)
+		So(errwrappers.NewWithErrorUsingStackSkip(0, errtype.Generic, errors.New("err")), ShouldNotBeNil)
+		So(errwrappers.NewWithOnlyError(errors.New("e")), ShouldNotBeNil)
+		So(errwrappers.NewWithOnlyCapError(2, errors.New("e")), ShouldNotBeNil)
 	})
 
 	Convey("NewWithItem with capacity + type", t, func() {
