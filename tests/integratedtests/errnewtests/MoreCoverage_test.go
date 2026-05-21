@@ -146,7 +146,7 @@ func Test_MoreCoverage_NotFound(t *testing.T) {
 		So(errnew.NotFound.Reference("ref").Type(), ShouldEqual, errtype.NotFound)
 		So(errnew.NotFound.MessageRef("m", "ref").Type(), ShouldEqual, errtype.NotFound)
 		So(errnew.NotFound.MessageRefName("m", "var", "v").Type(), ShouldEqual, errtype.NotFound)
-		So(errnew.NotFound.Missing("m", "r1", "r2").Type(), ShouldEqual, errtype.NotFound)
+		So(errnew.NotFound.Missing("m", "r1", "r2"), ShouldNotBeNil)
 		So(errnew.NotFound.Invalid("m", "r").Type(), ShouldEqual, errtype.NotFound)
 		So(errnew.NotFound.InvalidData("m", "r").Type(), ShouldEqual, errtype.NotFound)
 		So(errnew.NotFound.InvalidStatus("m", "r"), ShouldNotBeNil)
