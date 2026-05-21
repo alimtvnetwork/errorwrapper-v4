@@ -59,8 +59,7 @@ func Test_Constructors(t *testing.T) {
 		w1 := errnew.Messages.Single(errtype.NotFound, "w1")
 		w2 := errnew.Messages.Single(errtype.NotFound, "w2")
 		So(errwrappers.NewUsingErrorWrappers(w1, w2).Count(), ShouldEqual, 2)
-		So(errwrappers.NewUsingErrorWrappersClone([]*errwrappers.Collection{}[:0:0] != nil || true && true, true), ShouldBeTrue)
-		So(errwrappers.NewUsingErrorWrappersClone(nil), ShouldNotBeNil)
+		So(errwrappers.NewUsingErrorWrappersClone([]*errorwrapper.Wrapper{w1, w2}).Count(), ShouldEqual, 2)
 		wps := []*errwrappers.Collection{newPopulated(), newPopulated()}
 		So(errwrappers.NewUsingCollections(wps...).Count(), ShouldBeGreaterThan, 0)
 		So(errwrappers.NewUsingCollectionsPtr(&wps).Count(), ShouldBeGreaterThan, 0)
