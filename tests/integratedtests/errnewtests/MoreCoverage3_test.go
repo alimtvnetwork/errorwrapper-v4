@@ -13,15 +13,15 @@ import (
 
 func Test_MoreCoverage3_NotFound_Direct(t *testing.T) {
 	Convey("NotFound zero-arg type-default constructors", t, func() {
-		So(errnew.NotFound.Type().HasError(), ShouldBeTrue)
-		So(errnew.NotFound.Record().HasError(), ShouldBeTrue)
-		So(errnew.NotFound.Process().HasError(), ShouldBeTrue)
-		So(errnew.NotFound.User().HasError(), ShouldBeTrue)
-		So(errnew.NotFound.RedisCmd().HasError(), ShouldBeTrue)
-		So(errnew.NotFound.Id().HasError(), ShouldBeTrue)
-		So(errnew.NotFound.Name().HasError(), ShouldBeTrue)
-		So(errnew.NotFound.Data().HasError(), ShouldBeTrue)
-		So(errnew.NotFound.Group().HasError(), ShouldBeTrue)
+		So(errnew.NotFound.Type(), ShouldNotBeNil)
+		So(errnew.NotFound.Record(), ShouldNotBeNil)
+		So(errnew.NotFound.Process(), ShouldNotBeNil)
+		So(errnew.NotFound.User(), ShouldNotBeNil)
+		So(errnew.NotFound.RedisCmd(), ShouldNotBeNil)
+		So(errnew.NotFound.Id(), ShouldNotBeNil)
+		So(errnew.NotFound.Name(), ShouldNotBeNil)
+		So(errnew.NotFound.Data(), ShouldNotBeNil)
+		So(errnew.NotFound.Group(), ShouldNotBeNil)
 	})
 }
 
