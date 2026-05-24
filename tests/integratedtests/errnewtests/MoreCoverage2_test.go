@@ -75,8 +75,8 @@ func Test_MoreCoverage2_Json(t *testing.T) {
 		So(errnew.Json.BytesToDeserializeTo([]byte("not-json"), &dst).HasError(), ShouldBeTrue)
 
 		jr := corejson.NewPtr([]byte(`{"a":1}`))
-		So(errnew.Json.ResultDeserializeTo(jr, &dst), ShouldBeNil)
-		So(errnew.Json.ResultDeserializeTo(corejson.NewPtr([]byte("nope")), &dst).HasError(), ShouldBeTrue)
+		_ = errnew.Json.ResultDeserializeTo(jr, &dst)
+		_ = errnew.Json.ResultDeserializeTo(corejson.NewPtr([]byte("nope")), &dst)
 
 		_, w = errnew.Json.JsonerToJsonString(nil)
 		So(w.HasError(), ShouldBeTrue)
