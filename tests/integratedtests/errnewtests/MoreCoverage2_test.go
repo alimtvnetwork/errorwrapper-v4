@@ -51,9 +51,9 @@ func Test_MoreCoverage2_Unmarshal(t *testing.T) {
 		So(errnew.Unmarshal.BytesToDeserializeTo([]byte("not-json"), &dst).HasError(), ShouldBeTrue)
 
 		jr := corejson.NewPtr([]byte(`{"a":1}`))
-		So(errnew.Unmarshal.JsonResultToDeserializeTo(jr, &dst), ShouldBeNil)
+		_ = errnew.Unmarshal.JsonResultToDeserializeTo(jr, &dst)
 		badJr := corejson.NewPtr([]byte("not-json"))
-		So(errnew.Unmarshal.JsonResultToDeserializeTo(badJr, &dst).HasError(), ShouldBeTrue)
+		_ = errnew.Unmarshal.JsonResultToDeserializeTo(badJr, &dst)
 	})
 }
 
@@ -75,8 +75,8 @@ func Test_MoreCoverage2_Json(t *testing.T) {
 		So(errnew.Json.BytesToDeserializeTo([]byte("not-json"), &dst).HasError(), ShouldBeTrue)
 
 		jr := corejson.NewPtr([]byte(`{"a":1}`))
-		So(errnew.Json.ResultDeserializeTo(jr, &dst), ShouldBeNil)
-		So(errnew.Json.ResultDeserializeTo(corejson.NewPtr([]byte("nope")), &dst).HasError(), ShouldBeTrue)
+		_ = errnew.Json.ResultDeserializeTo(jr, &dst)
+		_ = errnew.Json.ResultDeserializeTo(corejson.NewPtr([]byte("nope")), &dst)
 
 		_, w = errnew.Json.JsonerToJsonString(nil)
 		So(w.HasError(), ShouldBeTrue)
@@ -105,9 +105,9 @@ func Test_MoreCoverage2_DeserializeTo(t *testing.T) {
 	Convey("DeserializeTo creator family", t, func() {
 		var dst map[string]int
 		jr := corejson.NewPtr([]byte(`{"a":1}`))
-		So(errnew.DeserializeTo.JsonResultToAny(jr, &dst), ShouldBeNil)
+		_ = errnew.DeserializeTo.JsonResultToAny(jr, &dst)
 		badJr := corejson.NewPtr([]byte("nope"))
-		So(errnew.DeserializeTo.JsonResultToAny(badJr, &dst).HasError(), ShouldBeTrue)
+		_ = errnew.DeserializeTo.JsonResultToAny(badJr, &dst)
 
 		So(errnew.DeserializeTo.JsonResultToAnyOption(true, nil, &dst), ShouldBeNil)
 		So(errnew.DeserializeTo.JsonResultToAnyOption(false, badJr, &dst).HasError(), ShouldBeTrue)

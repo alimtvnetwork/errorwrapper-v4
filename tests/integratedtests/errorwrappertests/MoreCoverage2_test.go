@@ -203,13 +203,15 @@ func Test_MoreCoverage2_NonPtrPtrAndJson(t *testing.T) {
 
 func Test_MoreCoverage2_GetAsBasicWrapperUsingTyper(t *testing.T) {
 	Convey("Empty wrapper returns nil interface", t, func() {
-		out := errorwrapper.EmptyPtr().GetAsBasicWrapperUsingTyper(errtype.Generic)
+		typer := errtype.Generic
+		out := errorwrapper.EmptyPtr().GetAsBasicWrapperUsingTyper(&typer)
 		So(out, ShouldBeNil)
 	})
 
 	Convey("Non-empty wrapper returns a basic wrapper", t, func() {
 		w := mkWrap("basic")
-		out := w.GetAsBasicWrapperUsingTyper(errtype.NotFound)
+		typer := errtype.NotFound
+		out := w.GetAsBasicWrapperUsingTyper(&typer)
 		So(out, ShouldNotBeNil)
 		So(out.HasError(), ShouldBeTrue)
 	})
