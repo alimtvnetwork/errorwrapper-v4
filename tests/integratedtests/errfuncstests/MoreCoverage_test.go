@@ -16,7 +16,7 @@ import (
 
 // ---------- WrappersMap ----------
 
-func Test_WrappersMap_BasicContracts_MC(t *testing.T) {
+func Test_WrappersMap_BasicContracts_MC_MC(t *testing.T) {
 	Convey("NewWrappersMap creates an empty map", t, func() {
 		m := errfuncs.NewWrappersMap(2)
 		So(m, ShouldNotBeNil)
@@ -150,7 +150,7 @@ func Test_WrappersMap_BasicContracts_MC(t *testing.T) {
 
 // ---------- IsSuccessCollectorsMap ----------
 
-func Test_IsSuccessCollectorsMap_BasicContracts_MC(t *testing.T) {
+func Test_IsSuccessCollectorsMap_BasicContracts_MC_MC(t *testing.T) {
 	Convey("NewIsSuccessCollectorsMap creates an empty map", t, func() {
 		m := errfuncs.NewIsSuccessCollectorsMap(2)
 		So(m, ShouldNotBeNil)
