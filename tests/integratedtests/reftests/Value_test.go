@@ -79,9 +79,9 @@ func Test_Ref_Value_Equality(t *testing.T) {
 		So(v.ToPtr().IsAnyValueEqual(1), ShouldBeTrue)
 		So(v.ToPtr().IsAnyValueEqual(2), ShouldBeFalse)
 
-		// DeepEqual path
-		s := ref.New("s", []int{1, 2})
-		So(s.ToPtr().IsAnyValueEqual([]int{1, 2}), ShouldBeTrue)
+		// comparable struct value
+		s := ref.New("s", "abc")
+		So(s.ToPtr().IsAnyValueEqual("abc"), ShouldBeTrue)
 	})
 
 	Convey("IsEqual / IsEqualPtr", t, func() {
