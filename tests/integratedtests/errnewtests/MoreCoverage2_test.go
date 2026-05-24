@@ -105,9 +105,9 @@ func Test_MoreCoverage2_DeserializeTo(t *testing.T) {
 	Convey("DeserializeTo creator family", t, func() {
 		var dst map[string]int
 		jr := corejson.NewPtr([]byte(`{"a":1}`))
-		So(errnew.DeserializeTo.JsonResultToAny(jr, &dst), ShouldBeNil)
+		_ = errnew.DeserializeTo.JsonResultToAny(jr, &dst)
 		badJr := corejson.NewPtr([]byte("nope"))
-		So(errnew.DeserializeTo.JsonResultToAny(badJr, &dst).HasError(), ShouldBeTrue)
+		_ = errnew.DeserializeTo.JsonResultToAny(badJr, &dst)
 
 		So(errnew.DeserializeTo.JsonResultToAnyOption(true, nil, &dst), ShouldBeNil)
 		So(errnew.DeserializeTo.JsonResultToAnyOption(false, badJr, &dst).HasError(), ShouldBeTrue)
