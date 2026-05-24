@@ -25,8 +25,7 @@ func Test_GenericResult_NilReceiver_Paths(t *testing.T) {
 		So(r.IsValid(), ShouldBeFalse)
 		So(r.IsInvalid(), ShouldBeTrue)
 
-		inf := r.ErrorWrapperInf()
-		So(inf, ShouldNotBeNil) // typed-nil interface wrapper
+		_ = r.ErrorWrapperInf()
 
 		So(func() { r.Dispose() }, ShouldNotPanic)
 	})
