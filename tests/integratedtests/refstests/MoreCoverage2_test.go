@@ -128,11 +128,14 @@ func Test_MoreCoverage2_Refs_JsonRoundTrip(t *testing.T) {
 		c.Add("k", "v")
 		c.Add("n", 1)
 
-		jr := c.Json()
-		So(jr.IsEmpty(), ShouldBeFalse)
+		raw, mErr := c.MarshalJSON()
+		So(mErr, ShouldBeNil)
+		So(raw, ShouldNotBeEmpty)
+
+		jr := &corejson.Result{Bytes: raw}
 
 		var into refs.Collection
-		_, _ = into.ParseInjectUsingJson(&jr)
+		_, _ = into.ParseInjectUsingJson(jr)
 
 		// nil / empty paths
 		var into2 refs.Collection
@@ -146,14 +149,10 @@ func Test_MoreCoverage2_Refs_JsonRoundTrip(t *testing.T) {
 		So(mustPanic, ShouldPanic)
 
 		var into4 refs.Collection
-		So(into4.ParseInjectUsingJsonMust(&jr).Count(), ShouldEqual, 2)
+		So(into4.ParseInjectUsingJsonMust(jr).Count(), ShouldEqual, 2)
 
 		var into5 refs.Collection
-		So(into5.JsonParseSelfInject(&jr), ShouldBeNil)
-
-		raw, mErr := c.MarshalJSON()
-		So(mErr, ShouldBeNil)
-		So(raw, ShouldNotBeEmpty)
+		So(into5.JsonParseSelfInject(jr), ShouldBeNil)
 
 		var into6 refs.Collection
 		So(into6.UnmarshalJSON(raw), ShouldBeNil)

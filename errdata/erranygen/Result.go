@@ -99,6 +99,9 @@ func (it *Result[T]) Dispose() {
 }
 
 func (it *Result[T]) ErrorWrapperInf() errorwrapper.ErrWrapper {
+	if it == nil {
+		return nil
+	}
 	return it.ErrorWrapper
 }
 

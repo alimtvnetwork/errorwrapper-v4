@@ -146,7 +146,7 @@ func Test_MoreCoverage2_StackAndTypeNames(t *testing.T) {
 		So(w.TypeCodeNameString(), ShouldNotBeBlank)
 		So(w.TypeNameCodeMessage(), ShouldNotBeBlank)
 		So(w.TypeString(), ShouldNotBeBlank)
-		So(w.RawErrorTypeValue(), ShouldBeGreaterThanOrEqualTo, 0)
+		So(int(w.RawErrorTypeValue()), ShouldBeGreaterThanOrEqualTo, 0)
 		So(w.RawErrorTypeName(), ShouldNotBeBlank)
 	})
 
