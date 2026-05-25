@@ -194,7 +194,6 @@ func Test_MoreCoverage5_DeserializeTo(t *testing.T) {
 	Convey("errnew.DeserializeTo variants", t, func() {
 		// nil/empty inputs => nil
 		So(errnew.DeserializeTo.JsonResultToAnySkipOnNull(nil, nil), ShouldBeNil)
-		So(errnew.DeserializeTo.BytesToWrapper(nil), ShouldBeNil) // returns two-tuple but first is nil; assert via tuple below
 		convWp, parsedWp := errnew.DeserializeTo.BytesToWrapper(nil)
 		So(convWp, ShouldBeNil)
 		So(parsedWp, ShouldBeNil)
