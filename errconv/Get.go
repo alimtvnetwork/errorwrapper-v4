@@ -4,11 +4,11 @@ import (
 	"github.com/alimtvnetwork/core-v9/codestack"
 	"github.com/alimtvnetwork/core-v9/coreinterface/errcoreinf"
 	"github.com/alimtvnetwork/core-v9/isany"
-	"github.com/alimtvnetwork/errorwrapper-v3"
-	"github.com/alimtvnetwork/errorwrapper-v3/errdata/errcasted"
-	"github.com/alimtvnetwork/errorwrapper-v3/errtype"
-	"github.com/alimtvnetwork/errorwrapper-v3/errwrappers"
-	"github.com/alimtvnetwork/errorwrapper-v3/internal/reflectinternal"
+	"github.com/alimtvnetwork/errorwrapper-v4"
+	"github.com/alimtvnetwork/errorwrapper-v4/errdata/errcasted"
+	"github.com/alimtvnetwork/errorwrapper-v4/errtype"
+	"github.com/alimtvnetwork/errorwrapper-v4/errwrappers"
+	"github.com/alimtvnetwork/errorwrapper-v4/internal/reflectinternal"
 )
 
 func GetPtr(wrapper interface{}) *errcasted.ResultPtr {

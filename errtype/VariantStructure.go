@@ -7,7 +7,7 @@ import (
 
 	"github.com/alimtvnetwork/core-v9/constants"
 	"github.com/alimtvnetwork/core-v9/errcore"
-	"github.com/alimtvnetwork/errorwrapper-v3/errconsts"
+	"github.com/alimtvnetwork/errorwrapper-v4/errconsts"
 )
 
 type VariantStructure struct {
@@ -18,7 +18,7 @@ type VariantStructure struct {
 
 // String
 //
-// 	errconsts.VariantStructStringFormat = "%s (Code - %d) : %s"
+//	errconsts.VariantStructStringFormat = "%s (Code - %d) : %s"
 func (it VariantStructure) String() string {
 	return it.TypeNameCodeMessage()
 }
@@ -29,7 +29,7 @@ func (it VariantStructure) MessageToRawType() errcore.RawErrorType {
 
 // TypeNameCodeMessage
 //
-// 	errconsts.VariantStructStringFormat = "%s (Code - %d) : %s"
+//	errconsts.VariantStructStringFormat = "%s (Code - %d) : %s"
 func (it VariantStructure) TypeNameCodeMessage() string {
 	return fmt.Sprintf(
 		errconsts.VariantStructStringFormat,
@@ -40,14 +40,14 @@ func (it VariantStructure) TypeNameCodeMessage() string {
 
 // CodeTypeName
 //
-// 	errconsts.ErrorCodeHyphenTypeNameFormat  = "(#%d - %s)"
+//	errconsts.ErrorCodeHyphenTypeNameFormat  = "(#%d - %s)"
 func (it VariantStructure) CodeTypeName() string {
 	return it.Variant.CodeWithTypeName()
 }
 
 // CodeTypeNameWithCustomMessage
 //
-// 	errconsts.ErrorCodeHyphenTypeNameWithLineFormat = "(#%d - %s) %s"
+//	errconsts.ErrorCodeHyphenTypeNameWithLineFormat = "(#%d - %s) %s"
 func (it *VariantStructure) CodeTypeNameWithCustomMessage(
 	customMessage string,
 ) string {

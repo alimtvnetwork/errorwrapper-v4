@@ -2,7 +2,7 @@ package refs
 
 import (
 	"github.com/alimtvnetwork/core-v9/corecsv"
-	"github.com/alimtvnetwork/errorwrapper-v3/errtype"
+	"github.com/alimtvnetwork/errorwrapper-v4/errtype"
 )
 
 type QuickReference struct {

@@ -3,8 +3,8 @@ package main
 import (
 	"fmt"
 
-	"github.com/alimtvnetwork/errorwrapper-v3/errtype"
-	"github.com/alimtvnetwork/errorwrapper-v3/refs"
+	"github.com/alimtvnetwork/errorwrapper-v4/errtype"
+	"github.com/alimtvnetwork/errorwrapper-v4/refs"
 )
 
 func QuickRefTest01() {

@@ -2,7 +2,7 @@ package linuxservicecmd
 
 import (
 	"github.com/alimtvnetwork/enum-v10/servicestate"
-	"github.com/alimtvnetwork/errorwrapper-v3/errwrappers"
+	"github.com/alimtvnetwork/errorwrapper-v4/errwrappers"
 )
 
 func RunServices(

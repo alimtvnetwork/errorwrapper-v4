@@ -3,7 +3,7 @@ package errinttests
 import (
 	"testing"
 
-	"github.com/alimtvnetwork/errorwrapper-v3/errdata/errint"
+	"github.com/alimtvnetwork/errorwrapper-v4/errdata/errint"
 	. "github.com/smartystreets/goconvey/convey"
 )
 

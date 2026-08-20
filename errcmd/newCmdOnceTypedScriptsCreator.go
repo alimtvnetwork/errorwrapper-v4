@@ -2,7 +2,7 @@ package errcmd
 
 import (
 	"github.com/alimtvnetwork/enum-v10/scripttype"
-	"github.com/alimtvnetwork/errorwrapper-v3"
+	"github.com/alimtvnetwork/errorwrapper-v4"
 )
 
 type newCmdOnceTypedScriptsCreator struct {

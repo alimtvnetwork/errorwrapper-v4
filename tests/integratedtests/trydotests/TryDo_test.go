@@ -4,11 +4,11 @@ import (
 	"errors"
 	"testing"
 
-	_ "github.com/alimtvnetwork/errorwrapper-v3"
-	"github.com/alimtvnetwork/errorwrapper-v3/errnew"
-	"github.com/alimtvnetwork/errorwrapper-v3/errtype"
-	"github.com/alimtvnetwork/errorwrapper-v3/errwrappers"
-	"github.com/alimtvnetwork/errorwrapper-v3/trydo"
+	_ "github.com/alimtvnetwork/errorwrapper-v4"
+	"github.com/alimtvnetwork/errorwrapper-v4/errnew"
+	"github.com/alimtvnetwork/errorwrapper-v4/errtype"
+	"github.com/alimtvnetwork/errorwrapper-v4/errwrappers"
+	"github.com/alimtvnetwork/errorwrapper-v4/trydo"
 	. "github.com/smartystreets/goconvey/convey"
 )
 
@@ -25,7 +25,7 @@ func Test_Block_Do(t *testing.T) {
 	Convey("Catch receives a thrown exception", t, func() {
 		var caught trydo.Exception
 		trydo.Block{
-			Try: func() { trydo.Throw(errors.New("boom")) },
+			Try:   func() { trydo.Throw(errors.New("boom")) },
 			Catch: func(e trydo.Exception) { caught = e },
 		}.Do()
 		So(caught, ShouldNotBeNil)

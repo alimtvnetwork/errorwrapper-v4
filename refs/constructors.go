@@ -4,7 +4,7 @@ import (
 	"github.com/alimtvnetwork/core-v9/constants"
 	"github.com/alimtvnetwork/core-v9/coreinterface/errcoreinf"
 
-	"github.com/alimtvnetwork/errorwrapper-v3/ref"
+	"github.com/alimtvnetwork/errorwrapper-v4/ref"
 )
 
 func New(capacity int) *Collection {

@@ -1,8 +1,8 @@
 package errdefer
 
 import (
-	"github.com/alimtvnetwork/errorwrapper-v3"
-	"github.com/alimtvnetwork/errorwrapper-v3/errfunc"
+	"github.com/alimtvnetwork/errorwrapper-v4"
+	"github.com/alimtvnetwork/errorwrapper-v4/errfunc"
 )
 
 func ErrorWrapperFunc(

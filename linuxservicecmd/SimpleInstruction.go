@@ -5,8 +5,8 @@ import (
 	"github.com/alimtvnetwork/core-v9/coredata/corestr"
 	"github.com/alimtvnetwork/enum-v10/linuxservicestate"
 	"github.com/alimtvnetwork/enum-v10/servicestate"
-	"github.com/alimtvnetwork/errorwrapper-v3"
-	"github.com/alimtvnetwork/errorwrapper-v3/errwrappers"
+	"github.com/alimtvnetwork/errorwrapper-v4"
+	"github.com/alimtvnetwork/errorwrapper-v4/errwrappers"
 )
 
 type SimpleInstruction struct {

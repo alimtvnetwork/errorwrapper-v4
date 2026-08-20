@@ -2,7 +2,7 @@ package errdefer
 
 import (
 	"github.com/alimtvnetwork/core-v9/codestack"
-	"github.com/alimtvnetwork/errorwrapper-v3"
+	"github.com/alimtvnetwork/errorwrapper-v4"
 )
 
 func mergeErrorWrapper(

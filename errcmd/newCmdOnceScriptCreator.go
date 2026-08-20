@@ -8,9 +8,9 @@ import (
 	"github.com/alimtvnetwork/core-v9/constants"
 	"github.com/alimtvnetwork/core-v9/coredata/stringslice"
 	"github.com/alimtvnetwork/enum-v10/scripttype"
-	"github.com/alimtvnetwork/errorwrapper-v3"
-	"github.com/alimtvnetwork/errorwrapper-v3/errnew"
-	"github.com/alimtvnetwork/errorwrapper-v3/errtype"
+	"github.com/alimtvnetwork/errorwrapper-v4"
+	"github.com/alimtvnetwork/errorwrapper-v4/errnew"
+	"github.com/alimtvnetwork/errorwrapper-v4/errtype"
 )
 
 type newCmdOnceScriptCreator struct{}
@@ -18,13 +18,14 @@ type newCmdOnceScriptCreator struct{}
 // Lines
 //
 // Join Examples:
-//  - Args are joined using space (example ls /temp).
-//  - ScriptLines are joined using
-//  SingleLineScriptsJoiner or ScriptsMultiLineJoiner (example "cd /temp" && "ls .")
+//   - Args are joined using space (example ls /temp).
+//   - ScriptLines are joined using
+//     SingleLineScriptsJoiner or ScriptsMultiLineJoiner (example "cd /temp" && "ls .")
 //
 // Refers to
-//  hasOutput true
-//  hasSecureData false
+//
+//	hasOutput true
+//	hasSecureData false
 func (it *newCmdOnceScriptCreator) Lines(
 	hasOutput,
 	hasSecureData bool,
@@ -98,13 +99,14 @@ func (it *newCmdOnceScriptCreator) LinesWithStdIns(
 // LinesDefault
 //
 // Join Examples:
-//  - Args are joined using space (example ls /temp).
-//  - ScriptLines are joined using
-//  SingleLineScriptsJoiner or ScriptsMultiLineJoiner (example "cd /temp" && "ls .")
+//   - Args are joined using space (example ls /temp).
+//   - ScriptLines are joined using
+//     SingleLineScriptsJoiner or ScriptsMultiLineJoiner (example "cd /temp" && "ls .")
 //
 // Refers to
-//  hasOutput true
-//  hasSecureData false
+//
+//	hasOutput true
+//	hasSecureData false
 func (it *newCmdOnceScriptCreator) LinesDefault(
 	scriptType scripttype.Variant,
 	scriptLines ...string,
@@ -129,13 +131,14 @@ func (it *newCmdOnceScriptCreator) ProcessArgsDefault(
 // ArgsDefault
 //
 // Join Examples:
-//  - Args are joined using space (example ls /temp).
-//  - ScriptLines are joined using
-//  SingleLineScriptsJoiner or ScriptsMultiLineJoiner (example "cd /temp" && "ls .")
+//   - Args are joined using space (example ls /temp).
+//   - ScriptLines are joined using
+//     SingleLineScriptsJoiner or ScriptsMultiLineJoiner (example "cd /temp" && "ls .")
 //
 // Refers to
-//  hasOutput true
-//  hasSecureData false
+//
+//	hasOutput true
+//	hasSecureData false
 func (it *newCmdOnceScriptCreator) ArgsDefault(
 	scriptType scripttype.Variant,
 	args ...string,
@@ -160,13 +163,14 @@ func (it *newCmdOnceScriptCreator) PowershellArgsDefault(
 // ArgsDefaultResult
 //
 // Join Examples:
-//  - Args are joined using space (example ls /temp).
-//  - ScriptLines are joined using
-//  SingleLineScriptsJoiner or ScriptsMultiLineJoiner (example "cd /temp" && "ls .")
+//   - Args are joined using space (example ls /temp).
+//   - ScriptLines are joined using
+//     SingleLineScriptsJoiner or ScriptsMultiLineJoiner (example "cd /temp" && "ls .")
 //
 // Refers to
-//  hasOutput true
-//  hasSecureData false
+//
+//	hasOutput true
+//	hasSecureData false
 func (it *newCmdOnceScriptCreator) ArgsDefaultResult(
 	scriptType scripttype.Variant,
 	args ...string,
@@ -258,9 +262,9 @@ func (it *newCmdOnceScriptCreator) ArgsDefaultOutputWithErrorWrapper(
 // Args
 //
 // Join Examples:
-//  - Args are joined using space (example ls /temp).
-//  - ScriptLines are joined using
-//  SingleLineScriptsJoiner or ScriptsMultiLineJoiner (example "cd /temp" && "ls .")
+//   - Args are joined using space (example ls /temp).
+//   - ScriptLines are joined using
+//     SingleLineScriptsJoiner or ScriptsMultiLineJoiner (example "cd /temp" && "ls .")
 func (it *newCmdOnceScriptCreator) Args(
 	hasOutput,
 	hasSecureData bool,
@@ -289,9 +293,9 @@ func (it *newCmdOnceScriptCreator) Args(
 // BashArgsDefault
 //
 // Join Examples:
-//  - Args are joined using space (example ls /temp).
-//  - ScriptLines are joined using
-//  SingleLineScriptsJoiner or ScriptsMultiLineJoiner (example "cd /temp" && "ls .")
+//   - Args are joined using space (example ls /temp).
+//   - ScriptLines are joined using
+//     SingleLineScriptsJoiner or ScriptsMultiLineJoiner (example "cd /temp" && "ls .")
 func (it *newCmdOnceScriptCreator) BashArgsDefault(
 	args ...string,
 ) *CmdOnce {

@@ -1,4 +1,4 @@
-# Project Overview — errorwrapper-v3
+# Project Overview — errorwrapper-v4
 
 Go library providing typed error wrappers, collections, command runners, and reflection helpers. Also ships a small TanStack Start landing site under `src/routes/`.
 

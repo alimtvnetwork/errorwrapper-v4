@@ -1,4 +1,4 @@
-# Completion Plan — errorwrapper-v3
+# Completion Plan — errorwrapper-v4
 
 Active roadmap. Fully-complete items live in `## Completed` at the bottom — never deleted.
 

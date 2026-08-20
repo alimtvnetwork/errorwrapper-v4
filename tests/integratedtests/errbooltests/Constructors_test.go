@@ -4,9 +4,9 @@ import (
 	"errors"
 	"testing"
 
-	"github.com/alimtvnetwork/errorwrapper-v3/errdata/errbool"
-	"github.com/alimtvnetwork/errorwrapper-v3/errnew"
-	"github.com/alimtvnetwork/errorwrapper-v3/errtype"
+	"github.com/alimtvnetwork/errorwrapper-v4/errdata/errbool"
+	"github.com/alimtvnetwork/errorwrapper-v4/errnew"
+	"github.com/alimtvnetwork/errorwrapper-v4/errtype"
 	. "github.com/smartystreets/goconvey/convey"
 )
 

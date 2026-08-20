@@ -2,19 +2,19 @@ package errnew
 
 import (
 	"github.com/alimtvnetwork/core-v9/coredata/corejson"
-	"github.com/alimtvnetwork/errorwrapper-v3"
-	"github.com/alimtvnetwork/errorwrapper-v3/errtype"
-	"github.com/alimtvnetwork/errorwrapper-v3/ref"
+	"github.com/alimtvnetwork/errorwrapper-v4"
+	"github.com/alimtvnetwork/errorwrapper-v4/errtype"
+	"github.com/alimtvnetwork/errorwrapper-v4/ref"
 )
 
 type newDeserializeToWrapperCreator struct{}
 
 // JsonResultToAny
 //
-//  Warning : on nil json result may yield error so be sure to check out
-//  JsonResultToAnySkipOnNull, JsonResultToAnyOption
+//	Warning : on nil json result may yield error so be sure to check out
+//	JsonResultToAnySkipOnNull, JsonResultToAnyOption
 //
-//  json result deserializes to ptr on fail creates error wrapper
+//	json result deserializes to ptr on fail creates error wrapper
 func (it newDeserializeToWrapperCreator) JsonResultToAny(
 	jsonResult *corejson.Result,
 	toPtr interface{},
@@ -38,9 +38,9 @@ func (it newDeserializeToWrapperCreator) JsonResultToAny(
 
 // JsonResultToAnyOption
 //
-//  isSkipOnNull : Skip on nil json result gives nil error wrapper
+//	isSkipOnNull : Skip on nil json result gives nil error wrapper
 //
-//  json result deserializes to ptr on fail creates error wrapper
+//	json result deserializes to ptr on fail creates error wrapper
 func (it newDeserializeToWrapperCreator) JsonResultToAnyOption(
 	isSkipOnNull bool,
 	jsonResult *corejson.Result,
@@ -59,9 +59,9 @@ func (it newDeserializeToWrapperCreator) JsonResultToAnyOption(
 
 // JsonResultToAnySkipOnNull
 //
-//  Skip on nil json result gives nil error wrapper
+//	Skip on nil json result gives nil error wrapper
 //
-//  json result deserializes to ptr on fail creates error wrapper
+//	json result deserializes to ptr on fail creates error wrapper
 func (it newDeserializeToWrapperCreator) JsonResultToAnySkipOnNull(
 	jsonResult *corejson.Result,
 	toPtr interface{},
@@ -93,7 +93,7 @@ func (it newDeserializeToWrapperCreator) JsonResultToAnySkipOnNull(
 
 // JsonResultToAnyOnErrAddMsg
 //
-//  deserializes jsonResult to toPtr if fails creates error with message
+//	deserializes jsonResult to toPtr if fails creates error with message
 func (it newDeserializeToWrapperCreator) JsonResultToAnyOnErrAddMsg(
 	onFailErrorMessage string,
 	jsonResult *corejson.Result,
@@ -167,7 +167,7 @@ func (it newDeserializeToWrapperCreator) JsonResultErrToWrapper(
 
 // BytesToWrapper
 //
-//  On empty bytes returns nil.
+//	On empty bytes returns nil.
 func (it newDeserializeToWrapperCreator) BytesToWrapper(
 	allBytes []byte,
 ) (errWp *errorwrapper.Wrapper, parsedErrWp *errorwrapper.Wrapper) {
@@ -263,7 +263,7 @@ func (it newDeserializeToWrapperCreator) JsonResultToWrapperUsingStackSkip(
 
 // BytesToWrapperUsingStackSkip
 //
-//  On empty bytes returns nil.
+//	On empty bytes returns nil.
 func (it newDeserializeToWrapperCreator) BytesToWrapperUsingStackSkip(
 	stackSkip int,
 	allBytes []byte,

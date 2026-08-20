@@ -6,9 +6,9 @@ import (
 
 	. "github.com/smartystreets/goconvey/convey"
 
-	"github.com/alimtvnetwork/errorwrapper-v3"
-	"github.com/alimtvnetwork/errorwrapper-v3/errnew"
-	"github.com/alimtvnetwork/errorwrapper-v3/errtype"
+	"github.com/alimtvnetwork/errorwrapper-v4"
+	"github.com/alimtvnetwork/errorwrapper-v4/errnew"
+	"github.com/alimtvnetwork/errorwrapper-v4/errtype"
 )
 
 func makeWrapper() *errorwrapper.Wrapper {
@@ -77,7 +77,6 @@ func Test_Constructors_Root(t *testing.T) {
 		So(errorwrapper.NewFromDataModel(&dataModel), ShouldNotBeNil)
 	})
 }
-
 
 func Test_Wrapper_Readers(t *testing.T) {
 	w := makeWrapper()

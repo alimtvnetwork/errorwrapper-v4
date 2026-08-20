@@ -3,7 +3,7 @@ package main
 import (
 	"fmt"
 
-	"github.com/alimtvnetwork/errorwrapper-v3/trydo"
+	"github.com/alimtvnetwork/errorwrapper-v4/trydo"
 )
 
 func TryDoWrapTest1() {

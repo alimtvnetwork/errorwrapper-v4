@@ -4,9 +4,9 @@ import (
 	"errors"
 	"fmt"
 
-	"github.com/alimtvnetwork/errorwrapper-v3/errnew"
-	"github.com/alimtvnetwork/errorwrapper-v3/errtype"
-	"github.com/alimtvnetwork/errorwrapper-v3/ref"
+	"github.com/alimtvnetwork/errorwrapper-v4/errnew"
+	"github.com/alimtvnetwork/errorwrapper-v4/errtype"
+	"github.com/alimtvnetwork/errorwrapper-v4/ref"
 )
 
 func fromToErrMergeExample() {

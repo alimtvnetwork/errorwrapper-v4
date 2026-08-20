@@ -6,7 +6,7 @@ import (
 
 	"github.com/alimtvnetwork/core-v9/constants"
 	"github.com/alimtvnetwork/enum-v10/scripttype"
-	"github.com/alimtvnetwork/errorwrapper-v3/errcmd"
+	"github.com/alimtvnetwork/errorwrapper-v4/errcmd"
 )
 
 func ScriptTest02() {

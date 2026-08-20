@@ -8,9 +8,9 @@ import (
 	"github.com/alimtvnetwork/core-v9/coredata/stringslice"
 	"github.com/alimtvnetwork/core-v9/coreinterface"
 	"github.com/alimtvnetwork/enum-v10/scripttype"
-	"github.com/alimtvnetwork/errorwrapper-v3"
-	"github.com/alimtvnetwork/errorwrapper-v3/errnew"
-	"github.com/alimtvnetwork/errorwrapper-v3/errtype"
+	"github.com/alimtvnetwork/errorwrapper-v4"
+	"github.com/alimtvnetwork/errorwrapper-v4/errnew"
+	"github.com/alimtvnetwork/errorwrapper-v4/errtype"
 )
 
 type CmdOnceCollection struct {

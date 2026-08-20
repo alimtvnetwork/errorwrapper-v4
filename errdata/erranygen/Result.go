@@ -23,7 +23,7 @@ package erranygen
 
 import (
 	"github.com/alimtvnetwork/core-v9/coredata/corejson"
-	"github.com/alimtvnetwork/errorwrapper-v3"
+	"github.com/alimtvnetwork/errorwrapper-v4"
 )
 
 // Result is the generic counterpart of errdata/<type>.Result.
@@ -107,7 +107,7 @@ func (it *Result[T]) ErrorWrapperInf() errorwrapper.ErrWrapper {
 
 // --- JSON surface ---
 
-func (it Result[T]) Json() corejson.Result    { return corejson.New(it) }
+func (it Result[T]) Json() corejson.Result     { return corejson.New(it) }
 func (it Result[T]) JsonPtr() *corejson.Result { return corejson.NewPtr(it) }
 func (it Result[T]) JsonModelAny() interface{} { return it }
 

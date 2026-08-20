@@ -7,7 +7,7 @@ import (
 	"github.com/alimtvnetwork/core-v9/constants"
 	"github.com/alimtvnetwork/core-v9/coredata/corestr"
 	"github.com/alimtvnetwork/core-v9/coredata/stringslice"
-	"github.com/alimtvnetwork/errorwrapper-v3/errtype"
+	"github.com/alimtvnetwork/errorwrapper-v4/errtype"
 )
 
 // CombinedOutputError

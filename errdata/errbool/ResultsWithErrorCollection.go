@@ -6,9 +6,9 @@ import (
 	"github.com/alimtvnetwork/core-v9/constants"
 	"github.com/alimtvnetwork/core-v9/converters"
 	"github.com/alimtvnetwork/core-v9/coredata/corejson"
-	"github.com/alimtvnetwork/errorwrapper-v3"
+	"github.com/alimtvnetwork/errorwrapper-v4"
 
-	"github.com/alimtvnetwork/errorwrapper-v3/errwrappers"
+	"github.com/alimtvnetwork/errorwrapper-v4/errwrappers"
 )
 
 type ResultsWithErrorCollection struct {

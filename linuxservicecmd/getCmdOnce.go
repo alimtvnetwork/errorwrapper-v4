@@ -3,7 +3,7 @@ package linuxservicecmd
 import (
 	"github.com/alimtvnetwork/core-v9/cmdconsts"
 	"github.com/alimtvnetwork/enum-v10/servicestate"
-	"github.com/alimtvnetwork/errorwrapper-v3/errcmd"
+	"github.com/alimtvnetwork/errorwrapper-v4/errcmd"
 )
 
 func getCmdOnce(

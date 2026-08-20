@@ -1,13 +1,13 @@
 package errorwrapper
 
 import (
-	"github.com/alimtvnetwork/errorwrapper-v3/errtype"
-	"github.com/alimtvnetwork/errorwrapper-v3/internal/consts"
+	"github.com/alimtvnetwork/errorwrapper-v4/errtype"
+	"github.com/alimtvnetwork/errorwrapper-v4/internal/consts"
 )
 
 // ErrorsToString
 //
-//  nil items will be ignored.
+//	nil items will be ignored.
 func ErrorsToString(errItems ...error) string {
 	if len(errItems) == 0 {
 		return ""
@@ -22,7 +22,7 @@ func ErrorsToString(errItems ...error) string {
 
 // ErrorsToError
 //
-//  nil items will be ignored.
+//	nil items will be ignored.
 func ErrorsToError(errItems ...error) error {
 	if len(errItems) == 0 {
 		return nil
@@ -51,7 +51,7 @@ func ErrorsToError(errItems ...error) error {
 
 // ErrorsToWrap
 //
-//  nil items will be ignored.
+//	nil items will be ignored.
 func ErrorsToWrap(
 	errType errtype.Variation,
 	errItems ...error,

@@ -5,8 +5,8 @@ import (
 
 	"github.com/alimtvnetwork/core-v9/constants"
 	"github.com/alimtvnetwork/core-v9/corecsv"
-	"github.com/alimtvnetwork/errorwrapper-v3/errconsts"
-	"github.com/alimtvnetwork/errorwrapper-v3/errtype"
+	"github.com/alimtvnetwork/errorwrapper-v4/errconsts"
+	"github.com/alimtvnetwork/errorwrapper-v4/errtype"
 )
 
 func SimpleReferencesCompile(

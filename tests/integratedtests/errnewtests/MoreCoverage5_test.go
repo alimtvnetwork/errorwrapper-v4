@@ -6,11 +6,11 @@ import (
 
 	. "github.com/smartystreets/goconvey/convey"
 
-	"github.com/alimtvnetwork/errorwrapper-v3"
-	"github.com/alimtvnetwork/errorwrapper-v3/errnew"
-	"github.com/alimtvnetwork/errorwrapper-v3/errtype"
-	"github.com/alimtvnetwork/errorwrapper-v3/ref"
-	"github.com/alimtvnetwork/errorwrapper-v3/refs"
+	"github.com/alimtvnetwork/errorwrapper-v4"
+	"github.com/alimtvnetwork/errorwrapper-v4/errnew"
+	"github.com/alimtvnetwork/errorwrapper-v4/errtype"
+	"github.com/alimtvnetwork/errorwrapper-v4/ref"
+	"github.com/alimtvnetwork/errorwrapper-v4/refs"
 )
 
 func Test_MoreCoverage5_Refs_Remaining(t *testing.T) {

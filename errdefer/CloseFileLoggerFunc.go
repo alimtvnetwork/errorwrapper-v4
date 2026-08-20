@@ -3,7 +3,7 @@ package errdefer
 import (
 	"os"
 
-	"github.com/alimtvnetwork/errorwrapper-v3"
+	"github.com/alimtvnetwork/errorwrapper-v4"
 )
 
 func CloseFileLoggerFunc(

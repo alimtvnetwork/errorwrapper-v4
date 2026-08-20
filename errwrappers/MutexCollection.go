@@ -3,7 +3,7 @@ package errwrappers
 import (
 	"sync"
 
-	"github.com/alimtvnetwork/errorwrapper-v3"
+	"github.com/alimtvnetwork/errorwrapper-v4"
 )
 
 type MutexCollection struct {

@@ -3,7 +3,7 @@ package main
 import (
 	"fmt"
 
-	"github.com/alimtvnetwork/errorwrapper-v3/errcmd"
+	"github.com/alimtvnetwork/errorwrapper-v4/errcmd"
 )
 
 func cmdBuilderAsyncTest2() {

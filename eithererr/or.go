@@ -2,8 +2,8 @@ package eithererr
 
 import (
 	"github.com/alimtvnetwork/core-v9/coreinterface/errcoreinf"
-	"github.com/alimtvnetwork/errorwrapper-v3"
-	"github.com/alimtvnetwork/errorwrapper-v3/errwrappers"
+	"github.com/alimtvnetwork/errorwrapper-v4"
+	"github.com/alimtvnetwork/errorwrapper-v4/errwrappers"
 )
 
 func Or(
@@ -54,8 +54,8 @@ func OrEmptyCollectionPtr(
 
 // AnyFirstOrEmpty
 //
-//  OrNull Return which first wrapper which has error
-//  Return null based
+//	OrNull Return which first wrapper which has error
+//	Return null based
 func AnyFirstOrEmpty(
 	wrappers ...*errorwrapper.Wrapper,
 ) *errorwrapper.Wrapper {
@@ -74,8 +74,8 @@ func AnyFirstOrEmpty(
 
 // AnyErrInfFirstOrEmpty
 //
-//  OrNull Return which first wrapper which has error
-//  Return null based
+//	OrNull Return which first wrapper which has error
+//	Return null based
 func AnyErrInfFirstOrEmpty(
 	errInterfaces ...errcoreinf.BaseErrorOrCollectionWrapper,
 ) *errorwrapper.Wrapper {
@@ -99,8 +99,8 @@ func AnyErrInfFirstOrEmpty(
 
 // AnyBasicErrFirstOrEmpty
 //
-//  OrNull Return which first wrapper which has error
-//  Return null based
+//	OrNull Return which first wrapper which has error
+//	Return null based
 func AnyBasicErrFirstOrEmpty(
 	basicErrors ...errcoreinf.BasicErrWrapper,
 ) *errorwrapper.Wrapper {

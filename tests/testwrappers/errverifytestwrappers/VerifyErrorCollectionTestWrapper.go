@@ -1,8 +1,8 @@
 package errverifytestwrappers
 
 import (
-	"github.com/alimtvnetwork/errorwrapper-v3"
-	"github.com/alimtvnetwork/errorwrapper-v3/errverify"
+	"github.com/alimtvnetwork/errorwrapper-v4"
+	"github.com/alimtvnetwork/errorwrapper-v4/errverify"
 )
 
 type VerifyErrorCollectionTestWrapper struct {

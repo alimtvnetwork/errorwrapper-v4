@@ -3,7 +3,7 @@ package erranytests
 import (
 	"testing"
 
-	"github.com/alimtvnetwork/errorwrapper-v3/errdata/errany"
+	"github.com/alimtvnetwork/errorwrapper-v4/errdata/errany"
 	. "github.com/smartystreets/goconvey/convey"
 )
 

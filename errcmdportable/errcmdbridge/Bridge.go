@@ -9,8 +9,8 @@ package errcmdbridge
 import (
 	"strings"
 
-	"github.com/alimtvnetwork/errorwrapper-v3/errcmd"
-	"github.com/alimtvnetwork/errorwrapper-v3/errcmdportable"
+	"github.com/alimtvnetwork/errorwrapper-v4/errcmd"
+	"github.com/alimtvnetwork/errorwrapper-v4/errcmdportable"
 )
 
 // FromErrcmdResult downgrades an `*errcmd.Result` to the portable shape.

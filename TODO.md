@@ -112,7 +112,7 @@ roadmap. Keep this file in sync when you add or resolve a TODO comment.
 
 ### Phase 0 — ✅ stabilized
 - ✅ Fixed bad import in `tests/integratedtests/errcmdtests/Utilities_test.go`
-  (`.../errorwrapper-v3/errorwrapper` → `.../errorwrapper-v3`); this unblocked
+  (`.../errorwrapper-v4/errorwrapper` → `.../errorwrapper-v4`); this unblocked
   `go mod tidy` and the 49 cascade-blocked packages.
 - ✅ `Test_EmptyPtr_HasError` — corrected expectation: `EmptyPtr()` returns
   `nil` by design; assertion now `ShouldBeNil`.
@@ -127,7 +127,7 @@ roadmap. Keep this file in sync when you add or resolve a TODO comment.
 
 ### Phase 7 — ⬜ user action required
 - User must run `git remote set-url origin <correct-url>`.
-  Current `origin` returns 404 on `github.com/alimtvnetwork/errorwrapper-v3`.
+  Current `origin` returns 404 on `github.com/alimtvnetwork/errorwrapper-v4`.
 
 ### Phase F — verification (next agent turn after user re-runs)
 - Re-run `.\run.ps1 -tc` and confirm 29/29 compile, 0 runtime failures.

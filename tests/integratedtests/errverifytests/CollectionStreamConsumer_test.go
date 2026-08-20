@@ -3,7 +3,7 @@ package errverifytests
 import (
 	"testing"
 
-	"github.com/alimtvnetwork/errorwrapper-v3/errverify"
+	"github.com/alimtvnetwork/errorwrapper-v4/errverify"
 	. "github.com/smartystreets/goconvey/convey"
 )
 

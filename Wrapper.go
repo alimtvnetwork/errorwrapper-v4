@@ -16,10 +16,10 @@ import (
 	"github.com/alimtvnetwork/core-v9/corevalidator"
 	"github.com/alimtvnetwork/core-v9/errcore"
 	"github.com/alimtvnetwork/core-v9/iserror"
-	"github.com/alimtvnetwork/errorwrapper-v3/errconsts"
-	"github.com/alimtvnetwork/errorwrapper-v3/errtype"
-	"github.com/alimtvnetwork/errorwrapper-v3/ref"
-	"github.com/alimtvnetwork/errorwrapper-v3/refs"
+	"github.com/alimtvnetwork/errorwrapper-v4/errconsts"
+	"github.com/alimtvnetwork/errorwrapper-v4/errtype"
+	"github.com/alimtvnetwork/errorwrapper-v4/ref"
+	"github.com/alimtvnetwork/errorwrapper-v4/refs"
 )
 
 type Wrapper struct {
@@ -135,7 +135,7 @@ func (it *Wrapper) ReferencesList() []errcoreinf.Referencer {
 
 // ReflectSetToErrWrap
 //
-//  Reusing ReflectSetTo
+//	Reusing ReflectSetTo
 func (it *Wrapper) ReflectSetToErrWrap(toPtr interface{}) *Wrapper {
 	err := it.ReflectSetTo(toPtr)
 
@@ -151,11 +151,12 @@ func (it *Wrapper) ReflectSetToErrWrap(toPtr interface{}) *Wrapper {
 
 // IsCollect
 //
-//  ConcatNew() recommend to use instead.
+//	ConcatNew() recommend to use instead.
 //
 // Warning :
-//  mutates current error, recommended NOT use,
-//  it is for the commonalities between error Wrapper and collection
+//
+//	mutates current error, recommended NOT use,
+//	it is for the commonalities between error Wrapper and collection
 func (it *Wrapper) IsCollect(
 	another errcoreinf.BaseErrorOrCollectionWrapper,
 ) bool {
@@ -190,11 +191,12 @@ func (it *Wrapper) IsCollect(
 
 // IsCollectedAny
 //
-//  ConcatNew() recommend to use instead.
+//	ConcatNew() recommend to use instead.
 //
 // Warning :
-//  mutates current error, recommended NOT use,
-//  it is for the commonalities between error Wrapper and collection
+//
+//	mutates current error, recommended NOT use,
+//	it is for the commonalities between error Wrapper and collection
 func (it *Wrapper) IsCollectedAny(
 	anotherItems ...errcoreinf.BaseErrorOrCollectionWrapper,
 ) bool {
@@ -224,11 +226,12 @@ func (it *Wrapper) IsCollectedAny(
 
 // IsCollectOn
 //
-//  ConcatNew() recommend to use instead.
+//	ConcatNew() recommend to use instead.
 //
 // Warning :
-//  mutates current error, recommended NOT use,
-//  it is for the commonalities between error Wrapper and collection
+//
+//	mutates current error, recommended NOT use,
+//	it is for the commonalities between error Wrapper and collection
 func (it *Wrapper) IsCollectOn(
 	isCollect bool,
 	another errcoreinf.BaseErrorOrCollectionWrapper,
@@ -302,27 +305,27 @@ func (it *Wrapper) IsCollectionType() bool {
 
 // ReflectSetTo
 //
-// Set any object from to toPointer object
+// # Set any object from to toPointer object
 //
 // Valid Inputs or Supported (https://t.ly/1Lpt):
-//  - From, To: (null, null)                          -- do nothing
-//  - From, To: (sameTypePointer, sameTypePointer)    -- try reflection
-//  - From, To: (sameTypeNonPointer, sameTypePointer) -- try reflection
-//  - From, To: ([]byte or *[]byte, otherType)        -- try unmarshal, reflect
-//  - From, To: (otherType, *[]byte)                  -- try marshal, reflect
+//   - From, To: (null, null)                          -- do nothing
+//   - From, To: (sameTypePointer, sameTypePointer)    -- try reflection
+//   - From, To: (sameTypeNonPointer, sameTypePointer) -- try reflection
+//   - From, To: ([]byte or *[]byte, otherType)        -- try unmarshal, reflect
+//   - From, To: (otherType, *[]byte)                  -- try marshal, reflect
 //
 // Validations:
-//  - Check null, if both null no error return quickly.
-//  - NotSupported returns as error.
-//      - NotSupported: (from, to) - (..., not pointer)
-//      - NotSupported: (from, to) - (null, notNull)
-//      - NotSupported: (from, to) - (notNull, null)
-//      - NotSupported: (from, to) - not same type and not bytes on any
-//  - `From` null or nil is not supported and will return error.
+//   - Check null, if both null no error return quickly.
+//   - NotSupported returns as error.
+//   - NotSupported: (from, to) - (..., not pointer)
+//   - NotSupported: (from, to) - (null, notNull)
+//   - NotSupported: (from, to) - (notNull, null)
+//   - NotSupported: (from, to) - not same type and not bytes on any
+//   - `From` null or nil is not supported and will return error.
 //
 // Reference:
-//  - Reflection String Set Example : https://go.dev/play/p/fySLYuOvoRK.go?download=true
-//  - Method document screenshot    : https://prnt.sc/26dmf5g
+//   - Reflection String Set Example : https://go.dev/play/p/fySLYuOvoRK.go?download=true
+//   - Method document screenshot    : https://prnt.sc/26dmf5g
 func (it *Wrapper) ReflectSetTo(toPtr interface{}) error {
 	return coredynamic.ReflectSetFromTo(it, toPtr)
 }
@@ -349,14 +352,14 @@ func (it *Wrapper) HasAnyError() bool {
 
 // Compile
 //
-//  Refers to the FullString
+//	Refers to the FullString
 func (it *Wrapper) Compile() string {
 	return it.FullString()
 }
 
 // CompileString
 //
-//  Refers to the FullString
+//	Refers to the FullString
 func (it *Wrapper) CompileString() string {
 	return it.FullString()
 }
@@ -403,7 +406,7 @@ func (it *Wrapper) SerializeWithoutTraces() ([]byte, error) {
 
 // Serialize
 //
-//  Returns json with stack-traces
+//	Returns json with stack-traces
 func (it *Wrapper) Serialize() ([]byte, error) {
 	if it.IsEmpty() {
 		return nil, nil
@@ -511,10 +514,10 @@ func (it *Wrapper) MergeNewReferences(additionalReferences ...ref.Value) *refs.C
 // Returns true if not empty. Invert of IsEmpty()
 //
 // Conditions (true):
-//  - if Wrapper is NOT nil, Or,
-//  - if Wrapper is NOT StaticEmptyPtr, Or,
-//  - if Wrapper .errorType is NOT IsNoError(), Or,
-//  - if Wrapper .currentError is nil and Wrapper .references.IsEmpty()
+//   - if Wrapper is NOT nil, Or,
+//   - if Wrapper is NOT StaticEmptyPtr, Or,
+//   - if Wrapper .errorType is NOT IsNoError(), Or,
+//   - if Wrapper .currentError is nil and Wrapper .references.IsEmpty()
 func (it *Wrapper) HasError() bool {
 	return !it.IsEmpty()
 }
@@ -538,8 +541,8 @@ func (it *Wrapper) Type() errtype.Variation {
 
 // errorTypeOrGeneric
 //
-//  return errtype.Generic if empty or noError type,
-//  or else returns the exact type
+//	return errtype.Generic if empty or noError type,
+//	or else returns the exact type
 func (it *Wrapper) errorTypeOrGeneric() errtype.Variation {
 	if it == nil || it.errorType == errtype.NoError {
 		return errtype.Generic
@@ -558,12 +561,12 @@ func (it *Wrapper) GetTypeVariantStruct() errtype.VariantStructure {
 
 // TypeString
 //
-//  Returns whole type string, should be refactored to whole-type string name
+//	Returns whole type string, should be refactored to whole-type string name
 //
-//  Format :
-//   - errconsts.VariantStructStringFormat
-//   - "%s (Code - %d) : %s" : "Name (Code - ValueInt) : Message from type string"
-//   - Exact Example for errtype.Generic : "Generic (Code - 1) : Generic error"
+//	Format :
+//	 - errconsts.VariantStructStringFormat
+//	 - "%s (Code - %d) : %s" : "Name (Code - ValueInt) : Message from type string"
+//	 - Exact Example for errtype.Generic : "Generic (Code - 1) : Generic error"
 func (it *Wrapper) TypeString() string {
 	if it == nil {
 		return constants.EmptyString
@@ -574,12 +577,12 @@ func (it *Wrapper) TypeString() string {
 
 // TypeNameCode
 //
-//  Returns error type Code number value with name,
-//  on empty returns empty string.
+//	Returns error type Code number value with name,
+//	on empty returns empty string.
 //
 // Format :
-//  - "(#%d - %s)"
-//  - "(#1 - Generic)"
+//   - "(#%d - %s)"
+//   - "(#1 - Generic)"
 func (it *Wrapper) TypeNameCode() string {
 	if it == nil {
 		return constants.EmptyString
@@ -590,12 +593,12 @@ func (it *Wrapper) TypeNameCode() string {
 
 // TypeName
 //
-//  Returns error type name,
-//  on empty returns empty string.
+//	Returns error type name,
+//	on empty returns empty string.
 //
 // Example :
-//  - For errtype.NoError : ""
-//  - For errtype.Generic : "Generic"
+//   - For errtype.NoError : ""
+//   - For errtype.Generic : "Generic"
 func (it *Wrapper) TypeName() string {
 	if it == nil || it.errorType == errtype.NoError {
 		return constants.EmptyString
@@ -606,7 +609,7 @@ func (it *Wrapper) TypeName() string {
 
 // TypeNameWithCustomMessage
 //
-// 	errconsts.ErrorCodeHyphenTypeNameWithLineFormat = "(#%d - %s) %s"
+//	errconsts.ErrorCodeHyphenTypeNameWithLineFormat = "(#%d - %s) %s"
 func (it *Wrapper) TypeNameWithCustomMessage(customMessage string) string {
 	if it == nil {
 		return constants.EmptyString
@@ -618,7 +621,8 @@ func (it *Wrapper) TypeNameWithCustomMessage(customMessage string) string {
 // TypeCodeNameString
 //
 // Format : errconsts.ErrorCodeWithTypeNameFormat
-//  "(Code - #%d) : %s"
+//
+//	"(Code - #%d) : %s"
 func (it *Wrapper) TypeCodeNameString() string {
 	if it == nil {
 		return constants.EmptyString
@@ -687,10 +691,10 @@ func (it *Wrapper) IsAnyNull() bool {
 // Refers to no error for print or doesn't treat this as error.
 //
 // Conditions (true):
-//  - if Wrapper nil, Or,
-//  - if Wrapper is StaticEmptyPtr, Or,
-//  - if Wrapper .errorType is IsNoError(), Or,
-//  - if Wrapper .currentError NOT nil and Wrapper .references.IsEmpty()
+//   - if Wrapper nil, Or,
+//   - if Wrapper is StaticEmptyPtr, Or,
+//   - if Wrapper .errorType is IsNoError(), Or,
+//   - if Wrapper .currentError NOT nil and Wrapper .references.IsEmpty()
 func (it *Wrapper) IsEmpty() bool {
 	if it == nil || it == StaticEmptyPtr {
 		return true
@@ -1128,7 +1132,7 @@ func (it *Wrapper) LogFatalWithTraces() {
 
 // ConcatNew
 //
-//  It is safe to use for nil.
+//	It is safe to use for nil.
 func (it *Wrapper) ConcatNew() ConcatNew {
 	return ConcatNew{
 		errWp: it,
@@ -1201,6 +1205,7 @@ func (it *Wrapper) ParseInjectUsingJson(
 }
 
 // ParseInjectUsingJsonMust Panic if error
+//
 //goland:noinspection GoLinterLocal
 func (it *Wrapper) ParseInjectUsingJsonMust(
 	jsonResult *corejson.Result,

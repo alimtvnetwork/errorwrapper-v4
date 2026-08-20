@@ -8,9 +8,9 @@ import (
 	"github.com/alimtvnetwork/core-v9/constants"
 	"github.com/alimtvnetwork/core-v9/corecsv"
 	"github.com/alimtvnetwork/core-v9/coreinterface/errcoreinf"
-	"github.com/alimtvnetwork/errorwrapper-v3/errtype"
-	"github.com/alimtvnetwork/errorwrapper-v3/ref"
-	"github.com/alimtvnetwork/errorwrapper-v3/refs"
+	"github.com/alimtvnetwork/errorwrapper-v4/errtype"
+	"github.com/alimtvnetwork/errorwrapper-v4/ref"
+	"github.com/alimtvnetwork/errorwrapper-v4/refs"
 )
 
 func New(errType errtype.Variation) Wrapper {
@@ -192,10 +192,10 @@ func NewInterfacesToErrorWrappers(
 
 // CastInterfaceToErrorWrapper
 //
-//  - if empty then returns nil or empty then
-//  - cast to Wrapper on success returns
-//  - On fail, usages BaseErrorOrCollectionWrapper.GetAsBasicWrapper() then cast
-//  - cast to Wrapper on success return if failed
+//   - if empty then returns nil or empty then
+//   - cast to Wrapper on success returns
+//   - On fail, usages BaseErrorOrCollectionWrapper.GetAsBasicWrapper() then cast
+//   - cast to Wrapper on success return if failed
 func CastInterfaceToErrorWrapper(
 	errorInterface errcoreinf.BaseErrorOrCollectionWrapper,
 ) *Wrapper {
@@ -257,7 +257,7 @@ func InterfaceToErrorWrapperUsingStackSkip(
 
 // InterfaceToErrorWrapper
 //
-//  first tries to cast to Wrapper if not successful then create new one.
+//	first tries to cast to Wrapper if not successful then create new one.
 func InterfaceToErrorWrapper(
 	errType errtype.Variation,
 	errorInterface errcoreinf.BaseErrorOrCollectionWrapper,

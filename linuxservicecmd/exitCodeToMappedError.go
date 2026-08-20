@@ -2,9 +2,9 @@ package linuxservicecmd
 
 import (
 	"github.com/alimtvnetwork/enum-v10/linuxservicestate"
-	"github.com/alimtvnetwork/errorwrapper-v3"
-	"github.com/alimtvnetwork/errorwrapper-v3/errnew"
-	"github.com/alimtvnetwork/errorwrapper-v3/errtype"
+	"github.com/alimtvnetwork/errorwrapper-v4"
+	"github.com/alimtvnetwork/errorwrapper-v4/errnew"
+	"github.com/alimtvnetwork/errorwrapper-v4/errtype"
 )
 
 func exitCodeToMappedError(result *Result) *errorwrapper.Wrapper {

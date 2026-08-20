@@ -5,7 +5,7 @@ import (
 	"testing"
 
 	"github.com/alimtvnetwork/enum-v10/scripttype"
-	"github.com/alimtvnetwork/errorwrapper-v3/errcmd"
+	"github.com/alimtvnetwork/errorwrapper-v4/errcmd"
 	. "github.com/smartystreets/goconvey/convey"
 )
 

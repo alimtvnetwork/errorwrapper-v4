@@ -3,10 +3,9 @@ package errcastedtests
 import (
 	"testing"
 
-	
-	"github.com/alimtvnetwork/errorwrapper-v3/errdata/errcasted"
-	"github.com/alimtvnetwork/errorwrapper-v3/errnew"
-	"github.com/alimtvnetwork/errorwrapper-v3/errtype"
+	"github.com/alimtvnetwork/errorwrapper-v4/errdata/errcasted"
+	"github.com/alimtvnetwork/errorwrapper-v4/errnew"
+	"github.com/alimtvnetwork/errorwrapper-v4/errtype"
 	. "github.com/smartystreets/goconvey/convey"
 )
 

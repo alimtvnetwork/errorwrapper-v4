@@ -3,7 +3,7 @@ package errverifytests
 import (
 	"testing"
 
-	"github.com/alimtvnetwork/errorwrapper-v3/errverify"
+	"github.com/alimtvnetwork/errorwrapper-v4/errverify"
 	. "github.com/smartystreets/goconvey/convey"
 )
 
@@ -105,8 +105,7 @@ func Test_StreamingCollectionVerifier_Modes(t *testing.T) {
 	Convey("Invalid regex returns setup error from Feed", t, func() {
 		v := &errverify.StreamingCollectionVerifier{
 			Mode:         errverify.StreamMatchRegex,
-			ExpectedLine: sliceSource([]string{`(`},
-			),
+			ExpectedLine: sliceSource([]string{`(`}),
 		}
 		err := v.Feed("anything")
 		So(err, ShouldNotBeNil)

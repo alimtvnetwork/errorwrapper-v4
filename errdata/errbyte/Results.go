@@ -8,8 +8,8 @@ import (
 	"github.com/alimtvnetwork/core-v9/coredata/coredynamic"
 	"github.com/alimtvnetwork/core-v9/coredata/corejson"
 	"github.com/alimtvnetwork/core-v9/coredata/corestr"
-	"github.com/alimtvnetwork/errorwrapper-v3"
-	"github.com/alimtvnetwork/errorwrapper-v3/errdata/errstr"
+	"github.com/alimtvnetwork/errorwrapper-v4"
+	"github.com/alimtvnetwork/errorwrapper-v4/errdata/errstr"
 )
 
 type Results struct {

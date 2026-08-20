@@ -4,9 +4,9 @@ import (
 	"github.com/alimtvnetwork/core-v9/coredata/corejson"
 	"github.com/alimtvnetwork/core-v9/coreinterface"
 	"github.com/alimtvnetwork/core-v9/coreinterface/errcoreinf"
-	"github.com/alimtvnetwork/errorwrapper-v3/errtype"
-	"github.com/alimtvnetwork/errorwrapper-v3/ref"
-	"github.com/alimtvnetwork/errorwrapper-v3/refs"
+	"github.com/alimtvnetwork/errorwrapper-v4/errtype"
+	"github.com/alimtvnetwork/errorwrapper-v4/ref"
+	"github.com/alimtvnetwork/errorwrapper-v4/refs"
 )
 
 type ResultsContractsBinder interface {
@@ -77,27 +77,27 @@ type ErrorStringer interface {
 
 // ReflectSetToErrorWrapper
 //
-// Set any object from to toPointer object
+// # Set any object from to toPointer object
 //
 // Valid Inputs or Supported (https://t.ly/1Lpt):
-//  - From, To: (null, null)                          -- do nothing
-//  - From, To: (sameTypePointer, sameTypePointer)    -- try reflection
-//  - From, To: (sameTypeNonPointer, sameTypePointer) -- try reflection
-//  - From, To: ([]byte or *[]byte, otherType)        -- try unmarshal, reflect
-//  - From, To: (otherType, *[]byte)                  -- try marshal, reflect
+//   - From, To: (null, null)                          -- do nothing
+//   - From, To: (sameTypePointer, sameTypePointer)    -- try reflection
+//   - From, To: (sameTypeNonPointer, sameTypePointer) -- try reflection
+//   - From, To: ([]byte or *[]byte, otherType)        -- try unmarshal, reflect
+//   - From, To: (otherType, *[]byte)                  -- try marshal, reflect
 //
 // Validations:
-//  - Check null, if both null no error return quickly.
-//  - NotSupported returns as error.
-//      - NotSupported: (from, to) - (..., not pointer)
-//      - NotSupported: (from, to) - (null, notNull)
-//      - NotSupported: (from, to) - (notNull, null)
-//      - NotSupported: (from, to) - not same type and not bytes on any
-//  - `From` null or nil is not supported and will return error.
+//   - Check null, if both null no error return quickly.
+//   - NotSupported returns as error.
+//   - NotSupported: (from, to) - (..., not pointer)
+//   - NotSupported: (from, to) - (null, notNull)
+//   - NotSupported: (from, to) - (notNull, null)
+//   - NotSupported: (from, to) - not same type and not bytes on any
+//   - `From` null or nil is not supported and will return error.
 //
 // Reference:
-//  - Reflection String Set Example : https://go.dev/play/p/fySLYuOvoRK.go?download=true
-//  - Method document screenshot    : https://prnt.sc/26dmf5g
+//   - Reflection String Set Example : https://go.dev/play/p/fySLYuOvoRK.go?download=true
+//   - Method document screenshot    : https://prnt.sc/26dmf5g
 type ReflectSetToErrorWrapper interface {
 	// ReflectSetToErrWrap
 	//

@@ -16,7 +16,7 @@ File naming convention for any future split (only if this file exceeds ~500 line
 - suggestionId: <slug>
 - createdAt: YYYY-MM-DD
 - source: Lovable
-- affectedProject: errorwrapper-v3 | frontend | both
+- affectedProject: errorwrapper-v4 | frontend | both
 - description: <one line>
 - rationale: <why it matters>
 - proposedChange: <what to do, where>
@@ -33,7 +33,7 @@ File naming convention for any future split (only if this file exceeds ~500 line
 - suggestionId: proactive-drift-scan
 - createdAt: 2026-05-19
 - source: Lovable
-- affectedProject: errorwrapper-v3
+- affectedProject: errorwrapper-v4
 - description: Grep codebase for known upstream drift signatures and propose speculative patches without waiting for build-errors.txt.
 - rationale: 57 sub-packages are cascade-blocked; user hasn't supplied the build log for 5+ turns. Speculative grep can unblock progress.
 - proposedChange: Run `rg` for `corestr.New.LinkedCollections`, `converters.StringToIntegerWithDefault`, `coredynamic.SliceItemsAsStringsAny`, `errwrappers.NewEmpty`, `errtype.InvalidValidate`, `errnew.Type.Message`, `errnew.NotFound.Simple`; map call sites; produce a patch plan.
@@ -45,7 +45,7 @@ File naming convention for any future split (only if this file exceeds ~500 line
 - suggestionId: fix-sync-nocopy-collection
 - createdAt: 2026-05-19
 - source: Lovable
-- affectedProject: errorwrapper-v3
+- affectedProject: errorwrapper-v4
 - description: `go vet` flags `sync.noCopy` at `errwrappers/Collection.go:1216`.
 - rationale: Real bug, independent of upstream drift, blocks vet phase.
 - proposedChange: Inspect line 1216; switch to pointer receiver or pointer-to-mutex; re-run `go vet ./errwrappers/...`.
@@ -57,7 +57,7 @@ File naming convention for any future split (only if this file exceeds ~500 line
 - suggestionId: cmd-package-move-policy
 - createdAt: 2026-05-18
 - source: User (Phase 6 leftover)
-- affectedProject: errorwrapper-v3
+- affectedProject: errorwrapper-v4
 - description: Decide final namespace for `errcmd*` packages + back-compat alias policy.
 - rationale: Phase 6 functionally complete; only naming/alias decision pending.
 - proposedChange: User ratifies path; agent then performs move + adds type aliases at old locations.

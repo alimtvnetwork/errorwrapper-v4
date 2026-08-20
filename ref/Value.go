@@ -14,7 +14,7 @@ import (
 	"github.com/alimtvnetwork/core-v9/coreinterface/errcoreinf"
 	"github.com/alimtvnetwork/core-v9/defaulterr"
 	"github.com/alimtvnetwork/core-v9/isany"
-	"github.com/alimtvnetwork/errorwrapper-v3/errconsts"
+	"github.com/alimtvnetwork/errorwrapper-v4/errconsts"
 )
 
 type Value struct {
@@ -324,6 +324,7 @@ func (it *Value) ParseInjectUsingJson(
 }
 
 // ParseInjectUsingJsonMust Panic if error
+//
 //goland:noinspection GoLinterLocal
 func (it *Value) ParseInjectUsingJsonMust(
 	jsonResult *corejson.Result,

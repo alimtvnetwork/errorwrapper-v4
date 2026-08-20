@@ -5,17 +5,17 @@ import (
 
 	"github.com/alimtvnetwork/core-v9/coreinterface/errcoreinf"
 	"github.com/alimtvnetwork/core-v9/coretests"
-	"github.com/alimtvnetwork/errorwrapper-v3/errdata/errany"
-	"github.com/alimtvnetwork/errorwrapper-v3/errdata/errbool"
-	"github.com/alimtvnetwork/errorwrapper-v3/errdata/errbyte"
-	"github.com/alimtvnetwork/errorwrapper-v3/errdata/errfloat"
-	"github.com/alimtvnetwork/errorwrapper-v3/errdata/errfloat64"
-	"github.com/alimtvnetwork/errorwrapper-v3/errdata/errint"
-	"github.com/alimtvnetwork/errorwrapper-v3/errdata/errjson"
-	"github.com/alimtvnetwork/errorwrapper-v3/errdata/errstr"
-	"github.com/alimtvnetwork/errorwrapper-v3/errnew"
-	"github.com/alimtvnetwork/errorwrapper-v3/errtype"
-	"github.com/alimtvnetwork/errorwrapper-v3/errwrappers"
+	"github.com/alimtvnetwork/errorwrapper-v4/errdata/errany"
+	"github.com/alimtvnetwork/errorwrapper-v4/errdata/errbool"
+	"github.com/alimtvnetwork/errorwrapper-v4/errdata/errbyte"
+	"github.com/alimtvnetwork/errorwrapper-v4/errdata/errfloat"
+	"github.com/alimtvnetwork/errorwrapper-v4/errdata/errfloat64"
+	"github.com/alimtvnetwork/errorwrapper-v4/errdata/errint"
+	"github.com/alimtvnetwork/errorwrapper-v4/errdata/errjson"
+	"github.com/alimtvnetwork/errorwrapper-v4/errdata/errstr"
+	"github.com/alimtvnetwork/errorwrapper-v4/errnew"
+	"github.com/alimtvnetwork/errorwrapper-v4/errtype"
+	"github.com/alimtvnetwork/errorwrapper-v4/errwrappers"
 )
 
 var testCases = []TestCaseWrapper{

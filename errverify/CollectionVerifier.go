@@ -5,10 +5,10 @@ import (
 	"github.com/alimtvnetwork/core-v9/coredata/corestr"
 	"github.com/alimtvnetwork/core-v9/corevalidator"
 	"github.com/alimtvnetwork/core-v9/errcore"
-	"github.com/alimtvnetwork/errorwrapper-v3"
-	"github.com/alimtvnetwork/errorwrapper-v3/errnew"
-	"github.com/alimtvnetwork/errorwrapper-v3/errtype"
-	"github.com/alimtvnetwork/errorwrapper-v3/errwrappers"
+	"github.com/alimtvnetwork/errorwrapper-v4"
+	"github.com/alimtvnetwork/errorwrapper-v4/errnew"
+	"github.com/alimtvnetwork/errorwrapper-v4/errtype"
+	"github.com/alimtvnetwork/errorwrapper-v4/errwrappers"
 )
 
 // CollectionVerifier helps to compare lines in error collection

@@ -4,7 +4,7 @@ import (
 	"fmt"
 
 	"github.com/alimtvnetwork/enum-v10/scripttype"
-	"github.com/alimtvnetwork/errorwrapper-v3/errcmd"
+	"github.com/alimtvnetwork/errorwrapper-v4/errcmd"
 )
 
 func DisposingScriptTest02() {

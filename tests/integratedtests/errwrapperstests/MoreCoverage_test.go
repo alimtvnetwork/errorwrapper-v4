@@ -6,12 +6,11 @@ import (
 
 	. "github.com/smartystreets/goconvey/convey"
 
-	"github.com/alimtvnetwork/errorwrapper-v3"
-	"github.com/alimtvnetwork/errorwrapper-v3/errnew"
-	"github.com/alimtvnetwork/errorwrapper-v3/errtype"
-	"github.com/alimtvnetwork/errorwrapper-v3/errwrappers"
+	"github.com/alimtvnetwork/errorwrapper-v4"
+	"github.com/alimtvnetwork/errorwrapper-v4/errnew"
+	"github.com/alimtvnetwork/errorwrapper-v4/errtype"
+	"github.com/alimtvnetwork/errorwrapper-v4/errwrappers"
 )
-
 
 func newPopulated() *errwrappers.Collection {
 	c := errwrappers.Empty()
@@ -55,7 +54,6 @@ func Test_Constructors(t *testing.T) {
 		c := errwrappers.NewWithItem(2, errtype.NotFound)
 		So(c, ShouldNotBeNil)
 	})
-
 
 	Convey("NewUsingErrorWrappers + clone + ptr", t, func() {
 		w1 := errnew.Messages.Single(errtype.NotFound, "w1")

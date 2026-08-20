@@ -3,8 +3,8 @@ package errfloat64tests
 import (
 	"testing"
 
-	"github.com/alimtvnetwork/errorwrapper-v3/errdata/errfloat64"
-	"github.com/alimtvnetwork/errorwrapper-v3/errwrappers"
+	"github.com/alimtvnetwork/errorwrapper-v4/errdata/errfloat64"
+	"github.com/alimtvnetwork/errorwrapper-v4/errwrappers"
 	. "github.com/smartystreets/goconvey/convey"
 )
 

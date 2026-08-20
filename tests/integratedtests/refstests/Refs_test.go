@@ -3,9 +3,9 @@ package refstests
 import (
 	"testing"
 
+	"github.com/alimtvnetwork/errorwrapper-v4/ref"
+	"github.com/alimtvnetwork/errorwrapper-v4/refs"
 	. "github.com/smartystreets/goconvey/convey"
-	"github.com/alimtvnetwork/errorwrapper-v3/ref"
-	"github.com/alimtvnetwork/errorwrapper-v3/refs"
 )
 
 // Test_Ref_New — basic Value construction stores name + value.

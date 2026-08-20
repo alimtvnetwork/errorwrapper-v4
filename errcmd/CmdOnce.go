@@ -12,9 +12,9 @@ import (
 	"github.com/alimtvnetwork/core-v9/errcore"
 	"github.com/alimtvnetwork/core-v9/issetter"
 	"github.com/alimtvnetwork/core-v9/simplewrap"
-	"github.com/alimtvnetwork/errorwrapper-v3"
-	"github.com/alimtvnetwork/errorwrapper-v3/errnew"
-	"github.com/alimtvnetwork/errorwrapper-v3/errtype"
+	"github.com/alimtvnetwork/errorwrapper-v4"
+	"github.com/alimtvnetwork/errorwrapper-v4/errnew"
+	"github.com/alimtvnetwork/errorwrapper-v4/errtype"
 )
 
 type CmdOnce struct {
@@ -55,7 +55,7 @@ func (it *CmdOnce) includeEnvVars(cmd *exec.Cmd) {
 
 // InitializeEnvVars
 //
-//  Warning must be set before run.
+//	Warning must be set before run.
 func (it *CmdOnce) InitializeEnvVars() {
 	if it.HasIssues() || it.isEnvironmentVariableInitialized {
 		return
@@ -449,7 +449,7 @@ func (it *CmdOnce) IsNull() bool {
 
 // CompiledErrorWrapper
 //
-// Runs CmdOnce
+// # Runs CmdOnce
 //
 // using RunOnce then returns the final compiled error
 func (it *CmdOnce) CompiledErrorWrapper() *errorwrapper.Wrapper {
@@ -458,7 +458,7 @@ func (it *CmdOnce) CompiledErrorWrapper() *errorwrapper.Wrapper {
 
 // CompiledErrorWrapperWithErrorBufferLine
 //
-// Runs CmdOnce
+// # Runs CmdOnce
 //
 // using RunOnce
 // then returns the final compiled error with error buffer lines
@@ -483,7 +483,7 @@ func (it *CmdOnce) CompiledFullErrorWrapper() *errorwrapper.Wrapper {
 
 // CompiledErrorWrapperWithErrorBufferBytes
 //
-// Runs CmdOnce
+// # Runs CmdOnce
 //
 // using RunOnce
 // then returns the final compiled error with error buffer lines
@@ -511,12 +511,12 @@ func (it *CmdOnce) CompiledResult() *Result {
 // CompiledErrorBytes returns lazy once result.
 //
 // Developer may check:
-//  - IsSuccessfullyExecuted() reveals if any issue after compile, thus runs the compile or RunOnce() first then returns bool. Or,
-//  - HasAnyIssues() reveals if any issue after compile, thus runs the compile or RunOnce() first then returns bool. Or,
-//  - isAlreadyRan() reveals already executed or not. Doesn't run the process. Or,
-//  - HasCmd() reveals if cmd is nil or not. Or,
-//  - HasIssues() reveals any issues before running cmd. Or,
-//  - CompiledErrorWrapper() to check the final error condition.
+//   - IsSuccessfullyExecuted() reveals if any issue after compile, thus runs the compile or RunOnce() first then returns bool. Or,
+//   - HasAnyIssues() reveals if any issue after compile, thus runs the compile or RunOnce() first then returns bool. Or,
+//   - isAlreadyRan() reveals already executed or not. Doesn't run the process. Or,
+//   - HasCmd() reveals if cmd is nil or not. Or,
+//   - HasIssues() reveals any issues before running cmd. Or,
+//   - CompiledErrorWrapper() to check the final error condition.
 func (it *CmdOnce) CompiledErrorBytes() []byte {
 	return it.CompiledResult().ErrorBytes()
 }
@@ -524,12 +524,12 @@ func (it *CmdOnce) CompiledErrorBytes() []byte {
 // CompiledError returns lazy once result.
 //
 // Developer may check:
-//  - IsSuccessfullyExecuted() reveals if any issue after compile, thus runs the compile or RunOnce() first then returns bool. Or,
-//  - HasAnyIssues() reveals if any issue after compile, thus runs the compile or RunOnce() first then returns bool. Or,
-//  - isAlreadyRan() reveals already executed or not. Doesn't run the process. Or,
-//  - HasCmd() reveals if cmd is nil or not. Or,
-//  - HasIssues() reveals any issues before running cmd. Or,
-//  - CompiledErrorWrapper() to check the final error condition.
+//   - IsSuccessfullyExecuted() reveals if any issue after compile, thus runs the compile or RunOnce() first then returns bool. Or,
+//   - HasAnyIssues() reveals if any issue after compile, thus runs the compile or RunOnce() first then returns bool. Or,
+//   - isAlreadyRan() reveals already executed or not. Doesn't run the process. Or,
+//   - HasCmd() reveals if cmd is nil or not. Or,
+//   - HasIssues() reveals any issues before running cmd. Or,
+//   - CompiledErrorWrapper() to check the final error condition.
 func (it *CmdOnce) CompiledError() string {
 	return it.CompiledResult().ErrorString()
 }
@@ -537,12 +537,12 @@ func (it *CmdOnce) CompiledError() string {
 // CompiledOutputBytes returns lazy once result.
 //
 // Developer may check:
-//  - IsSuccessfullyExecuted() reveals if any issue after compile, thus runs the compile or RunOnce() first then returns bool. Or,
-//  - HasAnyIssues() reveals if any issue after compile, thus runs the compile or RunOnce() first then returns bool. Or,
-//  - isAlreadyRan() reveals already executed or not. Doesn't run the process. Or,
-//  - HasCmd() reveals if cmd is nil or not. Or,
-//  - HasIssues() reveals any issues before running cmd. Or,
-//  - CompiledErrorWrapper() to check the final error condition.
+//   - IsSuccessfullyExecuted() reveals if any issue after compile, thus runs the compile or RunOnce() first then returns bool. Or,
+//   - HasAnyIssues() reveals if any issue after compile, thus runs the compile or RunOnce() first then returns bool. Or,
+//   - isAlreadyRan() reveals already executed or not. Doesn't run the process. Or,
+//   - HasCmd() reveals if cmd is nil or not. Or,
+//   - HasIssues() reveals any issues before running cmd. Or,
+//   - CompiledErrorWrapper() to check the final error condition.
 func (it *CmdOnce) CompiledOutputBytes() []byte {
 	return it.CompiledResult().OutputBytes()
 }
@@ -550,12 +550,12 @@ func (it *CmdOnce) CompiledOutputBytes() []byte {
 // CompiledOutput returns lazy once result.
 //
 // Developer may check:
-//  - IsSuccessfullyExecuted() reveals if any issue after compile, thus runs the compile or RunOnce() first then returns bool. Or,
-//  - HasAnyIssues() reveals if any issue after compile, thus runs the compile or RunOnce() first then returns bool. Or,
-//  - isAlreadyRan() reveals already executed or not. Doesn't run the process. Or,
-//  - HasCmd() reveals if cmd is nil or not. Or,
-//  - HasIssues() reveals any issues before running cmd. Or,
-//  - CompiledErrorWrapper() to check the final error condition.
+//   - IsSuccessfullyExecuted() reveals if any issue after compile, thus runs the compile or RunOnce() first then returns bool. Or,
+//   - HasAnyIssues() reveals if any issue after compile, thus runs the compile or RunOnce() first then returns bool. Or,
+//   - isAlreadyRan() reveals already executed or not. Doesn't run the process. Or,
+//   - HasCmd() reveals if cmd is nil or not. Or,
+//   - HasIssues() reveals any issues before running cmd. Or,
+//   - CompiledErrorWrapper() to check the final error condition.
 func (it *CmdOnce) CompiledOutput() string {
 	return it.CompiledResult().OutputString()
 }
@@ -563,12 +563,12 @@ func (it *CmdOnce) CompiledOutput() string {
 // CompiledOutputLines returns lazy once result.
 //
 // Developer may check:
-//  - IsSuccessfullyExecuted() reveals if any issue after compile, thus runs the compile or RunOnce() first then returns bool. Or,
-//  - HasAnyIssues() reveals if any issue after compile, thus runs the compile or RunOnce() first then returns bool. Or,
-//  - isAlreadyRan() reveals already executed or not. Doesn't run the process. Or,
-//  - HasCmd() reveals if cmd is nil or not. Or,
-//  - HasIssues() reveals any issues before running cmd. Or,
-//  - CompiledErrorWrapper() to check the final error condition.
+//   - IsSuccessfullyExecuted() reveals if any issue after compile, thus runs the compile or RunOnce() first then returns bool. Or,
+//   - HasAnyIssues() reveals if any issue after compile, thus runs the compile or RunOnce() first then returns bool. Or,
+//   - isAlreadyRan() reveals already executed or not. Doesn't run the process. Or,
+//   - HasCmd() reveals if cmd is nil or not. Or,
+//   - HasIssues() reveals any issues before running cmd. Or,
+//   - CompiledErrorWrapper() to check the final error condition.
 func (it *CmdOnce) CompiledOutputLines() []string {
 	return it.CompiledResult().CompiledOutputLines()
 }
@@ -576,12 +576,12 @@ func (it *CmdOnce) CompiledOutputLines() []string {
 // CompiledErrorLines returns lazy once result.
 //
 // Developer may check:
-//  - IsSuccessfullyExecuted() reveals if any issue after compile, thus runs the compile or RunOnce() first then returns bool. Or,
-//  - HasAnyIssues() reveals if any issue after compile, thus runs the compile or RunOnce() first then returns bool. Or,
-//  - isAlreadyRan() reveals already executed or not. Doesn't run the process. Or,
-//  - HasCmd() reveals if cmd is nil or not. Or,
-//  - HasIssues() reveals any issues before running cmd. Or,
-//  - CompiledErrorWrapper() to check the final error condition.
+//   - IsSuccessfullyExecuted() reveals if any issue after compile, thus runs the compile or RunOnce() first then returns bool. Or,
+//   - HasAnyIssues() reveals if any issue after compile, thus runs the compile or RunOnce() first then returns bool. Or,
+//   - isAlreadyRan() reveals already executed or not. Doesn't run the process. Or,
+//   - HasCmd() reveals if cmd is nil or not. Or,
+//   - HasIssues() reveals any issues before running cmd. Or,
+//   - CompiledErrorWrapper() to check the final error condition.
 func (it *CmdOnce) CompiledErrorLines() []string {
 	return it.CompiledResult().CompiledErrorLines()
 }
@@ -589,12 +589,12 @@ func (it *CmdOnce) CompiledErrorLines() []string {
 // CompiledTrimmedOutputLines returns lazy once result.
 //
 // Developer may check:
-//  - IsSuccessfullyExecuted() reveals if any issue after compile, thus runs the compile or RunOnce() first then returns bool. Or,
-//  - HasAnyIssues() reveals if any issue after compile, thus runs the compile or RunOnce() first then returns bool. Or,
-//  - isAlreadyRan() reveals already executed or not. Doesn't run the process. Or,
-//  - HasCmd() reveals if cmd is nil or not. Or,
-//  - HasIssues() reveals any issues before running cmd. Or,
-//  - CompiledErrorWrapper() to check the final error condition.
+//   - IsSuccessfullyExecuted() reveals if any issue after compile, thus runs the compile or RunOnce() first then returns bool. Or,
+//   - HasAnyIssues() reveals if any issue after compile, thus runs the compile or RunOnce() first then returns bool. Or,
+//   - isAlreadyRan() reveals already executed or not. Doesn't run the process. Or,
+//   - HasCmd() reveals if cmd is nil or not. Or,
+//   - HasIssues() reveals any issues before running cmd. Or,
+//   - CompiledErrorWrapper() to check the final error condition.
 func (it *CmdOnce) CompiledTrimmedOutputLines() []string {
 	return it.CompiledResult().CompiledTrimmedOutputLines()
 }
@@ -602,12 +602,12 @@ func (it *CmdOnce) CompiledTrimmedOutputLines() []string {
 // CompiledTrimmedErrorLines returns lazy once result.
 //
 // Developer may check:
-//  - IsSuccessfullyExecuted() reveals if any issue after compile, thus runs the compile or RunOnce() first then returns bool. Or,
-//  - HasAnyIssues() reveals if any issue after compile, thus runs the compile or RunOnce() first then returns bool. Or,
-//  - isAlreadyRan() reveals already executed or not. Doesn't run the process. Or,
-//  - HasCmd() reveals if cmd is nil or not. Or,
-//  - HasIssues() reveals any issues before running cmd. Or,
-//  - CompiledErrorWrapper() to check the final error condition.
+//   - IsSuccessfullyExecuted() reveals if any issue after compile, thus runs the compile or RunOnce() first then returns bool. Or,
+//   - HasAnyIssues() reveals if any issue after compile, thus runs the compile or RunOnce() first then returns bool. Or,
+//   - isAlreadyRan() reveals already executed or not. Doesn't run the process. Or,
+//   - HasCmd() reveals if cmd is nil or not. Or,
+//   - HasIssues() reveals any issues before running cmd. Or,
+//   - CompiledErrorWrapper() to check the final error condition.
 func (it *CmdOnce) CompiledTrimmedErrorLines() []string {
 	return it.CompiledResult().CompiledTrimmedErrorLines()
 }

@@ -3,10 +3,10 @@ package errverifytests
 import (
 	"testing"
 
+	"github.com/alimtvnetwork/errorwrapper-v4/errverify"
+	"github.com/alimtvnetwork/errorwrapper-v4/errwrappers"
+	"github.com/alimtvnetwork/errorwrapper-v4/tests/testwrappers/errverifytestwrappers"
 	. "github.com/smartystreets/goconvey/convey"
-	"github.com/alimtvnetwork/errorwrapper-v3/errverify"
-	"github.com/alimtvnetwork/errorwrapper-v3/errwrappers"
-	"github.com/alimtvnetwork/errorwrapper-v3/tests/testwrappers/errverifytestwrappers"
 )
 
 func Test_VerifierCollectionIsMatch(t *testing.T) {

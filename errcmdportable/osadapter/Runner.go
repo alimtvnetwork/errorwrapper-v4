@@ -13,7 +13,7 @@ import (
 	"bytes"
 	"os/exec"
 
-	"github.com/alimtvnetwork/errorwrapper-v3/errcmdportable"
+	"github.com/alimtvnetwork/errorwrapper-v4/errcmdportable"
 )
 
 // New returns an os/exec-backed Runner.

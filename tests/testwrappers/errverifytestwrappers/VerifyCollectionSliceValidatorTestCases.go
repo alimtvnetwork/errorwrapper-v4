@@ -4,10 +4,10 @@ import (
 	"github.com/alimtvnetwork/core-v9/constants"
 	"github.com/alimtvnetwork/core-v9/coredata/corestr"
 	"github.com/alimtvnetwork/core-v9/enums/stringcompareas"
-	"github.com/alimtvnetwork/errorwrapper-v3"
-	"github.com/alimtvnetwork/errorwrapper-v3/errnew"
-	"github.com/alimtvnetwork/errorwrapper-v3/errtype"
-	"github.com/alimtvnetwork/errorwrapper-v3/errverify"
+	"github.com/alimtvnetwork/errorwrapper-v4"
+	"github.com/alimtvnetwork/errorwrapper-v4/errnew"
+	"github.com/alimtvnetwork/errorwrapper-v4/errtype"
+	"github.com/alimtvnetwork/errorwrapper-v4/errverify"
 )
 
 var VerifyCollectionSliceValidatorTestCases = []VerifyErrorCollectionTestWrapper{
@@ -25,10 +25,10 @@ var VerifyCollectionSliceValidatorTestCases = []VerifyErrorCollectionTestWrapper
 				IsPrintError: true,
 			},
 			ExpectationLines: &corestr.SimpleSlice{
-					"[Error (InvalidOption - #469): Selected option is invalid!]",
-					"[Error (NotSupportInWindows - #93): Current request is not supported in Windows Operating system.]",
-					"[Error (NotSupportedOption - #107): None of the option is supported.]",
-				},
+				"[Error (InvalidOption - #469): Selected option is invalid!]",
+				"[Error (NotSupportInWindows - #93): Current request is not supported in Windows Operating system.]",
+				"[Error (NotSupportedOption - #107): None of the option is supported.]",
+			},
 			ErrorLength: 3,
 		},
 	},
@@ -46,10 +46,10 @@ var VerifyCollectionSliceValidatorTestCases = []VerifyErrorCollectionTestWrapper
 				IsPrintError: true,
 			},
 			ExpectationLines: &corestr.SimpleSlice{
-					"[Error (InvalidOption - #469): Selected option is invalid!]",
-					"[Error (NotSupportInWindows - #93): Current request is not supported in Windows Operating system.]",
-					"[Error (NotSupportedOption - #107): None of the option is supported.]",
-				},
+				"[Error (InvalidOption - #469): Selected option is invalid!]",
+				"[Error (NotSupportInWindows - #93): Current request is not supported in Windows Operating system.]",
+				"[Error (NotSupportedOption - #107): None of the option is supported.]",
+			},
 			ErrorLength: constants.InvalidValue,
 		},
 	},

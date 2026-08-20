@@ -1,7 +1,7 @@
 package errverify
 
 import (
-	"github.com/alimtvnetwork/errorwrapper-v3"
+	"github.com/alimtvnetwork/errorwrapper-v4"
 )
 
 type VerifyParams struct {

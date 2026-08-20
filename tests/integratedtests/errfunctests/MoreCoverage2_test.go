@@ -7,9 +7,9 @@ import (
 	. "github.com/smartystreets/goconvey/convey"
 
 	"github.com/alimtvnetwork/enum-v10/linuxtype"
-	"github.com/alimtvnetwork/errorwrapper-v3/errfunc"
-	"github.com/alimtvnetwork/errorwrapper-v3/errtype"
-	"github.com/alimtvnetwork/errorwrapper-v3/errwrappers"
+	"github.com/alimtvnetwork/errorwrapper-v4/errfunc"
+	"github.com/alimtvnetwork/errorwrapper-v4/errtype"
+	"github.com/alimtvnetwork/errorwrapper-v4/errwrappers"
 )
 
 func Test_MoreCoverage2_ConvertErrorFuncToWrapper(t *testing.T) {

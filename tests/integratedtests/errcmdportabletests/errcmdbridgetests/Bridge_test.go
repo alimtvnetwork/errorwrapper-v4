@@ -4,10 +4,10 @@ import (
 	"bytes"
 	"testing"
 
-	"github.com/alimtvnetwork/errorwrapper-v3/errcmd"
-	"github.com/alimtvnetwork/errorwrapper-v3/errcmdportable/errcmdbridge"
-	"github.com/alimtvnetwork/errorwrapper-v3/errnew"
-	"github.com/alimtvnetwork/errorwrapper-v3/errtype"
+	"github.com/alimtvnetwork/errorwrapper-v4/errcmd"
+	"github.com/alimtvnetwork/errorwrapper-v4/errcmdportable/errcmdbridge"
+	"github.com/alimtvnetwork/errorwrapper-v4/errnew"
+	"github.com/alimtvnetwork/errorwrapper-v4/errtype"
 	. "github.com/smartystreets/goconvey/convey"
 )
 

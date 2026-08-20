@@ -1,6 +1,6 @@
 package refs
 
-import "github.com/alimtvnetwork/errorwrapper-v3/ref"
+import "github.com/alimtvnetwork/errorwrapper-v4/ref"
 
 type CollectionDataModel struct {
 	Refs []ref.Value

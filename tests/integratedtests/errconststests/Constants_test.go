@@ -3,8 +3,8 @@ package errconststests
 import (
 	"testing"
 
+	"github.com/alimtvnetwork/errorwrapper-v4/errconsts"
 	. "github.com/smartystreets/goconvey/convey"
-	"github.com/alimtvnetwork/errorwrapper-v3/errconsts"
 )
 
 func TestErrconsts_Values(t *testing.T) {

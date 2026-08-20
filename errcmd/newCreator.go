@@ -8,9 +8,9 @@ import (
 	"github.com/alimtvnetwork/core-v9/codestack"
 	"github.com/alimtvnetwork/core-v9/constants"
 	"github.com/alimtvnetwork/core-v9/errcore"
-	"github.com/alimtvnetwork/errorwrapper-v3"
-	"github.com/alimtvnetwork/errorwrapper-v3/errnew"
-	"github.com/alimtvnetwork/errorwrapper-v3/errtype"
+	"github.com/alimtvnetwork/errorwrapper-v4"
+	"github.com/alimtvnetwork/errorwrapper-v4/errnew"
+	"github.com/alimtvnetwork/errorwrapper-v4/errtype"
 )
 
 type newCreator struct {
@@ -28,8 +28,8 @@ type newCreator struct {
 //
 // Create cmd once for
 //
-//  - hasOutput true
-//  - hasSecureData false
+//   - hasOutput true
+//   - hasSecureData false
 func (it newCreator) Output(
 	process string,
 	arguments ...string,
@@ -45,8 +45,8 @@ func (it newCreator) Output(
 //
 // Create cmd once for
 //
-//  - hasOutput true
-//  - hasSecureData false
+//   - hasOutput true
+//   - hasSecureData false
 func (it newCreator) Default(
 	process string,
 	arguments ...string,
@@ -205,7 +205,7 @@ func (it newCreator) Create(
 
 // CreateUsingStdIns
 //
-//  stdIn, stdOut, stdErr will override if given, nill will be ignored.
+//	stdIn, stdOut, stdErr will override if given, nill will be ignored.
 func (it newCreator) CreateUsingStdIns(
 	hasOutput,
 	hasSecureData bool,

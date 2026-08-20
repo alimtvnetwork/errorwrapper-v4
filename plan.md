@@ -1,4 +1,4 @@
-# Project Plan — errorwrapper-v3 + Lovable Frontend
+# Project Plan — errorwrapper-v4 + Lovable Frontend
 
 Authoritative roadmap for AI handoff. Mirrors `.lovable/plan.md` (legacy in-folder copy) but lives at repo root for discoverability.
 

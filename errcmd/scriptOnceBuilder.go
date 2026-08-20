@@ -9,9 +9,9 @@ import (
 	"github.com/alimtvnetwork/core-v9/constants"
 	"github.com/alimtvnetwork/core-v9/coredata/corestr"
 	"github.com/alimtvnetwork/enum-v10/scripttype"
-	"github.com/alimtvnetwork/errorwrapper-v3"
-	"github.com/alimtvnetwork/errorwrapper-v3/errnew"
-	"github.com/alimtvnetwork/errorwrapper-v3/errtype"
+	"github.com/alimtvnetwork/errorwrapper-v4"
+	"github.com/alimtvnetwork/errorwrapper-v4/errnew"
+	"github.com/alimtvnetwork/errorwrapper-v4/errtype"
 )
 
 type scriptOnceBuilder struct {
@@ -167,10 +167,10 @@ func (it *scriptOnceBuilder) BuildCmdClear() *exec.Cmd {
 
 // IsDefined
 //
-//  return it != nil &&
-//		it.scriptType.IsValid() &&
-//		!it.HasError() &&
-//		it.scriptLines.HasAnyItem()
+//	 return it != nil &&
+//			it.scriptType.IsValid() &&
+//			!it.HasError() &&
+//			it.scriptLines.HasAnyItem()
 func (it *scriptOnceBuilder) IsDefined() bool {
 	return it.IsValid()
 }
@@ -189,10 +189,10 @@ func (it *scriptOnceBuilder) HasStdErr() bool {
 
 // AsyncStart
 //
-//  Starts cmd in async manner,
-//  have to wait to be waited on
+//	Starts cmd in async manner,
+//	have to wait to be waited on
 //
-//  Check out exec.Cmd Start()
+//	Check out exec.Cmd Start()
 func (it *scriptOnceBuilder) AsyncStart() (*exec.Cmd, error) {
 	cmd := it.StandardOutputCmd()
 	err := cmd.Start()
@@ -252,7 +252,7 @@ func (it *scriptOnceBuilder) Append(
 
 // AppendCmd
 //
-//  Empty or has issues will be ignored.
+//	Empty or has issues will be ignored.
 func (it *scriptOnceBuilder) AppendCmd(appendItems ...*exec.Cmd) ScriptOnceBuilder {
 	if len(appendItems) == 0 {
 		return it
@@ -277,7 +277,7 @@ func (it *scriptOnceBuilder) AppendCmd(appendItems ...*exec.Cmd) ScriptOnceBuild
 
 // AppendCmdOnce
 //
-//  Empty or has issues will be ignored.
+//	Empty or has issues will be ignored.
 func (it *scriptOnceBuilder) AppendCmdOnce(
 	appendItems ...*CmdOnce,
 ) ScriptOnceBuilder {
@@ -371,10 +371,10 @@ func (it *scriptOnceBuilder) Clear() {
 
 // IsValid
 //
-//  return it != nil &&
-//		it.scriptType.IsValid() &&
-//		!it.HasError() &&
-//		it.scriptLines.HasAnyItem()
+//	 return it != nil &&
+//			it.scriptType.IsValid() &&
+//			!it.HasError() &&
+//			it.scriptLines.HasAnyItem()
 func (it *scriptOnceBuilder) IsValid() bool {
 	return it != nil &&
 		it.scriptType.IsValid() &&
@@ -392,14 +392,14 @@ func (it *scriptOnceBuilder) HasAnyIssues() bool {
 
 // ValidationError
 //
-//  Contains stack-traces
+//	Contains stack-traces
 func (it *scriptOnceBuilder) ValidationError() error {
 	return it.Error()
 }
 
 // Error
 //
-//  Contains stack-traces
+//	Contains stack-traces
 func (it *scriptOnceBuilder) Error() error {
 	return it.CompiledErrorWrapper().
 		CompiledJsonErrorWithStackTraces()
@@ -407,21 +407,21 @@ func (it *scriptOnceBuilder) Error() error {
 
 // TrimmedOutput
 //
-//  Gives compiled output string without whitespace lines
+//	Gives compiled output string without whitespace lines
 func (it *scriptOnceBuilder) TrimmedOutput() string {
 	return it.Result().CompiledTrimmedOutput()
 }
 
 // String
 //
-//  Gives compiled output
+//	Gives compiled output
 func (it *scriptOnceBuilder) String() string {
 	return it.Output()
 }
 
 // Strings
 //
-//  Gives compiled output lines
+//	Gives compiled output lines
 func (it *scriptOnceBuilder) Strings() []string {
 	return it.OutputLines()
 }
@@ -648,7 +648,7 @@ func (it *scriptOnceBuilder) CompiledErrorWrapper() *errorwrapper.Wrapper {
 
 // Output
 //
-//  Gives compiled output
+//	Gives compiled output
 func (it *scriptOnceBuilder) Output() string {
 	return it.Result().OutputString()
 }

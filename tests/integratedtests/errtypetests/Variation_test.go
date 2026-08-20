@@ -3,8 +3,8 @@ package errtypetests
 import (
 	"testing"
 
+	"github.com/alimtvnetwork/errorwrapper-v4/errtype"
 	. "github.com/smartystreets/goconvey/convey"
-	"github.com/alimtvnetwork/errorwrapper-v3/errtype"
 )
 
 // Test_Variation_HasError verifies the NoError sentinel vs every real variation.

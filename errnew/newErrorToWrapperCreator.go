@@ -3,10 +3,10 @@ package errnew
 import (
 	"github.com/alimtvnetwork/core-v9/coredata/stringslice"
 	"github.com/alimtvnetwork/core-v9/errcore"
-	"github.com/alimtvnetwork/errorwrapper-v3"
-	"github.com/alimtvnetwork/errorwrapper-v3/errtype"
-	"github.com/alimtvnetwork/errorwrapper-v3/ref"
-	"github.com/alimtvnetwork/errorwrapper-v3/refs"
+	"github.com/alimtvnetwork/errorwrapper-v4"
+	"github.com/alimtvnetwork/errorwrapper-v4/errtype"
+	"github.com/alimtvnetwork/errorwrapper-v4/ref"
+	"github.com/alimtvnetwork/errorwrapper-v4/refs"
 )
 
 type newErrorToWrapperCreator struct{}
@@ -35,7 +35,7 @@ func (it newErrorToWrapperCreator) TypeFunc(
 
 // TypeFuncStackSkip
 //
-//  Skips nil executors
+//	Skips nil executors
 func (it newErrorToWrapperCreator) TypeFuncStackSkip(
 	stackSkipIndex int,
 	errType errtype.Variation,
@@ -59,9 +59,9 @@ func (it newErrorToWrapperCreator) TypeFuncStackSkip(
 
 // TypeAnyFunctions
 //
-//  Halts execution after one has error
+//	Halts execution after one has error
 //
-//  Skips nil executors
+//	Skips nil executors
 func (it newErrorToWrapperCreator) TypeAnyFunctions(
 	errType errtype.Variation,
 	executors ...func() error,
@@ -74,9 +74,9 @@ func (it newErrorToWrapperCreator) TypeAnyFunctions(
 
 // TypeAnyFunctionsStackSkip
 //
-//  Halts execution after one has error
+//	Halts execution after one has error
 //
-//  Skips nil executors
+//	Skips nil executors
 func (it newErrorToWrapperCreator) TypeAnyFunctionsStackSkip(
 	stackSkipIndex int,
 	errType errtype.Variation,
@@ -103,9 +103,9 @@ func (it newErrorToWrapperCreator) TypeAnyFunctionsStackSkip(
 
 // TypeAllFunctions
 //
-//  Continues on error and collects all error together.
+//	Continues on error and collects all error together.
 //
-//  Skips nil executors
+//	Skips nil executors
 func (it newErrorToWrapperCreator) TypeAllFunctions(
 	errType errtype.Variation,
 	executors ...func() error,
@@ -118,9 +118,9 @@ func (it newErrorToWrapperCreator) TypeAllFunctions(
 
 // TypeAllFunctionsStackSkip
 //
-//  Continues on error and collects all error together.
+//	Continues on error and collects all error together.
 //
-//  Skips nil executors
+//	Skips nil executors
 func (it newErrorToWrapperCreator) TypeAllFunctionsStackSkip(
 	stackSkipIndex int,
 	errType errtype.Variation,

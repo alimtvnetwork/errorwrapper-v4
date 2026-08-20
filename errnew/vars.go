@@ -1,7 +1,7 @@
 package errnew
 
 import (
-	"github.com/alimtvnetwork/errorwrapper-v3/errtype"
+	"github.com/alimtvnetwork/errorwrapper-v4/errtype"
 )
 
 var (

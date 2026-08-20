@@ -5,8 +5,8 @@ import (
 	"github.com/alimtvnetwork/core-v9/coreinterface/errcoreinf"
 	"github.com/alimtvnetwork/core-v9/errcore"
 	"github.com/alimtvnetwork/core-v9/isany"
-	"github.com/alimtvnetwork/errorwrapper-v3"
-	"github.com/alimtvnetwork/errorwrapper-v3/errtype"
+	"github.com/alimtvnetwork/errorwrapper-v4"
+	"github.com/alimtvnetwork/errorwrapper-v4/errtype"
 )
 
 type newErrorInterfaceToWrapperCreator struct{}
@@ -26,24 +26,24 @@ func (it newErrorInterfaceToWrapperCreator) Default(
 
 // AnyType
 //
-//  tries may ways to get to the error wrapper.
-//  on fail returns parsed error
+//	tries may ways to get to the error wrapper.
+//	on fail returns parsed error
 //
 // Steps:
-//  - *errorwrapper.Wrapper
-//  - errorwrapper.Wrapper
-//  - errorwrapper.ErrWrapper
-//  - *errcore.RawErrCollection
-//  - errcore.RawErrCollection
-//  - errcoreinf.BaseRawErrCollectionDefiner
-//  - errcoreinf.BasicErrWrapper
-//  - errcoreinf.BaseErrorWrapperCollectionDefiner
-//  - errcoreinf.BaseErrorOrCollectionWrapper
-//  - corejson.Result
-//  - *corejson.Result
-//  - []byte
-//  - error
-//  - string
+//   - *errorwrapper.Wrapper
+//   - errorwrapper.Wrapper
+//   - errorwrapper.ErrWrapper
+//   - *errcore.RawErrCollection
+//   - errcore.RawErrCollection
+//   - errcoreinf.BaseRawErrCollectionDefiner
+//   - errcoreinf.BasicErrWrapper
+//   - errcoreinf.BaseErrorWrapperCollectionDefiner
+//   - errcoreinf.BaseErrorOrCollectionWrapper
+//   - corejson.Result
+//   - *corejson.Result
+//   - []byte
+//   - error
+//   - string
 func (it newErrorInterfaceToWrapperCreator) AnyType(
 	variation errtype.Variation,
 	errInf interface{},
@@ -138,8 +138,8 @@ func (it newErrorInterfaceToWrapperCreator) ActualRawErrCollection(
 
 // NoType
 //
-//  tries to cast to error wrapper first if not possible then creates new one.
-//  using no type
+//	tries to cast to error wrapper first if not possible then creates new one.
+//	using no type
 func (it newErrorInterfaceToWrapperCreator) NoType(
 	errInf errcoreinf.BaseErrorOrCollectionWrapper,
 ) *errorwrapper.Wrapper {

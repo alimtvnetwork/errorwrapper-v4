@@ -18,7 +18,7 @@ import (
 	"github.com/alimtvnetwork/core-v9/coreinterface/errcoreinf"
 	"github.com/alimtvnetwork/core-v9/coremath"
 	"github.com/alimtvnetwork/core-v9/errcore"
-	"github.com/alimtvnetwork/errorwrapper-v3/errconsts"
+	"github.com/alimtvnetwork/errorwrapper-v4/errconsts"
 )
 
 func (it Variation) TypeNameCodeMessage() string {
@@ -155,14 +155,14 @@ func (it Variation) VariantStructurePtr() *VariantStructure {
 
 // TypeName
 //
-//  Refers to the reflection enum type name.
+//	Refers to the reflection enum type name.
 func (it Variation) TypeName() string {
 	return typeName
 }
 
 // CodeWithTypeName
 //
-// 	errconsts.ErrorCodeHyphenTypeNameFormat  = "(#%d - %s)"
+//	errconsts.ErrorCodeHyphenTypeNameFormat  = "(#%d - %s)"
 func (it Variation) CodeWithTypeName() string {
 	return fmt.Sprintf(
 		errconsts.ErrorCodeHyphenTypeNameFormat,
@@ -173,7 +173,7 @@ func (it Variation) CodeWithTypeName() string {
 
 // CodeTypeNameWithCustomMessage
 //
-// 	errconsts.ErrorCodeHyphenTypeNameWithLineFormat = "(#%d - %s) %s"
+//	errconsts.ErrorCodeHyphenTypeNameWithLineFormat = "(#%d - %s) %s"
 func (it Variation) CodeTypeNameWithCustomMessage(
 	customMessage string,
 ) string {
@@ -290,7 +290,7 @@ func (it Variation) ShortReferencesCsvError(
 
 // ExplicitCodeValueName
 //
-// 	errconsts.ErrorCodeWithTypeNameFormat = "(Code - #%d) : %s"
+//	errconsts.ErrorCodeWithTypeNameFormat = "(Code - #%d) : %s"
 func (it Variation) ExplicitCodeValueName() string {
 	return fmt.Sprintf(
 		errconsts.ErrorCodeWithTypeNameFormat,
@@ -300,7 +300,7 @@ func (it Variation) ExplicitCodeValueName() string {
 
 // CodeTypeNameWithReference
 //
-// 	errconsts.ErrorCodeHyphenTypeNameWithReferencesFormat = "(#%d - %s - {%v})"
+//	errconsts.ErrorCodeHyphenTypeNameWithReferencesFormat = "(#%d - %s - {%v})"
 func (it Variation) CodeTypeNameWithReference(
 	referenceLine string,
 ) string {
@@ -313,7 +313,7 @@ func (it Variation) CodeTypeNameWithReference(
 
 // CodeTypeNameWithReferences
 //
-// 	errconsts.ErrorCodeHyphenTypeNameWithReferencesFormat = "(#%d - %s - {%v})"
+//	errconsts.ErrorCodeHyphenTypeNameWithReferencesFormat = "(#%d - %s - {%v})"
 func (it Variation) CodeTypeNameWithReferences(
 	references ...string,
 ) string {
@@ -366,7 +366,7 @@ func (it Variation) IsErrorTyperEqual(
 
 // TypenameString
 //
-//  Refers to Name()
+//	Refers to Name()
 func (it Variation) TypenameString() string {
 	return it.Name()
 }
@@ -466,19 +466,19 @@ func (it *Variation) UnmarshalJSON(data []byte) error {
 
 // Format
 //
-//  Outputs name and
-//  value by given format.
+//	Outputs name and
+//	value by given format.
 //
 // sample-format :
-//  - "Enum of {type-name} - {name} - {value}"
+//   - "Enum of {type-name} - {name} - {value}"
 //
 // sample-format-output :
-//  - "Enum of EnumFullName - Invalid - 0"
+//   - "Enum of EnumFullName - Invalid - 0"
 //
 // Key-Meaning :
-//  - {type-name} : represents type-name string
-//  - {name}      : represents name string
-//  - {value}     : represents value string
+//   - {type-name} : represents type-name string
+//   - {name}      : represents name string
+//   - {value}     : represents value string
 func (it Variation) Format(format string) (compiled string) {
 	return enumimpl.FormatUsingFmt(
 		it,
@@ -563,14 +563,14 @@ func (it Variation) NameValue() string {
 
 // IsValid
 //
-//  For error type IsValid refers to NoError type
+//	For error type IsValid refers to NoError type
 func (it Variation) IsValid() bool {
 	return it == NoError
 }
 
 // IsInvalid
 //
-//  For error type Invalid refers to any error but NoError type
+//	For error type Invalid refers to any error but NoError type
 func (it Variation) IsInvalid() bool {
 	return it != NoError
 }

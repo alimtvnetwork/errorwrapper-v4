@@ -1,7 +1,7 @@
 package errcmd
 
 import (
-	"github.com/alimtvnetwork/errorwrapper-v3/internal/consts"
+	"github.com/alimtvnetwork/errorwrapper-v4/internal/consts"
 )
 
 const (

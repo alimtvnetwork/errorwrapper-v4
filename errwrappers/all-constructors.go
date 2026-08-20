@@ -3,10 +3,10 @@ package errwrappers
 import (
 	"github.com/alimtvnetwork/core-v9/codestack"
 	"github.com/alimtvnetwork/core-v9/constants"
-	"github.com/alimtvnetwork/errorwrapper-v3/errnew"
+	"github.com/alimtvnetwork/errorwrapper-v4/errnew"
 
-	"github.com/alimtvnetwork/errorwrapper-v3"
-	"github.com/alimtvnetwork/errorwrapper-v3/errtype"
+	"github.com/alimtvnetwork/errorwrapper-v4"
+	"github.com/alimtvnetwork/errorwrapper-v4/errtype"
 )
 
 func New(capacity int) *Collection {
@@ -94,7 +94,7 @@ func NewUsingErrorsPtr(errs *[]error) *Collection {
 
 // NewUsingErrorWrappers
 //
-//  Don't clone the items, just adds those
+//	Don't clone the items, just adds those
 func NewUsingErrorWrappers(
 	errWrappers ...*errorwrapper.Wrapper,
 ) *Collection {
@@ -123,7 +123,7 @@ func NewUsingErrorWrapperOrFunc(
 
 // NewUsingErrorWrappersClone
 //
-//  Clone and add items to the collection
+//	Clone and add items to the collection
 func NewUsingErrorWrappersClone(
 	errWrappers []*errorwrapper.Wrapper,
 ) *Collection {

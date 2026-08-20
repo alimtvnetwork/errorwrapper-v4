@@ -5,32 +5,32 @@ import (
 	"github.com/alimtvnetwork/core-v9/coreinterface/errcoreinf"
 	"github.com/alimtvnetwork/core-v9/errcore"
 	"github.com/alimtvnetwork/core-v9/isany"
-	"github.com/alimtvnetwork/errorwrapper-v3"
-	"github.com/alimtvnetwork/errorwrapper-v3/errnew"
-	"github.com/alimtvnetwork/errorwrapper-v3/errtype"
+	"github.com/alimtvnetwork/errorwrapper-v4"
+	"github.com/alimtvnetwork/errorwrapper-v4/errnew"
+	"github.com/alimtvnetwork/errorwrapper-v4/errtype"
 )
 
 type newErrorInterfaceToCollection struct{}
 
 // AnyType
 //
-//  tries may ways to get to the error wrapper.
-//  on fail returns parsed error
+//	tries may ways to get to the error wrapper.
+//	on fail returns parsed error
 //
 // Steps:
-//  - *errorwrapper.Wrapper
-//  - errorwrapper.Wrapper
-//  - errorwrapper.ErrWrapper
-//  - *errcore.RawErrCollection
-//  - errcore.RawErrCollection
-//  - errcoreinf.BaseRawErrCollectionDefiner
-//  - errcoreinf.BasicErrWrapper
-//  - errcoreinf.BaseErrorWrapperCollectionDefiner
-//  - errcoreinf.BaseErrorOrCollectionWrapper
-//  - corejson.Result
-//  - *corejson.Result
-//  - []byte
-//  - string
+//   - *errorwrapper.Wrapper
+//   - errorwrapper.Wrapper
+//   - errorwrapper.ErrWrapper
+//   - *errcore.RawErrCollection
+//   - errcore.RawErrCollection
+//   - errcoreinf.BaseRawErrCollectionDefiner
+//   - errcoreinf.BasicErrWrapper
+//   - errcoreinf.BaseErrorWrapperCollectionDefiner
+//   - errcoreinf.BaseErrorOrCollectionWrapper
+//   - corejson.Result
+//   - *corejson.Result
+//   - []byte
+//   - string
 func (it newErrorInterfaceToCollection) AnyType(
 	variation errtype.Variation,
 	errInf interface{},
@@ -129,7 +129,7 @@ func (it newErrorInterfaceToCollection) UsingCollectionDefiner(
 
 // Cast
 //
-//  returns nil on casting failed or not supported.
+//	returns nil on casting failed or not supported.
 func (it newErrorInterfaceToCollection) Cast(
 	baseErrOrCollection errcoreinf.BaseErrorOrCollectionWrapper,
 ) *Collection {

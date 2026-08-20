@@ -1,6 +1,6 @@
 package errverify
 
-import "github.com/alimtvnetwork/errorwrapper-v3/errwrappers"
+import "github.com/alimtvnetwork/errorwrapper-v4/errwrappers"
 
 type VerifyCollectionParams struct {
 	CaseIndex                 int

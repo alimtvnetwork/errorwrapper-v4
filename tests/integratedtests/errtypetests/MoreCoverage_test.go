@@ -7,7 +7,7 @@ import (
 
 	. "github.com/smartystreets/goconvey/convey"
 
-	"github.com/alimtvnetwork/errorwrapper-v3/errtype"
+	"github.com/alimtvnetwork/errorwrapper-v4/errtype"
 )
 
 // Test_Variation_Formatting exercises the format/combine/code helpers across many variations.
@@ -80,7 +80,7 @@ func Test_Variation_Numeric(t *testing.T) {
 		So(v.Value(), ShouldEqual, uint16(v))
 		So(v.ValueString(), ShouldNotBeBlank)
 		So(v.ToNumberString(), ShouldEqual, v.ValueString())
-		
+
 		So(v.MinInt(), ShouldEqual, 0)
 		So(v.MaxInt(), ShouldBeGreaterThan, 0)
 		So(v.MinValueString(), ShouldNotBeBlank)

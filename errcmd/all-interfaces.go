@@ -11,7 +11,7 @@ import (
 	"github.com/alimtvnetwork/core-v9/coreinterface/errcoreinf"
 	osmixtype "github.com/alimtvnetwork/enum-v10/osdetect"
 	"github.com/alimtvnetwork/enum-v10/scripttype"
-	"github.com/alimtvnetwork/errorwrapper-v3"
+	"github.com/alimtvnetwork/errorwrapper-v4"
 )
 
 type ScriptOnceBuilder interface {

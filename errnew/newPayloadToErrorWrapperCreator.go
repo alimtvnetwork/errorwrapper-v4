@@ -2,7 +2,7 @@ package errnew
 
 import (
 	"github.com/alimtvnetwork/core-v9/coredata/corepayload"
-	"github.com/alimtvnetwork/errorwrapper-v3"
+	"github.com/alimtvnetwork/errorwrapper-v4"
 )
 
 type newPayloadToErrorWrapperCreator struct{}

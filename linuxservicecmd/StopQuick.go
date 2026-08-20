@@ -2,7 +2,7 @@ package linuxservicecmd
 
 import (
 	"github.com/alimtvnetwork/enum-v10/servicestate"
-	"github.com/alimtvnetwork/errorwrapper-v3"
+	"github.com/alimtvnetwork/errorwrapper-v4"
 )
 
 func StopQuick(

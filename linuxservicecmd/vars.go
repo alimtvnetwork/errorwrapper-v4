@@ -1,6 +1,6 @@
 package linuxservicecmd
 
-import "github.com/alimtvnetwork/errorwrapper-v3/errcmd"
+import "github.com/alimtvnetwork/errorwrapper-v4/errcmd"
 
 var (
 	hasService          = hasServiceCmdLookPath()

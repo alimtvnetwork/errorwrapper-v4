@@ -7,8 +7,8 @@ import (
 
 	"github.com/alimtvnetwork/enum-v10/linuxservicestate"
 	"github.com/alimtvnetwork/enum-v10/servicestate"
-	"github.com/alimtvnetwork/errorwrapper-v3/errwrappers"
-	"github.com/alimtvnetwork/errorwrapper-v3/linuxservicecmd"
+	"github.com/alimtvnetwork/errorwrapper-v4/errwrappers"
+	"github.com/alimtvnetwork/errorwrapper-v4/linuxservicecmd"
 )
 
 func Test_MoreCoverage_Request_Accessors(t *testing.T) {

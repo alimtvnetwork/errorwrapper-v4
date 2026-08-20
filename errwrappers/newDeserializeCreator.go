@@ -5,8 +5,8 @@ import (
 	"github.com/alimtvnetwork/core-v9/coredata/corejson"
 	"github.com/alimtvnetwork/core-v9/coreinterface/serializerinf"
 	"github.com/alimtvnetwork/core-v9/errcore"
-	"github.com/alimtvnetwork/errorwrapper-v3"
-	"github.com/alimtvnetwork/errorwrapper-v3/errnew"
+	"github.com/alimtvnetwork/errorwrapper-v4"
+	"github.com/alimtvnetwork/errorwrapper-v4/errnew"
 )
 
 type newDeserializeCreator struct{}
@@ -56,8 +56,8 @@ func (it newDeserializeCreator) UsingString(
 
 // UsingError
 //
-//  here the error actually contains the json payload.
-//  which will be unmarshalled and created to error collection.
+//	here the error actually contains the json payload.
+//	which will be unmarshalled and created to error collection.
 func (it newDeserializeCreator) UsingError(
 	errorAsJsonString error,
 ) (*Collection, *errorwrapper.Wrapper) {

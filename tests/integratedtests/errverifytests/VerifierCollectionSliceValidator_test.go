@@ -3,11 +3,11 @@ package errverifytests
 import (
 	"testing"
 
-	"github.com/smartystreets/goconvey/convey"
 	"github.com/alimtvnetwork/core-v9/corevalidator"
-	"github.com/alimtvnetwork/errorwrapper-v3/errverify"
-	"github.com/alimtvnetwork/errorwrapper-v3/errwrappers"
-	"github.com/alimtvnetwork/errorwrapper-v3/tests/testwrappers/errverifytestwrappers"
+	"github.com/alimtvnetwork/errorwrapper-v4/errverify"
+	"github.com/alimtvnetwork/errorwrapper-v4/errwrappers"
+	"github.com/alimtvnetwork/errorwrapper-v4/tests/testwrappers/errverifytestwrappers"
+	"github.com/smartystreets/goconvey/convey"
 )
 
 func Test_VerifierCollectionSliceValidator(t *testing.T) {
@@ -23,10 +23,10 @@ func Test_VerifierCollectionSliceValidator(t *testing.T) {
 		}
 
 		validatorParamsBase := &corevalidator.Parameter{
-			CaseIndex:                         caseIndex,
+			CaseIndex:                  caseIndex,
 			IsSkipCompareOnActualEmpty: false,
-			IsAttachUserInputs:                true,
-			IsCaseSensitive:                   true,
+			IsAttachUserInputs:         true,
+			IsCaseSensitive:            true,
 		}
 
 		verifyErrWp := testCase.

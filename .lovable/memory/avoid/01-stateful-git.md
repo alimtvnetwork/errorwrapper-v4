@@ -13,7 +13,7 @@ git remote set-url origin <correct-url>
 git fetch origin
 ```
 
-The current `origin` 404s on `https://github.com/alimtvnetwork/errorwrapper-v3.git`.
+The current `origin` 404s on `https://github.com/alimtvnetwork/errorwrapper-v4.git`.
 
 ## Symptom to recognize
 

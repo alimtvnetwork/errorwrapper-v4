@@ -4,10 +4,10 @@ import (
 	"errors"
 	"testing"
 
+	"github.com/alimtvnetwork/errorwrapper-v4/errnew"
+	"github.com/alimtvnetwork/errorwrapper-v4/errtype"
+	"github.com/alimtvnetwork/errorwrapper-v4/errwrappers"
 	. "github.com/smartystreets/goconvey/convey"
-	"github.com/alimtvnetwork/errorwrapper-v3/errnew"
-	"github.com/alimtvnetwork/errorwrapper-v3/errtype"
-	"github.com/alimtvnetwork/errorwrapper-v3/errwrappers"
 )
 
 // Test_Empty_NoError — empty collection reports no error.

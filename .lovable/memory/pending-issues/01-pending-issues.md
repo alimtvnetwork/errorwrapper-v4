@@ -15,7 +15,7 @@ One row per unresolved issue. Update in-place. Move resolved entries to the `## 
 
 ### 02 · git-remote-404
 - severity: low
-- description: `run.ps1` Phase 1 fails: remote `https://github.com/alimtvnetwork/errorwrapper-v3.git/` returns 404.
+- description: `run.ps1` Phase 1 fails: remote `https://github.com/alimtvnetwork/errorwrapper-v4.git/` returns 404.
 - owner: user (sandbox forbids stateful git)
 - fix: `git remote set-url origin <correct-url> && git fetch origin`
 

@@ -14,9 +14,9 @@ import (
 	"github.com/alimtvnetwork/core-v9/errcore"
 	osmixtype "github.com/alimtvnetwork/enum-v10/osdetect"
 	"github.com/alimtvnetwork/enum-v10/scripttype"
-	"github.com/alimtvnetwork/errorwrapper-v3"
-	"github.com/alimtvnetwork/errorwrapper-v3/errtype"
-	"github.com/alimtvnetwork/errorwrapper-v3/ref"
+	"github.com/alimtvnetwork/errorwrapper-v4"
+	"github.com/alimtvnetwork/errorwrapper-v4/errtype"
+	"github.com/alimtvnetwork/errorwrapper-v4/ref"
 )
 
 type osTypeScriptBuilder struct {
@@ -433,7 +433,7 @@ func (it *osTypeScriptBuilder) GetBy(
 
 // GetWithStat
 //
-//  isDefined : found and not null
+//	isDefined : found and not null
 func (it *osTypeScriptBuilder) GetWithStat(
 	osMixType osmixtype.Variant,
 ) (scriptOnceBuilder ScriptOnceBuilder, isDefined bool) {
@@ -460,10 +460,10 @@ func (it *osTypeScriptBuilder) HasBuilder(
 
 // IsValidBuilder
 //
-//  return it != nil &&
-//		it.scriptType.IsValid() &&
-//		!it.HasError() &&
-//		it.scriptLines.HasAnyItem()
+//	 return it != nil &&
+//			it.scriptType.IsValid() &&
+//			!it.HasError() &&
+//			it.scriptLines.HasAnyItem()
 func (it *osTypeScriptBuilder) IsValidBuilder(
 	mixType osmixtype.Variant,
 ) bool {
@@ -480,7 +480,7 @@ func (it *osTypeScriptBuilder) IsValidBuilder(
 
 // IsInvalidBuilder
 //
-//  invert of IsValidBuilder
+//	invert of IsValidBuilder
 func (it *osTypeScriptBuilder) IsInvalidBuilder(
 	mixType osmixtype.Variant,
 ) bool {
@@ -489,8 +489,8 @@ func (it *osTypeScriptBuilder) IsInvalidBuilder(
 
 // IsAllBuildersValid
 //
-//  represents that all builder exist
-//  with lines and script type is valid
+//	represents that all builder exist
+//	with lines and script type is valid
 func (it *osTypeScriptBuilder) IsAllBuildersValid(
 	mixTypes ...osmixtype.Variant,
 ) bool {
@@ -1105,9 +1105,9 @@ func (it osTypeScriptBuilder) AsyncExecutionResultMap() map[osmixtype.Variant]*R
 
 // StandardOutputCmd
 //
-//  Set all builders input output to standard os input output
+//	Set all builders input output to standard os input output
 //
-//  os.Stdin, os.Stdout, os.Stderr
+//	os.Stdin, os.Stdout, os.Stderr
 func (it *osTypeScriptBuilder) StandardOutputCmd() OsMixTypeScriptBuilder {
 	for _, builder := range it.List() {
 		builder.StandardOutputCmd()

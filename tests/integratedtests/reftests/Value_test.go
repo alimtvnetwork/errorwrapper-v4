@@ -4,7 +4,7 @@ import (
 	"testing"
 
 	"github.com/alimtvnetwork/core-v9/coredata/corejson"
-	"github.com/alimtvnetwork/errorwrapper-v3/ref"
+	"github.com/alimtvnetwork/errorwrapper-v4/ref"
 	. "github.com/smartystreets/goconvey/convey"
 )
 

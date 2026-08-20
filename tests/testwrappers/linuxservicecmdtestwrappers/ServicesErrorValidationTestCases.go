@@ -2,7 +2,7 @@ package linuxservicecmdtestwrappers
 
 import (
 	"github.com/alimtvnetwork/enum-v10/linuxservicestate"
-	"github.com/alimtvnetwork/errorwrapper-v3/linuxservicecmd"
+	"github.com/alimtvnetwork/errorwrapper-v4/linuxservicecmd"
 )
 
 var ServicesErrorValidationTestCases = []ServicesTestCaseWrapper{

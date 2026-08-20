@@ -5,8 +5,8 @@ import (
 	"runtime"
 	"testing"
 
-	"github.com/alimtvnetwork/errorwrapper-v3/errcmdportable"
-	"github.com/alimtvnetwork/errorwrapper-v3/errcmdportable/osadapter"
+	"github.com/alimtvnetwork/errorwrapper-v4/errcmdportable"
+	"github.com/alimtvnetwork/errorwrapper-v4/errcmdportable/osadapter"
 	. "github.com/smartystreets/goconvey/convey"
 )
 

@@ -19,7 +19,7 @@
 
 ### Fixed (Phase 0)
 - `tests/integratedtests/errcmdtests/Utilities_test.go` — corrected bad import
-  path (`.../errorwrapper-v3/errorwrapper` → `.../errorwrapper-v3`).
+  path (`.../errorwrapper-v4/errorwrapper` → `.../errorwrapper-v4`).
   Unblocked `go mod tidy` and 49 cascade-blocked packages.
 - `Test_EmptyPtr_HasError` — `EmptyPtr()` returns `nil` by design;
   assertion switched to `ShouldBeNil`.
@@ -81,7 +81,7 @@
 
 ### Pending (user action)
 - **Phase 7** — fix bad git remote: `git remote set-url origin <correct-url>`
-  (current origin 404s on `github.com/alimtvnetwork/errorwrapper-v3`).
+  (current origin 404s on `github.com/alimtvnetwork/errorwrapper-v4`).
 - **Phase F** — re-run `.\run.ps1 -tc`. The Task K fix unblocks
   `errcmdportabletests` + `errcmdbridgetests`. Remaining blocked packages
   are pre-existing upstream API drift against `core-v9 v1.5.8`

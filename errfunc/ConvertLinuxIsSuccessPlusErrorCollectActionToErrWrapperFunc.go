@@ -1,8 +1,8 @@
 package errfunc
 
 import (
-	"github.com/alimtvnetwork/errorwrapper-v3"
-	"github.com/alimtvnetwork/errorwrapper-v3/errwrappers"
+	"github.com/alimtvnetwork/errorwrapper-v4"
+	"github.com/alimtvnetwork/errorwrapper-v4/errwrappers"
 )
 
 func ConvertLinuxIsSuccessPlusErrorCollectActionToErrWrapperFunc(

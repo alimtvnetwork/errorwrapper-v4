@@ -3,7 +3,7 @@ package errcmd
 import (
 	"os/exec"
 
-	"github.com/alimtvnetwork/errorwrapper-v3"
+	"github.com/alimtvnetwork/errorwrapper-v4"
 )
 
 type newCmdOnceNoOutputCreator struct{}

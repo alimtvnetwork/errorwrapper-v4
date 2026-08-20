@@ -7,9 +7,9 @@ import (
 	"github.com/alimtvnetwork/core-v9/converters"
 	"github.com/alimtvnetwork/core-v9/isany"
 	"github.com/alimtvnetwork/core-v9/simplewrap"
-	"github.com/alimtvnetwork/errorwrapper-v3"
-	"github.com/alimtvnetwork/errorwrapper-v3/errtype"
-	"github.com/alimtvnetwork/errorwrapper-v3/ref"
+	"github.com/alimtvnetwork/errorwrapper-v4"
+	"github.com/alimtvnetwork/errorwrapper-v4/errtype"
+	"github.com/alimtvnetwork/errorwrapper-v4/ref"
 )
 
 type newFormatterCreator struct{}
@@ -116,7 +116,6 @@ func (it newFormatterCreator) Default(
 	)
 }
 
-
 func (it newFormatterCreator) Format(
 	errType errtype.Variation,
 	format string,
@@ -159,9 +158,9 @@ func (it newFormatterCreator) Fmt(
 
 // Error
 //
-//  err + format given compiled
+//	err + format given compiled
 //
-//  returns null on empty format or empty error
+//	returns null on empty format or empty error
 func (it newFormatterCreator) Error(
 	errType errtype.Variation,
 	err error,
@@ -185,9 +184,9 @@ func (it newFormatterCreator) Error(
 
 // Message
 //
-//  Message + format given compiled
+//	Message + format given compiled
 //
-//  returns null on empty format or message
+//	returns null on empty format or message
 func (it newFormatterCreator) Message(
 	errType errtype.Variation,
 	message string,
@@ -211,9 +210,9 @@ func (it newFormatterCreator) Message(
 
 // MessageError
 //
-//  message + err + format given compiled
+//	message + err + format given compiled
 //
-//  returns null on empty format or empty error
+//	returns null on empty format or empty error
 func (it newFormatterCreator) MessageError(
 	errType errtype.Variation,
 	message string,
@@ -278,8 +277,8 @@ func (it newFormatterCreator) ErrorFormatUsingMap(
 
 // MsgFormatUsingMapIf
 //
-//  Put format : something {user} done {action}
-//  map[] => {user} => name, {action} => whatever
+//	Put format : something {user} done {action}
+//	map[] => {user} => name, {action} => whatever
 func (it newFormatterCreator) MsgFormatUsingMapIf(
 	isCreate bool,
 	errType errtype.Variation,
@@ -300,8 +299,8 @@ func (it newFormatterCreator) MsgFormatUsingMapIf(
 
 // MsgFormatUsingMap
 //
-//  Put format : something {user} done {action}
-//  map[] => {user} => name, {action} => whatever
+//	Put format : something {user} done {action}
+//	map[] => {user} => name, {action} => whatever
 func (it newFormatterCreator) MsgFormatUsingMap(
 	errType errtype.Variation,
 	msg string,
@@ -328,8 +327,8 @@ func (it newFormatterCreator) MsgFormatUsingMap(
 
 // FormatUsingMap
 //
-//  Put format : something {user} done {action}
-//  map[] => {user} => name, {action} => whatever
+//	Put format : something {user} done {action}
+//	map[] => {user} => name, {action} => whatever
 func (it newFormatterCreator) FormatUsingMap(
 	errType errtype.Variation,
 	format string,
@@ -355,11 +354,11 @@ func (it newFormatterCreator) FormatUsingMap(
 
 // CurlyFormatUsingMap
 //
-//  Put format : something {user} done {action}
-//  map[] => user => name, action => whatever
+//	Put format : something {user} done {action}
+//	map[] => user => name, action => whatever
 //
-//  In FormatUsingMap user have to use curly brace by self.
-//  Here it will auto put curly braces
+//	In FormatUsingMap user have to use curly brace by self.
+//	Here it will auto put curly braces
 func (it newFormatterCreator) CurlyFormatUsingMap(
 	errType errtype.Variation,
 	format string,
@@ -385,11 +384,11 @@ func (it newFormatterCreator) CurlyFormatUsingMap(
 
 // CurlyMsgFormatUsingMap
 //
-//  Put format : something {user} done {action}
-//  map[] => user => name, action => whatever
+//	Put format : something {user} done {action}
+//	map[] => user => name, action => whatever
 //
-//  In FormatUsingMap user have to use curly brace by self.
-//  Here it will auto put curly braces
+//	In FormatUsingMap user have to use curly brace by self.
+//	Here it will auto put curly braces
 func (it newFormatterCreator) CurlyMsgFormatUsingMap(
 	errType errtype.Variation,
 	message string,

@@ -2,8 +2,8 @@ package errorwrapper
 
 import (
 	"github.com/alimtvnetwork/core-v9/codestack"
-	"github.com/alimtvnetwork/errorwrapper-v3/errtype"
-	"github.com/alimtvnetwork/errorwrapper-v3/refs"
+	"github.com/alimtvnetwork/errorwrapper-v4/errtype"
+	"github.com/alimtvnetwork/errorwrapper-v4/refs"
 )
 
 type WrapperDataModel struct {

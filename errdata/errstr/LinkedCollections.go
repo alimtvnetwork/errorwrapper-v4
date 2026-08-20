@@ -5,9 +5,9 @@ import (
 
 	"github.com/alimtvnetwork/core-v9/coredata/corestr"
 
-	"github.com/alimtvnetwork/errorwrapper-v3"
-	"github.com/alimtvnetwork/errorwrapper-v3/errnew"
-	"github.com/alimtvnetwork/errorwrapper-v3/errtype"
+	"github.com/alimtvnetwork/errorwrapper-v4"
+	"github.com/alimtvnetwork/errorwrapper-v4/errnew"
+	"github.com/alimtvnetwork/errorwrapper-v4/errtype"
 )
 
 func linkedCollectionsErrorWrapper(errVariation errtype.Variation, err error) *errorwrapper.Wrapper {

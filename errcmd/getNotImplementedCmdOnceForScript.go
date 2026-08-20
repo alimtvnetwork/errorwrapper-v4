@@ -2,8 +2,8 @@ package errcmd
 
 import (
 	"github.com/alimtvnetwork/core-v9/coreinterface"
-	"github.com/alimtvnetwork/errorwrapper-v3/errnew"
-	"github.com/alimtvnetwork/errorwrapper-v3/errtype"
+	"github.com/alimtvnetwork/errorwrapper-v4/errnew"
+	"github.com/alimtvnetwork/errorwrapper-v4/errtype"
 )
 
 func getNotImplementedCmdOnceForScript(scriptDefaultStringer coreinterface.Stringer) *CmdOnce {

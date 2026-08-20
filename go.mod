@@ -1,4 +1,4 @@
-module github.com/alimtvnetwork/errorwrapper-v3
+module github.com/alimtvnetwork/errorwrapper-v4
 
 go 1.25.0
 

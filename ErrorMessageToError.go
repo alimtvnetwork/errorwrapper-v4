@@ -3,7 +3,7 @@ package errorwrapper
 import (
 	"errors"
 
-	"github.com/alimtvnetwork/errorwrapper-v3/internal/consts"
+	"github.com/alimtvnetwork/errorwrapper-v4/internal/consts"
 )
 
 // ErrorMessageToError final error is nil if err is nil

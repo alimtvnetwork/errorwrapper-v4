@@ -4,8 +4,8 @@ import (
 	"testing"
 
 	"github.com/alimtvnetwork/core-v9/coredata/corejson"
-	"github.com/alimtvnetwork/errorwrapper-v3/errdata/errjson"
-	"github.com/alimtvnetwork/errorwrapper-v3/errwrappers"
+	"github.com/alimtvnetwork/errorwrapper-v4/errdata/errjson"
+	"github.com/alimtvnetwork/errorwrapper-v4/errwrappers"
 	. "github.com/smartystreets/goconvey/convey"
 )
 

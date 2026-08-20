@@ -1,8 +1,8 @@
 package errorwrapper
 
 import (
-	"github.com/alimtvnetwork/errorwrapper-v3/errtype"
-	"github.com/alimtvnetwork/errorwrapper-v3/internal/consts"
+	"github.com/alimtvnetwork/errorwrapper-v4/errtype"
+	"github.com/alimtvnetwork/errorwrapper-v4/internal/consts"
 )
 
 // ErrorsToWrapper nil items will be ignored.

@@ -3,7 +3,7 @@ package errfloattests
 import (
 	"testing"
 
-	"github.com/alimtvnetwork/errorwrapper-v3/errdata/errfloat"
+	"github.com/alimtvnetwork/errorwrapper-v4/errdata/errfloat"
 	. "github.com/smartystreets/goconvey/convey"
 )
 

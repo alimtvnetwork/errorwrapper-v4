@@ -1,6 +1,6 @@
 package trydo
 
-import "github.com/alimtvnetwork/errorwrapper-v3/errwrappers"
+import "github.com/alimtvnetwork/errorwrapper-v4/errwrappers"
 
 func GetErrorWrapperCollectionWrappedPanic(voidFunc func()) *errwrappers.Collection {
 	errCollection := errwrappers.Empty()

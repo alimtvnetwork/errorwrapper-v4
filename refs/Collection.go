@@ -10,7 +10,7 @@ import (
 	"github.com/alimtvnetwork/core-v9/coreimpl/enumimpl"
 	"github.com/alimtvnetwork/core-v9/coreinterface/errcoreinf"
 	"github.com/alimtvnetwork/core-v9/defaulterr"
-	"github.com/alimtvnetwork/errorwrapper-v3/ref"
+	"github.com/alimtvnetwork/errorwrapper-v4/ref"
 )
 
 type Collection struct {

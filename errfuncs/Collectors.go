@@ -3,9 +3,9 @@ package errfuncs
 import (
 	"github.com/alimtvnetwork/core-v9/constants"
 	"github.com/alimtvnetwork/core-v9/coreinterface"
-	"github.com/alimtvnetwork/errorwrapper-v3"
-	"github.com/alimtvnetwork/errorwrapper-v3/errfunc"
-	"github.com/alimtvnetwork/errorwrapper-v3/errwrappers"
+	"github.com/alimtvnetwork/errorwrapper-v4"
+	"github.com/alimtvnetwork/errorwrapper-v4/errfunc"
+	"github.com/alimtvnetwork/errorwrapper-v4/errwrappers"
 )
 
 type Collectors struct {

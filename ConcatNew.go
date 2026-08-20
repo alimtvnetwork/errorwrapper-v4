@@ -8,10 +8,10 @@ import (
 	"github.com/alimtvnetwork/core-v9/constants"
 	"github.com/alimtvnetwork/core-v9/coredata/stringslice"
 	"github.com/alimtvnetwork/core-v9/coreinterface/errcoreinf"
-	"github.com/alimtvnetwork/errorwrapper-v3/errtype"
-	"github.com/alimtvnetwork/errorwrapper-v3/internal/consts"
-	"github.com/alimtvnetwork/errorwrapper-v3/ref"
-	"github.com/alimtvnetwork/errorwrapper-v3/refs"
+	"github.com/alimtvnetwork/errorwrapper-v4/errtype"
+	"github.com/alimtvnetwork/errorwrapper-v4/internal/consts"
+	"github.com/alimtvnetwork/errorwrapper-v4/ref"
+	"github.com/alimtvnetwork/errorwrapper-v4/refs"
 )
 
 type ConcatNew struct {
@@ -27,10 +27,10 @@ func (it *ConcatNew) isAnyNull() bool {
 // Refers to no error for print or doesn't treat this as error.
 //
 // Conditions (true):
-//  - if Wrapper nil, Or,
-//  - if Wrapper is StaticEmptyPtr, Or,
-//  - if Wrapper .errorType is IsNoError(), Or,
-//  - if Wrapper .currentError NOT nil and Wrapper .references.isEmpty()
+//   - if Wrapper nil, Or,
+//   - if Wrapper is StaticEmptyPtr, Or,
+//   - if Wrapper .errorType is IsNoError(), Or,
+//   - if Wrapper .currentError NOT nil and Wrapper .references.isEmpty()
 func (it *ConcatNew) isEmpty() bool {
 	return it == nil || it.errWp.IsEmpty()
 }

@@ -1,6 +1,6 @@
 package errbool
 
-import "github.com/alimtvnetwork/errorwrapper-v3"
+import "github.com/alimtvnetwork/errorwrapper-v4"
 
 type emptyCreator struct{}
 

@@ -60,7 +60,7 @@ Two doc files referenced by memory (`docs/ARCHITECTURE.md`, `docs/LLM_GUIDELINE.
 | 1 | **Author or import `spec/`** — at minimum: README, data-model.md, api-surface.md, acceptance-criteria.md per public package. | repo root `spec/` | +40–60% on Medium/Complex tiers. |
 | 2 | **Recover or regenerate `docs/`** — `ARCHITECTURE.md`, `LLM_GUIDELINE.md`, `extensibility.md`. Memory says they exist; they don't. | `docs/` | +15% (restores memory↔reality trust). |
 | 3 | **Capture build-errors.txt** — paste top 80 lines OR run fallback `go build` command. | attach to chat | +25% on Simple/Medium drift fixes. |
-| 4 | **Add a one-paragraph "product north star"** to `.lovable/memory/01-project-overview.md` answering: who uses errorwrapper-v3, what one problem does it solve, what's out of scope. | memory | +10% across all tiers. |
+| 4 | **Add a one-paragraph "product north star"** to `.lovable/memory/01-project-overview.md` answering: who uses errorwrapper-v4, what one problem does it solve, what's out of scope. | memory | +10% across all tiers. |
 | 5 | **Frontend intent decision** — pick (a) docs site, (b) demo, (c) unrelated, (d) delete. | chat answer + `plan.md` update | +20% on frontend work. |
 | 6 | **Versioning hook** — add a pre-commit check OR a `CHANGELOG.md` template line that fails CI if untouched. | repo root | +5% (catches forgotten bumps). |
 | 7 | **`.release/` guard** — add to `.lovable/strictly-avoid.md` and `.gitignore`-style read protection note. | already done in `decisions/04` | +5%. |
@@ -87,7 +87,7 @@ For **trivial Go fixes** (e.g. `sync.noCopy`), the bar is already met — that w
 ## 5. Questions & Concerns (per user request)
 
 1. **Where are the specs?** You referenced "spec folder content for all projects" — none exists in this repo. Are they in another Lovable project I should `@mention`, in an external system, or do they need to be authored from scratch here?
-2. **What is errorwrapper-v3 actually for?** Memory describes phases and tests but no product north star. One-sentence answer would unblock 40% of risk.
+2. **What is errorwrapper-v4 actually for?** Memory describes phases and tests but no product north star. One-sentence answer would unblock 40% of risk.
 3. **Frontend scope** — is the TanStack Start scaffold meant to become a docs site, a demo, or should it be deleted?
 4. **`.release/` folder** — it doesn't currently exist in the repo. Should I create it as an empty placeholder, or is it managed externally?
 5. **"All projects"** — how many projects are in scope for this handoff, and should I use the `cross_project` tools to read them?

@@ -20,14 +20,14 @@ import (
 	"github.com/alimtvnetwork/core-v9/corevalidator"
 	"github.com/alimtvnetwork/core-v9/defaulterr"
 	"github.com/alimtvnetwork/core-v9/errcore"
-	"github.com/alimtvnetwork/errorwrapper-v3/errcmd"
-	"github.com/alimtvnetwork/errorwrapper-v3/internal/messages"
-	"github.com/alimtvnetwork/errorwrapper-v3/ref"
+	"github.com/alimtvnetwork/errorwrapper-v4/errcmd"
+	"github.com/alimtvnetwork/errorwrapper-v4/internal/messages"
+	"github.com/alimtvnetwork/errorwrapper-v4/ref"
 
-	"github.com/alimtvnetwork/errorwrapper-v3"
-	"github.com/alimtvnetwork/errorwrapper-v3/errnew"
-	"github.com/alimtvnetwork/errorwrapper-v3/errtype"
-	"github.com/alimtvnetwork/errorwrapper-v3/refs"
+	"github.com/alimtvnetwork/errorwrapper-v4"
+	"github.com/alimtvnetwork/errorwrapper-v4/errnew"
+	"github.com/alimtvnetwork/errorwrapper-v4/errtype"
+	"github.com/alimtvnetwork/errorwrapper-v4/refs"
 )
 
 type Collection struct {
